@@ -1,0 +1,9 @@
+{
+    "name": "ej2-pdfviewer",
+    "version": "19.2.56",
+    "main": "ej2-pdfviewer.min.js",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/andresvgml/ej2-pdfviewer"
+    }
+  }
