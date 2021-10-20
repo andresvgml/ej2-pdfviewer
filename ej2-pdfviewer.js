@@ -1,6 +1,6 @@
 /*!
  *  filename: ej2-pdfviewer.min.js
- *  version : 19.2.56
+ *  version : 19.3.45
  *  Copyright Syncfusion Inc. 2001 - 2020. All rights reserved.
  *  Use of this code is subject to the terms of our license.
  *  A copy of the current license can be obtained at any time by e-mailing
@@ -14,7 +14,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         return "Line" === e.shapeAnnotationType || "LineWidthArrowHead" === e.shapeAnnotationType || "Distance" === e.shapeAnnotationType || "Polygon" === e.shapeAnnotationType
     }
 
-    function L(e, t) {
+    function w(e, t) {
         if (e && t)
             if (e.formFieldAnnotationType) - 1 !== e.id.indexOf("diagram_helper") ? (t.style.fill = "transparent", t.style.strokeWidth = 1, t.style.strokeDashArray = e.borderDashArray) : (t.style.fill = "transparent", t.style.strokeWidth = 0);
             else {
@@ -23,7 +23,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }
     }
 
-    function w(e) {
+    function L(e) {
         for (var t = 0, n = 0; n < e.length - 1; n++) t += i.Point.findLength(e[n], e[n + 1]);
         return t
     }
@@ -162,7 +162,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
 
     function x(e, t) {
         var i = [];
-        return i = S(e), t.staticSize = !0, t = T(e, i, t), L(e, t), t
+        return i = S(e), t.staticSize = !0, t = T(e, i, t), w(e, t), t
     }
 
     function N(e, t, n, o, s) {
@@ -171,7 +171,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             r = e.thickness <= 5 ? 5 : e.thickness,
             l = R(s ? e.sourceDecoraterShapes : e.taregetDecoraterShapes),
             d = new i.Size(2 * r, 2 * r);
-        t.transform = i.RotateTransform.Self, L(e, t), t.style.fill = "tranparent" !== e.fillColor ? e.fillColor : "white", t.rotateAngle = a, t.data = l, t.canMeasurePath = !0, t.width = d.width, t.height = d.height, "Butt" === e.sourceDecoraterShapes && (t.width = d.width - 10, t.height = d.height + 10)
+        t.transform = i.RotateTransform.Self, w(e, t), t.style.fill = "tranparent" !== e.fillColor ? e.fillColor : "white", t.rotateAngle = a, t.data = l, t.canMeasurePath = !0, t.width = d.width, t.height = d.height, "Butt" === e.sourceDecoraterShapes && (t.width = d.width - 10, t.height = d.height + 10)
     }
 
     function D(e, t, n, o) {
@@ -209,7 +209,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         var s = [],
             a = i.Point.findAngle(t[0], t[1]),
             r = B(e, a);
-        return !o.enableImportAnnotationMeasurement && e.notes && "" !== e.notes ? r.content = e.notes : r.content = n.setConversion(w([t[0], t[1]]) * n.pixelToPointFactor, e), r.rotateValue = {
+        return !o.enableImportAnnotationMeasurement && e.notes && "" !== e.notes ? r.content = e.notes : r.content = n.setConversion(L([t[0], t[1]]) * n.pixelToPointFactor, e), r.rotateValue = {
             y: -10,
             angle: a
         }, !0 === e.enableShapeLabel && (r.style.strokeColor = e.labelBorderColor, r.style.fill = e.labelFillColor, r.style.fontSize = e.fontSize, r.style.color = e.fontColor, r.style.fontFamily = e.fontFamily), s.push(r), s
@@ -218,7 +218,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
     function E(e, i, n) {
         for (var o, s = 0; s < e.wrapper.children.length; s++) {
             var a = e.wrapper.children[s];
-            a && !t.isNullOrUndefined(a.content) && (o = n.setConversion(w([i[0], i[1]]) * n.pixelToPointFactor, e), a.content = o, a.childNodes[0].text = a.content, a.refreshTextElement())
+            a && !t.isNullOrUndefined(a.content) && (o = n.setConversion(L([i[0], i[1]]) * n.pixelToPointFactor, e), a.content = o, a.childNodes[0].text = a.content, a.refreshTextElement())
         }
         return o
     }
@@ -274,7 +274,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
 
     function B(e, t) {
         var n = new i.TextElement;
-        return L(e, n), n.style.fill = "transparent", n.id = i.randomId(), n.horizontalAlignment = "Center", n.rotateValue = {
+        return w(e, n), n.style.fill = "transparent", n.id = i.randomId(), n.horizontalAlignment = "Center", n.rotateValue = {
             y: 10,
             angle: t
         }, n.verticalAlignment = "Top", n.relativeMode = "Object", n.setOffsetWithRespectToBounds(.5, .5, "Absolute"), n.style.textWrapping = "NoWrap", n
@@ -309,7 +309,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         s.offsetX = p.x, s.offsetY = p.y, s.transform = i.RotateTransform.Self;
         var M = "M" + t.x + "," + t.y + ",L" + d.x + "," + d.y + "Z",
             h = new i.Size(0, e.leaderHeight);
-        return s.pivot.x = .5, o ? (s.id = "leader2_" + i.randomId(), s.pivot.y = 0) : (s.id = "leader1_" + i.randomId(), s.pivot.y = 1), L(e, s), s.rotateAngle = a, s.data = M, s.canMeasurePath = !0, s.width = h.width, s.height = h.height, s
+        return s.pivot.x = .5, o ? (s.id = "leader2_" + i.randomId(), s.pivot.y = 0) : (s.id = "leader1_" + i.randomId(), s.pivot.y = 1), w(e, s), s.rotateAngle = a, s.data = M, s.canMeasurePath = !0, s.width = h.width, s.height = h.height, s
     }
 
     function Q(e, t) {
@@ -359,7 +359,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
     }
 
     function R(e) {
-        return qe[e]
+        return et[e]
     }
 
     function W(e, t, i, n) {
@@ -396,26 +396,26 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             a = t.clientX - p.left, r = t.clientY - p.top
         } else a = isNaN(t.offsetX) ? t.position ? t.position.x : 0 : t.offsetX, r = isNaN(t.offsetY) ? t.position ? t.position.y : 0 : t.offsetY;
         for (var M = 0, h = 0; h < e.length; h++)
-            if ("Distance" === e[h].shapeAnnotationType || "Line" === e[h].shapeAnnotationType || "LineWidthArrowHead" === e[h].shapeAnnotationType || n.tool instanceof Mt) {
-                var L = {
+            if ("Distance" === e[h].shapeAnnotationType || "Line" === e[h].shapeAnnotationType || "LineWidthArrowHead" === e[h].shapeAnnotationType || n.tool instanceof wt) {
+                var w = {
                         x: a / n.getZoomFactor(),
                         y: r / n.getZoomFactor()
                     },
-                    w = Z(e[h], L, 5),
-                    c = Q(e[h], L);
-                if (w && !c) {
-                    var C = G(e[h], w);
+                    L = Z(e[h], w, 5),
+                    c = Q(e[h], w);
+                if (L && !c) {
+                    var C = G(e[h], L);
                     if (C) {
                         var g = i.Rect.toBounds([C, C]);
-                        g.Inflate(10), g.containsPoint(L) && (c = !0)
+                        g.Inflate(10), g.containsPoint(w) && (c = !0)
                     }
                 }
-                w && c && (l = e[h])
+                L && c && (l = e[h])
             } else {
                 var m = e[h].wrapper.bounds,
                     f = 0;
                 if ("Stamp" !== e[h].shapeAnnotationType && "Image" !== e[h].shapeAnnotationType || (f = 25), (m.x - 5) * n.getZoomFactor() < a && (m.x + m.width + 5) * n.getZoomFactor() > a && (m.y - 5 - f) * n.getZoomFactor() < r && (m.y + m.height + 5) * n.getZoomFactor() > r)
-                    if (n.tool instanceof ut) l = e[h];
+                    if (n.tool instanceof Mt) l = e[h];
                     else if (M) {
                     var y = a - (m.x - 5) * n.getZoomFactor() + ((m.x + m.width + 5) * n.getZoomFactor() - a) + (r - (m.y - 5 - f) * n.getZoomFactor()) + ((m.y + m.height + 5) * n.getZoomFactor() - r);
                     M > y && (l = e[h], M = y)
@@ -542,13 +542,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 });
                 break;
             case "Show":
-                Oe(document.querySelector(i));
-                break;
-            case "Hide":
                 Fe(document.querySelector(i));
                 break;
+            case "Hide":
+                Ye(document.querySelector(i));
+                break;
             case "Set":
-                Be({
+                Ue({
                     cssClass: t.cssClass,
                     type: n
                 })
@@ -558,44 +558,62 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
     function ne(e, i) {
         if (e.target) {
             var n, o = t.isNullOrUndefined(i) ? t.createElement : i,
-                s = Se(e.target, o);
-            if (t.isNullOrUndefined(e.cssClass) || s.wrap.classList.add(e.cssClass), t.isNullOrUndefined(e.template) && t.isNullOrUndefined(vt)) {
-                var a = t.isNullOrUndefined(e.type) ? ue(s.wrap) : e.type;
-                n = ge(t.isNullOrUndefined(e.width) ? void 0 : e.width, a), pe(a, s.wrap, n, o), t.isNullOrUndefined(e.label) || oe(s.innerWrap, e.label, o)
+                s = Te(e.target, o);
+            if (t.isNullOrUndefined(e.cssClass) || s.wrap.classList.add(e.cssClass), t.isNullOrUndefined(e.template) && t.isNullOrUndefined(Et)) {
+                var a = t.isNullOrUndefined(e.type) ? Me(s.wrap) : e.type;
+                n = fe(t.isNullOrUndefined(e.width) ? void 0 : e.width, a), he(a, s.wrap, n, o), t.isNullOrUndefined(e.label) || oe(s.innerWrap, e.label, o)
             } else {
-                var r = t.isNullOrUndefined(e.template) ? vt : e.template;
-                s.wrap.classList.add(Gt), Ce(s.wrap, r, It)
+                var r = t.isNullOrUndefined(e.template) ? Et : e.template;
+                s.wrap.classList.add(qt), me(s.wrap, r, Vt)
             }
-            s.wrap.classList.add(Pt), s = null
+            s.wrap.classList.add(Bt), s = null
         }
     }
 
     function oe(e, t, i) {
         var n = i("div", {});
-        return n.classList.add(Ht), n.textContent = t, e.appendChild(n), n
+        return n.classList.add(Kt), n.textContent = t, e.appendChild(n), n
     }
 
     function se(e, t, i) {
-        var n = fe();
-        bt[n] = {
+        var n = je();
+        It[n] = {
             timeOut: 0,
             type: "Material",
             radius: t
-        }, je(e, n, i, Ft), xe(t, e, "Material", Ft)
+        }, Ae(e, n, i, Yt), De(t, e, "Material", Yt)
     }
 
     function ae(e, t, i) {
-        var n = fe();
-        bt[n] = {
+        var n = je();
+        It[n] = {
             timeOut: 0,
             type: "Bootstrap4",
             radius: t
-        }, je(e, n, i, Ut), xe(t, e, "Bootstrap4", Ut)
+        }, Ae(e, n, i, _t), De(t, e, "Bootstrap4", _t)
     }
 
     function re(e, t, i) {
+        var n = je();
+        It[n] = {
+            timeOut: 0,
+            type: "Bootstrap5",
+            radius: t
+        }, Ae(e, n, i, Rt), De(t, e, "Bootstrap5", Rt)
+    }
+
+    function le(e, t, i) {
+        var n = je();
+        It[n] = {
+            timeOut: 0,
+            type: "Tailwind",
+            radius: t
+        }, Ae(e, n, i, Wt), De(t, e, "Tailwind", Wt)
+    }
+
+    function de(e, t, i) {
         var n = {};
-        bt[t].timeOut = 0, n[t] = me(t, i, 0, 0), Ae({
+        It[t].timeOut = 0, n[t] = ye(t, i, 0, 0), xe({
             uniqueID: t,
             container: e,
             globalInfo: n,
@@ -603,78 +621,84 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         })
     }
 
-    function le(e, t, i) {
-        var n = fe();
-        bt[n] = {
+    function ue(e, t, i) {
+        var n = je();
+        It[n] = {
             timeOut: 0,
             type: "Fabric",
             radius: t
-        }, ye(e, n, Bt, i), Ee(t, e, Bt)
+        }, Se(e, n, Ut, i), ze(t, e, Ut)
     }
 
-    function de(e, t, i) {
-        var n = fe();
-        bt[n] = {
+    function pe(e, t, i) {
+        var n = je();
+        It[n] = {
             timeOut: 0,
             type: "HighContrast",
             radius: t
-        }, ye(e, n, Qt, i), Ee(t, e, Qt)
+        }, Se(e, n, Jt, i), ze(t, e, Jt)
     }
 
-    function ue(e) {
+    function Me(e) {
         return window.getComputedStyle(e, ":after").getPropertyValue("content").replace(/['"]+/g, "")
     }
 
-    function pe(e, i, n, o) {
-        var s = i.querySelector("." + Rt),
+    function he(e, i, n, o) {
+        var s = i.querySelector("." + Gt),
             a = s.querySelector("svg");
         switch (t.isNullOrUndefined(a) || s.removeChild(a), e) {
             case "Material":
                 se(s, n, o);
                 break;
             case "Fabric":
-                le(s, n, o);
+                ue(s, n, o);
                 break;
             case "Bootstrap":
-                Me(s, n, o);
+                we(s, n, o);
                 break;
             case "HighContrast":
-                de(s, n, o);
+                pe(s, n, o);
                 break;
             case "Bootstrap4":
-                ae(s, n, o)
+                ae(s, n, o);
+                break;
+            case "Bootstrap5":
+                re(s, n, o);
+                break;
+            case "Tailwind":
+                le(s, n, o)
         }
     }
 
-    function Me(e, t, i) {
-        var n = fe();
-        bt[n] = {
+    function we(e, t, i) {
+        var n = je();
+        It[n] = {
             timeOut: 0,
             type: "Bootstrap",
             radius: t
-        }, he(e, n, i), Le(e, t)
+        }, Le(e, n, i), ce(e, t)
     }
 
-    function he(e, t, i) {
+    function Le(e, t, i) {
         var n = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        n.setAttribute("id", t), n.setAttribute("class", Yt), n.setAttribute("viewBox", "0 0 64 64"), e.insertBefore(n, e.firstChild);
+        n.setAttribute("id", t), n.setAttribute("class", Qt), n.setAttribute("viewBox", "0 0 64 64"), e.insertBefore(n, e.firstChild);
         for (var o = 0; o <= 7; o++) {
             var s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            s.setAttribute("class", Wt + "_" + o), s.setAttribute("r", "2"), s.setAttribute("transform", "translate(32,32)"), n.appendChild(s)
+            s.setAttribute("class", Zt + "_" + o), s.setAttribute("r", "2"), s.setAttribute("transform", "translate(32,32)"), n.appendChild(s)
         }
     }
 
-    function Le(e, t) {
+    function ce(e, t) {
         var i = e.querySelector("svg.e-spin-bootstrap");
         i.style.width = i.style.height = t + "px";
         for (var n = 90, o = 0; o <= 7; o++) {
-            var s = Ve(0, 0, 24, n),
-                a = i.querySelector("." + Wt + "_" + o);
+            var s = ke(0, 0, 24, n),
+                a = i.querySelector("." + Zt + "_" + o);
             a.setAttribute("cx", s.x + ""), a.setAttribute("cy", s.y + ""), n = n >= 360 ? 0 : n, n += 45
         }
     }
 
-    function we(e, t) {
+    function Ce(e, t) {
         function i(e) {
             n.push(e), e === s && 1 !== r || (e <= o && e > 1 && !a ? e = parseFloat((e - .2).toFixed(2)) : 1 === e ? (e = 7, e = parseFloat((e + .2).toFixed(2)), a = !0) : e < 8 && a ? 8 === (e = parseFloat((e + .2).toFixed(2))) && (a = !1) : e <= 8 && !a && (e = parseFloat((e - .2).toFixed(2))), ++r, i(e))
         }
@@ -686,39 +710,39 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         return i(o), n
     }
 
-    function ce(e) {
+    function ge(e) {
         for (var t = e.querySelector("svg.e-spin-bootstrap").getAttribute("id"), i = 1; i <= 8; i++) ! function(e, t, i, n, o) {
             function s(t) {
-                bt[o].isAnimate && (++a, e.setAttribute("r", t + ""), a >= n.length && (a = 0), bt[o].timeOut = setTimeout(s.bind(null, n[a]), 18))
+                It[o].isAnimate && (++a, e.setAttribute("r", t + ""), a >= n.length && (a = 0), It[o].timeOut = setTimeout(s.bind(null, n[a]), 18))
             }
             var a = 0;
             s(t)
-        }(e.getElementsByClassName("e-path-circle_" + (8 === i ? 0 : i))[0], i, 0, we(i, i), t)
+        }(e.getElementsByClassName("e-path-circle_" + (8 === i ? 0 : i))[0], i, 0, Ce(i, i), t)
     }
 
-    function Ce(e, i, n) {
+    function me(e, i, n) {
         t.isNullOrUndefined(n) || e.classList.add(n), e.querySelector(".e-spinner-inner").innerHTML = i
     }
 
-    function ge(e, t) {
+    function fe(e, t) {
         var i;
         switch (t) {
             case "Material":
-                i = Et;
+                i = zt;
                 break;
             case "Fabric":
-                i = Vt;
-                break;
-            case "Bootstrap4":
                 i = kt;
                 break;
+            case "Bootstrap4":
+                i = Pt;
+                break;
             default:
-                i = zt
+                i = Ot
         }
         return e = e ? parseFloat(e + "") : i, "Bootstrap" === t ? e : e / 2
     }
 
-    function me(e, t, i, n) {
+    function ye(e, t, i, n) {
         return {
             radius: t,
             count: i,
@@ -726,96 +750,96 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         }
     }
 
-    function fe() {
+    function je() {
         for (var e = "", t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", i = 0; i < 5; i++) e += t.charAt(Math.floor(Math.random() * t.length));
         return e
     }
 
-    function ye(e, t, i, n) {
+    function Se(e, t, i, n) {
         var o = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         o.setAttribute("id", t), o.setAttribute("class", i);
         var s = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        s.setAttribute("class", Wt);
+        s.setAttribute("class", Zt);
         var a = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        a.setAttribute("class", Jt), e.insertBefore(o, e.firstChild), o.appendChild(s), o.appendChild(a)
+        a.setAttribute("class", Xt), e.insertBefore(o, e.firstChild), o.appendChild(s), o.appendChild(a)
     }
 
-    function je(e, t, i, n) {
+    function Ae(e, t, i, n) {
         var o = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         o.setAttribute("class", n), o.setAttribute("id", t);
         var s = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        s.setAttribute("class", Wt), e.insertBefore(o, e.firstChild), o.appendChild(s)
+        s.setAttribute("class", Zt), e.insertBefore(o, e.firstChild), o.appendChild(s)
     }
 
-    function Se(e, t) {
+    function Te(e, t) {
         var i = t("div", {});
-        i.classList.add(_t);
+        i.classList.add(Ht);
         var n = t("div", {});
-        return n.classList.add(Rt), e.appendChild(i), i.appendChild(n), {
+        return n.classList.add(Gt), e.appendChild(i), i.appendChild(n), {
             wrap: i,
             innerWrap: n
         }
     }
 
-    function Ae(e) {
-        Te(1, 149, Ie, 1333, e.globalInfo[e.uniqueID].count, 75, e), e.globalInfo[e.uniqueID].count = ++e.globalInfo[e.uniqueID].count % 4
+    function xe(e) {
+        Ne(1, 149, Ve, 1333, e.globalInfo[e.uniqueID].count, 75, e), e.globalInfo[e.uniqueID].count = ++e.globalInfo[e.uniqueID].count % 4
     }
 
-    function Te(e, i, n, o, s, a, r) {
+    function Ne(e, i, n, o, s, a, r) {
         function l(t) {
             var i = Math.max(0, Math.min((new Date).getTime() - p, o));
-            d(n(i, e, M, o), t.container), u === t.globalInfo[t.uniqueID].previousId && i < o ? bt[t.uniqueID].timeOut = setTimeout(l.bind(null, t), 1) : Ae(t)
+            d(n(i, e, M, o), t.container), u === t.globalInfo[t.uniqueID].previousId && i < o ? It[t.uniqueID].timeOut = setTimeout(l.bind(null, t), 1) : xe(t)
         }
 
         function d(e, i) {
             if (!t.isNullOrUndefined(i.querySelector("svg.e-spin-material")) && !t.isNullOrUndefined(i.querySelector("svg.e-spin-material").querySelector("path.e-path-circle"))) {
                 var n = i.querySelector("svg.e-spin-material").querySelector("path.e-path-circle");
-                n.setAttribute("stroke-dashoffset", ve(h, L, e, a) + ""), n.setAttribute("transform", "rotate(" + w + " " + h / 2 + " " + h / 2 + ")")
+                n.setAttribute("stroke-dashoffset", Ee(h, w, e, a) + ""), n.setAttribute("transform", "rotate(" + L + " " + h / 2 + " " + h / 2 + ")")
             }
         }
         var u = ++r.globalInfo[r.uniqueID].previousId,
             p = (new Date).getTime(),
             M = i - e,
-            h = Ne(2 * r.globalInfo[r.uniqueID].radius + ""),
-            L = be(h),
-            w = -90 * (r.globalInfo[r.uniqueID].count || 0);
+            h = be(2 * r.globalInfo[r.uniqueID].radius + ""),
+            w = Ie(h),
+            L = -90 * (r.globalInfo[r.uniqueID].count || 0);
         l(r)
     }
 
-    function xe(e, t, i, n) {
+    function De(e, t, i, n) {
         var o = 2 * e,
             s = t.querySelector("svg." + n),
             a = s.querySelector("path.e-path-circle"),
-            r = be(o),
+            r = Ie(o),
             l = o / 2 + "px";
-        s.setAttribute("viewBox", "0 0 " + o + " " + o), s.style.width = s.style.height = o + "px", s.style.transformOrigin = l + " " + l + " " + l, a.setAttribute("d", De(o, r)), "Material" === i && (a.setAttribute("stroke-width", r + ""), a.setAttribute("stroke-dasharray", (o - r) * Math.PI * .75 + ""), a.setAttribute("stroke-dashoffset", ve(o, r, 1, 75) + ""))
+        s.setAttribute("viewBox", "0 0 " + o + " " + o), s.style.width = s.style.height = o + "px", s.style.transformOrigin = l + " " + l + " " + l, a.setAttribute("d", ve(o, r)), "Material" === i && (a.setAttribute("stroke-width", r + ""), a.setAttribute("stroke-dasharray", (o - r) * Math.PI * .75 + ""), a.setAttribute("stroke-dashoffset", Ee(o, r, 1, 75) + ""))
     }
 
-    function Ne(e) {
+    function be(e) {
         return parseFloat(e)
     }
 
-    function De(e, t) {
+    function ve(e, t) {
         var i = e / 2,
             n = t / 2;
         return "M" + i + "," + n + "A" + (i - n) + "," + (i - n) + " 0 1 1 " + n + "," + i
     }
 
-    function be(e) {
+    function Ie(e) {
         return .1 * e
     }
 
-    function ve(e, t, i, n) {
+    function Ee(e, t, i, n) {
         return (e - t) * Math.PI * (3 * n / 100 - i / 100)
     }
 
-    function Ie(e, t, i, n) {
+    function Ve(e, t, i, n) {
         var o = (e /= n) * e,
             s = o * e;
         return t + i * (6 * s * o + -15 * o * o + 10 * s)
     }
 
-    function Ee(e, t, i) {
+    function ze(e, t, i) {
         var n = e,
             o = e,
             s = 2 * e,
@@ -823,10 +847,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             r = a.querySelector(".e-path-circle"),
             l = a.querySelector(".e-path-arc"),
             d = s / 2 + "px";
-        r.setAttribute("d", ke(n, o, e)), l.setAttribute("d", ze(n, o, e, 315, 45)), a.setAttribute("viewBox", "0 0 " + s + " " + s), a.style.transformOrigin = d + " " + d + " " + d, a.style.width = a.style.height = s + "px"
+        r.setAttribute("d", Pe(n, o, e)), l.setAttribute("d", Oe(n, o, e, 315, 45)), a.setAttribute("viewBox", "0 0 " + s + " " + s), a.style.transformOrigin = d + " " + d + " " + d, a.style.width = a.style.height = s + "px"
     }
 
-    function Ve(e, t, i, n) {
+    function ke(e, t, i, n) {
         var o = (n - 90) * Math.PI / 180;
         return {
             x: e + i * Math.cos(o),
@@ -834,65 +858,65 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
         }
     }
 
-    function ze(e, t, i, n, o) {
-        var s = Ve(e, t, i, o),
-            a = Ve(e, t, i, n);
+    function Oe(e, t, i, n, o) {
+        var s = ke(e, t, i, o),
+            a = ke(e, t, i, n);
         return ["M", s.x, s.y, "A", i, i, 0, 0, 0, a.x, a.y].join(" ")
     }
 
-    function ke(e, t, i) {
+    function Pe(e, t, i) {
         return ["M", e, t, "m", -i, 0, "a", i, i, 0, 1, 0, 2 * i, 0, "a", i, i, 0, 1, 0, 2 * -i, 0].join(" ")
     }
 
-    function Oe(e) {
-        Pe(e, !1), e = null
-    }
-
-    function Pe(e, i) {
-        var n;
-        if (e && (n = e.classList.contains(_t) ? e : e.querySelector("." + _t)), e && n) {
-            var o = n.querySelector("." + Rt);
-            if (i ? !n.classList.contains(Gt) && !n.classList.contains(Pt) : !n.classList.contains(Gt) && !n.classList.contains(Ot)) {
-                var s = n.querySelector("svg");
-                if (t.isNullOrUndefined(s)) return;
-                var a = s.getAttribute("id");
-                switch (bt[a].isAnimate = !i, bt[a].type) {
-                    case "Material":
-                        i ? clearTimeout(bt[a].timeOut) : re(o, a, bt[a].radius);
-                        break;
-                    case "Bootstrap":
-                        i ? clearTimeout(bt[a].timeOut) : ce(o)
-                }
-            }
-            i ? t.classList(n, [Pt], [Ot]) : t.classList(n, [Ot], [Pt]), e = null
-        }
-    }
-
     function Fe(e) {
-        Pe(e, !0), e = null
+        Be(e, !1), e = null
     }
 
     function Be(e, i) {
+        var n;
+        if (e && (n = e.classList.contains(Ht) ? e : e.querySelector("." + Ht)), e && n) {
+            var o = n.querySelector("." + Gt);
+            if (i ? !n.classList.contains(qt) && !n.classList.contains(Bt) : !n.classList.contains(qt) && !n.classList.contains(Ft)) {
+                var s = n.querySelector("svg");
+                if (t.isNullOrUndefined(s)) return;
+                var a = s.getAttribute("id");
+                switch (It[a].isAnimate = !i, It[a].type) {
+                    case "Material":
+                        i ? clearTimeout(It[a].timeOut) : de(o, a, It[a].radius);
+                        break;
+                    case "Bootstrap":
+                        i ? clearTimeout(It[a].timeOut) : ge(o)
+                }
+            }
+            i ? t.classList(n, [Bt], [Ft]) : t.classList(n, [Ft], [Bt]), e = null
+        }
+    }
+
+    function Ye(e) {
+        Be(e, !0), e = null
+    }
+
+    function Ue(e, i) {
         var n = t.isNullOrUndefined(i) ? t.createElement : i;
-        void 0 !== e.template && (vt = e.template, void 0 !== e.template && (It = e.cssClass));
-        for (var o = document.querySelectorAll("." + _t), s = 0; s < o.length; s++) Ye(e.template, o[s], e.type, e.cssClass, n)
+        void 0 !== e.template && (Et = e.template, void 0 !== e.template && (Vt = e.cssClass));
+        for (var o = document.querySelectorAll("." + Ht), s = 0; s < o.length; s++) Qe(e.template, o[s], e.type, e.cssClass, n)
     }
 
-    function Ye(e, i, n, o, s) {
-        t.isNullOrUndefined(e) && !i.classList.contains(Gt) ? (Ue(i, n, o, s), i.classList.contains(Ot) ? (i.classList.remove(Ot), Oe(i)) : (i.classList.remove(Pt), Fe(i))) : (vt = e, t.isNullOrUndefined(o) || (It = o))
+    function Qe(e, i, n, o, s) {
+        t.isNullOrUndefined(e) && !i.classList.contains(qt) ? (_e(i, n, o, s), i.classList.contains(Ft) ? (i.classList.remove(Ft), Fe(i)) : (i.classList.remove(Bt), Ye(i))) : (Et = e, t.isNullOrUndefined(o) || (Vt = o))
     }
 
-    function Ue(e, i, n, o) {
+    function _e(e, i, n, o) {
         t.isNullOrUndefined(n) || e.classList.add(n);
         var s = e.querySelector("svg"),
             a = "Bootstrap" === i ? parseFloat(s.style.height) : parseFloat(s.style.height) / 2;
         if (s.getAttribute("class").split(/\s/).indexOf("e-spin-material") >= 0) {
             var r = s.getAttribute("id");
-            clearTimeout(bt[r].timeOut)
+            clearTimeout(It[r].timeOut)
         }
-        pe(i, e, a, o)
+        he(i, e, a, o)
     }
-    var Qe = function() {
+    var Re = function() {
             var e = function(t, i) {
                 return (e = Object.setPrototypeOf || {
                         __proto__: []
@@ -910,7 +934,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e(t, i), t.prototype = null === i ? Object.create(i) : (n.prototype = i.prototype, new n)
             }
         }(),
-        _e = function(e, t, i, n) {
+        We = function(e, t, i, n) {
             var o, s = arguments.length,
                 a = s < 3 ? t : null === n ? n = Object.getOwnPropertyDescriptor(t, i) : n;
             if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(e, t, i, n);
@@ -918,53 +942,53 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 for (var r = e.length - 1; r >= 0; r--)(o = e[r]) && (a = (s < 3 ? o(a) : s > 3 ? o(t, i, a) : o(t, i)) || a);
             return s > 3 && a && Object.defineProperty(t, i, a), a
         },
-        Re = function(e) {
+        Je = function(e) {
             function n() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return Qe(n, e), _e([t.Property(0)], n.prototype, "x", void 0), _e([t.Property(0)], n.prototype, "y", void 0), _e([t.Property(0)], n.prototype, "width", void 0), _e([t.Property(0)], n.prototype, "height", void 0), _e([t.Property(0)], n.prototype, "left", void 0), _e([t.Property(0)], n.prototype, "top", void 0), _e([t.Property(0)], n.prototype, "right", void 0), _e([t.Property(0)], n.prototype, "bottom", void 0), _e([t.Complex({
+            return Re(n, e), We([t.Property(0)], n.prototype, "x", void 0), We([t.Property(0)], n.prototype, "y", void 0), We([t.Property(0)], n.prototype, "width", void 0), We([t.Property(0)], n.prototype, "height", void 0), We([t.Property(0)], n.prototype, "left", void 0), We([t.Property(0)], n.prototype, "top", void 0), We([t.Property(0)], n.prototype, "right", void 0), We([t.Property(0)], n.prototype, "bottom", void 0), We([t.Complex({
                 x: 0,
                 y: 0
-            }, i.Point)], n.prototype, "location", void 0), _e([t.Complex(new i.Size(0, 0), i.Size)], n.prototype, "size", void 0), n
+            }, i.Point)], n.prototype, "location", void 0), We([t.Complex(new i.Size(0, 0), i.Size)], n.prototype, "size", void 0), n
         }(t.ChildProperty),
-        We = function(e) {
+        He = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return Qe(i, e), _e([t.Property(!1)], i.prototype, "isBold", void 0), _e([t.Property(!1)], i.prototype, "isItalic", void 0), _e([t.Property(!1)], i.prototype, "isUnderline", void 0), _e([t.Property(!1)], i.prototype, "isStrikeout", void 0), i
+            return Re(i, e), We([t.Property(!1)], i.prototype, "isBold", void 0), We([t.Property(!1)], i.prototype, "isItalic", void 0), We([t.Property(!1)], i.prototype, "isUnderline", void 0), We([t.Property(!1)], i.prototype, "isStrikeout", void 0), i
         }(t.ChildProperty),
-        Je = function(e) {
+        Ge = function(e) {
             function i(t, i, n, o) {
                 return e.call(this, t, i, n, o) || this
             }
-            return Qe(i, e), _e([t.Property("")], i.prototype, "id", void 0), _e([t.Property("Rectangle")], i.prototype, "shapeAnnotationType", void 0), _e([t.Property(null)], i.prototype, "formFieldAnnotationType", void 0), _e([t.Property("")], i.prototype, "measureType", void 0), _e([t.Property("")], i.prototype, "author", void 0), _e([t.Property("")], i.prototype, "modifiedDate", void 0), _e([t.Property("")], i.prototype, "subject", void 0), _e([t.Property("")], i.prototype, "notes", void 0), _e([t.Property(!1)], i.prototype, "isCommentLock", void 0), _e([t.Property("black")], i.prototype, "strokeColor", void 0), _e([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), _e([t.Property("#ffffff00")], i.prototype, "stampFillColor", void 0), _e([t.Property("black")], i.prototype, "stampStrokeColor", void 0), _e([t.Property("")], i.prototype, "data", void 0), _e([t.Property(1)], i.prototype, "opacity", void 0), _e([t.Property(1)], i.prototype, "thickness", void 0), _e([t.Property("")], i.prototype, "borderStyle", void 0), _e([t.Property("")], i.prototype, "borderDashArray", void 0), _e([t.Property(0)], i.prototype, "rotateAngle", void 0), _e([t.Property(!1)], i.prototype, "isCloudShape", void 0), _e([t.Property(0)], i.prototype, "cloudIntensity", void 0), _e([t.Property(40)], i.prototype, "leaderHeight", void 0), _e([t.Property(null)], i.prototype, "lineHeadStart", void 0), _e([t.Property(null)], i.prototype, "lineHeadEnd", void 0), _e([t.Property([])], i.prototype, "vertexPoints", void 0), _e([t.Property(null)], i.prototype, "sourcePoint", void 0), _e([t.Property("None")], i.prototype, "sourceDecoraterShapes", void 0), _e([t.Property("None")], i.prototype, "taregetDecoraterShapes", void 0), _e([t.Property(null)], i.prototype, "targetPoint", void 0), _e([t.Property([])], i.prototype, "segments", void 0), _e([t.Complex({
+            return Re(i, e), We([t.Property("")], i.prototype, "id", void 0), We([t.Property("Rectangle")], i.prototype, "shapeAnnotationType", void 0), We([t.Property(null)], i.prototype, "formFieldAnnotationType", void 0), We([t.Property("")], i.prototype, "measureType", void 0), We([t.Property("")], i.prototype, "author", void 0), We([t.Property("")], i.prototype, "modifiedDate", void 0), We([t.Property("")], i.prototype, "subject", void 0), We([t.Property("")], i.prototype, "notes", void 0), We([t.Property(!1)], i.prototype, "isCommentLock", void 0), We([t.Property("black")], i.prototype, "strokeColor", void 0), We([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), We([t.Property("#ffffff00")], i.prototype, "stampFillColor", void 0), We([t.Property("black")], i.prototype, "stampStrokeColor", void 0), We([t.Property("")], i.prototype, "data", void 0), We([t.Property(1)], i.prototype, "opacity", void 0), We([t.Property(1)], i.prototype, "thickness", void 0), We([t.Property("")], i.prototype, "borderStyle", void 0), We([t.Property("")], i.prototype, "borderDashArray", void 0), We([t.Property(0)], i.prototype, "rotateAngle", void 0), We([t.Property(!1)], i.prototype, "isCloudShape", void 0), We([t.Property(0)], i.prototype, "cloudIntensity", void 0), We([t.Property(40)], i.prototype, "leaderHeight", void 0), We([t.Property(null)], i.prototype, "lineHeadStart", void 0), We([t.Property(null)], i.prototype, "lineHeadEnd", void 0), We([t.Property([])], i.prototype, "vertexPoints", void 0), We([t.Property(null)], i.prototype, "sourcePoint", void 0), We([t.Property("None")], i.prototype, "sourceDecoraterShapes", void 0), We([t.Property("None")], i.prototype, "taregetDecoraterShapes", void 0), We([t.Property(null)], i.prototype, "targetPoint", void 0), We([t.Property([])], i.prototype, "segments", void 0), We([t.Complex({
                 x: 0,
                 y: 0
-            }, Re)], i.prototype, "bounds", void 0), _e([t.Property(0)], i.prototype, "pageIndex", void 0), _e([t.Property(-1)], i.prototype, "zIndex", void 0), _e([t.Property(null)], i.prototype, "wrapper", void 0), _e([t.Property(!1)], i.prototype, "isDynamicStamp", void 0), _e([t.Property("")], i.prototype, "dynamicText", void 0), _e([t.Property("")], i.prototype, "annotName", void 0), _e([t.Property({})], i.prototype, "review", void 0), _e([t.Property([])], i.prototype, "comments", void 0), _e([t.Property("#000")], i.prototype, "fontColor", void 0), _e([t.Property(16)], i.prototype, "fontSize", void 0), _e([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), _e([t.Property("None")], i.prototype, "fontStyle", void 0), _e([t.Property(!1)], i.prototype, "enableShapeLabel", void 0), _e([t.Property("label")], i.prototype, "labelContent", void 0), _e([t.Property("#ffffff00")], i.prototype, "labelFillColor", void 0), _e([t.Property(15)], i.prototype, "labelMaxLength", void 0), _e([t.Property(1)], i.prototype, "labelOpacity", void 0), _e([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), _e([t.Property("#ffffff00")], i.prototype, "labelBorderColor", void 0), _e([t.Property("left")], i.prototype, "textAlign", void 0), _e([t.Property("")], i.prototype, "signatureName", void 0), _e([t.Property(0)], i.prototype, "minHeight", void 0), _e([t.Property(0)], i.prototype, "minWidth", void 0), _e([t.Property(0)], i.prototype, "maxHeight", void 0), _e([t.Property(0)], i.prototype, "maxWidth", void 0), _e([t.Property(!1)], i.prototype, "isLock", void 0), _e([t.Property("UI Drawn Annotation")], i.prototype, "annotationAddMode", void 0), _e([t.Property("")], i.prototype, "annotationSettings", void 0), _e([t.Property(16)], i.prototype, "previousFontSize", void 0), _e([t.Complex({
+            }, Je)], i.prototype, "bounds", void 0), We([t.Property(0)], i.prototype, "pageIndex", void 0), We([t.Property(-1)], i.prototype, "zIndex", void 0), We([t.Property(null)], i.prototype, "wrapper", void 0), We([t.Property(!1)], i.prototype, "isDynamicStamp", void 0), We([t.Property("")], i.prototype, "dynamicText", void 0), We([t.Property("")], i.prototype, "annotName", void 0), We([t.Property({})], i.prototype, "review", void 0), We([t.Property([])], i.prototype, "comments", void 0), We([t.Property("#000")], i.prototype, "fontColor", void 0), We([t.Property(16)], i.prototype, "fontSize", void 0), We([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), We([t.Property("None")], i.prototype, "fontStyle", void 0), We([t.Property(!1)], i.prototype, "enableShapeLabel", void 0), We([t.Property("label")], i.prototype, "labelContent", void 0), We([t.Property("#ffffff00")], i.prototype, "labelFillColor", void 0), We([t.Property(15)], i.prototype, "labelMaxLength", void 0), We([t.Property(1)], i.prototype, "labelOpacity", void 0), We([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), We([t.Property("#ffffff00")], i.prototype, "labelBorderColor", void 0), We([t.Property("left")], i.prototype, "textAlign", void 0), We([t.Property("")], i.prototype, "signatureName", void 0), We([t.Property(0)], i.prototype, "minHeight", void 0), We([t.Property(0)], i.prototype, "minWidth", void 0), We([t.Property(0)], i.prototype, "maxHeight", void 0), We([t.Property(0)], i.prototype, "maxWidth", void 0), We([t.Property(!1)], i.prototype, "isLock", void 0), We([t.Property("UI Drawn Annotation")], i.prototype, "annotationAddMode", void 0), We([t.Property("")], i.prototype, "annotationSettings", void 0), We([t.Property(16)], i.prototype, "previousFontSize", void 0), We([t.Complex({
                 isBold: !1,
                 isItalic: !1,
                 isStrikeout: !1,
                 isUnderline: !1
-            }, We)], i.prototype, "font", void 0), _e([t.Complex({
+            }, He)], i.prototype, "font", void 0), We([t.Complex({
                 x: 0,
                 y: 0
-            }, Re)], i.prototype, "labelBounds", void 0), _e([t.Property(null)], i.prototype, "customData", void 0), _e([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), _e([t.Property(!0)], i.prototype, "isPrint", void 0), _e([t.Property(!1)], i.prototype, "isReadonly", void 0), i
+            }, Je)], i.prototype, "labelBounds", void 0), We([t.Property(null)], i.prototype, "customData", void 0), We([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), We([t.Property(!0)], i.prototype, "isPrint", void 0), We([t.Property(!1)], i.prototype, "isReadonly", void 0), i
         }(t.ChildProperty),
-        He = function(e) {
+        Ze = function(e) {
             function i(t, i, n, o) {
                 return e.call(this, t, i, n, o) || this
             }
-            return Qe(i, e), _e([t.Property("")], i.prototype, "id", void 0), _e([t.Property("")], i.prototype, "signatureType", void 0), _e([t.Property("")], i.prototype, "name", void 0), _e([t.Property("")], i.prototype, "value", void 0), _e([t.Property(null)], i.prototype, "formFieldAnnotationType", void 0), _e([t.Property("#daeaf7ff")], i.prototype, "backgroundColor", void 0), _e([t.Property("black")], i.prototype, "color", void 0), _e([t.Property("#303030")], i.prototype, "borderColor", void 0), _e([t.Property("")], i.prototype, "tooltip", void 0), _e([t.Property(1)], i.prototype, "opacity", void 0), _e([t.Property(1)], i.prototype, "thickness", void 0), _e([t.Property(0)], i.prototype, "rotateAngle", void 0), _e([t.Complex({
+            return Re(i, e), We([t.Property("")], i.prototype, "id", void 0), We([t.Property("")], i.prototype, "signatureType", void 0), We([t.Property("")], i.prototype, "name", void 0), We([t.Property("")], i.prototype, "value", void 0), We([t.Property(null)], i.prototype, "formFieldAnnotationType", void 0), We([t.Property("#ffffffff")], i.prototype, "backgroundColor", void 0), We([t.Property("black")], i.prototype, "color", void 0), We([t.Property("#303030")], i.prototype, "borderColor", void 0), We([t.Property("")], i.prototype, "tooltip", void 0), We([t.Property(1)], i.prototype, "opacity", void 0), We([t.Property(1)], i.prototype, "thickness", void 0), We([t.Property(0)], i.prototype, "rotateAngle", void 0), We([t.Complex({
                 x: 0,
                 y: 0
-            }, Re)], i.prototype, "bounds", void 0), _e([t.Property(0)], i.prototype, "pageIndex", void 0), _e([t.Property(1)], i.prototype, "pageNumber", void 0), _e([t.Property(-1)], i.prototype, "zIndex", void 0), _e([t.Property(null)], i.prototype, "wrapper", void 0), _e([t.Property(16)], i.prototype, "fontSize", void 0), _e([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), _e([t.Property("None")], i.prototype, "fontStyle", void 0), _e([t.Property("left")], i.prototype, "alignment", void 0), _e([t.Property(0)], i.prototype, "minHeight", void 0), _e([t.Property(0)], i.prototype, "minWidth", void 0), _e([t.Property(0)], i.prototype, "maxHeight", void 0), _e([t.Property(0)], i.prototype, "maxWidth", void 0), _e([t.Property(0)], i.prototype, "maxLength", void 0), _e([t.Property("visible")], i.prototype, "visibility", void 0), _e([t.Property(!0)], i.prototype, "isPrint", void 0), _e([t.Property(!1)], i.prototype, "isReadonly", void 0), _e([t.Property(!1)], i.prototype, "isChecked", void 0), _e([t.Property(!1)], i.prototype, "isSelected", void 0), _e([t.Property(!1)], i.prototype, "isRequired", void 0), _e([t.Property(!1)], i.prototype, "isMultiline", void 0), _e([t.Property("")], i.prototype, "options", void 0), _e([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), _e([t.Complex({
+            }, Je)], i.prototype, "bounds", void 0), We([t.Property(0)], i.prototype, "pageIndex", void 0), We([t.Property(1)], i.prototype, "pageNumber", void 0), We([t.Property(-1)], i.prototype, "zIndex", void 0), We([t.Property(null)], i.prototype, "wrapper", void 0), We([t.Property(16)], i.prototype, "fontSize", void 0), We([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), We([t.Property("None")], i.prototype, "fontStyle", void 0), We([t.Property("left")], i.prototype, "alignment", void 0), We([t.Property(0)], i.prototype, "minHeight", void 0), We([t.Property(0)], i.prototype, "minWidth", void 0), We([t.Property(0)], i.prototype, "maxHeight", void 0), We([t.Property(0)], i.prototype, "maxWidth", void 0), We([t.Property(0)], i.prototype, "maxLength", void 0), We([t.Property("visible")], i.prototype, "visibility", void 0), We([t.Property(!0)], i.prototype, "isPrint", void 0), We([t.Property(!1)], i.prototype, "isReadonly", void 0), We([t.Property(!1)], i.prototype, "isChecked", void 0), We([t.Property(!1)], i.prototype, "isSelected", void 0), We([t.Property(!1)], i.prototype, "isRequired", void 0), We([t.Property(!1)], i.prototype, "isMultiline", void 0), We([t.Property("")], i.prototype, "options", void 0), We([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), We([t.Complex({
                 isBold: !1,
                 isItalic: !1,
                 isStrikeout: !1,
                 isUnderline: !1
-            }, We)], i.prototype, "font", void 0), _e([t.Property()], i.prototype, "selectedIndex", void 0), i
+            }, He)], i.prototype, "font", void 0), We([t.Property()], i.prototype, "selectedIndex", void 0), i
         }(t.ChildProperty),
-        Ge = function() {
+        Xe = function() {
             function e() {
                 this.pageIdTemp = 0, this.zIndexTemp = -1, this.childNodesTemp = [], this.objects = [], this.zIndexTemp = -1, this.pageIdTemp = 0
             }
@@ -997,7 +1021,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 configurable: !0
             }), e
         }(),
-        Ze = function() {
+        Ke = function() {
             var e = function(t, i) {
                 return (e = Object.setPrototypeOf || {
                         __proto__: []
@@ -1015,7 +1039,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e(t, i), t.prototype = null === i ? Object.create(i) : (n.prototype = i.prototype, new n)
             }
         }(),
-        Xe = function(e, t, i, n) {
+        qe = function(e, t, i, n) {
             var o, s = arguments.length,
                 a = s < 3 ? t : null === n ? n = Object.getOwnPropertyDescriptor(t, i) : n;
             if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(e, t, i, n);
@@ -1023,11 +1047,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 for (var r = e.length - 1; r >= 0; r--)(o = e[r]) && (a = (s < 3 ? o(a) : s > 3 ? o(t, i, a) : o(t, i)) || a);
             return s > 3 && a && Object.defineProperty(t, i, a), a
         },
-        Ke = function(e) {
+        $e = function(e) {
             function n() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return Ze(n, e), n.prototype.init = function(e) {
+            return Ke(n, e), n.prototype.init = function(e) {
                 var n = new i.Container;
                 if (n.measureChildren = !1, n.children = [], this.formFields && this.formFields.length > 0)
                     for (o = 0; o < this.formFields.length; o++) {
@@ -1040,12 +1064,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     a = s.wrapper;
                                 n.children.push(a)
                             } return this.wrapper = n, n
-            }, Xe([t.Property(null)], n.prototype, "wrapper", void 0), Xe([t.Collection([], Je)], n.prototype, "annotations", void 0), Xe([t.Collection([], He)], n.prototype, "formFields", void 0), Xe([t.Property()], n.prototype, "width", void 0), Xe([t.Property()], n.prototype, "height", void 0), Xe([t.Property(0)], n.prototype, "rotateAngle", void 0), Xe([t.Property(0)], n.prototype, "offsetX", void 0), Xe([t.Property(0)], n.prototype, "offsetY", void 0), Xe([t.Complex({
+            }, qe([t.Property(null)], n.prototype, "wrapper", void 0), qe([t.Collection([], Ge)], n.prototype, "annotations", void 0), qe([t.Collection([], Ze)], n.prototype, "formFields", void 0), qe([t.Property()], n.prototype, "width", void 0), qe([t.Property()], n.prototype, "height", void 0), qe([t.Property(0)], n.prototype, "rotateAngle", void 0), qe([t.Property(0)], n.prototype, "offsetX", void 0), qe([t.Property(0)], n.prototype, "offsetY", void 0), qe([t.Complex({
                 x: .5,
                 y: .5
             }, i.Point)], n.prototype, "pivot", void 0), n
         }(t.ChildProperty),
-        qe = {
+        et = {
             OpenArrow: "M15.9,23 L5,16 L15.9,9 L17,10.7 L8.7,16 L17,21.3Z",
             Square: "M0,0 L10,0 L10,10 L0,10 z",
             Fletch: "M14.8,10c0,0-3.5,6,0.2,12c0,0-2.5-6-10.9-6C4.1,16,11.3,16,14.8,10z",
@@ -1058,7 +1082,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             Circle: "M0,50 A50,50,0 1 1 100,50 A50,50,0 1 1 0,50 Z",
             Butt: "M0,0 L0,90"
         },
-        $e = function() {
+        tt = function() {
             var e = function(t, i) {
                 return (e = Object.setPrototypeOf || {
                         __proto__: []
@@ -1076,12 +1100,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e(t, i), t.prototype = null === i ? Object.create(i) : (n.prototype = i.prototype, new n)
             }
         }(),
-        et = function(e) {
+        it = function(e) {
             function i(t) {
                 var i = e.call(this) || this;
                 return i.templateFn = i.templateCompiler(t), i
             }
-            return $e(i, e), i.prototype.templateCompiler = function(e) {
+            return tt(i, e), i.prototype.templateCompiler = function(e) {
                 if (e) try {
                     if (document.querySelectorAll(e).length) return t.compile(document.querySelector(e).innerHTML.trim())
                 } catch (i) {
@@ -1091,7 +1115,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this.templateFn
             }, i
         }(i.DrawingElement),
-        tt = function() {
+        nt = function() {
             function e(e) {
                 this.isDynamicStamps = !1, this.pdfViewer = e, this.renderer = new i.DrawingRenderer("this.pdfViewer.element.id", !1), this.svgRenderer = new i.SvgRenderer
             }
@@ -1103,7 +1127,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         this.initObject(n)
                     }
             }, e.prototype.createNewZindexTable = function(e) {
-                var t = new Ge;
+                var t = new Xe;
                 return this.pdfViewer.zIndex++, t.pageId = this.pdfViewer.zIndex, this.pdfViewer.zIndexTable.push(t), t
             }, e.prototype.getPageTable = function(e) {
                 var t;
@@ -1145,7 +1169,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     l = 0;
                 (o.minWidth || o.maxWidth || o.minHeight || o.maxHeight) && (s = o.maxHeight ? o.maxHeight : 2e3, a = o.maxWidth ? o.maxWidth : 2e3, r = o.minHeight ? o.minHeight : 0, l = o.minWidth ? o.minWidth : 0);
                 var d = !1;
-                return (r || l || s || a) && (d = !0), n = e.formFieldAnnotationType ? this.initFormFields(e, n, t) : this.initAnnotationObject(e, void 0, n, t, !1, void 0, d, s, a, l, r), n.id = e.id + "_content", n.relativeMode = "Object", "Stamp" !== e.shapeAnnotationType && (void 0 !== e.bounds.width && (n.width = e.bounds.width, d && (n.width < l || n.width > a) && (n.width < l && (n.width = l), n.width > a && (n.width = a))), n.horizontalAlignment = "Stretch", void 0 !== e.bounds.height && (n.height = e.bounds.height, d && (n.height < r || n.width > s) && (n.height < r && (n.height = r), n.height > s && (n.height = s))), L(e, n)), n.isRectElement = !0, n.verticalAlignment = "Stretch", n
+                return (r || l || s || a) && (d = !0), n = e.formFieldAnnotationType ? this.initFormFields(e, n, t) : this.initAnnotationObject(e, void 0, n, t, !1, void 0, d, s, a, l, r), n.id = e.id + "_content", n.relativeMode = "Object", "Stamp" !== e.shapeAnnotationType && (void 0 !== e.bounds.width && (n.width = e.bounds.width, d && (n.width < l || n.width > a) && (n.width < l && (n.width = l), n.width > a && (n.width = a))), n.horizontalAlignment = "Stretch", void 0 !== e.bounds.height && (n.height = e.bounds.height, d && (n.height < r || n.width > s) && (n.height < r && (n.height = r), n.height > s && (n.height = s))), w(e, n)), n.isRectElement = !0, n.verticalAlignment = "Stretch", n
             }, e.prototype.initFormFields = function(e, t, i) {
                 switch (e.formFieldAnnotationType) {
                     case "Textbox":
@@ -1156,7 +1180,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     case "ListBox":
                     case "SignatureField":
                     case "InitialField":
-                        (t = new et).id = e.id + "_content", i.children.push(t)
+                        (t = new it).id = e.id + "_content", i.children.push(t)
                 }
                 return t
             }, e.prototype.initAnnotationObject = function(e, t, n, o, s, a, r, l, d, u, p) {
@@ -1201,9 +1225,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         }
                         break;
                     case "Perimeter":
-                        (t = new i.PathElement).data = "M80.5,12.5 C80.5,19.127417 62.59139,24.5 40.5,24.5 C18.40861,24.5 0.5,19.127417 0.5,12.5C0.5,5.872583 18.40861,0.5 40.5,0.5 C62.59139,0.5 80.5,5.872583 80.5,12.5 z", n = t, L(e, t), o.children.push(n), (a = new i.DrawingElement).id = "perimeter_" + i.randomId(), a.height = .2, a.width = .2, a.transform = i.RotateTransform.Self, a.horizontalAlignment = "Stretch", this.setNodePosition(a, e), a.rotateAngle = e.rotateAngle, L(e, a), o.children.push(a);
+                        (t = new i.PathElement).data = "M80.5,12.5 C80.5,19.127417 62.59139,24.5 40.5,24.5 C18.40861,24.5 0.5,19.127417 0.5,12.5C0.5,5.872583 18.40861,0.5 40.5,0.5 C62.59139,0.5 80.5,5.872583 80.5,12.5 z", n = t, w(e, t), o.children.push(n), (a = new i.DrawingElement).id = "perimeter_" + i.randomId(), a.height = .2, a.width = .2, a.transform = i.RotateTransform.Self, a.horizontalAlignment = "Stretch", this.setNodePosition(a, e), a.rotateAngle = e.rotateAngle, w(e, a), o.children.push(a);
                         var m = this.textElement(e);
-                        (m = new i.TextElement).content = m.content = w([{
+                        (m = new i.TextElement).content = m.content = L([{
                             x: e.bounds.x,
                             y: e.bounds.y
                         }, {
@@ -1215,10 +1239,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         }, o.children.push(m);
                         break;
                     case "Radius":
-                        (t = new i.PathElement).data = "M80.5,12.5 C80.5,19.127417 62.59139,24.5 40.5,24.5 C18.40861,24.5 0.5,19.127417 0.5,12.5C0.5,5.872583 18.40861,0.5 40.5,0.5 C62.59139,0.5 80.5,5.872583 80.5,12.5 z", n = t, L(e, t), o.children.push(n), (a = new i.DrawingElement).id = "radius_" + i.randomId(), a.height = .2, a.width = e.bounds.width / 2, a.transform = i.RotateTransform.Self, this.setNodePosition(a, e), a.rotateAngle = e.rotateAngle, L(e, a), o.children.push(a);
+                        (t = new i.PathElement).data = "M80.5,12.5 C80.5,19.127417 62.59139,24.5 40.5,24.5 C18.40861,24.5 0.5,19.127417 0.5,12.5C0.5,5.872583 18.40861,0.5 40.5,0.5 C62.59139,0.5 80.5,5.872583 80.5,12.5 z", n = t, w(e, t), o.children.push(n), (a = new i.DrawingElement).id = "radius_" + i.randomId(), a.height = .2, a.width = e.bounds.width / 2, a.transform = i.RotateTransform.Self, this.setNodePosition(a, e), a.rotateAngle = e.rotateAngle, w(e, a), o.children.push(a);
                         var f = this.textElement(e);
                         e.enableShapeLabel && (f.style.color = e.fontColor, f.style.strokeColor = e.labelBorderColor, f.style.fill = e.labelFillColor, f.style.fontSize = e.fontSize, f.style.fontFamily = e.fontFamily, f.style.opacity = e.labelOpacity);
-                        w([{
+                        L([{
                             x: e.bounds.x,
                             y: e.bounds.y
                         }, {
@@ -1246,10 +1270,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var A = this.textElement(e);
                         (A = new i.TextElement).style.fontFamily = e.fontFamily, A.style.fontSize = e.fontSize, A.style.textAlign = "Left", "center" === e.textAlign.toLowerCase() ? A.style.textAlign = "Center" : "right" === e.textAlign.toLowerCase() ? A.style.textAlign = "Right" : "justify" === e.textAlign.toLowerCase() && (A.style.textAlign = "Justify"), A.style.color = e.fontColor, A.style.bold = e.font.isBold, A.style.italic = e.font.isItalic, !0 === e.font.isUnderline ? A.style.textDecoration = "Underline" : !0 === e.font.isStrikeout && (A.style.textDecoration = "LineThrough"), A.rotateValue = void 0, A.content = e.dynamicText, A.style.opacity = e.opacity, A.margin.left = 2, A.margin.top = 5, A.style.textWrapping = "Wrap", A.relativeMode = "Point", A.setOffsetWithRespectToBounds(0, 0, null), A.relativeMode = "Point", o.children.push(A)
                 }
-                return n.id = e.id + "_content", n.relativeMode = "Object", s || (void 0 !== e.bounds.width && (n.width = e.bounds.width, r && (n.width < u || n.width > d) && (n.width < u && (n.width = u), n.width > d && (n.width = d))), n.horizontalAlignment = "Stretch", void 0 !== e.bounds.height && (n.height = e.bounds.height, r && (n.height < p || n.width > l) && (n.height < p && (n.height = p), n.height > l && (n.height = l))), L(e, n)), n.isRectElement = !0, n.verticalAlignment = "Stretch", n
+                return n.id = e.id + "_content", n.relativeMode = "Object", s || (void 0 !== e.bounds.width && (n.width = e.bounds.width, r && (n.width < u || n.width > d) && (n.width < u && (n.width = u), n.width > d && (n.width = d))), n.horizontalAlignment = "Stretch", void 0 !== e.bounds.height && (n.height = e.bounds.height, r && (n.height < p || n.width > l) && (n.height < p && (n.height = p), n.height > l && (n.height = l))), w(e, n)), n.isRectElement = !0, n.verticalAlignment = "Stretch", n
             }, e.prototype.textElement = function(e) {
                 var t = new i.TextElement;
-                return L(e, t), t.horizontalAlignment = "Center", t.verticalAlignment = "Top", t.relativeMode = "Object", t.setOffsetWithRespectToBounds(.5, .5, "Absolute"), t
+                return w(e, t), t.horizontalAlignment = "Center", t.verticalAlignment = "Top", t.relativeMode = "Object", t.setOffsetWithRespectToBounds(.5, .5, "Absolute"), t
             }, e.prototype.setNodePosition = function(e, t) {
                 if ("Perimeter" === t.shapeAnnotationType) e.offsetX = t.bounds.x + t.bounds.width / 2, e.offsetY = t.bounds.y + t.bounds.height / 2;
                 else if ("Radius" === t.shapeAnnotationType) {
@@ -1302,20 +1326,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var p = i.Rect.toBounds(a);
                 t.width = p.width, t.height = p.height, t.offsetX = p.x + t.pivot.x * p.width, t.offsetY = p.y + t.pivot.y * p.height;
                 var M = e.vertexPoints;
-                if ("Line" !== e.shapeAnnotationType && "LineWidthArrowHead" !== e.shapeAnnotationType && "Distance" !== e.shapeAnnotationType || (o = D(e, a[0], M[1], !0), s = D(e, a[a.length - 1], M[M.length - 2], !1)), o.id = e.id + "_srcDec", s.id = e.id + "_tarDec", n.style.fill = "transparent", t.style.strokeColor = "transparent", t.style.fill = "transparent", t.style.strokeWidth = 0, t.children = [], L(e, n), t.children.push(n), r.length > 0)
+                if ("Line" !== e.shapeAnnotationType && "LineWidthArrowHead" !== e.shapeAnnotationType && "Distance" !== e.shapeAnnotationType || (o = D(e, a[0], M[1], !0), s = D(e, a[a.length - 1], M[M.length - 2], !1)), o.id = e.id + "_srcDec", s.id = e.id + "_tarDec", n.style.fill = "transparent", t.style.strokeColor = "transparent", t.style.fill = "transparent", t.style.strokeWidth = 0, t.children = [], w(e, n), t.children.push(n), r.length > 0)
                     for (h = 0; h < r.length; h++) t.children.push(r[h]);
                 if (l.length > 0)
                     for (var h = 0; h < l.length; h++) t.children.push(l[h]);
                 return t.children.push(o), t.children.push(s), t.id = e.id, t.offsetX = n.offsetX, t.offsetY = n.offsetY, t.width = n.width, t.height = n.height, a = S(e), e.wrapper = t, t
             }, e.prototype.add = function(e) {
                 var t = this.pdfViewer.allowServerDataBinding;
-                return this.pdfViewer.enableServerDataBinding(!1), e.formFieldAnnotationType && this.pdfViewer.formDesignerModule ? (e = new He(this.pdfViewer, "formFields", e, !0), e = this.initObject(e), this.pdfViewer.formFields.push(e)) : (e = new Je(this.pdfViewer, "annotations", e, !0), e = this.initObject(e), this.pdfViewer.annotations.push(e)), this.pdfViewer.enableServerDataBinding(t, !0), e
+                return this.pdfViewer.enableServerDataBinding(!1), e.formFieldAnnotationType && this.pdfViewer.formDesignerModule ? (e = new Ze(this.pdfViewer, "formFields", e, !0), e = this.initObject(e), this.pdfViewer.formFields.push(e)) : (e = new Ge(this.pdfViewer, "annotations", e, !0), e = this.initObject(e), this.pdfViewer.annotations.push(e)), this.pdfViewer.enableServerDataBinding(t, !0), e
             }, e.prototype.remove = function(e) {
                 var t = this.pdfViewer.allowServerDataBinding;
                 this.pdfViewer.enableServerDataBinding(!1);
                 for (var i = e.pageIndex, n = 0; n < this.pdfViewer.annotations.length; n++) {
                     var o = this.pdfViewer.annotations[n];
-                    if (o.id === e.id || o.wrapper.id === e.id || o.id.split("_")[0] === e.id || o.id.split("_")[0] === e.id.split("_")[0] || o.id === e.id) {
+                    if (o.id && (o.id === e.id || o.id.split("_")[0] === e.id) || o.wrapper && o.wrapper.id === e.id) {
                         this.pdfViewer.annotations.splice(n, 1);
                         for (var s = this.getPageObjects(e.pageIndex), a = 0; a < s.length; a++) s[a].id === e.id && (s.splice(a, 1), "Path" === e.shapeAnnotationType || "SignatureImage" === e.shapeAnnotationType || "SignatureText" === e.shapeAnnotationType ? this.refreshCanvasDiagramLayer(void 0, i, e.id) : this.pdfViewer.renderDrawing(void 0, i))
                     }
@@ -1334,6 +1358,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (l) {
                         l.remove(), this.pdfViewer.renderDrawing(void 0, i);
                         var d = {
+                            name: e.name,
                             value: e.value,
                             fontFamily: e.fontFamily,
                             fontSize: e.fontSize,
@@ -1478,7 +1503,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (i = i || {
                             x: e.wrapper.offsetX,
                             y: e.wrapper.offsetY
-                        }, e instanceof Ke) {
+                        }, e instanceof $e) {
                         e.rotateAngle += t, e.wrapper.rotateAngle += t;
                         var o = [];
                         o = o.concat(e.annotations), this.rotateObjects(e, o, t, i, null, n)
@@ -1489,7 +1514,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 i.rotateMatrix(r, n, o.x, o.y);
                 for (var l = 0, d = t; l < d.length; l++) {
                     var u = d[l];
-                    if (u instanceof Je) {
+                    if (u instanceof Ge) {
                         if (!1 !== s || e !== u) {
                             u.rotateAngle += n, u.rotateAngle = (u.rotateAngle + 360) % 360;
                             var p = i.transformPointByMatrix(r, {
@@ -1535,8 +1560,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         } else this.getBorderSelector(M, l);
                     l.class = "e-pv-diagram-border", a && (l.class += " e-diagram-lane"), l.id = "borderRect", l.id = "borderRect", o || (l.class += " e-disabled"), s && (l.class += " e-thick-border"), l.cornerRadius = 0
                 }
-                var L = this.getParentSvg(e, "selector");
-                this.svgRenderer.drawRectangle(t, l, this.pdfViewer.element.id, void 0, !0, L)
+                var w = this.getParentSvg(e, "selector");
+                this.svgRenderer.drawRectangle(t, l, this.pdfViewer.element.id, void 0, !0, w)
             }, e.prototype.getSignBorder = function(e, i, n) {
                 if (n || "HandWrittenSignature" !== e && "SignatureText" !== e && "SignatureImage" !== e || !this.pdfViewer.handWrittenSignatureSettings.annotationSelectorSettings)
                     if ("Ink" === e && this.pdfViewer.inkAnnotationSettings.annotationSelectorSettings) {
@@ -1592,12 +1617,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var h = t.isNullOrUndefined(this.pdfViewer.freeTextSettings.annotationSelectorSettings.selectorLineDashArray) || 0 === this.pdfViewer.freeTextSettings.annotationSelectorSettings.selectorLineDashArray.length ? [4] : this.pdfViewer.freeTextSettings.annotationSelectorSettings.selectorLineDashArray;
                         h.length > 2 && (h = [h[0], h[1]]), i.dashArray = h.toString()
                     } else if ("StickyNotes" === e && this.pdfViewer.stickyNotesSettings.annotationSelectorSettings) {
-                        var L = t.isNullOrUndefined(this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor) || "" === this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor ? "black" : this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor;
-                        i.stroke = L;
+                        var w = t.isNullOrUndefined(this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor) || "" === this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor ? "black" : this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderColor;
+                        i.stroke = w;
                         m = t.isNullOrUndefined(this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderThickness) ? 1 : this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectionBorderThickness;
                         i.strokeWidth = m;
-                        var w = t.isNullOrUndefined(this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray) || 0 === this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray.length ? [6, 3] : this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray;
-                        w.length > 2 && (w = [w[0], w[1]]), i.dashArray = w.toString()
+                        var L = t.isNullOrUndefined(this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray) || 0 === this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray.length ? [6, 3] : this.pdfViewer.stickyNotesSettings.annotationSelectorSettings.selectorLineDashArray;
+                        L.length > 2 && (L = [L[0], L[1]]), i.dashArray = L.toString()
                     } else if ("Stamp" === e && this.pdfViewer.stampSettings.annotationSelectorSettings) {
                         var c = t.isNullOrUndefined(this.pdfViewer.stampSettings.annotationSelectorSettings.selectionBorderColor) || "" === this.pdfViewer.stampSettings.annotationSelectorSettings.selectionBorderColor ? "#0000ff" : this.pdfViewer.stampSettings.annotationSelectorSettings.selectionBorderColor;
                         i.stroke = c;
@@ -1614,8 +1639,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var f = t.isNullOrUndefined(this.pdfViewer.rectangleSettings.annotationSelectorSettings.selectorLineDashArray) || 0 === this.pdfViewer.rectangleSettings.annotationSelectorSettings.selectorLineDashArray.length ? [4] : this.pdfViewer.rectangleSettings.annotationSelectorSettings.selectorLineDashArray;
                     f.length > 2 && (f = [f[0], f[1]]), i.dashArray = f.toString()
                 }
-            }, e.prototype.renderCircularHandle = function(e, t, n, o, s, a, r, l, d, u, p, M, h, L) {
-                var w = t,
+            }, e.prototype.renderCircularHandle = function(e, t, n, o, s, a, r, l, d, u, p, M, h, w) {
+                var L = t,
                     c = {
                         x: n,
                         y: o
@@ -1624,14 +1649,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         scale: 1,
                         tx: 0,
                         ty: 0
-                    }, 0 !== w.rotateAngle || 0 !== w.parentTransform) {
+                    }, 0 !== L.rotateAngle || 0 !== L.parentTransform) {
                     var g = i.identityMatrix();
-                    i.rotateMatrix(g, w.rotateAngle + w.parentTransform, w.offsetX, w.offsetY), c = i.transformPointByMatrix(g, c)
+                    i.rotateMatrix(g, L.rotateAngle + L.parentTransform, L.offsetX, L.offsetY), c = i.transformPointByMatrix(g, c)
                 }
-                var m, f = C(w);
-                m = this.pdfViewer.selectedItems.annotations.length > 0 && this.pdfViewer.selectedItems.annotations[0].measureType ? this.pdfViewer.selectedItems.annotations[0].measureType : this.pdfViewer.selectedItems.formFields.length > 0 ? this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType : this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType, this.getResizerColors(m, f, L, l), this.getShapeSize(m, f, L, l), f.strokeWidth = 1, void 0 !== M && (f.id = "segmentEnd_" + M), f.centerX = (c.x + l.tx) * l.scale, f.centerY = (c.y + l.ty) * l.scale, f.angle = 0, f.id = e, f.visible = a, f.class = h, f.opacity = 1, d && (f.class += " e-connected"), u && (f.visible = !1), f.x = c.x * l.scale - f.width / 2, f.y = c.y * l.scale - f.height / 2;
+                var m, f = C(L);
+                m = this.pdfViewer.selectedItems.annotations.length > 0 && this.pdfViewer.selectedItems.annotations[0].measureType ? this.pdfViewer.selectedItems.annotations[0].measureType : this.pdfViewer.selectedItems.formFields.length > 0 ? this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType : this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType, this.getResizerColors(m, f, w, l), this.getShapeSize(m, f, w, l), f.strokeWidth = 1, void 0 !== M && (f.id = "segmentEnd_" + M), f.centerX = (c.x + l.tx) * l.scale, f.centerY = (c.y + l.ty) * l.scale, f.angle = 0, f.id = e, f.visible = a, f.class = h, f.opacity = 1, d && (f.class += " e-connected"), u && (f.visible = !1), f.x = c.x * l.scale - f.width / 2, f.y = c.y * l.scale - f.height / 2;
                 var y = this.getParentSvg(t, "selector");
-                "Square" === this.getShape(m, L) ? this.svgRenderer.drawRectangle(s, f, e, void 0, !0, y) : "Circle" === this.getShape(m, L) && this.svgRenderer.drawCircle(s, f, 1)
+                "Square" === this.getShape(m, w) ? this.svgRenderer.drawRectangle(s, f, e, void 0, !0, y) : "Circle" === this.getShape(m, w) && this.svgRenderer.drawCircle(s, f, 1)
             }, e.prototype.getShapeSize = function(e, i, n, o) {
                 if (n && "object" != typeof n && "" !== n) {
                     s = JSON.parse(n);
@@ -1676,8 +1701,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 })
             }, e.prototype.renderResizeHandle = function(e, t, n, o, s, a, r, l, d, u, p, M) {
                 var h = e.offsetX - e.actualSize.width * e.pivot.x,
-                    L = e.offsetY - e.actualSize.height * e.pivot.y,
-                    w = e.actualSize.height,
+                    w = e.offsetY - e.actualSize.height * e.pivot.y,
+                    L = e.actualSize.height,
                     c = e.actualSize.width,
                     C = {
                         scale: o,
@@ -1697,29 +1722,29 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var A = this.getResizerLocation(f, M);
                 (A < 1 || A > 3) && (A = 3);
                 var T = !1;
-                !this.pdfViewer.selectedItems.annotations[0] || "Ellipse" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Radius" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Rectangle" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Ink" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType || (T = !0), this.pdfViewer.viewerBase.checkSignatureFormField(e.id.split("_")[0]) || r || d || u || y || ((l || T && g >= 40 && m >= 40 && (1 === A || 3 === A)) && (this.renderCircularHandle("resizeNorthWest", e, h, L, t, !0, n & i.ThumbsConstraints.ResizeNorthWest, C, void 0, s, {
+                !this.pdfViewer.selectedItems.annotations[0] || "Ellipse" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Radius" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Rectangle" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "Ink" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType || (T = !0), this.pdfViewer.viewerBase.checkSignatureFormField(e.id.split("_")[0]) || r || d || u || y || ((l || T && g >= 40 && m >= 40 && (1 === A || 3 === A)) && (this.renderCircularHandle("resizeNorthWest", e, h, w, t, !0, n & i.ThumbsConstraints.ResizeNorthWest, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on top left side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-northwest", M), this.renderCircularHandle("resizeNorthEast", e, h + c, L, t, !0, n & i.ThumbsConstraints.ResizeNorthEast, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-northwest", M), this.renderCircularHandle("resizeNorthEast", e, h + c, w, t, !0, n & i.ThumbsConstraints.ResizeNorthEast, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on top right side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-northeast", M), this.renderCircularHandle("resizeSouthWest", e, h, L + w, t, !0, n & i.ThumbsConstraints.ResizeSouthWest, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-northeast", M), this.renderCircularHandle("resizeSouthWest", e, h, w + L, t, !0, n & i.ThumbsConstraints.ResizeSouthWest, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on bottom left side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-southwest", M), this.renderCircularHandle("resizeSouthEast", e, h + c, L + w, t, !0, n & i.ThumbsConstraints.ResizeSouthEast, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-southwest", M), this.renderCircularHandle("resizeSouthEast", e, h + c, w + L, t, !0, n & i.ThumbsConstraints.ResizeSouthEast, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on bottom right side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-southeast", M)), (l || T) && (!T || 2 !== A && 3 !== A && (g >= 40 && m >= 40 || 1 !== A)) || (this.renderCircularHandle("resizeNorth", e, h + c / 2, L, t, !0, n & i.ThumbsConstraints.ResizeNorth, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-southeast", M)), (l || T) && (!T || 2 !== A && 3 !== A && (g >= 40 && m >= 40 || 1 !== A)) || (this.renderCircularHandle("resizeNorth", e, h + c / 2, w, t, !0, n & i.ThumbsConstraints.ResizeNorth, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on top side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-north", M), this.renderCircularHandle("resizeSouth", e, h + c / 2, L + w, t, !0, n & i.ThumbsConstraints.ResizeSouth, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-north", M), this.renderCircularHandle("resizeSouth", e, h + c / 2, w + L, t, !0, n & i.ThumbsConstraints.ResizeSouth, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on bottom side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-south", M), this.renderCircularHandle("resizeWest", e, h, L + w / 2, t, !0, n & i.ThumbsConstraints.ResizeWest, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-south", M), this.renderCircularHandle("resizeWest", e, h, w + L / 2, t, !0, n & i.ThumbsConstraints.ResizeWest, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on left side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-west", M), this.renderCircularHandle("resizeEast", e, h + c, L + w / 2, t, !0, n & i.ThumbsConstraints.ResizeEast, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-west", M), this.renderCircularHandle("resizeEast", e, h + c, w + L / 2, t, !0, n & i.ThumbsConstraints.ResizeEast, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on right side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-east", M))), "Textbox" !== f && "Checkbox" !== f && "RadioButton" !== f && "SignatureField" !== f && "InitialField" !== f && "DropdownList" !== f && "ListBox" !== f && "PasswordField" !== f || (this.renderCircularHandle("resizeNorth", e, h + c / 2, L, t, !0, n & i.ThumbsConstraints.ResizeNorth, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-east", M))), "Textbox" !== f && "Checkbox" !== f && "RadioButton" !== f && "SignatureField" !== f && "InitialField" !== f && "DropdownList" !== f && "ListBox" !== f && "PasswordField" !== f || (this.renderCircularHandle("resizeNorth", e, h + c / 2, w, t, !0, n & i.ThumbsConstraints.ResizeNorth, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on top side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-north", M), this.renderCircularHandle("resizeSouth", e, h + c / 2, L + w, t, !0, n & i.ThumbsConstraints.ResizeSouth, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-north", M), this.renderCircularHandle("resizeSouth", e, h + c / 2, w + L, t, !0, n & i.ThumbsConstraints.ResizeSouth, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on bottom side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-south", M), this.renderCircularHandle("resizeWest", e, h, L + w / 2, t, !0, n & i.ThumbsConstraints.ResizeWest, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-south", M), this.renderCircularHandle("resizeWest", e, h, w + L / 2, t, !0, n & i.ThumbsConstraints.ResizeWest, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on left side direction"
-                }, void 0, "e-pv-diagram-resize-handle e-west", M), this.renderCircularHandle("resizeEast", e, h + c, L + w / 2, t, !0, n & i.ThumbsConstraints.ResizeEast, C, void 0, s, {
+                }, void 0, "e-pv-diagram-resize-handle e-west", M), this.renderCircularHandle("resizeEast", e, h + c, w + L / 2, t, !0, n & i.ThumbsConstraints.ResizeEast, C, void 0, s, {
                     "aria-label": "Thumb to resize the selected object on right side direction"
                 }, void 0, "e-pv-diagram-resize-handle e-east", M))
             }, e.prototype.getAllowedInteractions = function(e) {
@@ -1764,29 +1789,29 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = e.targetPoint,
                     M = e.wrapper;
                 for (d = 0; d < e.vertexPoints.length; d++) {
-                    L = e.vertexPoints[d];
-                    this.renderCircularHandle("segementThumb_" + (d + 1), M, L.x, L.y, t, !0, n & i.ThumbsConstraints.ConnectorSource, o, s, null, null, d, null, l)
+                    w = e.vertexPoints[d];
+                    this.renderCircularHandle("segementThumb_" + (d + 1), M, w.x, w.y, t, !0, n & i.ThumbsConstraints.ConnectorSource, o, s, null, null, d, null, l)
                 }
                 var h = 0;
                 if ("Distance" === e.shapeAnnotationType)
                     for (d = 0; d < e.wrapper.children.length; d++) {
-                        var L = e.wrapper.children[d],
-                            w = void 0,
+                        var w = e.wrapper.children[d],
+                            L = void 0,
                             c = i.Point.findAngle(e.sourcePoint, e.targetPoint);
-                        if (L.id.indexOf("leader") > -1) {
+                        if (w.id.indexOf("leader") > -1) {
                             var C = e.wrapper.children[0].bounds.center;
-                            0 === h ? (w = {
+                            0 === h ? (L = {
                                 x: e.sourcePoint.x,
                                 y: e.sourcePoint.y - e.leaderHeight
-                            }, C = u) : (w = {
+                            }, C = u) : (L = {
                                 x: e.targetPoint.x,
                                 y: e.targetPoint.y - e.leaderHeight
                             }, C = p);
                             var g = i.identityMatrix();
                             i.rotateMatrix(g, c, C.x, C.y);
                             var m = i.transformPointByMatrix(g, {
-                                x: w.x,
-                                y: w.y
+                                x: L.x,
+                                y: L.y
                             });
                             this.renderCircularHandle("leaderThumb_" + (d + 1), M, m.x, m.y, t, !0, n & i.ThumbsConstraints.ConnectorSource, o, s, null, null, d, null, l), h++
                         }
@@ -1797,7 +1822,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 for (var o = this.pdfViewer.selectedItems, s = 0; s < e.length; s++) {
                     var a = this.pdfViewer.nameTable[e[s]];
                     if (a.formFieldAnnotationType) o.formFields.push(a), this.initSelectorWrapper(), o.wrapper.children.push(a.wrapper), this.renderSelector(a.pageIndex, t, a, !0);
-                    else if (a && !a.formFieldAnnotationType && !(a instanceof Ke) && a.wrapper.visible) {
+                    else if (a && !a.formFieldAnnotationType && !(a instanceof $e) && a.wrapper.visible) {
                         var r = void 0;
                         a.annotationSettings ? (r = a.annotationSettings).isLock = JSON.parse(r.isLock) : a.formFieldAnnotationType || (r = this.pdfViewer.annotationModule.findAnnotationSettings(a, !0), a.annotationSettings = r);
                         var l = !a.formFieldAnnotationType && r.isLock;
@@ -1808,7 +1833,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var s = this.pdfViewer.selectedItems;
                 return this.drag(s, e, t, n, o), !0
             }, e.prototype.drag = function(e, t, i, n, o) {
-                if (e instanceof Ke) {
+                if (e instanceof $e) {
                     if (e.annotations.length)
                         for (var s = 0, a = e.annotations; s < a.length; s++) {
                             d = a[s];
@@ -1866,7 +1891,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 if (e.enableShapeLabel && void 0 !== n.labelFillColor && e.enableShapeLabel && e.wrapper && e.wrapper.children)
                     for (var s = e.wrapper.children, M = 0; M < s.length; M++) s[M].textNodes && (s[M].style.fill = n.labelFillColor);
                 if (void 0 !== n.opacity && ("Stamp" === e.shapeAnnotationType || "FreeText" === e.shapeAnnotationType ? (e.wrapper.children[1].style.opacity = n.opacity, e.wrapper.children[2] && (e.wrapper.children[2].style.opacity = n.opacity)) : ("StickyNotes" === e.shapeAnnotationType && (this.pdfViewer.nameTable[e.annotName].wrapper.children[0].style.opacity = n.opacity), e.opacity = n.opacity), e.wrapper.children[0].style.opacity = n.opacity, e.enableShapeLabel && e.wrapper && e.wrapper.children))
-                    for (var s = e.wrapper.children, w = 0; w < s.length; w++) s[w].textNodes && (s[w].style.opacity = n.labelOpacity);
+                    for (var s = e.wrapper.children, L = 0; L < s.length; L++) s[L].textNodes && (s[L].style.opacity = n.labelOpacity);
                 if (e.enableShapeLabel && void 0 !== n.labelOpacity && e.enableShapeLabel && e.wrapper && e.wrapper.children)
                     for (var s = e.wrapper.children, c = 0; c < s.length; c++) s[c].textNodes && (s[c].style.opacity = n.labelOpacity);
                 if (void 0 !== n.rotateAngle && (e.rotateAngle = n.rotateAngle, e.wrapper.rotateAngle = n.rotateAngle), void 0 !== n.strokeColor && (e.strokeColor = n.strokeColor, e.wrapper.children[0].style.strokeColor = n.strokeColor), void 0 !== n.fontColor && (e.fontColor = n.fontColor, "FreeText" === e.shapeAnnotationType && e.wrapper && e.wrapper.children && e.wrapper.children.length && ((s = e.wrapper.children)[1].style.color = n.fontColor, "Justify" === e.textAlign ? s[1].horizontalAlignment = "Center" : s[1].horizontalAlignment = "Auto"), e.enableShapeLabel && e.wrapper && e.wrapper.children))
@@ -1893,7 +1918,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     j.data = e.data, j.canMeasurePath = !0
                 }
                 if (h(e))
-                    for (var A = 0; A < e.wrapper.children.length; A++) e.wrapper.children[A].textNodes || L(e, e.wrapper.children[A]), !0 === e.enableShapeLabel ? (e.wrapper.children[A] instanceof i.TextElement && (e.wrapper.children[A].style.fill = e.labelFillColor), e.wrapper.children[A] instanceof i.PathElement && "Perimeter" === e.measureType && (e.wrapper.children[A].style.fill = "transparent")) : (e.wrapper.children[A] instanceof i.PathElement && "Perimeter" === e.measureType || e.wrapper.children[A] instanceof i.TextElement) && (e.wrapper.children[A].style.fill = "transparent");
+                    for (var A = 0; A < e.wrapper.children.length; A++) e.wrapper.children[A].textNodes || w(e, e.wrapper.children[A]), !0 === e.enableShapeLabel ? (e.wrapper.children[A] instanceof i.TextElement && (e.wrapper.children[A].style.fill = e.labelFillColor), e.wrapper.children[A] instanceof i.PathElement && "Perimeter" === e.measureType && (e.wrapper.children[A].style.fill = "transparent")) : (e.wrapper.children[A] instanceof i.PathElement && "Perimeter" === e.measureType || e.wrapper.children[A] instanceof i.TextElement) && (e.wrapper.children[A].style.fill = "transparent");
                 if (e && ("FreeText" === e.shapeAnnotationType || !0 === e.enableShapeLabel) && e.wrapper && e.wrapper.children && e.wrapper.children.length)
                     for (var s = e.wrapper.children, T = 0; T < s.length; T++) s[T].textNodes && ("FreeText" === e.shapeAnnotationType ? (n.dynamicText ? (s[T].content = n.dynamicText, e.dynamicText = n.dynamicText) : s[T].content = e.dynamicText, s[T].width = e.bounds.width - 8) : !0 === e.enableShapeLabel && e.measureType ? (n.labelContent ? (s[T].content = n.labelContent, e.labelContent = n.labelContent) : s[T].content = e.labelContent, e.notes = s[T].content) : !0 === e.enableShapeLabel && (n.labelContent ? (s[T].content = n.labelContent, e.labelContent = n.labelContent) : s[T].content = e.labelContent, e.notes = s[T].content), s[T].isDirt = !0);
                 if (e.wrapper.measure(new i.Size(e.wrapper.bounds.width, e.wrapper.bounds.height)), e.wrapper.arrange(e.wrapper.desiredSize), e && e.formFieldAnnotationType && e.wrapper && e.wrapper.children && e.wrapper.children.length && ((s = e.wrapper.children[0]).actualSize.width = e.wrapper.desiredSize.width, s.actualSize.height = e.wrapper.desiredSize.height), e && "FreeText" === e.shapeAnnotationType && "Text Box" === e.subject) {
@@ -1927,7 +1952,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this.scale(n, e, t, i)
             }, e.prototype.scale = function(e, t, i, n) {
                 var o = !0;
-                if (e instanceof Ke) {
+                if (e instanceof $e) {
                     if (e.annotations && e.annotations.length)
                         for (var s = 0, a = e.annotations; s < a.length; s++) {
                             d = a[s];
@@ -1986,10 +2011,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         p = l.clientHeight / this.pdfViewer.viewerBase.getZoomFactor(),
                         M = (n ? r.right : a.right) + (e || 0),
                         h = (n ? r.left : a.left) + (e || 0),
-                        L = (n ? r.top : a.top) + (t || 0),
-                        w = (n ? r.bottom : a.bottom) + (t || 0);
+                        w = (n ? r.top : a.top) + (t || 0),
+                        L = (n ? r.bottom : a.bottom) + (t || 0);
                     if (o && (d = 50, this.pdfViewer.viewerBase.eventArgs && this.pdfViewer.viewerBase.eventArgs.source && this.RestrictStamp(this.pdfViewer.viewerBase.eventArgs.source))) return !1;
-                    if (M <= u - 10 && h >= 10 && w <= p - 10 && L >= d || s) return !0
+                    if (M <= u - 10 && h >= 10 && L <= p - 10 && w >= d || s) return !0
                 }
                 return !1
             }, e.prototype.RestrictStamp = function(e) {
@@ -2095,35 +2120,35 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e.prototype.dragConnectorEnds = function(e, t, n, o, s, a, r) {
                 var l, d, u;
-                if (l = t instanceof Ke ? t.annotations[0] : t, n = {
+                if (l = t instanceof $e ? t.annotations[0] : t, n = {
                         x: n.x / this.pdfViewer.viewerBase.getZoomFactor(),
                         y: n.y / this.pdfViewer.viewerBase.getZoomFactor()
                     }, this.checkBoundaryConstraints(void 0, void 0, l.pageIndex, l.wrapper.bounds)) {
                     if ("Distance" === l.shapeAnnotationType) {
                         var p = j(l, e);
-                        if ("Leader0" === e) this.pdfViewer.viewerBase.tool instanceof Mt ? (l.vertexPoints[0].x = n.x, l.vertexPoints[0].y = n.y) : (d = n.x - p.point.x, u = n.y - p.point.y, l.vertexPoints[0].x += d, l.vertexPoints[0].y += u);
+                        if ("Leader0" === e) this.pdfViewer.viewerBase.tool instanceof wt ? (l.vertexPoints[0].x = n.x, l.vertexPoints[0].y = n.y) : (d = n.x - p.point.x, u = n.y - p.point.y, l.vertexPoints[0].x += d, l.vertexPoints[0].y += u);
                         else if ("Leader1" === e) {
                             var M = l.vertexPoints.length - 1;
-                            this.pdfViewer.viewerBase.tool instanceof Mt ? (l.vertexPoints[M].x = n.x, l.vertexPoints[M].y = n.y) : (d = n.x - p.point.x, u = n.y - p.point.y, l.vertexPoints[M].x += d, l.vertexPoints[M].y += u)
+                            this.pdfViewer.viewerBase.tool instanceof wt ? (l.vertexPoints[M].x = n.x, l.vertexPoints[M].y = n.y) : (d = n.x - p.point.x, u = n.y - p.point.y, l.vertexPoints[M].x += d, l.vertexPoints[M].y += u)
                         } else {
                             var h = i.Point.findAngle(l.sourcePoint, l.targetPoint),
-                                L = t.wrapper.children[0].bounds.center,
-                                w = i.identityMatrix();
-                            i.rotateMatrix(w, -h, L.x, L.y);
-                            var c = i.transformPointByMatrix(w, {
+                                w = t.wrapper.children[0].bounds.center,
+                                L = i.identityMatrix();
+                            i.rotateMatrix(L, -h, w.x, w.y);
+                            var c = i.transformPointByMatrix(L, {
                                 x: n.x,
                                 y: n.y
                             });
                             if ("ConnectorSegmentPoint" === e.split("_")[0]) {
-                                w = i.identityMatrix();
-                                i.rotateMatrix(w, -h, L.x, L.y);
-                                var C = i.transformPointByMatrix(w, l.vertexPoints[0]),
-                                    g = i.transformPointByMatrix(w, l.vertexPoints[l.vertexPoints.length - 1]);
+                                L = i.identityMatrix();
+                                i.rotateMatrix(L, -h, w.x, w.y);
+                                var C = i.transformPointByMatrix(L, l.vertexPoints[0]),
+                                    g = i.transformPointByMatrix(L, l.vertexPoints[l.vertexPoints.length - 1]);
                                 if (u = c.y - C.y, 0 === l.leaderHeight && null != l.leaderHeight) l.leaderHeight = this.pdfViewer.distanceSettings.leaderLength;
                                 else {
                                     l.leaderHeight += u, C.y += u, g.y += u;
-                                    w = i.identityMatrix();
-                                    i.rotateMatrix(w, h, L.x, L.y), l.vertexPoints[0] = i.transformPointByMatrix(w, C), l.vertexPoints[l.vertexPoints.length - 1] = i.transformPointByMatrix(w, g)
+                                    L = i.identityMatrix();
+                                    i.rotateMatrix(L, h, w.x, w.y), l.vertexPoints[0] = i.transformPointByMatrix(L, C), l.vertexPoints[l.vertexPoints.length - 1] = i.transformPointByMatrix(L, g)
                                 }
                             }
                         }
@@ -2168,7 +2193,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 if (0 === this.pdfViewer.clipboardData.pasteIndex)
                     for (var o = 0, s = e; o < s.length; o++) {
                         var a = s[o];
-                        this.pdfViewer.nameTable[a.id] && (a.formFieldAnnotationType ? (this.pdfViewer.clearSelection(a.pageIndex), this.pdfViewer.formDesignerModule.deleteFormField(a.id)) : this.pdfViewer.annotationModule.deleteAnnotationById(a.annotName))
+                        this.pdfViewer.nameTable[a.id] && (a.formFieldAnnotationType ? (this.pdfViewer.clearSelection(a.pageIndex), this.pdfViewer.formDesignerModule.deleteFormField(a.id)) : a.annotName ? this.pdfViewer.annotationModule.deleteAnnotationById(a.annotName) : this.pdfViewer.annotationModule.deleteAnnotation())
                     }
                 return this.sortByZIndex(t, "zIndex"), t
             }, e.prototype.getNewObject = function(e) {
@@ -2193,13 +2218,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     clientY: this.pdfViewer.viewerBase.mouseTop
                                 }), t.isBlazor() && (M = this.pdfViewer.viewerBase.mouseDownEvent), h(u)) this.calculateCopyPosition(u, p, M);
                             else if (p) {
-                                var L = p.getBoundingClientRect();
-                                u.bounds.x = M.clientX - L.left, u.bounds.y = M.clientY - L.top
+                                var w = p.getBoundingClientRect();
+                                u.bounds.x = M.clientX - w.left, u.bounds.y = M.clientY - w.top
                             }
-                            var w = m(u);
-                            "Cut" !== this.pdfViewer.viewerBase.contextMenuModule.previousAction ? (w.id += i.randomId(), this.pdfViewer.annotationModule && "HandWrittenSignature" !== w.shapeAnnotationType && (w.annotName = w.id, this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationCollection(w, s[0], !1)), "SignatureText" !== w.shapeAnnotationType && "HandWrittenSignature" !== w.shapeAnnotationType && "SignatureImage" !== w.shapeAnnotationType || this.pdfViewer.viewerBase.signatureModule.storeSignatureData(w.pageIndex, w), w.formFieldAnnotationType || this.pdfViewer.annotation.addAction(w.pageIndex, null, w, "Addition", "", w, w)) : (this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationCollection(w, s[0], !0), "SignatureText" !== w.shapeAnnotationType && "HandWrittenSignature" !== w.shapeAnnotationType && "SignatureImage" !== w.shapeAnnotationType || this.pdfViewer.viewerBase.signatureModule.storeSignatureData(w.pageIndex, w));
-                            var c = this.add(w);
-                            if (this.pdfViewer.formDesigner && c.formFieldAnnotationType && this.pdfViewer.annotation.addAction(w.pageIndex, null, c, "Addition", "", c, c), ("FreeText" === w.shapeAnnotationType || w.enableShapeLabel) && c && this.nodePropertyChange(c, {}), c.formFieldAnnotationType && c.pageIndex === n) {
+                            var L = m(u);
+                            "Cut" !== this.pdfViewer.viewerBase.contextMenuModule.previousAction ? (L.id += i.randomId(), this.pdfViewer.annotationModule && "HandWrittenSignature" !== L.shapeAnnotationType && (L.annotName = L.id, this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationCollection(L, s[0], !1)), "SignatureText" !== L.shapeAnnotationType && "HandWrittenSignature" !== L.shapeAnnotationType && "SignatureImage" !== L.shapeAnnotationType || this.pdfViewer.viewerBase.signatureModule.storeSignatureData(L.pageIndex, L), L.formFieldAnnotationType || this.pdfViewer.annotation.addAction(L.pageIndex, null, L, "Addition", "", L, L)) : (this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationCollection(L, s[0], !0), "SignatureText" !== L.shapeAnnotationType && "HandWrittenSignature" !== L.shapeAnnotationType && "SignatureImage" !== L.shapeAnnotationType || this.pdfViewer.viewerBase.signatureModule.storeSignatureData(L.pageIndex, L));
+                            var c = this.add(L);
+                            if (this.pdfViewer.formDesigner && c.formFieldAnnotationType && this.pdfViewer.annotation.addAction(L.pageIndex, null, c, "Addition", "", c, c), ("FreeText" === L.shapeAnnotationType || L.enableShapeLabel) && c && this.nodePropertyChange(c, {}), c.formFieldAnnotationType && c.pageIndex === n) {
                                 this.pdfViewer.formFieldCollection.push(c);
                                 var C = {
                                     id: c.id,
@@ -2228,7 +2253,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 };
                                 this.pdfViewer.formFieldCollections.push(C), this.pdfViewer.formDesigner.drawHTMLContent(c.formFieldAnnotationType, c.wrapper.children[0], c, c.pageNumber - 1, this.pdfViewer)
                             }
-                            this.pdfViewer.select([w.id], this.pdfViewer.annotationSelectorSettings)
+                            this.pdfViewer.select([L.id], this.pdfViewer.annotationSelectorSettings)
                         }
                     }
                     this.pdfViewer.renderDrawing(void 0, n), this.pdfViewer.clipboardData.pasteIndex++
@@ -2251,7 +2276,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 })
             }, e
         }(),
-        it = function() {
+        ot = function() {
             var e = function(t, i) {
                 return (e = Object.setPrototypeOf || {
                         __proto__: []
@@ -2269,7 +2294,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e(t, i), t.prototype = null === i ? Object.create(i) : (n.prototype = i.prototype, new n)
             }
         }(),
-        nt = function() {
+        st = function() {
             function e(e, t, i) {
                 void 0 === i && (i = !1), this.commandHandler = null, this.inAction = !1, this.pdfViewerBase = null, this.currentElement = null, this.blocked = !1, this.isTooltipVisible = !1, this.childTable = {}, this.helper = void 0, this.undoElement = {
                     annotations: []
@@ -2298,8 +2323,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = e instanceof i.TextElement ? a : e.rotateAngle,
                     M = i.identityMatrix();
                 i.rotateMatrix(M, -p, 0, 0);
-                var h, L = 0,
-                    w = 0,
+                var h, w = 0,
+                    L = 0,
                     c = e instanceof i.TextElement ? e.actualSize.width : e.wrapper.bounds.width,
                     C = e instanceof i.TextElement ? e.actualSize.height : e.wrapper.bounds.height,
                     g = e;
@@ -2322,53 +2347,53 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, w = 1, d = d, u = 0, A && s.width - d > y && (d = y - s.width), L = (s.width - d) / c;
+                        })).x, u = h.y, L = 1, d = d, u = 0, A && s.width - d > y && (d = y - s.width), w = (s.width - d) / c;
                         break;
                     case "ResizeEast":
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, u = 0, A && s.width + d > y && (d = y - s.width), L = (s.width + d) / c, w = 1;
+                        })).x, u = h.y, u = 0, A && s.width + d > y && (d = y - s.width), w = (s.width + d) / c, L = 1;
                         break;
                     case "ResizeNorth":
-                        L = 1, d = (h = i.transformPointByMatrix(M, {
+                        w = 1, d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && s.height - u > f && (u = f - s.height), w = (s.height - u) / C;
+                        })).x, u = h.y, A && s.height - u > f && (u = f - s.height), L = (s.height - u) / C;
                         break;
                     case "ResizeSouth":
-                        L = 1, d = (h = i.transformPointByMatrix(M, {
+                        w = 1, d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && s.height + u > f && (u = f - s.height), w = (s.height + u) / C;
+                        })).x, u = h.y, A && s.height + u > f && (u = f - s.height), L = (s.height + u) / C;
                         break;
                     case "ResizeNorthEast":
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && (s.width + d > y && (d = y - s.width), s.height - u > f && (u = f - s.height)), L = (s.width + d) / c, w = (s.height - u) / C;
+                        })).x, u = h.y, A && (s.width + d > y && (d = y - s.width), s.height - u > f && (u = f - s.height)), w = (s.width + d) / c, L = (s.height - u) / C;
                         break;
                     case "ResizeNorthWest":
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && (s.width - d > y && (d = y - s.width), s.height - u > f && (u = f - s.height)), L = (s.width - d) / c, w = (s.height - u) / C;
+                        })).x, u = h.y, A && (s.width - d > y && (d = y - s.width), s.height - u > f && (u = f - s.height)), w = (s.width - d) / c, L = (s.height - u) / C;
                         break;
                     case "ResizeSouthEast":
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && (s.width + d > y && (d = y - s.width), s.height + u > f && (u = f - s.height)), w = (s.height + u) / C, L = (s.width + d) / c;
+                        })).x, u = h.y, A && (s.width + d > y && (d = y - s.width), s.height + u > f && (u = f - s.height)), L = (s.height + u) / C, w = (s.width + d) / c;
                         break;
                     case "ResizeSouthWest":
                         d = (h = i.transformPointByMatrix(M, {
                             x: d,
                             y: u
-                        })).x, u = h.y, A && (s.width - d > y && (d = y - s.width), s.height + u > f && (u = f - s.height)), L = (s.width - d) / c, w = (s.height + u) / C
+                        })).x, u = h.y, A && (s.width - d > y && (d = y - s.width), s.height + u > f && (u = f - s.height)), w = (s.width - d) / c, L = (s.height + u) / C
                 }
                 return {
-                    width: L,
-                    height: w
+                    width: w,
+                    height: L
                 }
             }, e.prototype.getPivot = function(e) {
                 switch (e) {
@@ -2450,11 +2475,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        ot = function(e) {
+        at = function(e) {
             function i(t, i) {
                 return e.call(this, t, i, !0) || this
             }
-            return it(i, e), i.prototype.mouseDown = function(t) {
+            return ot(i, e), i.prototype.mouseDown = function(t) {
                 this.inAction = !0, this.mouseEventHelper(t), e.prototype.mouseDown.call(this, t)
             }, i.prototype.mouseEventHelper = function(e) {
                 this.commandHandler && this.commandHandler.annotationModule && (this.commandHandler.annotationModule.overlappedCollections = W(e, this.pdfViewerBase, this.commandHandler, !0));
@@ -2501,13 +2526,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, i.prototype.mouseLeave = function(e) {
                 this.inAction && this.mouseUp(e)
             }, i
-        }(nt),
-        st = function(e) {
+        }(st),
+        rt = function(e) {
             function t(t, i) {
                 var n = e.call(this, t, i) || this;
                 return n.currentTarget = null, n.prevNode = null, n
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 e.prototype.mouseDown.call(this, t), this.offset = {
                     x: t.source.wrapper.offsetX,
                     y: t.source.wrapper.offsetY
@@ -2615,12 +2640,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, t.prototype.endAction = function() {
                 e.prototype.endAction.call(this), this.currentTarget = null, this.prevPosition = null
             }, t
-        }(nt),
-        at = function(e) {
+        }(st),
+        lt = function(e) {
             function t() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 e.prototype.mouseUp.call(this, t)
             }, t.prototype.mouseMove = function(t) {
                 var i;
@@ -2641,13 +2666,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var a = t.source.annotationSelectorSettings;
                 return e.prototype.mouseMove.call(this, t, !0, !0), this.commandHandler.renderSelector(t.source.pageIndex, a), this.inAction
             }, t
-        }(st),
-        rt = function(e) {
+        }(rt),
+        dt = function(e) {
             function t(t, i, n) {
                 var o = e.call(this, t, i) || this;
                 return o.sourceObject = n, o
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 this.pdfViewerBase.disableTextSelectionMode(), e.prototype.mouseDown.call(this, t), this.inAction = !0;
                 var i = {
                     currentPosition: this.currentPosition,
@@ -2668,13 +2693,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, t.prototype.mouseLeave = function(e) {}, t.prototype.endAction = function() {
                 e.prototype.endAction.call(this)
             }, t
-        }(nt),
-        lt = function(e) {
+        }(st),
+        ut = function(e) {
             function t(t, i, n) {
                 var o = e.call(this, t, i, !0) || this;
                 return o.endPoint = n, o
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 this.inAction = !0, this.undoElement = void 0, e.prototype.mouseDown.call(this, t);
                 t.source && t.source.annotations && ({
                     x: this.prevPosition.x,
@@ -2713,8 +2738,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             if ("Line" === i.shapeAnnotationType || "Distance" === i.shapeAnnotationType || "LineWidthArrowHead" === i.shapeAnnotationType) {
                                 var p = 0,
                                     M = 0,
-                                    L = (p = i.vertexPoints[0].x > i.vertexPoints[1].x ? i.vertexPoints[0].x - i.vertexPoints[1].x : i.vertexPoints[1].x - i.vertexPoints[0].x) > (M = i.vertexPoints[0].y > i.vertexPoints[1].y ? i.vertexPoints[0].y - i.vertexPoints[1].y : i.vertexPoints[1].y - i.vertexPoints[0].y) ? p : M;
-                                L < (o || s) && L > (a || r) && this.commandHandler.nodePropertyChange(this.prevSource, {
+                                    w = (p = i.vertexPoints[0].x > i.vertexPoints[1].x ? i.vertexPoints[0].x - i.vertexPoints[1].x : i.vertexPoints[1].x - i.vertexPoints[0].x) > (M = i.vertexPoints[0].y > i.vertexPoints[1].y ? i.vertexPoints[0].y - i.vertexPoints[1].y : i.vertexPoints[1].y - i.vertexPoints[0].y) ? p : M;
+                                w < (o || s) && w > (a || r) && this.commandHandler.nodePropertyChange(this.prevSource, {
                                     vertexPoints: i.vertexPoints,
                                     leaderHeight: i.leaderHeight
                                 })
@@ -2726,8 +2751,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             vertexPoints: i.vertexPoints,
                             leaderHeight: i.leaderHeight
                         });
-                        var w = t.source.annotationSelectorSettings;
-                        this.commandHandler.clearSelection(this.pdfViewerBase.activeElements.activePageID), this.commandHandler.select([this.prevSource.id], w), this.commandHandler.renderSelector(this.pdfViewerBase.activeElements.activePageID, w);
+                        var L = t.source.annotationSelectorSettings;
+                        this.commandHandler.clearSelection(this.pdfViewerBase.activeElements.activePageID), this.commandHandler.select([this.prevSource.id], L), this.commandHandler.renderSelector(this.pdfViewerBase.activeElements.activePageID, L);
                         var c = {
                             bounds: {
                                 x: t.source.wrapper.offsetX,
@@ -2766,13 +2791,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, t.prototype.endAction = function() {
                 e.prototype.endAction.call(this), this.prevPosition = null, this.endPoint = null
             }, t
-        }(nt),
-        dt = function(e) {
+        }(st),
+        pt = function(e) {
             function t(t, n, o) {
                 var s = e.call(this, t, n, !0) || this;
                 return s.initialBounds = new i.Rect, s.corner = o, s
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 e.prototype.mouseDown.call(this, t), this.initialBounds.x = t.source.wrapper.offsetX, this.initialBounds.y = t.source.wrapper.offsetY, this.initialBounds.height = t.source.wrapper.actualSize.height, this.initialBounds.width = t.source.wrapper.actualSize.width, this.initialPosition = t.position;
                 var i = m(t.source);
                 this.redoElement = {
@@ -2856,9 +2881,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var p = this.commandHandler.annotationModule ? this.commandHandler.annotationModule.findAnnotationSettings(u) : {},
                     M = 0,
                     h = 0,
-                    L = 0,
-                    w = 0;
-                (p.minWidth || p.maxWidth || p.minHeight || p.maxHeight) && (M = p.maxHeight ? p.maxHeight : 2e3, h = p.maxWidth ? p.maxWidth : 2e3, L = p.minHeight ? p.minHeight : 0, w = p.minWidth ? p.minWidth : 0), (L || w || M || h) && (d >= L && d <= M && l >= w && l <= h ? (o = o, s = s) : ((d < L || d > M) && (s = d < L ? L - a.height : M - a.height), (l < w || l > h) && (o = l < w ? w - a.width : h - a.width)));
+                    w = 0,
+                    L = 0;
+                (p.minWidth || p.maxWidth || p.minHeight || p.maxHeight) && (M = p.maxHeight ? p.maxHeight : 2e3, h = p.maxWidth ? p.maxWidth : 2e3, w = p.minHeight ? p.minHeight : 0, L = p.minWidth ? p.minWidth : 0), (w || L || M || h) && (d >= w && d <= M && l >= L && l <= h ? (o = o, s = s) : ((d < w || d > M) && (s = d < w ? w - a.height : M - a.height), (l < L || l > h) && (o = l < L ? L - a.width : h - a.width)));
                 var c = {
                     x: o,
                     y: s
@@ -2956,16 +2981,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var p = s,
                     M = this.getPoints(d, u),
                     h = p.bounds.width + M.x,
-                    L = p.bounds.height + M.y;
-                return (a.minWidth || a.maxWidth || a.minHeight || a.maxHeight) && (r = a.maxHeight ? a.maxHeight : 2e3, l = a.maxWidth ? a.maxWidth : 2e3, a.minHeight ? a.minHeight : 0, a.minWidth ? a.minWidth : 0), s instanceof Ke && 1 === s.annotations.length && ("Perimeter" === s.annotations[0].shapeAnnotationType || "Radius" === s.annotations[0].shapeAnnotationType || "Stamp" === s.shapeAnnotationType) ? t = e = 1 !== t || 1 !== e ? Math.max(1 === t ? 0 : t, 1 === e ? 0 : e) : n !== o ? Math.max(t, e) : 0 : "Image" === s.shapeAnnotationType || "HandWrittenSignature" === s.shapeAnnotationType || "SignatureText" === s.shapeAnnotationType || "SignatureImage" === s.shapeAnnotationType ? 1 === t && 1 === e || (h >= l && L < r && (t = Math.max(t, e)), L >= r && h < l && (e = Math.max(t, e)), h < l && L < r && (t = e = Math.max(t, e))) : "Perimeter" !== s.shapeAnnotationType && "Radius" !== s.shapeAnnotationType && "Stamp" !== s.shapeAnnotationType || ("Stamp" === s.shapeAnnotationType ? (r || t || (t = Math.max(1 === t ? 0 : t)), l || e || (e = Math.max(1 === e ? 0 : e))) : r && l || 1 === t && 1 === e || (t = e = Math.max(1 === t ? 0 : t, 1 === e ? 0 : e))), this.blocked = this.commandHandler.scaleSelectedItems(e, t, this.getPivot(this.corner)), this.blocked
+                    w = p.bounds.height + M.y;
+                return (a.minWidth || a.maxWidth || a.minHeight || a.maxHeight) && (r = a.maxHeight ? a.maxHeight : 2e3, l = a.maxWidth ? a.maxWidth : 2e3, a.minHeight ? a.minHeight : 0, a.minWidth ? a.minWidth : 0), s instanceof $e && 1 === s.annotations.length && ("Perimeter" === s.annotations[0].shapeAnnotationType || "Radius" === s.annotations[0].shapeAnnotationType || "Stamp" === s.shapeAnnotationType) ? t = e = 1 !== t || 1 !== e ? Math.max(1 === t ? 0 : t, 1 === e ? 0 : e) : n !== o ? Math.max(t, e) : 0 : "Image" === s.shapeAnnotationType || "HandWrittenSignature" === s.shapeAnnotationType || "SignatureText" === s.shapeAnnotationType || "SignatureImage" === s.shapeAnnotationType ? 1 === t && 1 === e || (h >= l && w < r && (t = Math.max(t, e)), w >= r && h < l && (e = Math.max(t, e)), h < l && w < r && (t = e = Math.max(t, e))) : "Perimeter" !== s.shapeAnnotationType && "Radius" !== s.shapeAnnotationType && "Stamp" !== s.shapeAnnotationType || ("Stamp" === s.shapeAnnotationType ? (r || t || (t = Math.max(1 === t ? 0 : t)), l || e || (e = Math.max(1 === e ? 0 : e))) : r && l || 1 === t && 1 === e || (t = e = Math.max(1 === t ? 0 : t, 1 === e ? 0 : e))), this.blocked = this.commandHandler.scaleSelectedItems(e, t, this.getPivot(this.corner)), this.blocked
             }, t
-        }(nt),
-        ut = function(e) {
+        }(st),
+        Mt = function(e) {
             function t(t, i, n) {
                 var o = e.call(this, t, i) || this;
                 return o.sourceObject = n, o
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 e.prototype.mouseDown.call(this, t), this.inAction = !0;
                 var n = {
                     bounds: {
@@ -3083,13 +3108,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     d = 0;
                 l.maxWidth && (d = l.maxWidth ? l.maxWidth : 2e3, t.bounds.width > d && (t.bounds.width = d, e.width = t.bounds.width / 2)), this.commandHandler.renderDrawing(void 0, t.pageIndex)
             }, t
-        }(nt),
-        pt = function(e) {
+        }(st),
+        ht = function(e) {
             function n(t, i, n) {
                 var o = e.call(this, t, i) || this;
                 return o.action = n, o
             }
-            return it(n, e), n.prototype.mouseDown = function(t) {
+            return ot(n, e), n.prototype.mouseDown = function(t) {
                 if (e.prototype.mouseDown.call(this, t), this.inAction = !0, this.drawingObject) {
                     var i = void 0,
                         n = this.drawingObject;
@@ -3189,13 +3214,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, n.prototype.endAction = function() {
                 this.inAction = !1, this.drawingObject = null, this.commandHandler.tool = ""
             }, n
-        }(nt),
-        Mt = function(e) {
+        }(st),
+        wt = function(e) {
             function t(t, i, n, o) {
                 var s = e.call(this, t, i, !0) || this;
                 return s.endPoint = n, s.drawingObject = o, s
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 this.inAction = !0, this.undoElement = void 0, e.prototype.mouseDown.call(this, t);
                 if (t.source && t.source.annotations && ({
                         x: this.prevPosition.x,
@@ -3298,12 +3323,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, t.prototype.endAction = function() {
                 e.prototype.endAction.call(this), this.prevPosition = null, this.endPoint = null
             }, t
-        }(nt),
-        ht = function(e) {
+        }(st),
+        Lt = function(e) {
             function t(t, i) {
                 return e.call(this, t, i, !0) || this
             }
-            return it(t, e), t.prototype.mouseDown = function(t) {
+            return ot(t, e), t.prototype.mouseDown = function(t) {
                 var i = m(t.source);
                 this.undoElement = {
                     bounds: {
@@ -3343,14 +3368,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
                 return !this.blocked
             }, t.prototype.getTooltipContent = function(e) {
-                return Math.round(e.rotateAngle % 360).toString() + "°"
+                return Math.round(e.rotateAngle % 360).toString() + "Â°"
             }, t.prototype.mouseLeave = function(e) {
                 this.mouseUp(e)
             }, t.prototype.endAction = function() {
                 e.prototype.endAction.call(this)
             }, t
-        }(nt),
-        Lt = function() {
+        }(st),
+        ct = function() {
             function e() {
                 this.activePage = void 0, this.activePageID = void 0
             }
@@ -3401,7 +3426,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
     function(e) {
         e.Json = "Json", e.Xfdf = "Xfdf"
     }(e.AnnotationDataFormat || (e.AnnotationDataFormat = {}));
-    var wt = function() {
+    var Ct = function() {
             function i(e, t) {
                 this.inputBoxCount = 0, this.isFreeTextValueChange = !1, this.isAddAnnotationProgramatically = !1, this.isInuptBoxInFocus = !1, this.freeTextPageNumbers = [], this.selectedText = "", this.isTextSelected = !1, this.selectionStart = 0, this.selectionEnd = 0, this.isBold = !1, this.isItalic = !1, this.isUnderline = !1, this.isStrikethrough = !1, this.isReadonly = !1, this.previousText = "Type Here", this.pdfViewer = e, this.pdfViewerBase = t, this.updateTextProperties(), this.inputBoxElement = document.createElement("textarea"), this.inputBoxElement.style.position = "absolute", this.inputBoxElement.style.Width = this.defautWidth, this.inputBoxElement.style.Height = this.defaultHeight, this.inputBoxElement.style.zIndex = "5", this.inputBoxElement.style.fontSize = this.fontSize + "px", this.inputBoxElement.className = "free-text-input", this.inputBoxElement.style.resize = "none", this.inputBoxElement.style.borderColor = this.borderColor, this.inputBoxElement.style.background = this.fillColor, this.inputBoxElement.style.borderStyle = this.borderStyle, this.inputBoxElement.style.borderWidth = this.borderWidth + "px", this.inputBoxElement.style.padding = "2px", this.inputBoxElement.style.borderRadius = "2px", this.inputBoxElement.style.fontFamily = this.fontFamily, this.inputBoxElement.style.color = this.pdfViewer.freeTextSettings.fontColor ? this.pdfViewer.freeTextSettings.fontColor : "#000", this.inputBoxElement.style.overflow = "hidden", this.inputBoxElement.style.wordBreak = "break-all", this.inputBoxElement.readOnly = this.isReadonly, this.inputBoxElement.addEventListener("focusout", this.onFocusOutInputBox.bind(this)), this.inputBoxElement.addEventListener("keydown", this.onKeyDownInputBox.bind(this)), this.inputBoxElement.addEventListener("mouseup", this.onMouseUpInputBox.bind(this)), this.freeTextPageNumbers = []
             }
@@ -3435,11 +3460,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 p = Math.abs(a.Rotate),
                                 M = a.Bounds.X ? a.Bounds.X : a.Bounds.x,
                                 h = a.Bounds.Y ? a.Bounds.Y : a.Bounds.y,
-                                L = a.Bounds.Width ? a.Bounds.Width : a.Bounds.width,
-                                w = a.Bounds.Height ? a.Bounds.Height : a.Bounds.height;
-                            90 !== p && 270 !== p || (a.Bounds.Width = w, a.Bounds.Height = L, h = (M = M + w - w / 2) + L - w / 2);
-                            var c = !0;
-                            c = "Imported Annotation" === a.annotationAddMode ? a.IsPrint : a.AnnotationSettings.isPrint, a.allowedInteractions = a.AllowedInteractions ? a.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(a), u = {
+                                w = a.Bounds.Width ? a.Bounds.Width : a.Bounds.width,
+                                L = a.Bounds.Height ? a.Bounds.Height : a.Bounds.height;
+                            if (1 === Math.sign(a.Rotate) && (a.Rotate = -a.Rotate), 90 === p || 270 === p) {
+                                var c = w;
+                                M -= (w = L) / 2, h += w / 2 - (L = c) / 2
+                            }
+                            var C = !0;
+                            C = "Imported Annotation" === a.annotationAddMode ? a.IsPrint : a.AnnotationSettings.isPrint, a.allowedInteractions = a.AllowedInteractions ? a.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(a), u = {
                                 author: a.Author,
                                 modifiedDate: a.ModifiedDate,
                                 subject: a.Subject,
@@ -3454,8 +3482,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     y: h,
                                     left: M,
                                     top: h,
-                                    width: L,
-                                    height: w,
+                                    width: w,
+                                    height: L,
                                     right: a.Bounds.Right,
                                     bottom: a.Bounds.Bottom
                                 },
@@ -3486,13 +3514,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 customData: this.pdfViewer.annotation.getCustomData(a),
                                 annotationAddMode: a.annotationAddMode,
                                 allowedInteractions: a.allowedInteractions,
-                                isPrint: c,
+                                isPrint: C,
                                 isCommentLock: a.IsCommentLock,
                                 isReadonly: a.IsReadonly
                             }, i && (u.id = a.AnnotName, u.previousFontSize = a.FontSize ? a.FontSize : this.fontSize);
-                            var C = this.pdfViewer.add(u);
+                            var g = this.pdfViewer.add(u);
                             if (this.pdfViewer.annotationModule.storeAnnotations(t, u, "_annotations_freetext"), this.isAddAnnotationProgramatically) {
-                                var g = {
+                                var m = {
                                     opacity: u.opacity,
                                     borderColor: u.strokeColor,
                                     borderWidth: u.thickness,
@@ -3509,9 +3537,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     fontStyle: u.font,
                                     textAlignment: u.textAlign
                                 };
-                                this.pdfViewer.fireAnnotationAdd(u.pageIndex, u.annotName, "FreeText", u.bounds, g)
+                                this.pdfViewer.fireAnnotationAdd(u.pageIndex, u.annotName, "FreeText", u.bounds, m)
                             }
-                            this.inputBoxCount += 1, this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !0, this.pdfViewer.nodePropertyChange(C, {}), this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !1
+                            this.inputBoxCount += 1, this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !0, this.pdfViewer.nodePropertyChange(g, {}), this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !1
                         }
                     }
                 }
@@ -3595,7 +3623,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             a = n[o];
                         if (a) {
                             for (var r = 0; a.annotations.length > r; r++) {
-                                this.pdfViewer.annotationModule.updateModifiedDate(a.annotations[r]), a.annotations[r].bounds = JSON.stringify(this.pdfViewer.annotation.getBounds(a.annotations[r].bounds, a.pageIndex));
+                                this.pdfViewer.annotationModule.updateModifiedDate(a.annotations[r]), a.annotations[r].bounds = this.getBoundsBasedOnRotation(a.annotations[r].bounds, a.annotations[r].rotateAngle), a.annotations[r].bounds = JSON.stringify(this.pdfViewer.annotation.getBounds(a.annotations[r].bounds, a.pageIndex));
                                 var l = a.annotations[r].strokeColor;
                                 a.annotations[r].strokeColor = JSON.stringify(this.getRgbCode(l));
                                 var d = a.annotations[r].fillColor;
@@ -3608,6 +3636,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         t[a.pageIndex] = s
                     }
                 return JSON.stringify(t)
+            }, i.prototype.getBoundsBasedOnRotation = function(e, t) {
+                if (90 === t || -90 === t || 270 === t || -270 === t) {
+                    var i = e.x + e.width / 2,
+                        n = e.y - (e.width / 2 - e.height / 2);
+                    return {
+                        x: i,
+                        y: n,
+                        left: i,
+                        top: n,
+                        width: e.height,
+                        height: e.width
+                    }
+                }
+                return e
             }, i.prototype.manageAnnotations = function(e, t) {
                 var i = window.sessionStorage.getItem(this.pdfViewerBase.documentId + "_annotations_freetext");
                 if (this.pdfViewerBase.isStorageExceed && (i = this.pdfViewerBase.annotationStorage[this.pdfViewerBase.documentId + "_annotations_freetext"]), i) {
@@ -3658,8 +3700,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var M = void 0,
                             h = this.pdfViewer.annotation.stickyNotesAnnotationModule.addComments("freeText", t + 1);
                         h && (document.getElementById(h).id = p);
-                        var L = this.pdfViewer.freeTextSettings.annotationSelectorSettings ? this.pdfViewer.freeTextSettings.annotationSelectorSettings : this.pdfViewer.annotationSelectorSettings,
-                            w = this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.freeTextSettings);
+                        var w = this.pdfViewer.freeTextSettings.annotationSelectorSettings ? this.pdfViewer.freeTextSettings.annotationSelectorSettings : this.pdfViewer.annotationSelectorSettings,
+                            L = this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.freeTextSettings);
                         this.author = this.author ? this.author : this.pdfViewer.freeTextSettings.author ? this.pdfViewer.freeTextSettings.author : "Guest";
                         var c = this.pdfViewer.freeTextSettings.allowedInteractions ? this.pdfViewer.freeTextSettings.allowedInteractions : this.pdfViewer.annotationSettings.allowedInteractions;
                         M = {
@@ -3677,8 +3719,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 top: a / r,
                                 x: s / r,
                                 y: a / r,
-                                width: o,
-                                height: n
+                                width: o / r,
+                                height: n / r
                             },
                             annotName: p,
                             shapeAnnotationType: "FreeText",
@@ -3701,8 +3743,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 modifiedDate: u,
                                 author: this.author
                             },
-                            annotationSelectorSettings: L,
-                            annotationSettings: w,
+                            annotationSelectorSettings: w,
+                            annotationSettings: L,
                             customData: this.pdfViewer.annotationModule.getData("FreeText"),
                             isPrint: this.pdfViewer.freeTextSettings.isPrint,
                             allowedInteractions: c,
@@ -4068,7 +4110,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, i
         }(),
-        ct = function() {
+        gt = function() {
             function e(e, t) {
                 this.pdfViewer = e, this.pdfViewerBase = t, this.inputBoxElement = document.createElement("input"), this.inputBoxElement.addEventListener("focusout", this.onFocusOutInputBox.bind(this)), this.maxHeight = 24.6, this.maxWidth = 151, this.fontSize = 16, this.isInFocus = !1, this.inputBoxElement.style.position = "absolute", this.inputBoxElement.style.fontFamily = "Helvetica"
             }
@@ -4140,9 +4182,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return t
             }, e
         }(),
-        Ct = function() {
+        mt = function() {
             function r(e, t) {
-                this.isUndoRedoAction = !1, this.isUndoAction = !1, this.annotationSelected = !0, this.isShapeCopied = !1, this.actionCollection = [], this.redoCollection = [], this.isPopupNoteVisible = !1, this.undoCommentsElement = [], this.redoCommentsElement = [], this.selectAnnotationId = null, this.isAnnotationSelected = !1, this.annotationPageIndex = null, this.previousIndex = null, this.overlappedAnnotations = [], this.overlappedCollections = [], this.isFormFieldShape = !1, this.removedAnnotationCollection = [], this.pdfViewer = e, this.pdfViewerBase = t, this.pdfViewer.enableTextMarkupAnnotation && (this.textMarkupAnnotationModule = new yt(this.pdfViewer, this.pdfViewerBase)), this.pdfViewer.enableShapeAnnotation && (this.shapeAnnotationModule = new St(this.pdfViewer, this.pdfViewerBase)), this.pdfViewer.enableMeasureAnnotation && (this.measureAnnotationModule = new jt(this.pdfViewer, this.pdfViewerBase)), this.stampAnnotationModule = new At(this.pdfViewer, this.pdfViewerBase), this.stickyNotesAnnotationModule = new Tt(this.pdfViewer, this.pdfViewerBase), this.freeTextAnnotationModule = new wt(this.pdfViewer, this.pdfViewerBase), this.inputElementModule = new ct(this.pdfViewer, this.pdfViewerBase), this.inkAnnotationModule = new xt(this.pdfViewer, this.pdfViewerBase)
+                this.isUndoRedoAction = !1, this.isUndoAction = !1, this.annotationSelected = !0, this.isShapeCopied = !1, this.actionCollection = [], this.redoCollection = [], this.isPopupNoteVisible = !1, this.undoCommentsElement = [], this.redoCommentsElement = [], this.selectAnnotationId = null, this.isAnnotationSelected = !1, this.annotationPageIndex = null, this.previousIndex = null, this.overlappedAnnotations = [], this.overlappedCollections = [], this.isFormFieldShape = !1, this.removedAnnotationCollection = [], this.pdfViewer = e, this.pdfViewerBase = t, this.pdfViewer.enableTextMarkupAnnotation && (this.textMarkupAnnotationModule = new St(this.pdfViewer, this.pdfViewerBase)), this.pdfViewer.enableShapeAnnotation && (this.shapeAnnotationModule = new Tt(this.pdfViewer, this.pdfViewerBase)), this.pdfViewer.enableMeasureAnnotation && (this.measureAnnotationModule = new At(this.pdfViewer, this.pdfViewerBase)), this.stampAnnotationModule = new xt(this.pdfViewer, this.pdfViewerBase), this.stickyNotesAnnotationModule = new Nt(this.pdfViewer, this.pdfViewerBase), this.freeTextAnnotationModule = new Ct(this.pdfViewer, this.pdfViewerBase), this.inputElementModule = new gt(this.pdfViewer, this.pdfViewerBase), this.inkAnnotationModule = new Dt(this.pdfViewer, this.pdfViewerBase)
             }
             return r.prototype.setAnnotationMode = function(t, i, n, o) {
                 var s = this.pdfViewer.allowServerDataBinding;
@@ -4179,36 +4221,38 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, r.prototype.deleteAnnotation = function() {
                 this.textMarkupAnnotationModule && this.textMarkupAnnotationModule.deleteTextMarkupAnnotation();
-                var e = !1;
+                var e = !1,
+                    i = !1;
                 if (this.pdfViewer.selectedItems.annotations.length > 0) {
-                    var i = this.pdfViewer.selectedItems.annotations[0];
-                    if (i.annotationSettings && (e = i.annotationSettings.isLock) && this.checkAllowedInteractions("Delete", i) && (e = !1), !e) {
-                        var n = i.pageIndex,
-                            o = i.shapeAnnotationType,
-                            s = void 0;
-                        "Line" === o || "LineWidthArrowHead" === o || "Polygon" === o || "Ellipse" === o || "Rectangle" === o || "Radius" === o || "Distance" === o ? (t.isNullOrUndefined(i.measureType) || "" === i.measureType ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(i, "shape"), this.updateImportAnnotationCollection(i, n, "shapeAnnotation")) : (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(i, "measure"), this.updateImportAnnotationCollection(i, n, "measureShapeAnnotation")), s = this.modifyInCollections(i, "delete")) : "FreeText" === o ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(i, "FreeText", "delete"), s = this.modifyInCollections(i, "delete"), this.updateImportAnnotationCollection(i, n, "freeTextAnnotation")) : "HandWrittenSignature" === o || "SignatureImage" === o || "SignatureText" === o ? s = this.modifyInCollections(i, "delete") : "Ink" === o ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(i, "Ink", "delete"), s = this.modifyInCollections(i, "delete"), this.updateImportAnnotationCollection(i, n, "inkAnnotation")) : (s = this.pdfViewer.selectedItems.annotations[0], this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(s, s.shapeAnnotationType, "delete"), this.pdfViewer.annotation.stampAnnotationModule.updateSessionStorage(i, null, "delete")), "StickyNotes" === o && this.updateImportAnnotationCollection(i, n, "stickyNotesAnnotation"), this.updateImportAnnotationCollection(i, n, "stampAnnotations"), this.pdfViewer.annotation.addAction(n, null, i, "Delete", "", s, i);
-                        var a = void 0;
-                        "" !== i.annotName ? a = document.getElementById(i.annotName) : s && "" !== s.annotName && (a = document.getElementById(s.annotName)), a && (1 === a.parentElement.childElementCount ? this.stickyNotesAnnotationModule.updateAccordionContainer(a) : a.remove());
-                        var r = this.pdfViewer.selectedItems.annotations[0],
-                            l = r.annotName,
-                            d = this.getAnnotationType(r.shapeAnnotationType, r.measureType);
-                        if ("Path" === o || "SignatureField" === r.formFieldAnnotationType || "InitialField" === r.formFieldAnnotationType || "HandWrittenSignature" === o || "SignatureText" === o || "SignatureImage" === o) {
-                            var u = document.getElementById(r.id),
-                                p = document.getElementById(r.id + "_html_element");
-                            null !== u || t.isNullOrUndefined(p) || (u = p.children[0].children[0]), u && u.classList.contains("e-pdfviewer-signatureformfields-signature") && (u.className = "e-pdfviewer-signatureformfields", u.style.pointerEvents = "", u.parentElement.style.pointerEvents = "", this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.updateSignatureValue(r.id) : this.pdfViewer.formFieldsModule.updateDataInSession(u, ""));
-                            for (var M = this.pdfViewer.retrieveFormFields(), h = 0; h < M.length; h++) r.id === M[h].id && (M[h].value = "", M[h].signatureType = "")
+                    var n = this.pdfViewer.selectedItems.annotations[0],
+                        o = n.shapeAnnotationType;
+                    if ("Path" !== o && "SignatureField" !== n.formFieldAnnotationType && "InitialField" !== n.formFieldAnnotationType && "HandWrittenSignature" !== o && "SignatureText" !== o && "SignatureImage" !== o || (M = document.getElementById(n.id)) && M.disabled && (i = !0), n.annotationSettings && (e = n.annotationSettings.isLock) && this.checkAllowedInteractions("Delete", n) && (e = !1), !e && !i) {
+                        var s = n.pageIndex,
+                            a = n.shapeAnnotationType,
+                            r = void 0;
+                        "Line" === a || "LineWidthArrowHead" === a || "Polygon" === a || "Ellipse" === a || "Rectangle" === a || "Radius" === a || "Distance" === a ? (t.isNullOrUndefined(n.measureType) || "" === n.measureType ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(n, "shape"), this.updateImportAnnotationCollection(n, s, "shapeAnnotation")) : (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(n, "measure"), this.updateImportAnnotationCollection(n, s, "measureShapeAnnotation")), r = this.modifyInCollections(n, "delete")) : "FreeText" === a ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(n, "FreeText", "delete"), r = this.modifyInCollections(n, "delete"), this.updateImportAnnotationCollection(n, s, "freeTextAnnotation")) : "HandWrittenSignature" === a || "SignatureImage" === a || "SignatureText" === a ? r = this.modifyInCollections(n, "delete") : "Ink" === a ? (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(n, "Ink", "delete"), r = this.modifyInCollections(n, "delete"), this.updateImportAnnotationCollection(n, s, "inkAnnotation")) : (r = this.pdfViewer.selectedItems.annotations[0], this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(r, r.shapeAnnotationType, "delete"), this.pdfViewer.annotation.stampAnnotationModule.updateSessionStorage(n, null, "delete")), "StickyNotes" === a && this.updateImportAnnotationCollection(n, s, "stickyNotesAnnotation"), this.updateImportAnnotationCollection(n, s, "stampAnnotations"), this.pdfViewer.annotation.addAction(s, null, n, "Delete", "", r, n);
+                        var l = void 0;
+                        "" !== n.annotName ? l = document.getElementById(n.annotName) : r && "" !== r.annotName && (l = document.getElementById(r.annotName)), l && (1 === l.parentElement.childElementCount ? this.stickyNotesAnnotationModule.updateAccordionContainer(l) : l.remove());
+                        var d = this.pdfViewer.selectedItems.annotations[0],
+                            u = d.annotName,
+                            p = this.getAnnotationType(d.shapeAnnotationType, d.measureType);
+                        if ("Path" === a || "SignatureField" === d.formFieldAnnotationType || "InitialField" === d.formFieldAnnotationType || "HandWrittenSignature" === a || "SignatureText" === a || "SignatureImage" === a) {
+                            var M = document.getElementById(d.id),
+                                h = document.getElementById(d.id + "_html_element");
+                            null !== M || t.isNullOrUndefined(h) || (M = h.children[0].children[0]), M && M.classList.contains("e-pdfviewer-signatureformfields-signature") && (M.className = "e-pdfviewer-signatureformfields", M.style.pointerEvents = "", M.parentElement.style.pointerEvents = "", this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.updateSignatureValue(d.id) : this.pdfViewer.formFieldsModule.updateDataInSession(M, ""));
+                            for (var w = this.pdfViewer.retrieveFormFields(), L = 0; L < w.length; L++) d.id === w[L].id && (w[L].value = "", w[L].signatureType = "")
                         }
-                        this.pdfViewer.formDesignerModule && r.formFieldAnnotationType ? this.updateFormFieldCollection(i) : this.updateAnnotationCollection(i);
-                        var L = this.pdfViewer.nameTable[i.id.split("_")[0]];
-                        if (null == L || "SignatureField" !== L.formFieldAnnotationType && "InitialField" !== L.formFieldAnnotationType || L.wrapper.children.splice(L.wrapper.children.indexOf(i.wrapper.children[0]), 1), this.pdfViewer.remove(i), this.pdfViewer.renderDrawing(), this.pdfViewer.clearSelection(n), this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner"), this.pdfViewer.isDocumentEdited = !0, this.pdfViewerBase.tool = null, this.pdfViewer.tool = null, "HandWrittenSignature" === r.shapeAnnotationType || "SignatureText" === r.shapeAnnotationType || "SignatureImage" === r.shapeAnnotationType) {
-                            var w = {
-                                left: r.bounds.x,
-                                top: r.bounds.y,
-                                width: r.bounds.width,
-                                height: r.bounds.height
+                        this.pdfViewer.formDesignerModule && d.formFieldAnnotationType ? this.updateFormFieldCollection(n) : this.updateAnnotationCollection(n);
+                        var c = this.pdfViewer.nameTable[n.id.split("_")[0]];
+                        if (null == c || "SignatureField" !== c.formFieldAnnotationType && "InitialField" !== c.formFieldAnnotationType || c.wrapper.children.splice(c.wrapper.children.indexOf(n.wrapper.children[0]), 1), this.pdfViewer.remove(n), this.pdfViewer.renderDrawing(), this.pdfViewer.clearSelection(s), this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner"), this.pdfViewer.isDocumentEdited = !0, this.pdfViewerBase.tool = null, this.pdfViewer.tool = null, "HandWrittenSignature" === d.shapeAnnotationType || "SignatureText" === d.shapeAnnotationType || "SignatureImage" === d.shapeAnnotationType) {
+                            var C = {
+                                left: d.bounds.x,
+                                top: d.bounds.y,
+                                width: d.bounds.width,
+                                height: d.bounds.height
                             };
-                            this.pdfViewer.fireSignatureRemove(n, r.signatureName, r.shapeAnnotationType, w)
-                        } else this.pdfViewer.formDesignerModule || this.pdfViewer.fireAnnotationRemove(n, l, d, r.bounds);
+                            this.pdfViewer.fireSignatureRemove(s, d.signatureName, d.shapeAnnotationType, C)
+                        } else this.pdfViewer.annotationModule && this.pdfViewer.fireAnnotationRemove(s, u, p, d.bounds);
                         this.pdfViewer.textSelectionModule && this.pdfViewer.textSelectionModule.enableTextSelectionMode()
                     }
                 }
@@ -4220,7 +4264,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 } else {
                     var i = this.checkAnnotationCollection(e),
                         n = m(e);
-                    n.annotationId = e.annotName, n.pageNumber = t, delete n.annotName, "stamp" === e.shapeAnnotationType && (n.uniqueKey = e.randomId, delete n.randomId), e.id && (n.uniqueKey = e.id, delete n.id), n.customData && e.customData && JSON.stringify(n.customData) !== JSON.stringify(e.customData) && (n.customData = e.customData), i.isExisting ? this.pdfViewer.annotationCollection.splice(i.position, 0, n) : this.pdfViewer.annotationCollection.push(n)
+                    n.annotationId = e.annotName, n.pageNumber = t, delete n.annotName, "stamp" === e.shapeAnnotationType && (n.uniqueKey = e.randomId, delete n.randomId), "sticky" === e.shapeAnnotationType && (n.uniqueKey = e.annotName), e.id && (n.uniqueKey = e.id, delete n.id), n.customData && e.customData && JSON.stringify(n.customData) !== JSON.stringify(e.customData) && (n.customData = e.customData), i.isExisting ? this.pdfViewer.annotationCollection.splice(i.position, 0, n) : this.pdfViewer.annotationCollection.push(n)
                 }
             }, r.prototype.checkFormDesignCollection = function(e) {
                 var t = this.pdfViewer.formFieldCollection;
@@ -4526,8 +4570,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             else {
                                 "Line" !== n && "LineWidthArrowHead" !== n && "Polygon" !== n && "Ellipse" !== n && "Rectangle" !== n && "Radius" !== n && "Distance" !== n || ("" === e.annotation.measureType || t.isNullOrUndefined(e.annotation.measureType) ? (n = "shape", this.shapeAnnotationModule.addInCollection(e.annotation.pageIndex, e.undoElement)) : (n = "shape_measure", this.measureAnnotationModule.addInCollection(e.annotation.pageIndex, e.undoElement))), "Stamp" === n || "Image" === n ? this.stampAnnotationModule.updateDeleteItems(e.annotation.pageIndex, e.annotation) : "FreeText" === n ? this.freeTextAnnotationModule.addInCollection(e.annotation.pageIndex, e.undoElement) : "Ink" === n && this.inkAnnotationModule.addInCollection(e.annotation.pageIndex, e.undoElement);
                                 var r = this.pdfViewer.add(e.annotation);
-                                if (("FreeText" === n || r.enableShapeLabel) && r && this.pdfViewer.nodePropertyChange(r, {}), null != (w = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]]) && ("SignatureField" === w.formFieldAnnotationType || "InitialField" === w.formFieldAnnotationType)) {
-                                    w.wrapper.children.push(e.annotation.wrapper.children[0]), "SignatureText" === e.annotation.shapeAnnotationType && w.wrapper.children.push(e.annotation.wrapper.children[1]);
+                                if (("FreeText" === n || r.enableShapeLabel) && r && this.pdfViewer.nodePropertyChange(r, {}), null != (L = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]]) && ("SignatureField" === L.formFieldAnnotationType || "InitialField" === L.formFieldAnnotationType)) {
+                                    L.wrapper.children.push(e.annotation.wrapper.children[0]), "SignatureText" === e.annotation.shapeAnnotationType && L.wrapper.children.push(e.annotation.wrapper.children[1]);
                                     var l = e.annotation.id.split("_")[0] + "_content",
                                         d = null;
                                     if (this.pdfViewer.formDesignerModule && (d = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner")), d) {
@@ -4538,8 +4582,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         else {
                                             u[p].FormField.signatureType = "Path", this.pdfViewerBase.formFieldCollection[p].FormField.signatureType = "Path";
                                             var M = i.processPathData(e.annotation.data),
-                                                L = i.splitArrayCollection(M);
-                                            u[p].FormField.value = JSON.stringify(L), this.pdfViewerBase.formFieldCollection[p].FormField.value = JSON.stringify(L)
+                                                w = i.splitArrayCollection(M);
+                                            u[p].FormField.value = JSON.stringify(w), this.pdfViewerBase.formFieldCollection[p].FormField.value = JSON.stringify(w)
                                         }
                                         this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
                                     }
@@ -4633,9 +4677,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             if (e.annotation.formFieldAnnotationType) "RadioButton" == e.annotation.formFieldAnnotationType ? (this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.undoElement, !1), this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.redoElement, !0)) : this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.annotation, e.undoElement);
                             else {
                                 document.getElementById(e.annotation.id + "_html_element").children[0].children[0].className = "e-pdfviewer-signatureformfields";
-                                var w = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]],
+                                var L = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]],
                                     c = this.pdfViewer.nameTable[e.annotation.id];
-                                w.wrapper.children.splice(w.wrapper.children.indexOf(c.wrapper.children[0]), 1), "SignatureText" === e.annotation.shapeAnnotationType && w.wrapper.children.splice(w.wrapper.children.indexOf(c.wrapper.children[1]), 1);
+                                L.wrapper.children.splice(L.wrapper.children.indexOf(c.wrapper.children[0]), 1), "SignatureText" === e.annotation.shapeAnnotationType && L.wrapper.children.splice(L.wrapper.children.indexOf(c.wrapper.children[1]), 1);
                                 var l = e.annotation.id.split("_")[0] + "_content",
                                     d = null;
                                 if (this.pdfViewer.formDesignerModule && (d = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner")), d) {
@@ -4686,8 +4730,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             else {
                                 var a = !1,
                                     r = e.annotation.shapeAnnotationType;
-                                if ("Line" !== n && "LineWidthArrowHead" !== n && "Polygon" !== n && "Ellipse" !== n && "Rectangle" !== n && "Radius" !== n && "Distance" !== n || (r = "" === e.annotation.measureType || t.isNullOrUndefined(e.annotation.measureType) ? "shape" : "measure", this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.modifyInCollections(e.annotation, "delete"), a = !0), "Stamp" === n && (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.stampAnnotationModule.updateSessionStorage(e.annotation, null, "delete"), a = !0), "FreeText" !== n && "HandWrittenSignature" !== n && "SignatureText" !== n && "SignatureImage" !== n || (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.modifyInCollections(e.annotation, "delete")), a || this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), null != (w = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]]) && ("SignatureField" === w.formFieldAnnotationType || "InitialField" === w.formFieldAnnotationType)) {
-                                    w.wrapper.children.splice(w.wrapper.children.indexOf(e.annotation.wrapper.children[0]), 1), "SignatureText" === e.annotation.shapeAnnotationType && w.wrapper.children.splice(w.wrapper.children.indexOf(e.annotation.wrapper.children[1]), 1);
+                                if ("Line" !== n && "LineWidthArrowHead" !== n && "Polygon" !== n && "Ellipse" !== n && "Rectangle" !== n && "Radius" !== n && "Distance" !== n || (r = "" === e.annotation.measureType || t.isNullOrUndefined(e.annotation.measureType) ? "shape" : "measure", this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.modifyInCollections(e.annotation, "delete"), a = !0), "Stamp" === n && (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.stampAnnotationModule.updateSessionStorage(e.annotation, null, "delete"), a = !0), "FreeText" !== n && "HandWrittenSignature" !== n && "SignatureText" !== n && "SignatureImage" !== n || (this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), this.modifyInCollections(e.annotation, "delete")), a || this.pdfViewer.annotation.stickyNotesAnnotationModule.findPosition(e.annotation, r, "delete"), null != (L = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]]) && ("SignatureField" === L.formFieldAnnotationType || "InitialField" === L.formFieldAnnotationType)) {
+                                    L.wrapper.children.splice(L.wrapper.children.indexOf(e.annotation.wrapper.children[0]), 1), "SignatureText" === e.annotation.shapeAnnotationType && L.wrapper.children.splice(L.wrapper.children.indexOf(e.annotation.wrapper.children[1]), 1);
                                     var l = e.annotation.id.split("_")[0] + "_content",
                                         d = null;
                                     if (this.pdfViewer.formDesignerModule && (d = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner")), d) {
@@ -4749,8 +4793,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             break;
                         case "dynamicText Change":
                             this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !0, e.annotation.dynamicText = e.redoElement.dynamicText;
-                            var L = this.pdfViewer.selectedItems.annotations[0];
-                            L && (L.dynamicText = e.redoElement.dynamicText, L.bounds.height = e.redoElement.bounds.height), this.pdfViewer.annotationModule.stickyNotesAnnotationModule.redoAction(e.annotation, e.action, e.undoElement), this.stickyNotesAnnotationModule.updateAnnotationModifiedDate(e.annotation, null, !0), this.modifyInCollections(e.annotation, "dynamicText"), L ? this.pdfViewer.nodePropertyChange(L, {}) : this.pdfViewer.nodePropertyChange(e.annotation, {}), this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !1, this.pdfViewer.clearSelection(this.pdfViewerBase.activeElements.activePageID), this.pdfViewer.select([e.annotation.id]);
+                            var w = this.pdfViewer.selectedItems.annotations[0];
+                            w && (w.dynamicText = e.redoElement.dynamicText, w.bounds.height = e.redoElement.bounds.height), this.pdfViewer.annotationModule.stickyNotesAnnotationModule.redoAction(e.annotation, e.action, e.undoElement), this.stickyNotesAnnotationModule.updateAnnotationModifiedDate(e.annotation, null, !0), this.modifyInCollections(e.annotation, "dynamicText"), w ? this.pdfViewer.nodePropertyChange(w, {}) : this.pdfViewer.nodePropertyChange(e.annotation, {}), this.pdfViewer.annotation.freeTextAnnotationModule.isFreeTextValueChange = !1, this.pdfViewer.clearSelection(this.pdfViewerBase.activeElements.activePageID), this.pdfViewer.select([e.annotation.id]);
                             break;
                         case "fontColor":
                             this.pdfViewer.nodePropertyChange(e.annotation, {
@@ -4785,9 +4829,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             if (e.annotation.formFieldAnnotationType) "RadioButton" == e.annotation.formFieldAnnotationType ? (this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.undoElement, !0), this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.redoElement, !1)) : this.updateFormFieldValueChange(e.annotation.formFieldAnnotationType, e.annotation, e.redoElement);
                             else {
                                 document.getElementById(e.annotation.id + "_html_element").children[0].children[0].className = "e-pdfviewer-signatureformfields-signature";
-                                var w = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]],
+                                var L = this.pdfViewer.nameTable[e.annotation.id.split("_")[0]],
                                     c = this.pdfViewer.nameTable[e.annotation.id];
-                                w.wrapper.children.push(c.wrapper.children[0]), "SignatureText" === e.annotation.shapeAnnotationType && w.wrapper.children.push(c.wrapper.children[1]);
+                                L.wrapper.children.push(c.wrapper.children[0]), "SignatureText" === e.annotation.shapeAnnotationType && L.wrapper.children.push(c.wrapper.children[1]);
                                 var l = e.annotation.id.split("_")[0] + "_content",
                                     d = null;
                                 if (this.pdfViewer.formDesignerModule && (d = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner")), d) {
@@ -4864,7 +4908,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, r.prototype.updateCollectionForLineProperty = function(e) {
                 this.modifyInCollections(e, "fill"), this.modifyInCollections(e, "stroke"), this.modifyInCollections(e, "opacity"), this.modifyInCollections(e, "thickness"), this.modifyInCollections(e, "dashArray"), this.modifyInCollections(e, "startArrow"), this.modifyInCollections(e, "endArrow")
             }, r.prototype.updateToolbar = function() {
-                this.pdfViewer.toolbarModule && this.pdfViewer.toolbarModule.updateUndoRedoButtons()
+                this.pdfViewer.toolbarModule && this.pdfViewer.toolbarModule.updateUndoRedoButtons(), this.actionCollection && 0 == this.actionCollection.length ? this.pdfViewer.isDocumentEdited = !1 : this.pdfViewer.isDocumentEdited = !0
             }, r.prototype.createNote = function() {
                 this.popupNote = t.createElement("div", {
                     id: this.pdfViewer.element.id + "_annotation_note",
@@ -5062,9 +5106,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         a = document.querySelector("#" + this.pdfViewer.element.id + "_properties_style"),
                         r = document.querySelector("#" + this.pdfViewer.element.id + "_properties_fill_color_button"),
                         l = document.querySelector("#" + this.pdfViewer.element.id + "_properties_stroke_color_button"),
-                        d = document.querySelector("#" + this.pdfViewer.element.id + "_properties_opacity"),
-                        u = document.querySelector("#" + this.pdfViewer.element.id + "_properties_leader_length");
-                    i && n && (i.value = this.getArrowString(this.pdfViewer.selectedItems.annotations[0].sourceDecoraterShapes), n.value = this.getArrowString(this.pdfViewer.selectedItems.annotations[0].taregetDecoraterShapes)), s.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeWidth, r.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.fill, l.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeColor, this.onStrokeColorChange(l.value), this.onFillColorChange(r.value), d.value = 100 * this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.opacity, parseInt(this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray) >= 3 ? a.value = "Dashed" : "2" === this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray ? a.value = "Dotted" : "0" === this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray && (a.value = "Solid"), "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && (u.value = parseInt(this.pdfViewer.selectedItems.annotations[0].leaderHeight.toString())), this.pdfViewer._dotnetInstance.invokeMethodAsync("OpenPropertiesDialog")
+                        d = (document.querySelector("#" + this.pdfViewer.element.id + "_properties_opacity"), document.querySelector("#" + this.pdfViewer.element.id + "_properties_leader_length")),
+                        u = 100 * this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.opacity;
+                    i && n && (i.value = this.getArrowString(this.pdfViewer.selectedItems.annotations[0].sourceDecoraterShapes), n.value = this.getArrowString(this.pdfViewer.selectedItems.annotations[0].taregetDecoraterShapes)), s.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeWidth, r.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.fill, l.value = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeColor, this.onStrokeColorChange(l.value), this.onFillColorChange(r.value), parseInt(this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray) >= 3 ? a.value = "Dashed" : "2" === this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray ? a.value = "Dotted" : "0" === this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeDashArray && (a.value = "Solid"), "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && (d.value = parseInt(this.pdfViewer.selectedItems.annotations[0].leaderHeight.toString())), this.pdfViewer._dotnetInstance.invokeMethodAsync("OpenPropertiesDialog", u)
                 } else {
                     var p = this.pdfViewer.element.id,
                         M = t.createElement("div", {
@@ -5166,18 +5210,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     min: 0,
                     max: 12
                 }, h);
-                var L = t.createElement("div", {
+                var w = t.createElement("div", {
                     className: "e-pv-properties-color-style"
                 });
-                a.appendChild(L);
-                var w = this.createInputElement(this.pdfViewer.localeObj.getConstant("Fill Color"), L, "color", "button", !0, "e-pv-properties-line-fill-color", i + "_properties_fill_color");
+                a.appendChild(w);
+                var L = this.createInputElement(this.pdfViewer.localeObj.getConstant("Fill Color"), w, "color", "button", !0, "e-pv-properties-line-fill-color", i + "_properties_fill_color");
                 this.fillColorPicker = this.createColorPicker(i + "_properties_fill_color", !0), this.fillColorPicker.change = function(t) {
                     var i = "" === t.currentValue.hex ? "#ffffff00" : t.currentValue.hex;
                     e.fillDropDown.toggle(), e.updateColorInIcon(e.fillDropDown.element, i)
-                }, this.fillDropDown = this.createDropDownButton(w, "e-pv-properties-fill-color-icon", this.fillColorPicker.element.parentElement), this.fillDropDown.beforeOpen = this.onFillDropDownBeforeOpen.bind(this), this.fillDropDown.open = function() {
+                }, this.fillDropDown = this.createDropDownButton(L, "e-pv-properties-fill-color-icon", this.fillColorPicker.element.parentElement), this.fillDropDown.beforeOpen = this.onFillDropDownBeforeOpen.bind(this), this.fillDropDown.open = function() {
                     e.fillColorPicker.refresh()
                 };
-                var c = this.createInputElement(this.pdfViewer.localeObj.getConstant("Line Color"), L, "color", "button", !0, "e-pv-properties-line-stroke-color", i + "_properties_stroke_color");
+                var c = this.createInputElement(this.pdfViewer.localeObj.getConstant("Line Color"), w, "color", "button", !0, "e-pv-properties-line-stroke-color", i + "_properties_stroke_color");
                 this.strokeColorPicker = this.createColorPicker(i + "_properties_stroke_color", !1), this.strokeColorPicker.change = function(t) {
                     var i = "" === t.currentValue.hex ? "#ffffff00" : t.currentValue.hex;
                     e.strokeDropDown.toggle(), e.updateColorInIcon(e.strokeDropDown.element, i)
@@ -5310,34 +5354,34 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "input" === o && (u.type = n), l.appendChild(u), i.appendChild(l), u
             }, r.prototype.updateOpacityIndicator = function() {
                 this.opacityIndicator.textContent = this.opacitySlider.value + "%"
-            }, r.prototype.onOkClicked = function() {
-                var e, i, n, o, s, a;
+            }, r.prototype.onOkClicked = function(e) {
+                var i, n, o, s, a, r;
                 if (t.isBlazor()) {
-                    var r = document.querySelector("#" + this.pdfViewer.element.id + "_properties_line_start"),
-                        l = document.querySelector("#" + this.pdfViewer.element.id + "_properties_line_end"),
-                        d = document.querySelector("#" + this.pdfViewer.element.id + "_line_thickness"),
-                        u = document.querySelector("#" + this.pdfViewer.element.id + "_properties_style"),
-                        p = document.querySelector("#" + this.pdfViewer.element.id + "_properties_fill_color_button"),
-                        M = document.querySelector("#" + this.pdfViewer.element.id + "_properties_stroke_color_button"),
-                        h = document.querySelector("#" + this.pdfViewer.element.id + "_properties_opacity");
-                    e = this.getArrowTypeFromDropDown(r.value, !0), i = this.getArrowTypeFromDropDown(l.value, !0), n = parseInt(d.value), o = "" === (o = this.getValue(M.children[0].style.borderBottomColor, "hex")) ? "#ffffff00" : o, s = "" === (s = this.getValue(p.children[0].style.borderBottomColor, "hex")) ? "#ffffff00" : s, a = h.value / 100, u.value && ("Solid" === u.value ? this.setThickness("0", "solid", !0) : "Dotted" === u.value ? this.setThickness("2", "dotted", !0) : "Dashed" === u.value && this.setThickness("3", "dashed", !0))
-                } else e = this.getArrowTypeFromDropDown(this.startArrowDropDown.content), i = this.getArrowTypeFromDropDown(this.endArrowDropDown.content), n = this.thicknessBox.value, o = "" === (o = this.strokeColorPicker.getValue(this.strokeColorPicker.value, "hex")) ? "#ffffff00" : o, s = "" === (s = this.fillColorPicker.getValue(this.fillColorPicker.value, "hex")) || "#transp" === s || "#ffffff00" === this.fillColorPicker.value ? "#ffffff00" : s, a = this.opacitySlider.value / 100;
+                    var l = document.querySelector("#" + this.pdfViewer.element.id + "_properties_line_start"),
+                        d = document.querySelector("#" + this.pdfViewer.element.id + "_properties_line_end"),
+                        u = document.querySelector("#" + this.pdfViewer.element.id + "_line_thickness"),
+                        p = document.querySelector("#" + this.pdfViewer.element.id + "_properties_style"),
+                        M = document.querySelector("#" + this.pdfViewer.element.id + "_properties_fill_color_button"),
+                        h = document.querySelector("#" + this.pdfViewer.element.id + "_properties_stroke_color_button"),
+                        w = document.querySelector("#" + this.pdfViewer.element.id + "_properties_opacity");
+                    i = this.getArrowTypeFromDropDown(l.value, !0), n = this.getArrowTypeFromDropDown(d.value, !0), o = parseInt(u.value), s = "" === (s = this.getValue(h.children[0].style.borderBottomColor, "hex")) ? "#ffffff00" : s, a = "" === (a = this.getValue(M.children[0].style.borderBottomColor, "hex")) ? "#ffffff00" : a, r = e ? e / 100 : w.value / 100, p.value && ("Solid" === p.value ? this.setThickness("0", "solid", !0) : "Dotted" === p.value ? this.setThickness("2", "dotted", !0) : "Dashed" === p.value && this.setThickness("3", "dashed", !0))
+                } else i = this.getArrowTypeFromDropDown(this.startArrowDropDown.content), n = this.getArrowTypeFromDropDown(this.endArrowDropDown.content), o = this.thicknessBox.value, s = "" === (s = this.strokeColorPicker.getValue(this.strokeColorPicker.value, "hex")) ? "#ffffff00" : s, a = "" === (a = this.fillColorPicker.getValue(this.fillColorPicker.value, "hex")) || "#transp" === a || "#ffffff00" === this.fillColorPicker.value ? "#ffffff00" : a, r = this.opacitySlider.value / 100;
                 var L = this.pdfViewer.selectedItems.annotations[0],
-                    w = m(L),
                     c = m(L),
-                    C = {},
-                    g = !1,
+                    C = m(L),
+                    g = {},
                     f = !1,
                     y = !1,
                     j = !1,
                     S = !1,
                     A = !1,
-                    T = !1;
-                if (e !== L.sourceDecoraterShapes && (C.sourceDecoraterShapes = e, c.lineHeadStart = this.getArrowString(e), S = !0), i !== L.taregetDecoraterShapes && (C.taregetDecoraterShapes = i, c.lineHeadEnd = this.getArrowString(i), A = !0), n !== L.wrapper.children[0].style.strokeWidth && (C.thickness = n, c.thickness = n, y = !0), o !== L.wrapper.children[0].style.strokeColor && (C.strokeColor = o, c.strokeColor = o, f = !0), s !== L.wrapper.children[0].style.fill && (C.fillColor = s, c.fillColor = s, g = !0), a !== L.wrapper.children[0].style.opacity && (C.opacity = a, c.opacity = a, j = !0), this.selectedLineDashArray !== L.wrapper.children[0].style.strokeDashArray && (C.borderDashArray = this.selectedLineDashArray, C.borderStyle = this.selectedLineStyle, c.borderDashArray = C.borderDashArray, c.borderStyle = C.borderStyle, T = !0), t.isBlazor()) {
-                    var x = document.querySelector("#" + this.pdfViewer.element.id + "_properties_leader_length");
-                    "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && parseInt(x.value) !== this.pdfViewer.selectedItems.annotations[0].leaderHeight && (C.leaderHeight = parseInt(x.value))
-                } else "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && this.leaderLengthBox.value !== this.pdfViewer.selectedItems.annotations[0].leaderHeight && (C.leaderHeight = this.leaderLengthBox.value);
-                this.pdfViewer.nodePropertyChange(this.pdfViewer.selectedItems.annotations[0], C), this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.fill = s, this.triggerAnnotationPropChange(this.pdfViewer.selectedItems.annotations[0], g, f, y, j, S, A, T), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "thickness"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "stroke"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "fill"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "opacity"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "dashArray"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "startArrow"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "endArrow"), "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "leaderLength"), this.pdfViewer.annotation.addAction(L.pageIndex, null, L, "Line properties change", "", w, c), this.renderAnnotations(L.pageIndex, null, null, null), t.isBlazor() || this.propertiesDialog.hide()
+                    T = !1,
+                    x = !1;
+                if (i !== L.sourceDecoraterShapes && (g.sourceDecoraterShapes = i, C.lineHeadStart = this.getArrowString(i), A = !0), n !== L.taregetDecoraterShapes && (g.taregetDecoraterShapes = n, C.lineHeadEnd = this.getArrowString(n), T = !0), o !== L.wrapper.children[0].style.strokeWidth && (g.thickness = o, C.thickness = o, j = !0), s !== L.wrapper.children[0].style.strokeColor && (g.strokeColor = s, C.strokeColor = s, y = !0), a !== L.wrapper.children[0].style.fill && (g.fillColor = a, C.fillColor = a, f = !0), r !== L.wrapper.children[0].style.opacity && (g.opacity = r, C.opacity = r, S = !0), this.selectedLineDashArray !== L.wrapper.children[0].style.strokeDashArray && (g.borderDashArray = this.selectedLineDashArray, g.borderStyle = this.selectedLineStyle, C.borderDashArray = g.borderDashArray, C.borderStyle = g.borderStyle, x = !0), t.isBlazor()) {
+                    var N = document.querySelector("#" + this.pdfViewer.element.id + "_properties_leader_length");
+                    "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && parseInt(N.value) !== this.pdfViewer.selectedItems.annotations[0].leaderHeight && (g.leaderHeight = parseInt(N.value))
+                } else "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && this.leaderLengthBox.value !== this.pdfViewer.selectedItems.annotations[0].leaderHeight && (g.leaderHeight = this.leaderLengthBox.value);
+                this.pdfViewer.nodePropertyChange(this.pdfViewer.selectedItems.annotations[0], g), this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.fill = a, this.triggerAnnotationPropChange(this.pdfViewer.selectedItems.annotations[0], f, y, j, S, A, T, x), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "thickness"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "stroke"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "fill"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "opacity"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "dashArray"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "startArrow"), this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "endArrow"), "Distance" === this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && this.modifyInCollections(this.pdfViewer.selectedItems.annotations[0], "leaderLength"), this.pdfViewer.annotation.addAction(L.pageIndex, null, L, "Line properties change", "", c, C), this.renderAnnotations(L.pageIndex, null, null, null), t.isBlazor() || this.propertiesDialog.hide()
             }, r.prototype.onCancelClicked = function() {
                 this.propertiesDialog.hide()
             }, r.prototype.getArrowTypeFromDropDown = function(e, t) {
@@ -5395,7 +5439,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, r.prototype.onShapesMouseup = function(e, i) {
                 if (e = t.isNullOrUndefined(e) ? this.pdfViewer.selectedItems.annotations[0] : e) {
-                    if (this.textMarkupAnnotationModule && this.textMarkupAnnotationModule.currentTextMarkupAnnotation && (this.textMarkupAnnotationModule.currentTextMarkupAnnotation = null, this.textMarkupAnnotationModule.selectTextMarkupCurrentPage = null), (this.pdfViewerBase.tool instanceof ut || this.pdfViewerBase.tool instanceof Mt) && !this.pdfViewerBase.tool.dragging) {
+                    if (this.textMarkupAnnotationModule && this.textMarkupAnnotationModule.currentTextMarkupAnnotation && (this.textMarkupAnnotationModule.currentTextMarkupAnnotation = null, this.textMarkupAnnotationModule.selectTextMarkupCurrentPage = null), (this.pdfViewerBase.tool instanceof Mt || this.pdfViewerBase.tool instanceof wt) && !this.pdfViewerBase.tool.dragging) {
                         var n = {
                             opacity: e.opacity,
                             fillColor: e.fillColor,
@@ -5406,8 +5450,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             modifiedDate: e.modifiedDate
                         };
                         this.getAnnotationIndex(e.pageIndex, e.id), e.bounds.x, e.bounds.y, e.bounds.width, e.bounds.height;
-                        this.pdfViewerBase.tool instanceof Mt && (n.lineHeadStartStyle = this.getArrowString(e.sourceDecoraterShapes), n.lineHeadEndStyle = this.getArrowString(e.taregetDecoraterShapes), n.borderDashArray = e.borderDashArray), this.pdfViewerBase.isAnnotationAdded && "Distance" !== e.measureType || ("" === e.measureType || t.isNullOrUndefined(e.measureType) ? this.shapeAnnotationModule.renderShapeAnnotations(e, this.pdfViewer.annotation.getEventPageNumber(i)) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Radius" !== e.measureType || this.measureAnnotationModule.renderMeasureShapeAnnotations(e, this.pdfViewer.annotation.getEventPageNumber(i))), this.pdfViewer.isDocumentEdited = !0
-                    } else this.pdfViewerBase.tool instanceof st || this.pdfViewerBase.tool instanceof dt ? (this.pdfViewer.isDocumentEdited = !0, "" === e.measureType || t.isNullOrUndefined(e.measureType) ? "FreeText" === e.shapeAnnotationType ? this.pdfViewer.annotation.freeTextAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "HandWrittenSignature" === e.shapeAnnotationType || "SignatureImage" === e.shapeAnnotationType || "SignatureText" === e.shapeAnnotationType ? this.pdfViewerBase.signatureModule.modifySignatureCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Ink" === e.shapeAnnotationType ? this.inkAnnotationModule.modifySignatureInkCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Stamp" === e.shapeAnnotationType || "Image" === e.shapeAnnotationType ? this.stampAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : this.pdfViewer.annotation.shapeAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Radius" !== e.measureType && "Area" !== e.measureType && "Volume" !== e.measureType || this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e), this.pdfViewerBase.tool instanceof dt && (e.formFieldAnnotationType || this.triggerAnnotationResize(e)), this.pdfViewerBase.tool instanceof st && "Select" !== this.pdfViewerBase.action && (e.formFieldAnnotationType || this.triggerAnnotationMove(e))) : this.pdfViewerBase.tool instanceof lt && (this.pdfViewer.isDocumentEdited = !0, "" === e.measureType || t.isNullOrUndefined(e.measureType) ? "Line" !== e.shapeAnnotationType && "LineWidthArrowHead" !== e.shapeAnnotationType && "Polygon" !== e.shapeAnnotationType || this.pdfViewer.annotation.shapeAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Area" !== e.measureType && "Volume" !== e.measureType || ("Distance" === e.measureType && this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("leaderLength", this.pdfViewer.annotation.getEventPageNumber(i), e), this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e)), this.triggerAnnotationResize(e));
+                        this.pdfViewerBase.tool instanceof wt && (n.lineHeadStartStyle = this.getArrowString(e.sourceDecoraterShapes), n.lineHeadEndStyle = this.getArrowString(e.taregetDecoraterShapes), n.borderDashArray = e.borderDashArray), this.pdfViewerBase.isAnnotationAdded && "Distance" !== e.measureType || ("" === e.measureType || t.isNullOrUndefined(e.measureType) ? this.shapeAnnotationModule.renderShapeAnnotations(e, this.pdfViewer.annotation.getEventPageNumber(i)) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Radius" !== e.measureType || this.measureAnnotationModule.renderMeasureShapeAnnotations(e, this.pdfViewer.annotation.getEventPageNumber(i))), this.pdfViewer.isDocumentEdited = !0
+                    } else this.pdfViewerBase.tool instanceof rt || this.pdfViewerBase.tool instanceof pt ? (this.pdfViewer.isDocumentEdited = !0, "" === e.measureType || t.isNullOrUndefined(e.measureType) ? "FreeText" === e.shapeAnnotationType ? this.pdfViewer.annotation.freeTextAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "HandWrittenSignature" === e.shapeAnnotationType || "SignatureImage" === e.shapeAnnotationType || "SignatureText" === e.shapeAnnotationType ? this.pdfViewerBase.signatureModule.modifySignatureCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Ink" === e.shapeAnnotationType ? this.inkAnnotationModule.modifySignatureInkCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Stamp" === e.shapeAnnotationType || "Image" === e.shapeAnnotationType ? this.stampAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : this.pdfViewer.annotation.shapeAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Radius" !== e.measureType && "Area" !== e.measureType && "Volume" !== e.measureType || this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e), this.pdfViewerBase.tool instanceof pt && (e.formFieldAnnotationType || this.triggerAnnotationResize(e)), this.pdfViewerBase.tool instanceof rt && "Select" !== this.pdfViewerBase.action && (e.formFieldAnnotationType || this.triggerAnnotationMove(e))) : this.pdfViewerBase.tool instanceof ut && (this.pdfViewer.isDocumentEdited = !0, "" === e.measureType || t.isNullOrUndefined(e.measureType) ? "Line" !== e.shapeAnnotationType && "LineWidthArrowHead" !== e.shapeAnnotationType && "Polygon" !== e.shapeAnnotationType || this.pdfViewer.annotation.shapeAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e) : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Area" !== e.measureType && "Volume" !== e.measureType || ("Distance" === e.measureType && this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("leaderLength", this.pdfViewer.annotation.getEventPageNumber(i), e), this.pdfViewer.annotation.measureAnnotationModule.modifyInCollection("bounds", this.pdfViewer.annotation.getEventPageNumber(i), e)), this.triggerAnnotationResize(e));
                     this.pdfViewerBase.navigationPane && this.pdfViewerBase.navigationPane.annotationMenuObj && this.pdfViewer.isSignatureEditable && ("HandWrittenSignature" === e.shapeAnnotationType || "SignatureText" === e.shapeAnnotationType || "SignatureImage" === e.shapeAnnotationType) && (this.pdfViewerBase.navigationPane.annotationMenuObj.enableItems([this.pdfViewer.localeObj.getConstant("Export Annotations")], !0), this.pdfViewerBase.navigationPane.annotationMenuObj.enableItems([this.pdfViewer.localeObj.getConstant("Export XFDF")], !0)), this.pdfViewer.toolbarModule && this.pdfViewer.toolbarModule.annotationToolbarModule && this.pdfViewer.enableAnnotationToolbar && (this.pdfViewer.toolbarModule.annotationToolbarModule.clearTextMarkupMode(), "" === e.measureType || t.isNullOrUndefined(e.measureType) ? this.pdfViewer.toolbarModule.annotationToolbarModule.clearMeasureMode() : "Distance" !== e.measureType && "Perimeter" !== e.measureType && "Area" !== e.measureType && "Volume" !== e.measureType && "Radius" !== e.measureType || this.pdfViewer.toolbarModule.annotationToolbarModule.clearShapeMode(), 1 === this.pdfViewer.selectedItems.annotations.length && null === this.pdfViewer.selectedItems.annotations[0].formFieldAnnotationType && this.pdfViewer.toolbarModule.annotationToolbarModule.enableAnnotationPropertiesTools(!0), t.isBlazor() || 1 !== this.pdfViewer.selectedItems.annotations.length || this.pdfViewer.designerMode || (this.pdfViewer.toolbarModule.annotationToolbarModule.selectAnnotationDeleteItem(!0), this.pdfViewer.toolbarModule.annotationToolbarModule.setCurrentColorInPicker(), this.pdfViewer.toolbarModule.annotationToolbarModule.isToolbarHidden = !0, this.pdfViewer.toolbarModule.annotationToolbarModule.showAnnotationToolbar(this.pdfViewer.toolbarModule.annotationItem), this.pdfViewer.isAnnotationToolbarVisible && this.pdfViewer.isFormDesignerToolbarVisible && (document.getElementById(this.pdfViewer.element.id + "_formdesigner_toolbar").style.display = "none", this.pdfViewer.toolbarModule && (this.pdfViewer.toolbarModule.formDesignerToolbarModule.isToolbarHidden = !1, this.pdfViewer.toolbarModule.formDesignerToolbarModule.showFormDesignerToolbar(this.pdfViewer.toolbarModule.formDesignerItem), this.pdfViewer.toolbarModule.annotationToolbarModule.adjustViewer(!0)))))
                 }
             }, r.prototype.updateCalibrateValues = function(e, t) {
@@ -5910,15 +5954,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         if ("textMarkup" === l[u].shapeAnnotationType) {
                             for (var p = !1, M = 0; M < l[u].bounds.length; M++) {
                                 var h = this.orderTextMarkupBounds(l[u].bounds[M]),
-                                    L = this.textMarkupAnnotationModule.annotationClickPosition;
-                                L && (L.x || L.y) ? h.left <= L.x && h.left + h.width >= L.x && h.top <= L.y && h.top + h.height >= L.y && (p = !0) : p = !0
+                                    w = this.textMarkupAnnotationModule.annotationClickPosition;
+                                w && (w.x || w.y) ? h.left <= w.x && h.left + h.width >= w.x && h.top <= w.y && h.top + h.height >= w.y && (p = !0) : p = !0
                             }
                             p || l.splice(u, 1)
                         } if (l && l.length > 0) {
                     n = l;
                     for (u = 0; u < n.length; u++) {
-                        var w = m(n[u]);
-                        w.annotationId = n[u].annotName, e === n[u].annotName && i.measureType && "Volume" === i.measureType && (a.calibrate = n[u].calibrate), delete w.annotName, r.push(w)
+                        var L = m(n[u]);
+                        L.annotationId = n[u].annotName, e === n[u].annotName && i.measureType && "Volume" === i.measureType && (a.calibrate = n[u].calibrate), delete L.annotName, r.push(L)
                     }
                 } else r = null;
                 this.addFreeTextProperties(i, a);
@@ -5994,18 +6038,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if ("textMarkup" === i.shapeAnnotationType && (s = "textMarkup"), i && !0 === i.isCommentLock && (n.isCommentLock = i.isCommentLock), i.comments)
                         for (h = 0; h < i.comments.length; h++) !0 === i.comments[h].isLock && (s ? (n.comments = i.comments, n.comments[h].isLock = i.comments[h].isLock) : (n.properties.comments = i.comments, n.properties.comments[h].isLock = i.comments[h].isLock));
                     if (i && "" !== i.note && void 0 !== i.note && (s ? (n.note = i.note, this.pdfViewer.annotationModule.stickyNotesAnnotationModule.addTextToComments(n.annotName, n.note)) : (n.notes = i.note, this.pdfViewer.annotationModule.stickyNotesAnnotationModule.addTextToComments(n.annotName, n.notes))), i.commentId && i.editComment && "edit" === i.commentType && this.editComments(i.commentId, i.editComment), i.replyComment && "add" === i.commentType && (this.addReplyComments(n, i.replyComment, i.commentType), this.pdfViewer.annotationCollection[0].note = i.note), i.nextComment && "next" === i.commentType && this.addReplyComments(i, i.nextComment, i.commentType), "" === i.note && "delete" === i.commentType) {
-                        L = document.getElementById(i.annotationId);
-                        this.deletComment(L)
+                        w = document.getElementById(i.annotationId);
+                        this.deletComment(w)
                     }
                     if (i.comments)
                         for (var h = 0; h < i.comments.length; h++)
                             if ("" === i.comments[h].note && "delete" === i.commentType) {
-                                var L = document.getElementById(i.comments[h].annotName);
-                                this.deletComment(L)
+                                var w = document.getElementById(i.comments[h].annotName);
+                                this.deletComment(w)
                             } if ("TextMarkup" === i.type || "textMarkup" === i.shapeAnnotationType) {
                         if (n.annotationSettings && i.annotationSettings && n.annotationSettings.isLock !== i.annotationSettings.isLock) {
-                            var w = this.textMarkupAnnotationModule.modifyAnnotationProperty("AnnotationSettings", i.annotationSettings.isLock, null);
-                            this.textMarkupAnnotationModule.manageAnnotations(w, this.textMarkupAnnotationModule.selectTextMarkupCurrentPage)
+                            var L = this.textMarkupAnnotationModule.modifyAnnotationProperty("AnnotationSettings", i.annotationSettings.isLock, null);
+                            this.textMarkupAnnotationModule.manageAnnotations(L, this.textMarkupAnnotationModule.selectTextMarkupCurrentPage)
                         }
                         n.opacity !== i.opacity && this.pdfViewer.annotationModule.textMarkupAnnotationModule.modifyOpacityProperty(null, i.opacity), n.color !== i.color && this.pdfViewer.annotationModule.textMarkupAnnotationModule.modifyColorProperty(i.color), s = "textMarkup", l && (this.textMarkupAnnotationModule.currentTextMarkupAnnotation = null, this.textMarkupAnnotationModule.selectTextMarkupCurrentPage = null)
                     } else if (i && "image" === i.stampAnnotationType && "stamp" === i.shapeAnnotationType && i.stampAnnotationPath) s = "stamp", n.data !== i.stampAnnotationPath && (n.data = i.stampAnnotationPath, n.wrapper.children[0].imageSource = i.stampAnnotationPath), i.opacity && n.opacity !== i.opacity && this.annotationPropertyChange(n, i.opacity, "Shape Opacity", p, M), this.calculateAnnotationBounds(n, i);
@@ -6379,11 +6423,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             for (A = 0; A < h.length; A++) t.push(h[A])
                     }
                 }
-                var L = window.sessionStorage.getItem(this.pdfViewerBase.documentId + "_annotations_freetext");
-                if (L) {
-                    var w = JSON.parse(L);
-                    if (w && w[j = this.getPageCollection(w, e)]) {
-                        var c = w[j].annotations;
+                var w = window.sessionStorage.getItem(this.pdfViewerBase.documentId + "_annotations_freetext");
+                if (w) {
+                    var L = JSON.parse(w);
+                    if (L && L[j = this.getPageCollection(L, e)]) {
+                        var c = L[j].annotations;
                         if (c && c.length > 0)
                             for (A = 0; A < c.length; A++) t.push(c[A])
                     }
@@ -6659,7 +6703,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.pdfViewerBase.isAddAnnotation = !0, this.pdfViewerBase.importAnnotations(d), this.pdfViewerBase.isAddAnnotation = !1
             }, r
         }(),
-        gt = function(e, t, i, n) {
+        ft = function(e, t, i, n) {
             return new(i || (i = Promise))(function(o, s) {
                 function a(e) {
                     try {
@@ -6685,7 +6729,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 l((n = n.apply(e, t || [])).next())
             })
         },
-        mt = function(e, t) {
+        yt = function(e, t) {
             function i(e) {
                 return function(t) {
                     return n([e, t])
@@ -6761,7 +6805,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this
             }), r
         },
-        ft = function() {
+        jt = function() {
             function e(e, t) {
                 this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -6785,12 +6829,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         d.setAttribute("href", p)
                     } else d.setAttribute("href", e[l]);
                     "CurrentTab" === r.pdfViewer.hyperlinkOpenState ? (d.target = "_self", d.onclick = function(t) {
-                        return gt(o, void 0, void 0, function() {
+                        return ft(o, void 0, void 0, function() {
                             var i;
-                            return mt(this, function(n) {
+                            return yt(this, function(n) {
                                 switch (n.label) {
                                     case 0:
-                                        return a ? [3, 4] : (t.preventDefault(), s.pdfViewerBase.tool instanceof Mt || s.pdfViewerBase.tool instanceof pt ? [2, !1] : [3, 1]);
+                                        return a ? [3, 4] : (t.preventDefault(), s.pdfViewerBase.tool instanceof wt || s.pdfViewerBase.tool instanceof ht ? [2, !1] : [3, 1]);
                                     case 1:
                                         return [4, s.pdfViewer.fireHyperlinkClick(e[l], d)];
                                     case 2:
@@ -6807,12 +6851,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }, d.onmouseover = function() {
                         s.triggerHyperlinkEvent(d)
                     }) : "NewTab" === r.pdfViewer.hyperlinkOpenState ? (d.target = "_blank", d.onclick = function(t) {
-                        return gt(o, void 0, void 0, function() {
+                        return ft(o, void 0, void 0, function() {
                             var i;
-                            return mt(this, function(n) {
+                            return yt(this, function(n) {
                                 switch (n.label) {
                                     case 0:
-                                        return a ? [3, 4] : (t.preventDefault(), s.pdfViewerBase.tool instanceof Mt || s.pdfViewerBase.tool instanceof pt ? [2, !1] : [3, 1]);
+                                        return a ? [3, 4] : (t.preventDefault(), s.pdfViewerBase.tool instanceof wt || s.pdfViewerBase.tool instanceof ht ? [2, !1] : [3, 1]);
                                     case 1:
                                         return [4, s.pdfViewer.fireHyperlinkClick(e[l], d)];
                                     case 2:
@@ -6829,12 +6873,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }, d.onmouseover = function() {
                         s.triggerHyperlinkEvent(d)
                     }) : "NewWindow" === r.pdfViewer.hyperlinkOpenState && (d.onclick = function(t) {
-                        return gt(o, void 0, void 0, function() {
+                        return ft(o, void 0, void 0, function() {
                             var i;
-                            return mt(this, function(n) {
+                            return yt(this, function(n) {
                                 switch (n.label) {
                                     case 0:
-                                        return t.preventDefault(), s.pdfViewerBase.tool instanceof Mt || s.pdfViewerBase.tool instanceof pt ? [2, !1] : [3, 1];
+                                        return t.preventDefault(), s.pdfViewerBase.tool instanceof wt || s.pdfViewerBase.tool instanceof ht ? [2, !1] : [3, 1];
                                     case 1:
                                         return [4, s.pdfViewer.fireHyperlinkClick(e[l], d)];
                                     case 2:
@@ -6847,7 +6891,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }), document.getElementById(r.pdfViewer.element.id + "_pageDiv_" + n).appendChild(d)
                 }(l)
             }, e.prototype.triggerHyperlinkEvent = function(e) {
-                return !(this.pdfViewerBase.tool instanceof Mt || this.pdfViewerBase.tool instanceof pt) && (this.pdfViewer.fireHyperlinkHover(e), !0)
+                return !(this.pdfViewerBase.tool instanceof wt || this.pdfViewerBase.tool instanceof ht) && (this.pdfViewer.fireHyperlinkHover(e), !0)
             }, e.prototype.renderDocumentLink = function(e, i, n, o) {
                 for (var s = this, a = this, r = 0; r < e.length; r++) ! function(r) {
                     var l = t.createElement("a", {
@@ -6859,7 +6903,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             p = void 0,
                             M = void 0;
                         0 !== n.length ? (p = n[r], M = a.pdfViewerBase.pageSize[i[r]].top * a.pdfViewerBase.getZoomFactor() + (u - p) * a.pdfViewerBase.getZoomFactor()) : M = a.pdfViewerBase.pageSize[i[r]].top * a.pdfViewerBase.getZoomFactor(), void 0 !== M && (l.name = M.toString(), l.onclick = function() {
-                            return !(s.pdfViewerBase.tool instanceof Mt || s.pdfViewerBase.tool instanceof pt) && (s.pdfViewerBase.viewerContainer.scrollTop = parseInt(l.name), !1)
+                            return !(s.pdfViewerBase.tool instanceof wt || s.pdfViewerBase.tool instanceof ht) && (s.pdfViewerBase.viewerContainer.scrollTop = parseInt(l.name), !1)
                         }), document.getElementById(a.pdfViewer.element.id + "_pageDiv_" + o).appendChild(l)
                     }
                 }(r)
@@ -6889,7 +6933,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "LinkAnnotation"
             }, e
         }(),
-        yt = function() {
+        St = function() {
             function e(e, t) {
                 var i = this;
                 this.currentTextMarkupAddMode = "", this.selectTextMarkupCurrentPage = null, this.currentTextMarkupAnnotation = null, this.isAddAnnotationProgramatically = !1, this.currentAnnotationIndex = null, this.isAnnotationSelect = !1, this.isDropletClicked = !1, this.isRightDropletClicked = !1, this.isLeftDropletClicked = !1, this.isSelectionMaintained = !1, this.isExtended = !1, this.isNewAnnotation = !1, this.selectedTextMarkup = null, this.multiPageCollection = [], this.triggerAddEvent = !1, this.isSelectedAnnotation = !1, this.dropletHeight = 20, this.annotationClickPosition = {}, this.maintainSelection = function(e) {
@@ -6976,10 +7020,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     p = this.getClientValueTop(u.top, e.pageNumber),
                                     M = u.left - this.pdfViewerBase.getElement("_pageDiv_" + e.pageNumber).getBoundingClientRect().left,
                                     h = M + u.width,
-                                    L = parseInt(l[d].style.left),
-                                    w = parseInt(l[d].style.top),
-                                    c = this.pdfViewer.textSelectionModule.checkLeftBounds(M, L, h, o),
-                                    C = this.pdfViewer.textSelectionModule.checkTopBounds(p, w, s);
+                                    w = parseInt(l[d].style.left),
+                                    L = parseInt(l[d].style.top),
+                                    c = this.pdfViewer.textSelectionModule.checkLeftBounds(M, w, h, o),
+                                    C = this.pdfViewer.textSelectionModule.checkTopBounds(p, L, s);
                                 if (c && C) {
                                     t = l[d];
                                     break
@@ -7065,18 +7109,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             var M = l.TextMarkupAnnotationType ? l.TextMarkupAnnotationType : l.textMarkupAnnotationType,
                                 h = l.Bounds ? l.Bounds : l.bounds,
-                                L = l.Opacity ? l.Opacity : l.opacity,
-                                w = l.Color ? l.Color : l.color,
+                                w = l.Opacity ? l.Opacity : l.opacity,
+                                L = l.Color ? l.Color : l.color,
                                 c = !0;
                             switch (l.TextMarkupAnnotationType && (c = l.IsPrint), l.textMarkupAnnotationType && (c = l.isPrint), M) {
                                 case "Highlight":
-                                    this.renderHighlightAnnotation(h, L, w, s, n, c, t);
+                                    this.renderHighlightAnnotation(h, w, L, s, n, c, t);
                                     break;
                                 case "Strikethrough":
-                                    this.renderStrikeoutAnnotation(h, L, w, s, n, t, c);
+                                    this.renderStrikeoutAnnotation(h, w, L, s, n, t, c);
                                     break;
                                 case "Underline":
-                                    this.renderUnderlineAnnotation(h, L, w, s, n, t, c)
+                                    this.renderUnderlineAnnotation(h, w, L, s, n, t, c)
                             }
                         }
                     var C = !1;
@@ -7264,19 +7308,19 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.isNewAnnotation = !1;
                 var p, M = "Guest",
                     h = this.getPageContext(n),
-                    L = this.pdfViewer.annotation.stickyNotesAnnotationModule.getDateAndTime();
+                    w = this.pdfViewer.annotation.stickyNotesAnnotationModule.getDateAndTime();
                 this.highlightColor = this.highlightColor ? this.highlightColor : this.pdfViewer.highlightSettings.color, this.underlineColor = this.underlineColor ? this.underlineColor : this.pdfViewer.underlineSettings.color, this.strikethroughColor = this.strikethroughColor ? this.strikethroughColor : this.pdfViewer.strikethroughSettings.color, this.highlightOpacity = this.pdfViewer.highlightSettings.opacity, this.underlineOpacity = this.pdfViewer.underlineSettings.opacity, this.strikethroughOpacity = this.pdfViewer.strikethroughSettings.opacity, this.annotationAddMode = "UI Drawn Annotation";
-                var w;
+                var L;
                 if (h) {
                     switch (h.setLineDash([]), e) {
                         case "Highlight":
-                            this.isNewAnnotation = !0, p = "Highlight", M = "Guest" !== this.pdfViewer.highlightSettings.author && this.pdfViewer.highlightSettings.author ? this.pdfViewer.highlightSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", w = this.pdfViewer.highlightSettings.allowedInteractions ? this.pdfViewer.highlightSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.highlightColor, this.highlightOpacity, i, M, p, L, "", !1, o, n, a, r, l, d, w)) && this.renderHighlightAnnotation(u.bounds, u.opacity, u.color, h, s, u.isPrint, n);
+                            this.isNewAnnotation = !0, p = "Highlight", M = "Guest" !== this.pdfViewer.highlightSettings.author && this.pdfViewer.highlightSettings.author ? this.pdfViewer.highlightSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", L = this.pdfViewer.highlightSettings.allowedInteractions ? this.pdfViewer.highlightSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.highlightColor, this.highlightOpacity, i, M, p, w, "", !1, o, n, a, r, l, d, L)) && this.renderHighlightAnnotation(u.bounds, u.opacity, u.color, h, s, u.isPrint, n);
                             break;
                         case "Strikethrough":
-                            this.isNewAnnotation = !0, p = "Strikethrough", M = "Guest" !== this.pdfViewer.strikethroughSettings.author && this.pdfViewer.strikethroughSettings.author ? this.pdfViewer.strikethroughSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", w = this.pdfViewer.strikethroughSettings.allowedInteractions ? this.pdfViewer.strikethroughSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.strikethroughColor, this.strikethroughOpacity, i, M, p, L, "", !1, o, n, a, r, l, d, w)) && this.renderStrikeoutAnnotation(u.bounds, u.opacity, u.color, h, s, n, u.isPrint);
+                            this.isNewAnnotation = !0, p = "Strikethrough", M = "Guest" !== this.pdfViewer.strikethroughSettings.author && this.pdfViewer.strikethroughSettings.author ? this.pdfViewer.strikethroughSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", L = this.pdfViewer.strikethroughSettings.allowedInteractions ? this.pdfViewer.strikethroughSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.strikethroughColor, this.strikethroughOpacity, i, M, p, w, "", !1, o, n, a, r, l, d, L)) && this.renderStrikeoutAnnotation(u.bounds, u.opacity, u.color, h, s, n, u.isPrint);
                             break;
                         case "Underline":
-                            this.isNewAnnotation = !0, p = "Underline", M = "Guest" !== this.pdfViewer.underlineSettings.author && this.pdfViewer.underlineSettings.author ? this.pdfViewer.underlineSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", w = this.pdfViewer.underlineSettings.allowedInteractions ? this.pdfViewer.underlineSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.underlineColor, this.underlineOpacity, i, M, p, L, "", !1, o, n, a, r, l, d, w)) && this.renderUnderlineAnnotation(u.bounds, u.opacity, u.color, h, s, n, u.isPrint)
+                            this.isNewAnnotation = !0, p = "Underline", M = "Guest" !== this.pdfViewer.underlineSettings.author && this.pdfViewer.underlineSettings.author ? this.pdfViewer.underlineSettings.author : this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : "Guest", L = this.pdfViewer.underlineSettings.allowedInteractions ? this.pdfViewer.underlineSettings.allowedInteractions : "None", (u = this.getAddedAnnotation(e, this.underlineColor, this.underlineOpacity, i, M, p, w, "", !1, o, n, a, r, l, d, L)) && this.renderUnderlineAnnotation(u.bounds, u.opacity, u.color, h, s, n, u.isPrint)
                     }
                     if (this.isNewAnnotation = !1, u) {
                         this.pdfViewer.isDocumentEdited = !0;
@@ -7348,8 +7392,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = this.getAnnotations(i, null, "_annotations_shape"),
                     M = this.getAnnotations(i, null, "_annotations_shape_measure"),
                     h = this.getAnnotations(i, null, "_annotations_stamp"),
-                    L = this.getAnnotations(i, null, "_annotations_sticky");
-                return h || p || L || M ? this.pdfViewer.renderDrawing(r, i) : (this.pdfViewer.annotation.renderAnnotations(i, o, s, null, r), this.pdfViewer.annotation.stampAnnotationModule.renderStampAnnotations(n, i, r), this.pdfViewer.annotation.stickyNotesAnnotationModule.renderStickyNotesAnnotations(a, i, r)), u ? this.renderTextMarkupAnnotations(null, i, r, 1) : this.renderTextMarkupAnnotations(e, i, r, 1), r.toDataURL()
+                    w = this.getAnnotations(i, null, "_annotations_sticky");
+                return h || p || w || M ? this.pdfViewer.renderDrawing(r, i) : (this.pdfViewer.annotation.renderAnnotations(i, o, s, null, r), this.pdfViewer.annotation.stampAnnotationModule.renderStampAnnotations(n, i, r), this.pdfViewer.annotation.stickyNotesAnnotationModule.renderStickyNotesAnnotations(a, i, r)), u ? this.renderTextMarkupAnnotations(null, i, r, 1) : this.renderTextMarkupAnnotations(e, i, r, 1), r.toDataURL()
             }, e.prototype.saveTextMarkupAnnotations = function() {
                 var e = window.sessionStorage.getItem(this.pdfViewerBase.documentId + "_annotations_textMarkup");
                 this.pdfViewerBase.isStorageExceed && (e = this.pdfViewerBase.annotationStorage[this.pdfViewerBase.documentId + "_annotations_textMarkup"]);
@@ -7561,7 +7605,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             p = void 0,
                             M = void 0;
                         n ? (d = t.focusNode, p = t.focusOffset, u = t.anchorNode, M = t.anchorOffset) : (d = t.anchorNode, p = t.anchorOffset, u = t.focusNode, M = t.focusOffset);
-                        for (var h = this.pdfViewerBase.textLayer.getPageIndex(d), L = this.pdfViewerBase.textLayer.getTextIndex(d, h), w = this.pdfViewerBase.textLayer.getPageIndex(u), c = this.pdfViewerBase.textLayer.getTextIndex(u, w), C = 0, g = 0, m = 0, f = h; f <= w; f++) {
+                        for (var h = this.pdfViewerBase.textLayer.getPageIndex(d), w = this.pdfViewerBase.textLayer.getTextIndex(d, h), L = this.pdfViewerBase.textLayer.getPageIndex(u), c = this.pdfViewerBase.textLayer.getTextIndex(u, L), C = 0, g = 0, m = 0, f = h; f <= L; f++) {
                             var y = [],
                                 j = void 0,
                                 S = void 0,
@@ -7570,9 +7614,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 x = this.pdfViewerBase.getElement("_textLayer_" + f).childNodes,
                                 N = this.pdfViewerBase.getElement("_pageDiv_" + f).getBoundingClientRect();
                             this.pdfViewerBase.isMixedSizeDocument && (N = this.pdfViewerBase.getElement("_textLayer_" + f).getBoundingClientRect());
-                            for (var D = m = f === h ? L : 0; D < x.length; D++) {
+                            for (var D = m = f === h ? w : 0; D < x.length; D++) {
                                 var b = x[D];
-                                D === m ? (j = m, A = f === h ? p : 0) : (S = D, T = f === w ? M : b.textContent.length), C = D === L && f === h ? p : 0, g = D === c && f === w ? M : b.textContent.length;
+                                D === m ? (j = m, A = f === h ? p : 0) : (S = D, T = f === L ? M : b.textContent.length), C = D === w && f === h ? p : 0, g = D === c && f === L ? M : b.textContent.length;
                                 for (var v = 0; v < b.childNodes.length; v++) {
                                     var I = b.childNodes[v];
                                     i.setStart(I, C), i.setEnd(I, g)
@@ -7586,7 +7630,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         right: this.getDefaultValue(s.right - N.left),
                                         bottom: this.getDefaultValue(s.bottom - N.top)
                                     };
-                                if (y.push(r), i.detach(), f === w && D === c) break
+                                if (y.push(r), i.detach(), f === L && D === c) break
                             }
                             S || (S = j), T || (T = g);
                             var E = this.pdfViewerBase.getElement("_text_" + f + "_" + j).childNodes[0],
@@ -7746,7 +7790,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 modifiedDate: o.modifiedDate
                             };
                         this.pdfViewerBase.isMousedOver = !0, this.pdfViewer.fireAnnotationMouseover(o.annotName, o.pageNumber, o.textMarkupAnnotationType, o.bounds, d, l, r)
-                    } else this.pdfViewer.annotationModule.hidePopupNote(), this.pdfViewerBase.isPanMode && !this.pdfViewerBase.getAnnotationToolStatus() ? t.style.cursor = "grab" : t.style.cursor = "auto", this.pdfViewerBase.isMousedOver && !this.pdfViewerBase.isFormFieldMousedOver && (this.pdfViewer.fireAnnotationMouseLeave(i), this.pdfViewerBase.isMousedOver = !1)
+                    } else this.pdfViewer.annotationModule.hidePopupNote(), this.pdfViewerBase.isPanMode && !this.pdfViewerBase.getAnnotationToolStatus() && (t.style.cursor = "grab"), this.pdfViewerBase.isMousedOver && !this.pdfViewerBase.isFormFieldMousedOver && (this.pdfViewer.fireAnnotationMouseLeave(i), this.pdfViewerBase.isMousedOver = !1)
                 }
             }, e.prototype.showPopupNote = function(e, t) {
                 t.note && this.pdfViewer.annotationModule.showPopupNote(e, t.color, t.author, t.note, t.textMarkupAnnotationType)
@@ -7763,11 +7807,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         for (var u = 0; u < l.length; u++)
                             for (var p = l[u], M = 0; M < p.bounds.length; M++) {
                                 var h = p.bounds[M],
-                                    L = h.left ? h.left : h.Left,
-                                    w = h.top ? h.top : h.Top,
+                                    w = h.left ? h.left : h.Left,
+                                    L = h.top ? h.top : h.Top,
                                     c = h.width ? h.width : h.Width,
                                     C = h.height ? h.height : h.Height;
-                                if (a >= this.getMagnifiedValue(L, this.pdfViewerBase.getZoomFactor()) && a <= this.getMagnifiedValue(L + c, this.pdfViewerBase.getZoomFactor()) && r >= this.getMagnifiedValue(w, this.pdfViewerBase.getZoomFactor()) && r <= this.getMagnifiedValue(w + C, this.pdfViewerBase.getZoomFactor())) o.push(p), d = !0;
+                                if (a >= this.getMagnifiedValue(w, this.pdfViewerBase.getZoomFactor()) && a <= this.getMagnifiedValue(w + c, this.pdfViewerBase.getZoomFactor()) && r >= this.getMagnifiedValue(L, this.pdfViewerBase.getZoomFactor()) && r <= this.getMagnifiedValue(L + C, this.pdfViewerBase.getZoomFactor())) o.push(p), d = !0;
                                 else if (d) {
                                     d = !1;
                                     break
@@ -7864,7 +7908,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     n = s[a] ? s[a].annotations : t
                 } else n = t;
                 return n
-            }, e.prototype.getAddedAnnotation = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, L, w) {
+            }, e.prototype.getAddedAnnotation = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, w, L) {
                 var c = a || this.pdfViewer.annotation.stickyNotesAnnotationModule.getDateAndTime(),
                     C = this.pdfViewer.annotation.createGUID(),
                     g = this.pdfViewer.annotation.stickyNotesAnnotationModule.addComments("textMarkup", u + 1, e);
@@ -7877,7 +7921,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         opacity: i,
                         bounds: n,
                         author: o,
-                        allowedInteractions: w,
+                        allowedInteractions: L,
                         subject: s,
                         modifiedDate: c,
                         note: r,
@@ -7895,7 +7939,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         textMarkupContent: p,
                         textMarkupStartIndex: M,
                         textMarkupEndIndex: h,
-                        isMultiSelect: L,
+                        isMultiSelect: w,
                         annotationSelectorSettings: this.getSelector(e),
                         customData: this.pdfViewer.annotation.getTextMarkupData(s),
                         annotationAddMode: this.annotationAddMode,
@@ -7903,9 +7947,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         isPrint: f,
                         isCommentLock: l
                     };
-                L && this.multiPageCollection.push(y);
+                w && this.multiPageCollection.push(y);
                 var j = !1;
-                L && this.isExtended && (j = !0), document.getElementById(C) && !j && document.getElementById(C).addEventListener("mouseup", this.annotationDivSelect(y, u));
+                w && this.isExtended && (j = !0), document.getElementById(C) && !j && document.getElementById(C).addEventListener("mouseup", this.annotationDivSelect(y, u));
                 var S = this.pdfViewer.annotationModule.storeAnnotations(u, y, "_annotations_textMarkup");
                 return this.pdfViewer.annotationModule.addAction(u, S, y, "Text Markup Added", null), y
             }, e.prototype.getSelector = function(e) {
@@ -8087,7 +8131,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        jt = function() {
+        At = function() {
             function e(e, t) {
                 this.measureShapeCount = 0, this.isAddAnnotationProgramatically = !1, this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -8131,8 +8175,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     var p = o.Bounds.X ? o.Bounds.X : o.Bounds.x,
                                         M = o.Bounds.Y ? o.Bounds.Y : o.Bounds.y,
                                         h = o.Bounds.Width ? o.Bounds.Width : o.Bounds.width,
-                                        L = o.Bounds.Height ? o.Bounds.Height : o.Bounds.height,
-                                        w = void 0,
+                                        w = o.Bounds.Height ? o.Bounds.Height : o.Bounds.height,
+                                        L = void 0,
                                         c = (s = {
                                             id: "measure" + this.measureShapeCount,
                                             shapeAnnotationType: o.ShapeAnnotationType,
@@ -8159,7 +8203,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                                 left: p,
                                                 top: M,
                                                 width: h,
-                                                height: L,
+                                                height: w,
                                                 right: o.Bounds.Right,
                                                 bottom: o.Bounds.Bottom
                                             },
@@ -8192,7 +8236,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                             isPrint: d,
                                             isCommentLock: o.IsCommentLock
                                         }).vertexPoints;
-                                    if (null == a && (c = []), o.AnnotationSelectorSettings = o.AnnotationSelectorSettings ? o.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, o.allowedInteractions = o.AllowedInteractions ? o.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(o), w = {
+                                    if (null == a && (c = []), o.AnnotationSelectorSettings = o.AnnotationSelectorSettings ? o.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, o.allowedInteractions = o.AllowedInteractions ? o.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(o), L = {
                                             id: "measure" + this.measureShapeCount,
                                             shapeAnnotationType: this.getShapeType(s),
                                             author: s.author,
@@ -8238,16 +8282,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                             isCommentLock: s.isCommentLock
                                         }, this.pdfViewer.annotation.storeAnnotations(t, s, "_annotations_shape_measure"), this.isAddAnnotationProgramatically) {
                                         var C = {
-                                            opacity: w.opacity,
-                                            strokeColor: w.strokeColor,
-                                            thickness: w.thickness,
-                                            modifiedDate: w.modifiedDate,
-                                            width: w.bounds.width,
-                                            height: w.bounds.height
+                                            opacity: L.opacity,
+                                            strokeColor: L.strokeColor,
+                                            thickness: L.thickness,
+                                            modifiedDate: L.modifiedDate,
+                                            width: L.bounds.width,
+                                            height: L.bounds.height
                                         };
-                                        this.pdfViewer.fireAnnotationAdd(w.pageIndex, w.annotName, o.ShapeAnnotationType, w.bounds, C)
+                                        this.pdfViewer.fireAnnotationAdd(L.pageIndex, L.annotName, o.ShapeAnnotationType, L.bounds, C)
                                     }
-                                    this.pdfViewer.add(w)
+                                    this.pdfViewer.add(L)
                                 }
                             }
                     } else if (e.shapeAnnotationType) {
@@ -8586,27 +8630,35 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             isPrimary: !0
                         },
                         click: this.onOkClicked.bind(this)
-                    }], this.pdfViewer.enableRtl && (this.scaleRatioDialog.enableRtl = !0), this.scaleRatioDialog.appendTo(n), this.convertUnit.content = this.createContent(this.unit).outerHTML, this.dispUnit.content = this.createContent(this.displayUnit).outerHTML, this.depthUnit.content = this.createContent(this.displayUnit).outerHTML
+                    }], this.pdfViewer.enableRtl && (this.scaleRatioDialog.enableRtl = !0), this.scaleRatioDialog.appendTo(n), this.convertUnit.content = this.createContent(this.pdfViewer.localeObj.getConstant(this.unit)).outerHTML, this.dispUnit.content = this.createContent(this.pdfViewer.localeObj.getConstant(this.displayUnit)).outerHTML, this.depthUnit.content = this.createContent(this.pdfViewer.localeObj.getConstant(this.displayUnit)).outerHTML
                 }
             }, e.prototype.createRatioUI = function() {
                 var e = t.createElement("div"),
                     i = this.pdfViewer.element.id,
                     o = [{
-                        text: "pt"
+                        text: this.pdfViewer.localeObj.getConstant("pt"),
+                        label: "pt"
                     }, {
-                        text: "in"
+                        text: this.pdfViewer.localeObj.getConstant("in"),
+                        label: "in"
                     }, {
-                        text: "mm"
+                        text: this.pdfViewer.localeObj.getConstant("mm"),
+                        label: "mm"
                     }, {
-                        text: "cm"
+                        text: this.pdfViewer.localeObj.getConstant("cm"),
+                        label: "cm"
                     }, {
-                        text: "p"
+                        text: this.pdfViewer.localeObj.getConstant("p"),
+                        label: "p"
                     }, {
-                        text: "ft"
+                        text: this.pdfViewer.localeObj.getConstant("ft"),
+                        label: "ft"
                     }, {
-                        text: "ft_in"
+                        text: this.pdfViewer.localeObj.getConstant("ft_in"),
+                        label: "ft_in"
                     }, {
-                        text: "m"
+                        text: this.pdfViewer.localeObj.getConstant("m"),
+                        label: "m"
                     }],
                     a = t.createElement("div", {
                         id: i + "_scale_ratio_label",
@@ -8651,18 +8703,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     className: "e-pv-depth-text"
                 });
                 h.textContent = this.pdfViewer.localeObj.getConstant("Depth"), e.appendChild(h);
-                var L = t.createElement("div", {
+                var w = t.createElement("div", {
                     id: i + "_depth_container"
                 });
-                e.appendChild(L);
-                var w = this.createInputElement("input", "e-pv-depth-input", i + "_depth_input", L);
+                e.appendChild(w);
+                var L = this.createInputElement("input", "e-pv-depth-input", i + "_depth_input", w);
                 this.depthTextBox = new n.NumericTextBox({
                     value: this.volumeDepth,
                     format: "##",
                     cssClass: "e-pv-depth-input",
                     min: 1
-                }, w);
-                var c = this.createInputElement("button", "e-pv-depth-unit", i + "_depth_unit", L);
+                }, L);
+                var c = this.createInputElement("button", "e-pv-depth-unit", i + "_depth_unit", w);
                 return this.depthUnit = new s.DropDownButton({
                     items: o,
                     cssClass: "e-pv-depth-unit"
@@ -8695,7 +8747,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         o = document.querySelector("#" + this.pdfViewer.element.id + "_dest_input"),
                         s = document.querySelector("#" + this.pdfViewer.element.id + "_depth_input");
                     e && i && n && o && s && (this.unit = e.value, this.displayUnit = i.value, this.ratio = parseInt(o.value) / parseInt(n.value), this.volumeDepth = parseInt(s.value)), this.scaleRatioString = parseInt(n.value) + " " + this.unit + " = " + parseInt(o.value) + " " + this.displayUnit, this.updateMeasureValues(this.scaleRatioString, this.displayUnit, this.unit, this.volumeDepth)
-                } else this.unit = this.getContent(this.convertUnit.content), this.displayUnit = this.getContent(this.dispUnit.content), this.ratio = this.destTextBox.value / this.sourceTextBox.value, this.volumeDepth = this.depthTextBox.value, this.scaleRatioString = this.sourceTextBox.value + " " + this.unit + " = " + this.destTextBox.value + " " + this.displayUnit, this.scaleRatioDialog.hide(), this.updateMeasureValues(this.scaleRatioString, this.displayUnit, this.unit, this.volumeDepth)
+                } else {
+                    this.unit = this.getContent(this.convertUnit.content), this.displayUnit = this.getContent(this.dispUnit.content), this.ratio = this.destTextBox.value / this.sourceTextBox.value, this.volumeDepth = this.depthTextBox.value, this.scaleRatioString = this.sourceTextBox.value + " " + this.unit + " = " + this.destTextBox.value + " " + this.displayUnit, this.scaleRatioDialog.hide();
+                    var a = void 0,
+                        r = void 0;
+                    a = this.restoreUnit(this.convertUnit), r = this.restoreUnit(this.dispUnit), this.updateMeasureValues(this.scaleRatioString, r, a, this.volumeDepth)
+                }
+            }, e.prototype.restoreUnit = function(e) {
+                for (var t, i = 0; i < e.items.length; i++) {
+                    var n = e.items[i];
+                    this.unit === n.text && (t = n.label)
+                }
+                return t
             }, e.prototype.updateMeasureValues = function(e, t, i, n) {
                 this.scaleRatioString = e, this.displayUnit = t, this.unit = i, this.volumeDepth = n;
                 for (var o = 0; o < this.pdfViewerBase.pageCount; o++) {
@@ -8837,13 +8900,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (s >= 12) {
                         if (s = (Math.round(s / 12 * 100) / 100).toString(), (s = s.split("."))[1]) {
                             var a = 0;
-                            return s[1].charAt(1) ? (a = parseInt(s[1].charAt(0)) + "." + parseInt(s[1].charAt(1)), a = Math.round(a)) : a = s[1], a ? s[0] + " sq ft " + a + " in" : s[0] + " sq ft"
+                            return s[1].charAt(1) ? (a = parseInt(s[1].charAt(0)) + "." + parseInt(s[1].charAt(1)), a = Math.round(a)) : a = s[1], a ? s[0] + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant("ft") + " " + a + " " + this.pdfViewer.localeObj.getConstant("in") : s[0] + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant("ft")
                         }
-                        return s[0] + " sq ft"
+                        return s[0] + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant("ft")
                     }
-                    return Math.round(100 * o) / 100 + " sq in"
+                    return Math.round(100 * o) / 100 + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant("in")
                 }
-                return "m" === n.unit ? 100 * o / 100 + " sq " + n.unit : Math.round(100 * o) / 100 + " sq " + n.unit
+                return "m" === n.unit ? 100 * o / 100 + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant(n.unit) : Math.round(100 * o) / 100 + " " + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant(n.unit)
             }, e.prototype.getArea = function(e, t, i) {
                 for (var n = 0, o = e.length - 1, s = 0; s < e.length; s++) n += (e[o].x * this.pixelToPointFactor * t + e[s].x * this.pixelToPointFactor * t) * (e[o].y * this.pixelToPointFactor * t - e[s].y * this.pixelToPointFactor * t), o = s;
                 return "ft_in" === i ? Math.abs(2 * n) : Math.abs(n / 2)
@@ -8856,13 +8919,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (a >= 12) {
                         if (a = (Math.round(a / 12 * 100) / 100).toString(), (a = a.split("."))[1]) {
                             var r = 0;
-                            return a[1].charAt(1) ? (r = parseInt(a[1].charAt(0)) + "." + parseInt(a[1].charAt(1)), r = Math.round(r)) : r = a[1], r ? a[0] + " cu ft " + r + " in" : a[0] + " cu ft"
+                            return a[1].charAt(1) ? (r = parseInt(a[1].charAt(0)) + "." + parseInt(a[1].charAt(1)), r = Math.round(r)) : r = a[1], r ? a[0] + " " + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant("ft") + " " + r + " " + this.pdfViewer.localeObj.getConstant("in") : a[0] + " " + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant("ft")
                         }
-                        return a[0] + " cu ft"
+                        return a[0] + " " + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant("ft")
                     }
-                    return Math.round(100 * s) / 100 + " cu in"
+                    return Math.round(100 * s) / 100 + " " + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant("in")
                 }
-                return Math.round(100 * s) / 100 + " cu " + n.unit
+                return Math.round(100 * s) / 100 + " " + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant(n.unit)
             }, e.prototype.calculatePerimeter = function(e) {
                 var t = i.Point.getLengthFromListOfPoints(e.vertexPoints);
                 return this.setConversion(t * this.pixelToPointFactor, e)
@@ -8901,10 +8964,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (o >= 12)
                         if (o = (Math.round(o / 12 * 100) / 100).toString(), (o = o.split("."))[1]) {
                             var s = 0;
-                            o[1].charAt(1) ? (s = parseInt(o[1].charAt(0)) + "." + parseInt(o[1].charAt(1)), s = Math.round(s)) : s = o[1], n = s ? o[0] + " ft " + s + " in" : o[0] + " ft"
-                        } else n = o[0] + " ft";
-                    else n = Math.round(t * e * 100) / 100 + "  in"
-                } else n = Math.round(t * e * 100) / 100 + " " + i;
+                            o[1].charAt(1) ? (s = parseInt(o[1].charAt(0)) + "." + parseInt(o[1].charAt(1)), s = Math.round(s)) : s = o[1], n = s ? o[0] + " " + this.pdfViewer.localeObj.getConstant("ft") + " " + s + " " + this.pdfViewer.localeObj.getConstant("in") : o[0] + " " + this.pdfViewer.localeObj.getConstant("ft")
+                        } else n = o[0] + " " + this.pdfViewer.localeObj.getConstant("ft");
+                    else n = Math.round(t * e * 100) / 100 + " " + this.pdfViewer.localeObj.getConstant("in")
+                } else n = Math.round(t * e * 100) / 100 + " " + this.pdfViewer.localeObj.getConstant(i);
                 return n
             }, e.prototype.convertUnitToPoint = function(e) {
                 var t;
@@ -9176,20 +9239,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         ratio: 1,
                         unit: "in"
                     },
-                    L = "";
+                    w = "";
                 if (u || "Radius" == e || "Volume" == e)
                     if ("Distance" == e || "Perimeter" == e || "Radius" == e) {
-                        var w = 0;
-                        if ("Radius" == e) w = t.width / 2 * this.pixelToPointFactor;
+                        var L = 0;
+                        if ("Radius" == e) L = t.width / 2 * this.pixelToPointFactor;
                         else {
-                            for (var c = 0; c < u.length - 1; c++) w += Math.sqrt(Math.pow(u[c].x - u[c + 1].x, 2) + Math.pow(u[c].y - u[c + 1].y, 2));
-                            w *= this.pixelToPointFactor
+                            for (var c = 0; c < u.length - 1; c++) L += Math.sqrt(Math.pow(u[c].x - u[c + 1].x, 2) + Math.pow(u[c].y - u[c + 1].y, 2));
+                            L *= this.pixelToPointFactor
                         }
-                        var C = w * h.ratio;
-                        L = this.convertPointToUnits(h.factor, C, h.unit)
+                        var C = L * h.ratio;
+                        w = this.convertPointToUnits(h.factor, C, h.unit)
                     } else if ("Area" == e || "Volume" == e) {
                     for (var g = 0, m = u.length - 1, f = 0; f < u.length; f++) g += (u[m].x * this.pixelToPointFactor * h.factor + u[f].x * this.pixelToPointFactor * h.factor) * (u[m].y * this.pixelToPointFactor * h.factor - u[f].y * this.pixelToPointFactor * h.factor), m = f;
-                    g = Math.abs(g / 2), "Volume" == e ? (g = g * (h.depth * this.convertUnitToPoint(h.unit) * h.factor) * h.ratio, L = Math.round(100 * g) / 100 + "cu " + h.unit) : L = Math.round(100 * g) / 100 + "sq " + h.unit
+                    g = Math.abs(g / 2), "Volume" == e ? (g = g * (h.depth * this.convertUnitToPoint(h.unit) * h.factor) * h.ratio, w = Math.round(100 * g) / 100 + this.pdfViewer.localeObj.getConstant("cu") + " " + this.pdfViewer.localeObj.getConstant(h.unit)) : w = Math.round(100 * g) / 100 + this.pdfViewer.localeObj.getConstant("sq") + " " + this.pdfViewer.localeObj.getConstant(h.unit)
                 }
                 u && (u = this.pdfViewer.annotation.getVertexPointsXY(u));
                 var y = [],
@@ -9278,7 +9341,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         LineHeadEnd: t.lineHeadStartStyle ? t.lineHeadStartStyle : d ? "ClosedArrow" : "None",
                         LineHeadStart: t.lineHeadEndStyle ? t.lineHeadEndStyle : d ? "ClosedArrow" : "None",
                         ModifiedDate: "",
-                        Note: L,
+                        Note: w,
                         Opacity: t.opacity ? t.opacity : 1,
                         RectangleDifference: null,
                         RotateAngle: "RotateAngle0",
@@ -9295,7 +9358,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        St = function() {
+        Tt = function() {
             function e(e, t) {
                 this.shapeCount = 0, this.isAddAnnotationProgramatically = !1, this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -9326,8 +9389,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     var p = s.Bounds.X ? s.Bounds.X : s.Bounds.x,
                                         M = s.Bounds.Y ? s.Bounds.Y : s.Bounds.y,
                                         h = s.Bounds.Width ? s.Bounds.Width : s.Bounds.width,
-                                        L = s.Bounds.Height ? s.Bounds.Height : s.Bounds.height,
-                                        w = void 0,
+                                        w = s.Bounds.Height ? s.Bounds.Height : s.Bounds.height,
+                                        L = void 0,
                                         c = (g = {
                                             id: "shape" + this.shapeCount,
                                             shapeAnnotationType: s.ShapeAnnotationType,
@@ -9362,7 +9425,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                                 left: p,
                                                 top: M,
                                                 width: h,
-                                                height: L,
+                                                height: w,
                                                 right: s.Bounds.Right,
                                                 bottom: s.Bounds.Bottom
                                             },
@@ -9380,7 +9443,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                             isPrint: u,
                                             isCommentLock: s.IsCommentLock
                                         }).vertexPoints;
-                                    null == a && (c = []), s.AnnotationSelectorSettings = s.AnnotationSelectorSettings ? s.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, w = {
+                                    null == a && (c = []), s.AnnotationSelectorSettings = s.AnnotationSelectorSettings ? s.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, L = {
                                         id: "shape" + this.shapeCount,
                                         shapeAnnotationType: this.getShapeType(g),
                                         author: g.author,
@@ -9423,17 +9486,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         isPrint: u,
                                         isCommentLock: g.isCommentLock
                                     };
-                                    this.pdfViewer.add(w);
+                                    this.pdfViewer.add(L);
                                     if (this.pdfViewer.annotationModule.storeAnnotations(i, g, "_annotations_shape"), this.isAddAnnotationProgramatically) {
                                         var C = {
-                                            opacity: w.opacity,
-                                            strokeColor: w.strokeColor,
-                                            thickness: w.thickness,
-                                            modifiedDate: w.modifiedDate,
-                                            width: w.bounds.width,
-                                            height: w.bounds.height
+                                            opacity: L.opacity,
+                                            strokeColor: L.strokeColor,
+                                            thickness: L.thickness,
+                                            modifiedDate: L.modifiedDate,
+                                            width: L.bounds.width,
+                                            height: L.bounds.height
                                         };
-                                        this.pdfViewer.fireAnnotationAdd(w.pageIndex, w.annotName, s.ShapeAnnotationType, w.bounds, C)
+                                        this.pdfViewer.fireAnnotationAdd(L.pageIndex, L.annotName, s.ShapeAnnotationType, L.bounds, C)
                                     }
                                 }
                             }
@@ -10055,7 +10118,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        At = function() {
+        xt = function() {
             function t(e, t) {
                 this.isStampAddMode = !1, this.stampPageNumber = [], this.isAddAnnotationProgramatically = !1, this.customStampName = null, this.dynamicText = "", this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -10078,11 +10141,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         document.getElementById(a.pdfViewer.element.id + "_pageDiv_" + u);
                         if (s.AnnotationSettings = s.AnnotationSettings ? s.AnnotationSettings : a.pdfViewer.annotationModule.updateSettings(a.pdfViewer.stampSettings), p && s.Subject && "Draft" !== s.Subject) {
                             a.retrieveDynamicStampAnnotation(s.Subject), a.isExistingStamp = !0;
-                            for (var M = a.calculateImagePosition(l, !0), h = s.RotateAngle, L = 0; L < r.length; L++) {
-                                var w = r[L];
-                                if ("string" === w.type && void 0 !== w.text) {
+                            for (var M = a.calculateImagePosition(l, !0), h = s.RotateAngle, w = 0; w < r.length; w++) {
+                                var L = r[w];
+                                if ("string" === L.type && void 0 !== L.text) {
                                     var c = void 0;
-                                    2 === (c = n ? w.text : w.text.split("(")[1].split(")")[0]).split("(").length ? c.split("(")[1].split(")")[0].toLowerCase() !== s.Subject.toLowerCase() && (a.dynamicText += c.split("(")[1].split(")")[0]) : c.toLowerCase() !== s.Subject.toLowerCase() && (a.dynamicText += c)
+                                    2 === (c = n ? L.text : L.text.split("(")[1].split(")")[0]).split("(").length ? c.split("(")[1].split(")")[0].toLowerCase() !== s.Subject.toLowerCase() && (a.dynamicText += c.split("(")[1].split(")")[0]) : c.toLowerCase() !== s.Subject.toLowerCase() && (a.dynamicText += c)
                                 }
                             }
                             a.renderStamp(M.left, M.top, M.width, M.height, u, d, h, i, s, !0)
@@ -10100,14 +10163,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     M = t.RotateAngle;
                                 if (n) {
                                     var h = new Image,
-                                        L = a;
+                                        w = a;
                                     h.onload = function() {
                                         if (l) {
                                             var e = parseFloat(l.y ? l.y : l.Y);
-                                            e < 0 && (l.Y = .75 * (L.pdfViewerBase.pageSize[u].height + e))
+                                            e < 0 && (l.Y = .75 * (w.pdfViewerBase.pageSize[u].height + e))
                                         }
-                                        var t = L.calculateImagePosition(l, !0);
-                                        s.AnnotationSettings = s.AnnotationSettings ? s.AnnotationSettings : L.pdfViewer.customStampSettings.annotationSettings, L.renderCustomImage(t, u, h, o, p, M, d, i, !0, s)
+                                        var t = w.calculateImagePosition(l, !0);
+                                        s.AnnotationSettings = s.AnnotationSettings ? s.AnnotationSettings : w.pdfViewer.customStampSettings.annotationSettings, w.renderCustomImage(t, u, h, o, p, M, d, i, !0, s)
                                     }, h.src = n
                                 }
                             }(C)
@@ -10267,7 +10330,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     this.dynamicText = "By " + p + " at " + h + " , " + M + " "
                 }
                 u && (this.dynamicText += " ", this.pdfViewerBase.isDynamicStamp = !0);
-                var L, w = null,
+                var w, L = null,
                     c = (d && d.annotationAddMode, this.currentStampAnnotation);
                 if (c) {
                     if (null !== n && null !== o) {
@@ -10306,7 +10369,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var I = i.processPathData(c.pathdata),
                         E = i.splitArrayCollection(I),
                         V = d ? d.annotationAddMode : "UI Drawn Annotation";
-                    if (c.AnnotationSelectorSettings = c.AnnotationSelectorSettings ? c.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, L = {
+                    if (c.AnnotationSelectorSettings = c.AnnotationSelectorSettings ? c.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, w = {
                             id: "stamp" + this.pdfViewerBase.customStampCount,
                             bounds: {
                                 x: e,
@@ -10342,7 +10405,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             annotationAddMode: V,
                             isPrint: c.isPrint,
                             isCommentLock: c.IsCommentLock
-                        }, w = {
+                        }, L = {
                             stampAnnotationType: "path",
                             author: c.Author,
                             modifiedDate: c.ModifiedDate,
@@ -10383,27 +10446,27 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             isCommentLock: c.IsCommentLock,
                             isMaskedImage: c.IsMaskedImage,
                             customStampName: ""
-                        }, this.storeStampInSession(s, w), this.isAddAnnotationProgramatically) {
+                        }, this.storeStampInSession(s, L), this.isAddAnnotationProgramatically) {
                         var z = {
-                            opacity: L.opacity,
-                            borderColor: L.strokeColor,
-                            borderWidth: L.thickness,
+                            opacity: w.opacity,
+                            borderColor: w.strokeColor,
+                            borderWidth: w.thickness,
                             author: c.author,
                             subject: c.subject,
                             modifiedDate: c.modifiedDate,
-                            fillColor: L.fillColor,
-                            fontSize: L.fontSize,
-                            width: L.bounds.width,
-                            height: L.bounds.height,
-                            fontColor: L.fontColor,
-                            fontFamily: L.fontFamily,
-                            defaultText: L.dynamicText,
-                            fontStyle: L.font,
-                            textAlignment: L.textAlign
+                            fillColor: w.fillColor,
+                            fontSize: w.fontSize,
+                            width: w.bounds.width,
+                            height: w.bounds.height,
+                            fontColor: w.fontColor,
+                            fontFamily: w.fontFamily,
+                            defaultText: w.dynamicText,
+                            fontStyle: w.font,
+                            textAlignment: w.textAlign
                         };
-                        this.pdfViewer.fireAnnotationAdd(L.pageIndex, L.annotName, "Stamp", L.bounds, z)
+                        this.pdfViewer.fireAnnotationAdd(w.pageIndex, w.annotName, "Stamp", w.bounds, z)
                     }
-                    this.pdfViewer.add(L), l = void 0 != l && null != l ? l : document.getElementById(this.pdfViewer.element.id + "_annotationCanvas_" + s), this.pdfViewer.renderDrawing(l, s), this.pdfViewerBase.stampAdded && this.pdfViewer.annotation.addAction(s, null, L, "Addition", "", L, L), this.pdfViewerBase.stampAdded = !1, this.isExistingStamp || (c.creationDate = (new Date).toLocaleDateString(), c.modifiedDate = this.pdfViewer.annotation.stickyNotesAnnotationModule.getDateAndTime())
+                    this.pdfViewer.add(w), l = void 0 != l && null != l ? l : document.getElementById(this.pdfViewer.element.id + "_annotationCanvas_" + s), this.pdfViewer.renderDrawing(l, s), this.pdfViewerBase.stampAdded && this.pdfViewer.annotation.addAction(s, null, w, "Addition", "", w, w), this.pdfViewerBase.stampAdded = !1, this.isExistingStamp || (c.creationDate = (new Date).toLocaleDateString(), c.modifiedDate = this.pdfViewer.annotation.stickyNotesAnnotationModule.getDateAndTime())
                 }
                 this.resetAnnotation()
             }, t.prototype.getSettings = function(e) {
@@ -10570,11 +10633,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
                 s || this.storeStampInSession(e, o)
             }, t.prototype.renderCustomImage = function(e, t, i, n, o, s, a, r, l, d, u) {
-                var p, M, h, L, w = null,
+                var p, M, h, w, L = null,
                     c = this.pdfViewer.customStampSettings.left > 0 && this.pdfViewer.customStampSettings.top > 0,
                     C = this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.customStampSettings),
                     g = this.pdfViewer.stampSettings.allowedInteractions ? this.pdfViewer.stampSettings.allowedInteractions : this.pdfViewer.annotationSettings.allowedInteractions;
-                l ? (M = d.AnnotName, h = d.Author, L = d.IsCommentLock, C = d.AnnotationSettings ? d.AnnotationSettings : this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.customStampSettings), g = d.AllowedInteractions ? d.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(d), null === h && (h = "Guest" !== this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : this.pdfViewer.customStampSettings.author ? this.pdfViewer.customStampSettings.author : "Guest")) : (M = this.pdfViewer.annotation.createGUID(), h = "Guest" !== this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : this.pdfViewer.customStampSettings.author ? this.pdfViewer.customStampSettings.author : "Guest", L = !1), o || (o = d.ModifiedDate ? d.ModifiedDate : (new Date).toLocaleString());
+                l ? (M = d.AnnotName, h = d.Author, w = d.IsCommentLock, C = d.AnnotationSettings ? d.AnnotationSettings : this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.customStampSettings), g = d.AllowedInteractions ? d.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(d), null === h && (h = "Guest" !== this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : this.pdfViewer.customStampSettings.author ? this.pdfViewer.customStampSettings.author : "Guest")) : (M = this.pdfViewer.annotation.createGUID(), h = "Guest" !== this.pdfViewer.annotationSettings.author ? this.pdfViewer.annotationSettings.author : this.pdfViewer.customStampSettings.author ? this.pdfViewer.customStampSettings.author : "Guest", w = !1), o || (o = d.ModifiedDate ? d.ModifiedDate : (new Date).toLocaleString());
                 var m = d ? d.annotationAddMode : "UI Drawn Annotation ",
                     f = !0;
                 f = l ? "Imported Annotation" === d.annotationAddMode ? d.IsPrint : d.AnnotationSettings.isPrint : this.pdfViewer.customStampSettings.isPrint, p = {
@@ -10604,7 +10667,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     annotationAddMode: m,
                     signatureName: u,
                     isPrint: f,
-                    isCommentLock: L
+                    isCommentLock: w
                 }, this.currentStampAnnotation = p;
                 var y = this.pdfViewer.stampSettings.annotationSelectorSettings ? this.pdfViewer.stampSettings.annotationSelectorSettings : this.pdfViewer.annotationSelectorSettings;
                 if (l || c) {
@@ -10613,7 +10676,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var j = this.pdfViewer.annotation.stickyNotesAnnotationModule.addComments("stamp", t + 1);
                         j && (document.getElementById(j).id = M)
                     }
-                    if (w = {
+                    if (L = {
                             stampAnnotationType: "image",
                             author: h,
                             allowedInteractions: g,
@@ -10650,10 +10713,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             annotationSettings: C,
                             customData: this.pdfViewer.annotation.getCustomData(d),
                             isPrint: f,
-                            isCommentLock: L,
+                            isCommentLock: w,
                             isMaskedImage: d.IsMaskedImage,
                             customStampName: d.CustomStampName
-                        }, this.storeStampInSession(t, w), p.comments = this.pdfViewer.annotationModule.getAnnotationComments(d.Comments, d, d.Author), p.review = {
+                        }, this.storeStampInSession(t, L), p.comments = this.pdfViewer.annotationModule.getAnnotationComments(d.Comments, d, d.Author), p.review = {
                             state: d.State,
                             stateModel: d.StateModel,
                             author: h,
@@ -11324,8 +11387,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = "",
                     M = "Stamp",
                     h = [],
-                    L = !1,
-                    w = t.author ? t.author : "Guest",
+                    w = !1,
+                    L = t.author ? t.author : "Guest",
                     c = this.pdfViewer.stampSettings.annotationSelectorSettings ? this.pdfViewer.stampSettings.annotationSelectorSettings : this.pdfViewer.annotationSelectorSettings,
                     C = this.pdfViewer.annotationModule.updateSettings(this.pdfViewer.stampSettings),
                     g = this.pdfViewer.stampSettings.allowedInteractions ? this.pdfViewer.stampSettings.allowedInteractions : this.pdfViewer.annotationSettings.allowedInteractions;
@@ -11340,9 +11403,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         currentFontname: "95b303ab-d397-438a-83af-e2ff8a9900f1",
                         fontSize: 10,
                         isImport: !0,
-                        text: "By " + w + " at " + m[1] + m[2] + " , " + m[0],
+                        text: "By " + L + " at " + m[1] + m[2] + " , " + m[0],
                         type: "string"
-                    }, L = !0, t.width = t.width ? t.width : 140, t.height = t.height ? t.height : 55
+                    }, w = !0, t.width = t.width ? t.width : 140, t.height = t.height ? t.height : 55
                 } else s ? (p = s.toString(), s == e.SignStampItem.Accepted || s == e.SignStampItem.Rejected ? (t.width = t.width ? t.width : 35, t.height = t.height ? t.height : 35) : s == e.SignStampItem.SignHere ? (t.width = t.width ? t.width : 110, t.height = t.height ? t.height : 30) : s == e.SignStampItem.Witness ? (t.width = t.width ? t.width : 130, t.height = t.height ? t.height : 30) : s == e.SignStampItem.InitialHere && (t.width = t.width ? t.width : 90, t.height = t.height ? t.height : 30)) : a && (p = a.toString(), a == e.StandardBusinessStampItem.Final || a == e.StandardBusinessStampItem.Draft ? (t.width = t.width ? t.width : 110, t.height = t.height ? t.height : 30) : a == e.StandardBusinessStampItem.Void ? (t.width = t.width ? t.width : 100, t.height = t.height ? t.height : 30) : (t.width = t.width ? t.width : 130, t.height = t.height ? t.height : 30));
                 var f = {
                     AllowedInteractions: t.allowedInteractions ? t.allowedInteractions : g,
@@ -11351,7 +11414,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     AnnotationSelectorSettings: t.annotationSelectorSettings ? t.annotationSelectorSettings : c,
                     AnnotationSettings: C,
                     Apperarance: h || null,
-                    Author: w,
+                    Author: L,
                     Comments: null,
                     CreatedDate: r,
                     CustomData: t.customData ? t.customData : null,
@@ -11359,7 +11422,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     FillColor: "#192760",
                     Icon: 0,
                     IsCommentLock: !1,
-                    IsDynamic: L,
+                    IsDynamic: w,
                     IsLocked: !!t.isLock && t.isLock,
                     IsPrint: !t.isPrint || t.isPrint,
                     ModifiedDate: "",
@@ -11398,7 +11461,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, t
         }(),
-        Tt = function() {
+        Nt = function() {
             function e(e, t) {
                 this.commentsCount = 0, this.commentsreplyCount = 0, this.commentContextMenu = [], this.isAccordionContainer = !0, this.isCreateContextMenu = !1, this.isCommentsSelected = !1, this.isAddAnnotationProgramatically = !1, this.isEditableElement = !1, this.isPageCommentsRendered = !1, this.isCommentsRendered = !1, this.isAnnotationRendered = !1, this.pdfViewer = e, this.pdfViewerBase = t, this.opacity = this.pdfViewer.stickyNotesSettings.opacity ? this.pdfViewer.stickyNotesSettings.opacity : 1
             }
@@ -11458,8 +11521,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 isPrint: h,
                                 isCommentLock: o.IsCommentLock
                             };
-                            var L = void 0;
-                            if (o.AnnotationSelectorSettings = o.AnnotationSelectorSettings ? o.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, L = {
+                            var w = void 0;
+                            if (o.AnnotationSelectorSettings = o.AnnotationSelectorSettings ? o.AnnotationSelectorSettings : this.pdfViewer.annotationSelectorSettings, w = {
                                     author: M,
                                     modifiedDate: u.modifiedDate,
                                     annotName: u.annotName,
@@ -11485,26 +11548,26 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     isPrint: h,
                                     isCommentLock: u.isCommentLock
                                 }, this.isAddAnnotationProgramatically) {
-                                var w = {
-                                    opacity: L.opacity,
-                                    borderColor: L.strokeColor,
-                                    borderWidth: L.thickness,
+                                var L = {
+                                    opacity: w.opacity,
+                                    borderColor: w.strokeColor,
+                                    borderWidth: w.thickness,
                                     author: o.author,
                                     subject: o.subject,
                                     modifiedDate: o.modifiedDate,
-                                    fillColor: L.fillColor,
-                                    fontSize: L.fontSize,
-                                    width: L.bounds.width,
-                                    height: L.bounds.height,
-                                    fontColor: L.fontColor,
-                                    fontFamily: L.fontFamily,
-                                    defaultText: L.dynamicText,
-                                    fontStyle: L.font,
-                                    textAlignment: L.textAlign
+                                    fillColor: w.fillColor,
+                                    fontSize: w.fontSize,
+                                    width: w.bounds.width,
+                                    height: w.bounds.height,
+                                    fontColor: w.fontColor,
+                                    fontFamily: w.fontFamily,
+                                    defaultText: w.dynamicText,
+                                    fontStyle: w.font,
+                                    textAlignment: w.textAlign
                                 };
-                                this.pdfViewer.fireAnnotationAdd(L.pageIndex, L.annotName, "StickyNotes", L.bounds, w)
+                                this.pdfViewer.fireAnnotationAdd(w.pageIndex, w.annotName, "StickyNotes", w.bounds, L)
                             }
-                            i ? this.drawStickyNotes(p.Left, p.Top, p.Width, p.Height, t, L, i) : (this.pdfViewer.add(L), this.drawStickyNotes(p.Left, p.Top, p.Width, p.Height, t, L), this.pdfViewer.annotationModule.storeAnnotations(t, u, "_annotations_sticky"))
+                            i ? this.drawStickyNotes(p.Left, p.Top, p.Width, p.Height, t, w, i) : (this.pdfViewer.add(w), this.drawStickyNotes(p.Left, p.Top, p.Width, p.Height, t, w), this.pdfViewer.annotationModule.storeAnnotations(t, u, "_annotations_sticky"))
                         }
                     }
             }, e.prototype.getSettings = function(e) {
@@ -11516,7 +11579,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     u = new Image,
                     p = this;
                 u.onload = function() {
-                    var M, h, L = "Guest" !== l.pdfViewer.annotationSettings.author ? l.pdfViewer.annotationSettings.author : l.pdfViewer.stickyNotesSettings.author;
+                    var M, h, w = "Guest" !== l.pdfViewer.annotationSettings.author ? l.pdfViewer.annotationSettings.author : l.pdfViewer.stickyNotesSettings.author;
                     if (s) r = {
                         author: s.author,
                         modifiedDate: s.modifiedDate,
@@ -11540,7 +11603,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     };
                     else {
                         h = l.pdfViewer.annotation.createGUID(), (M = p.addComments("sticky", o + 1)) && (document.getElementById(M).id = h);
-                        var w = l.pdfViewer.stickyNotesSettings.annotationSelectorSettings ? l.pdfViewer.stickyNotesSettings.annotationSelectorSettings : l.pdfViewer.annotationSelectorSettings,
+                        var L = l.pdfViewer.stickyNotesSettings.annotationSelectorSettings ? l.pdfViewer.stickyNotesSettings.annotationSelectorSettings : l.pdfViewer.annotationSelectorSettings,
                             c = l.pdfViewer.stickyNotesSettings.isPrint;
                         if (r = {
                                 bounds: {
@@ -11569,7 +11632,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             l.pdfViewer.isDocumentEdited = !0;
                             var g = {
                                 opacity: r.opacity,
-                                author: L,
+                                author: w,
                                 modifiedDate: r.modifiedDate,
                                 subject: r.shapeAnnotationType
                             };
@@ -11578,7 +11641,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var m = l.pdfViewer.stickyNotesSettings.isLock ? l.pdfViewer.stickyNotesSettings.isLock : l.pdfViewer.annotationSettings.isLock,
                             f = l.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(s);
                         d = {
-                            author: L,
+                            author: w,
                             allowedInteractions: f,
                             modifiedDate: l.getDateAndTime(),
                             subject: "Sticky Note",
@@ -11601,9 +11664,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 state: "",
                                 stateModel: "",
                                 modifiedDate: "",
-                                author: L
+                                author: w
                             },
-                            annotationSelectorSettings: w,
+                            annotationSelectorSettings: L,
                             customData: l.pdfViewer.annotationModule.getData("sticky"),
                             annotationSettings: {
                                 isLock: m
@@ -11639,7 +11702,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     uniqueId: t.pdfViewerBase.documentId
                 }, t.isCommentsRendered = !0), this.pdfViewerBase.jsonDocumentId && (e.documentId = this.pdfViewerBase.jsonDocumentId);
                 var n = this.pdfViewer.serviceUrl + "/" + this.pdfViewer.serverActionSettings.renderComments;
-                t.commentsRequestHandler = new ti(t.pdfViewer), t.commentsRequestHandler.url = n, t.commentsRequestHandler.mode = !0, t.commentsRequestHandler.responseType = "text", t.commentsRequestHandler.send(e), t.commentsRequestHandler.onSuccess = function(e) {
+                t.commentsRequestHandler = new si(t.pdfViewer), t.commentsRequestHandler.url = n, t.commentsRequestHandler.mode = !0, t.commentsRequestHandler.responseType = "text", t.commentsRequestHandler.send(e), t.commentsRequestHandler.onSuccess = function(e) {
                     var i = e.data;
                     if (i) {
                         if ("object" != typeof i) try {
@@ -11797,8 +11860,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var l = !1;
                     if (e) {
                         if (this.commentsContainer.id = e.AnnotName, e.AnnotName)
-                            for (L = 0; L < s.childElementCount; L++)
-                                if (s.children[L].id === e.AnnotName) {
+                            for (w = 0; w < s.childElementCount; w++)
+                                if (s.children[w].id === e.AnnotName) {
                                     l = !0;
                                     break
                                 } e.Name && "freeText" === e.Name ? this.commentsContainer.setAttribute("name", "freeText") : this.commentsContainer.setAttribute("name", e.AnnotType)
@@ -11835,12 +11898,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             submitOnEnter: !0
                         });
                     M.appendTo(p);
-                    for (var h = document.querySelectorAll(".e-editable-inline"), L = 0; L < h.length; L++) h[L].style.display = "none";
+                    for (var h = document.querySelectorAll(".e-editable-inline"), w = 0; w < h.length; w++) h[w].style.display = "none";
                     if (e || (M.enableEditMode = !0), p.addEventListener("keydown", function(e) {
                             M.element.querySelector(".e-btn-save") && ("" !== e.srcElement.value ? M.element.querySelector(".e-btn-save").ej2_instances[0].disabled = !1 : M.element.querySelector(".e-btn-save").ej2_instances[0].disabled = !0)
                         }), M.actionSuccess = this.createCommentDiv.bind(this, M), d.appendChild(p), e) {
                         if (M.value = e.Note, this.checkIslockProperty(e) && null == e.Comments && this.createCommentDiv(this.commentsContainer), "freeText" === e.Name && (M.value = e.MarkupText), e.State) {
-                            var w = t.createElement("div", {
+                            var L = t.createElement("div", {
                                     id: this.pdfViewer.element.id + "status_container",
                                     className: "e-pv-status-container"
                                 }),
@@ -11851,10 +11914,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 C = t.createElement("span", {
                                     id: this.pdfViewer.element.id + "status_icon"
                                 });
-                            c.appendChild(C), w.appendChild(c), d.appendChild(w), this.updateStatusContainer(e.State, C, c, w)
+                            c.appendChild(C), L.appendChild(c), d.appendChild(L), this.updateStatusContainer(e.State, C, c, L)
                         }
                         if (e.Comments) {
-                            for (L = 0; L < e.Comments.length; L++) this.renderComments(e.Comments[L], this.commentsContainer);
+                            for (w = 0; w < e.Comments.length; w++) this.renderComments(e.Comments[w], this.commentsContainer);
                             " " !== e.Note && "" !== e.Note && null !== e.Note && this.createCommentDiv(this.commentsContainer)
                         }
                     }
@@ -12013,8 +12076,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }), n)
                     if (s) i.appendChild(d);
                     else {
-                        var L = document.getElementById(o);
-                        e.position ? L.insertBefore(d, L.childNodes[e.position]) : L && (L.childElementCount > 1 ? L.insertBefore(d, L.childNodes[L.childElementCount - 1]) : i.appendChild(d))
+                        var w = document.getElementById(o);
+                        e.position ? w.insertBefore(d, w.childNodes[e.position]) : w && (w.childElementCount > 1 ? w.insertBefore(d, w.childNodes[w.childElementCount - 1]) : i.appendChild(d))
                     }
                 else i.appendChild(d);
                 d.addEventListener("click", this.commentsDivClickEvent.bind(this)), d.addEventListener("dblclick", this.commentsDivDoubleClickEvent.bind(this)), u.actionSuccess = this.modifyProperty.bind(this, u)
@@ -12068,18 +12131,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         p.element.querySelector(".e-btn-save") && ("" !== e.srcElement.value ? p.element.querySelector(".e-btn-save").ej2_instances[0].disabled = !1 : p.element.querySelector(".e-btn-save").ej2_instances[0].disabled = !0)
                     }), p.actionSuccess = this.createCommentDiv.bind(this, p), l.appendChild(u), e) {
                     if (p.value = e.note, e.state) {
-                        var L = t.createElement("div", {
+                        var w = t.createElement("div", {
                                 id: this.pdfViewer.element.id + "status_container",
                                 className: "e-pv-status-container"
                             }),
-                            w = t.createElement("div", {
+                            L = t.createElement("div", {
                                 id: this.pdfViewer.element.id + "status_div",
                                 className: "e-pv-status-div"
                             }),
                             c = t.createElement("span", {
                                 id: this.pdfViewer.element.id + "status_icon"
                             });
-                        w.appendChild(c), L.appendChild(w), l.appendChild(L), this.updateStatusContainer(e.state, c, w, L)
+                        L.appendChild(c), w.appendChild(L), l.appendChild(w), this.updateStatusContainer(e.state, c, L, w)
                     }
                     if (e.comments) {
                         for (h = 0; h < e.comments.length; h++) this.renderComments(e.comments[h], this.commentsContainer, !0, null, !0);
@@ -12125,8 +12188,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 p.appendChild(M), M.style.opacity = "0.87", r.appendChild(p), e.appendChild(r);
                 var h = e.parentElement;
                 if (h) {
-                    var L = this.pdfViewer.annotationModule.updateAnnotationAuthor(a, n);
-                    h.setAttribute("author", L)
+                    var w = this.pdfViewer.annotationModule.updateAnnotationAuthor(a, n);
+                    h.setAttribute("author", w)
                 }
                 return this.isCreateContextMenu || this.createCommentContextMenu(), this.isCreateContextMenu = !0, r.addEventListener("dblclick", this.openTextEditor.bind(this)), p.addEventListener("mouseup", this.moreOptionsClick.bind(this)), a
             }, e.prototype.createReplyDivTitleContainer = function(e, i, n) {
@@ -12252,15 +12315,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     id: this.pdfViewer.element.id + "status_div",
                                     className: "e-pv-status-div"
                                 }),
-                                L = t.createElement("span", {
+                                w = t.createElement("span", {
                                     id: this.pdfViewer.element.id + "status_icon",
                                     className: "e-pv-cancelled-icon"
                                 });
-                            h.style.backgroundColor = "rgb(245,103,0)", h.appendChild(L), M.appendChild(h), i.parentElement.appendChild(M), this.modifyStatusProperty("Cancelled", i.parentElement);
+                            h.style.backgroundColor = "rgb(245,103,0)", h.appendChild(w), M.appendChild(h), i.parentElement.appendChild(M), this.modifyStatusProperty("Cancelled", i.parentElement);
                             break;
                         case this.pdfViewer.localeObj.getConstant("Rejected"):
                             i.parentElement.lastChild.id === this.pdfViewer.element.id + "status_container" && i.parentElement.lastChild.remove();
-                            var w = t.createElement("div", {
+                            var L = t.createElement("div", {
                                     id: this.pdfViewer.element.id + "status_container",
                                     className: "e-pv-status-container"
                                 }),
@@ -12272,7 +12335,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     id: this.pdfViewer.element.id + "status_icon",
                                     className: "e-pv-rejected-icon"
                                 });
-                            c.style.backgroundColor = "rgb(255,59,48)", c.appendChild(C), w.appendChild(c), i.parentElement.appendChild(w), this.modifyStatusProperty("Rejected", i.parentElement);
+                            c.style.backgroundColor = "rgb(255,59,48)", c.appendChild(C), L.appendChild(c), i.parentElement.appendChild(L), this.modifyStatusProperty("Rejected", i.parentElement);
                             break;
                         case this.pdfViewer.localeObj.getConstant("None"):
                             i.parentElement.lastChild.id === this.pdfViewer.element.id + "status_container" && i.parentElement.lastChild.remove(), this.modifyStatusProperty("None", i.parentElement)
@@ -12476,16 +12539,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     this.pdfViewer.annotationModule.textMarkupAnnotationModule.selectAnnotation(l[d], p, i - 1), this.pdfViewer.annotation.textMarkupAnnotationModule.currentTextMarkupAnnotation = l[d], this.pdfViewer.annotation.textMarkupAnnotationModule.selectTextMarkupCurrentPage = i - 1, this.pdfViewer.annotation.textMarkupAnnotationModule.enableAnnotationPropertiesTool(!0), this.pdfViewer.toolbarModule && this.pdfViewer.enableAnnotationToolbar && (this.pdfViewer.toolbarModule.annotationToolbarModule.isToolbarHidden = !0, this.pdfViewer.toolbarModule.annotationToolbarModule.showAnnotationToolbar(this.pdfViewer.toolbarModule.annotationItem))
                                 } else "stamp" === t ? (this.pdfViewer.select([l[d].randomId], u), this.pdfViewer.annotation.onAnnotationMouseDown()) : "sticky" === t ? (this.pdfViewer.select([l[d].annotName], u), this.pdfViewer.annotation.onAnnotationMouseDown()) : (this.pdfViewer.select([l[d].id], u), this.pdfViewer.annotation.onAnnotationMouseDown());
                                 if ("textMarkup" === t) {
-                                    if ((l[d].rect || l[d].bounds) && (L = this.pdfViewerBase.pageSize[i - 1].top * this.pdfViewerBase.getZoomFactor() + this.pdfViewer.annotationModule.getAnnotationTop(l[d]) * this.pdfViewerBase.getZoomFactor())) {
-                                        var M = (L - 20).toString();
+                                    if ((l[d].rect || l[d].bounds) && (w = this.pdfViewerBase.pageSize[i - 1].top * this.pdfViewerBase.getZoomFactor() + this.pdfViewer.annotationModule.getAnnotationTop(l[d]) * this.pdfViewerBase.getZoomFactor())) {
+                                        var M = (w - 20).toString();
                                         this.pdfViewerBase.viewerContainer.scrollTop = parseInt(M)
                                     }
                                 } else {
                                     var h = l[d].bounds.top;
                                     "ink" === t && (h = l[d].bounds.y);
-                                    var L = this.pdfViewerBase.pageSize[i - 1].top * this.pdfViewerBase.getZoomFactor() + h * this.pdfViewerBase.getZoomFactor(),
-                                        w = (L - 20).toString();
-                                    this.pdfViewerBase.viewerContainer.scrollTop = parseInt(w)
+                                    var w = this.pdfViewerBase.pageSize[i - 1].top * this.pdfViewerBase.getZoomFactor() + h * this.pdfViewerBase.getZoomFactor(),
+                                        L = (w - 20).toString();
+                                    this.pdfViewerBase.viewerContainer.scrollTop = parseInt(L)
                                 }
                                 this.isCommentsSelected = !0
                             }
@@ -12539,7 +12602,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var p = m(o);
                     if (o.comments.length > 0) {
                         for (var M = !1, h = 0; h < o.comments.length; h++) o.comments[h].annotName === t && (M = !0, o.comments[h].note = e, o.comments[h].modifiedDate = this.getDateAndTime());
-                        L = {
+                        w = {
                             annotName: t,
                             parentId: i,
                             subject: "Comments",
@@ -12558,9 +12621,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             },
                             isLock: !1
                         };
-                        M || (o.comments[o.comments.length] = L)
+                        M || (o.comments[o.comments.length] = w)
                     } else {
-                        var L = {
+                        var w = {
                             annotName: t,
                             parentId: i,
                             subject: "Comments",
@@ -12579,7 +12642,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             },
                             isLock: !1
                         };
-                        o.comments[o.comments.length] = L
+                        o.comments[o.comments.length] = w
                     }
                     this.pdfViewer.annotation.addAction(a, null, o, "Comments Property Added", "", p, o), l ? this.updateUndoRedoCollections(o, a, "shape_measure") : this.updateUndoRedoCollections(o, a)
                 }
@@ -12681,14 +12744,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.redoAction = function(e, i, n) {
                 if ("Text Property Added" === i) {
                     if (g = document.getElementById(e.annotName)) {
-                        r = (L = parseInt(g.accessKey)) - 1;
+                        r = (w = parseInt(g.accessKey)) - 1;
                         return g.firstChild.firstChild.nextSibling.ej2_instances[0].value = e.note, g.lastChild.style.display = "block", this.updateUndoRedoCollections(e, r), e
                     }
                 } else if ("Comments Property Added" === i) {
                     var o = e.comments[e.comments.length - 1],
                         s = document.getElementById(e.annotName);
                     if (s) {
-                        r = (L = parseInt(s.accessKey)) - 1;
+                        r = (w = parseInt(s.accessKey)) - 1;
                         return this.renderComments(o, s, !0, e.annotName), this.updateUndoRedoCollections(e, r), e
                     }
                 } else {
@@ -12707,7 +12770,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 u = t.createElement("span", {
                                     id: this.pdfViewer.element.id + "status_icon"
                                 });
-                            if (d.appendChild(u), l.appendChild(d), (h = document.getElementById(e.annotName)) && (r = (L = parseInt(h.accessKey)) - 1), e.annotName === a.annotName) {
+                            if (d.appendChild(u), l.appendChild(d), (h = document.getElementById(e.annotName)) && (r = (w = parseInt(h.accessKey)) - 1), e.annotName === a.annotName) {
                                 this.updateStatusContainer(e.state, u, d, l);
                                 for (c = 0; c < h.firstChild.children.length; c++) h.firstChild.children[c].id === this.pdfViewer.element.id + "status_container" && h.firstChild.children[c].parentElement.removeChild(h.firstChild.children[c]);
                                 h.firstChild.appendChild(l)
@@ -12725,14 +12788,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var r = this.pdfViewerBase.currentPageNumber - 1,
                             h = document.getElementById(e.annotName);
                         if (h) {
-                            var L = parseInt(h.accessKey);
-                            r = L - 1
+                            var w = parseInt(h.accessKey);
+                            r = w - 1
                         }
-                        for (var a = this.pdfViewer.annotation.redoCommentsElement.pop(), w = m(e), c = 0; c < e.comments.length; c++)
+                        for (var a = this.pdfViewer.annotation.redoCommentsElement.pop(), L = m(e), c = 0; c < e.comments.length; c++)
                             if (e.comments[c].annotName === a.annotName) {
                                 var C = document.getElementById(a.annotName);
                                 e.comments.splice(c, 1), C.remove()
-                            } return this.updateUndoRedoCollections(e, r), w
+                            } return this.updateUndoRedoCollections(e, r), L
                     }
                     if ("dynamicText Change" === i && e) {
                         var g = document.getElementById(e.annotName);
@@ -12880,11 +12943,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             var s = this.findAnnotationType(e),
                                 a = this.getAnnotations(e.pageIndex, null, s);
                             if (null != a && e)
-                                for (var r = 0; r < a.length; r++)
+                                for (var r = 0; r < a.length; r++) {
                                     if (e.annotName === a[r].annotName && (e.bounds.x !== a[r].bounds.left || e.bounds.y !== a[r].bounds.top || e.bounds.height !== a[r].bounds.height || e.bounds.width !== a[r].bounds.width)) {
                                         l = (n = o.firstChild.firstChild.childNodes[1]).textContent.split("-")[0];
                                         n.textContent = l + " - " + this.setModifiedDate()
                                     }
+                                    "sticky" === a[r].shapeAnnotationType && this.pdfViewer.annotationModule.storeAnnotationCollections(a[r], e.pageIndex)
+                                }
                         } else {
                             l = (n = o.firstChild.firstChild.childNodes[1]).textContent.split("-")[0];
                             n.textContent = l + " - " + this.setModifiedDate()
@@ -13062,7 +13127,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        xt = function() {
+        Dt = function() {
             function e(e, t) {
                 this.newObject = [], this.outputString = "", this.inkAnnotationindex = [], this.isAddAnnotationProgramatically = !1, this.currentPageNumber = "", this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -13109,7 +13174,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         p = this.pdfViewer.inkAnnotationSettings.customData,
                         M = this.pdfViewer.inkAnnotationSettings.isPrint,
                         h = this.pdfViewer.inkAnnotationSettings.allowedInteractions ? this.pdfViewer.inkAnnotationSettings.allowedInteractions : this.pdfViewer.annotationSettings.allowedInteractions,
-                        L = this.pdfViewer.inkAnnotationSettings ? this.pdfViewer.inkAnnotationSettings : this.pdfViewer.annotationSettings;
+                        w = this.pdfViewer.inkAnnotationSettings ? this.pdfViewer.inkAnnotationSettings : this.pdfViewer.annotationSettings;
                     t = {
                         id: "ink" + this.pdfViewerBase.inkCount,
                         bounds: {
@@ -13138,13 +13203,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         },
                         annotationSelectorSettings: this.getSelector("Ink", ""),
                         modifiedDate: o,
-                        annotationSettings: L,
+                        annotationSettings: w,
                         isPrint: M,
                         allowedInteractions: h,
                         isCommentLock: !1,
                         isLocked: d
                     };
-                    var w = this.pdfViewer.add(t),
+                    var L = this.pdfViewer.add(t),
                         c = {
                             left: t.bounds.x,
                             top: t.bounds.y,
@@ -13162,7 +13227,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         };
                     this.pdfViewerBase.inkCount++;
                     var g = this.pdfViewer.annotation.stickyNotesAnnotationModule.addComments("ink", t.pageIndex + 1, t.shapeAnnotationType);
-                    g && (document.getElementById(g).id = n), t.annotName = n, this.pdfViewer.annotation.addAction(s, null, w, "Addition", "", w, w), this.pdfViewer.annotationModule.storeAnnotations(s, t, "_annotations_ink"), this.pdfViewer.fireAnnotationAdd(t.pageIndex, t.annotName, "Ink", c, C), this.pdfViewerBase.isInkAdded && (this.outputString = "", this.newObject = []), this.pdfViewerBase.isToolbarInkClicked = !1, this.pdfViewer.tool = ""
+                    g && (document.getElementById(g).id = n), t.annotName = n, this.pdfViewer.annotation.addAction(s, null, L, "Addition", "", L, L), this.pdfViewer.annotationModule.storeAnnotations(s, t, "_annotations_ink"), this.pdfViewer.fireAnnotationAdd(t.pageIndex, t.annotName, "Ink", c, C), this.pdfViewerBase.isInkAdded && (this.outputString = "", this.newObject = []), this.pdfViewerBase.isToolbarInkClicked = !1, this.pdfViewer.tool = ""
                 }
                 return t
             }, e.prototype.setAnnotationMode = function() {
@@ -13225,13 +13290,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 p = d.Y ? d.Y : d.y,
                                 M = d.Width ? d.Width : d.width,
                                 h = d.Height ? d.Height : d.height,
-                                L = l.PathData;
-                            n && (L = l.IsPathData || l.PathData.split("command").length <= 1 ? l.PathData : i.getPathString(JSON.parse(l.PathData)));
-                            var w = !!l.AnnotationSettings && l.AnnotationSettings.isLock,
+                                w = l.PathData;
+                            n && (w = l.IsPathData || l.PathData.split("command").length <= 1 ? l.PathData : i.getPathString(JSON.parse(l.PathData)));
+                            var L = !!l.AnnotationSettings && l.AnnotationSettings.isLock,
                                 c = l.AnnotationSelectorSettings ? l.AnnotationSelectorSettings : this.getSelector(l, "Ink"),
                                 C = this.pdfViewer.annotation.getCustomData(l),
                                 g = !0;
-                            g = l.AnnotationSettings ? l.AnnotationSettings.isPrint : this.pdfViewer.inkAnnotationSettings.isPrint, l.IsLocked && (w = l.IsLocked), l.allowedInteractions = l.AllowedInteractions ? l.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(l), o = {
+                            g = l.AnnotationSettings ? l.AnnotationSettings.isPrint : this.pdfViewer.inkAnnotationSettings.isPrint, l.IsLocked && (L = l.IsLocked), l.allowedInteractions = l.AllowedInteractions ? l.AllowedInteractions : this.pdfViewer.annotationModule.updateAnnotationAllowedInteractions(l), o = {
                                 id: "ink" + this.pdfViewerBase.inkCount,
                                 bounds: {
                                     x: u,
@@ -13240,7 +13305,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     height: h
                                 },
                                 pageIndex: t,
-                                data: L,
+                                data: w,
                                 shapeAnnotationType: "Ink",
                                 opacity: l.Opacity,
                                 strokeColor: l.StrokeColor,
@@ -13259,7 +13324,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 },
                                 notes: l.Note,
                                 annotationSettings: {
-                                    isLock: w
+                                    isLock: L
                                 },
                                 annotationSelectorSettings: c,
                                 customData: C,
@@ -13509,7 +13574,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, e
         }(),
-        Nt = function() {
+        bt = function() {
             function i(i, n) {
                 var o = this;
                 this.thumbnailWidthMin = 200, this.contentContainerScrollWidth = 33, this.closeButtonLeft = 170, this.isTooltipCreated = !1, this.isThumbnail = !1, this.annotationContextMenu = [], this.isCommentPanelShow = !1, this.commentPanelWidthMin = 300, this.isNavigationToolbarVisible = !1, this.isBookmarkListOpen = !1, this.isNavigationPaneResized = !1, this.isBookmarkOpen = !1, this.isThumbnailOpen = !1, this.loadImportAnnotation = function(t) {
@@ -13927,7 +13992,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         id: this.pdfViewer.element.id + "_thumbnail-view",
                         attrs: {
                             disabled: "disabled",
-                            "aria-label": this.pdfViewer.localeObj.getConstant("Page Thumbnails"), // Added traduction
+                            "aria-label": this.pdfViewer.localeObj.getConstant("Page Thumbnails"), // Added traduction,
                             tabindex: "-1"
                         }
                     }), this.thumbnailButton.className = "e-pv-tbar-btn e-pv-thumbnail-view-button e-btn", this.thumbnailButton.setAttribute("type", "button");
@@ -14047,12 +14112,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, i.prototype.clear = function() {
                 t.Browser.isDevice || (this.removeBookmarkSelectionIconTheme(), this.removeThumbnailSelectionIconTheme(), this.closeCommentPanelContainer()), this.commentsContentContainer && (this.commentsContentContainer.innerHTML = "")
             }, i.prototype.destroy = function() {
-                this.annotationMenuObj && this.annotationMenuObj.destroy()
+                this.bookmarkButton.ej2_instances[0].destroy(), this.thumbnailButton.ej2_instances[0].destroy(), this.annotationMenuObj && this.annotationMenuObj.destroy()
             }, i.prototype.getModuleName = function() {
                 return "NavigationPane"
             }, i
         }(),
-        Dt = function() {
+        vt = function() {
             function e(e, t) {
                 this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -14072,32 +14137,34 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 "string" == typeof e ? this.pdfViewerBase.OnItemSelected(e) : this.pdfViewerBase.OnItemSelected(e[0])
             }, e
         }(),
-        bt = {},
-        vt = null,
-        It = null,
-        Et = 30,
-        Vt = 30,
+        It = {},
+        Et = null,
+        Vt = null,
         zt = 30,
-        kt = 36,
-        Ot = "e-spin-show",
-        Pt = "e-spin-hide",
-        Ft = "e-spin-material",
-        Bt = "e-spin-fabric",
-        Yt = "e-spin-bootstrap",
-        Ut = "e-spin-bootstrap4",
-        Qt = "e-spin-high-contrast",
-        _t = "e-spinner-pane",
-        Rt = "e-spinner-inner",
-        Wt = "e-path-circle",
-        Jt = "e-path-arc",
-        Ht = "e-spin-label",
-        Gt = "e-spin-template",
-        Zt = function() {
+        kt = 30,
+        Ot = 30,
+        Pt = 36,
+        Ft = "e-spin-show",
+        Bt = "e-spin-hide",
+        Yt = "e-spin-material",
+        Ut = "e-spin-fabric",
+        Qt = "e-spin-bootstrap",
+        _t = "e-spin-bootstrap4",
+        Rt = "e-spin-bootstrap5",
+        Wt = "e-spin-tailwind",
+        Jt = "e-spin-high-contrast",
+        Ht = "e-spinner-pane",
+        Gt = "e-spinner-inner",
+        Zt = "e-path-circle",
+        Xt = "e-path-arc",
+        Kt = "e-spin-label",
+        qt = "e-spin-template",
+        $t = function() {
             function e(e, t) {
                 this.pdfViewer = null, this.pdfViewerBase = null, this.totalPageElement = null, this.currentPageBoxElementContainer = null, this.currentPageBoxElement = null, this.firstPageElement = null, this.previousPageElement = null, this.nextPageElement = null, this.lastPageElement = null, this.zommOutElement = null, this.zoomInElement = null, this.zoomDropDownElement = null, this.selectToolElement = null, this.handToolElement = null, this.undoElement = null, this.redoElement = null, this.commentElement = null, this.submitFormButton = null, this.searchElement = null, this.annotationElement = null, this.printElement = null, this.downloadElement = null, this.highlightElement = null, this.underlineElement = null, this.strikeThroughElement = null, this.shapeElement = null, this.calibrateElement = null, this.stampElement = null, this.freeTextElement = null, this.signatureElement = null, this.inkElement = null, this.annotationFontSizeInputElement = null, this.annotationFontFamilyInputElement = null, this.annotationColorElement = null, this.annotationStrokeColorElement = null, this.annotationThicknessElement = null, this.annotationOpacityElement = null, this.annotationFontColorElement = null, this.annotationFontFamilyElement = null, this.annotationFontSizeElement = null, this.annotationTextAlignElement = null, this.annotationTextColorElement = null, this.annotationTextPropertiesElement = null, this.annotationDeleteElement = null, this.annotationCloseElement = null, this.annotationCommentPanelElement = null, this.mobileToolbarContainerElement = null, this.mobileSearchPreviousOccurenceElement = null, this.mobileSearchNextOccurenceElement = null, this.cssClass = "e-overlay", this.disableClass = " e-overlay", this.pdfViewer = e, this.pdfViewerBase = t, this.findToolbarElements()
             }
             return e.prototype.findToolbarElements = function() {
-                this.totalPageElement = this.pdfViewerBase.getElement("_totalPage").children[0], this.currentPageBoxElementContainer = this.pdfViewerBase.getElement("_currentPageInput"), this.currentPageBoxElement = this.pdfViewerBase.getElement("_currentPageInput").children[0].children[0], this.firstPageElement = this.pdfViewerBase.getElement("_firstPage"), this.previousPageElement = this.pdfViewerBase.getElement("_previousPage"), this.nextPageElement = this.pdfViewerBase.getElement("_nextPage"), this.lastPageElement = this.pdfViewerBase.getElement("_lastPage"), this.zommOutElement = this.pdfViewerBase.getElement("_zoomOut"), this.zoomInElement = this.pdfViewerBase.getElement("_zoomIn"), this.zoomDropDownElement = this.pdfViewerBase.getElement("_zoomDropDown"), this.selectToolElement = this.pdfViewerBase.getElement("_selectTool"), this.handToolElement = this.pdfViewerBase.getElement("_handTool"), this.undoElement = this.pdfViewerBase.getElement("_undo"), this.redoElement = this.pdfViewerBase.getElement("_redo"), this.commentElement = this.pdfViewerBase.getElement("_comment"), this.submitFormButton = this.pdfViewerBase.getElement("_submitFormButton"), this.searchElement = this.pdfViewerBase.getElement("_search"), this.annotationElement = this.pdfViewerBase.getElement("_annotation"), this.printElement = this.pdfViewerBase.getElement("_print"), this.downloadElement = this.pdfViewerBase.getElement("_download"), this.highlightElement = this.pdfViewerBase.getElement("_highLight"), this.underlineElement = this.pdfViewerBase.getElement("_underline"), this.strikeThroughElement = this.pdfViewerBase.getElement("_strikethrough"), this.shapeElement = this.pdfViewerBase.getElement("_annotation_shapes"), this.calibrateElement = this.pdfViewerBase.getElement("_annotation_calibrate"), this.stampElement = this.pdfViewerBase.getElement("_annotation_stamp"), this.freeTextElement = this.pdfViewerBase.getElement("_annotation_freeTextEdit"), this.signatureElement = this.pdfViewerBase.getElement("_annotation_signature"), this.inkElement = document.getElementById("InkAnnotation"), this.annotationFontSizeInputElement = this.pdfViewerBase.getElement("_annotation_fontsize").children[0].children[0], this.annotationFontFamilyInputElement = this.pdfViewerBase.getElement("_annotation_fontname").children[0].children[0], this.annotationColorElement = this.pdfViewerBase.getElement("_annotation_color"), this.annotationStrokeColorElement = this.pdfViewerBase.getElement("_annotation_stroke"), this.annotationThicknessElement = this.pdfViewerBase.getElement("_annotation_thickness"), this.annotationOpacityElement = this.pdfViewerBase.getElement("_annotation_opacity"), this.annotationFontColorElement = this.pdfViewerBase.getElement("_annotation_textcolor"), this.annotationFontFamilyElement = this.pdfViewerBase.getElement("_annotation_fontname"), this.annotationFontSizeElement = this.pdfViewerBase.getElement("_annotation_fontsize"), this.annotationTextAlignElement = this.pdfViewerBase.getElement("_annotation_textalign"), this.annotationTextColorElement = this.pdfViewerBase.getElement("_annotation_textcolor"), this.annotationTextPropertiesElement = this.pdfViewerBase.getElement("_annotation_textproperties"), this.annotationDeleteElement = this.pdfViewerBase.getElement("_annotation_delete"), this.annotationCommentPanelElement = this.pdfViewerBase.getElement("_annotation_commentPanel"), this.annotationCloseElement = this.pdfViewerBase.getElement("_annotation_close"), this.mobileToolbarContainerElement = this.pdfViewerBase.getElement("_mobileToolbarContainer"), this.mobileSearchPreviousOccurenceElement = this.pdfViewerBase.getElement("_prev_occurrence"), this.mobileSearchNextOccurenceElement = this.pdfViewerBase.getElement("_next_occurrence")
+                this.totalPageElement = this.pdfViewerBase.getElement("_totalPage").children[0], this.currentPageBoxElementContainer = this.pdfViewerBase.getElement("_currentPageInput"), this.currentPageBoxElement = this.pdfViewerBase.getElement("_currentPageInput").children[0].children[0], this.firstPageElement = this.pdfViewerBase.getElement("_firstPage"), this.previousPageElement = this.pdfViewerBase.getElement("_previousPage"), this.nextPageElement = this.pdfViewerBase.getElement("_nextPage"), this.lastPageElement = this.pdfViewerBase.getElement("_lastPage"), this.zommOutElement = this.pdfViewerBase.getElement("_zoomOut"), this.zoomInElement = this.pdfViewerBase.getElement("_zoomIn"), this.zoomDropDownElement = this.pdfViewerBase.getElement("_zoomDropDown"), this.selectToolElement = this.pdfViewerBase.getElement("_selectTool"), this.handToolElement = this.pdfViewerBase.getElement("_handTool"), this.undoElement = this.pdfViewerBase.getElement("_undo"), this.redoElement = this.pdfViewerBase.getElement("_redo"), this.commentElement = this.pdfViewerBase.getElement("_comment"), this.submitFormButton = this.pdfViewerBase.getElement("_submitFormButton"), this.searchElement = this.pdfViewerBase.getElement("_search"), this.annotationElement = this.pdfViewerBase.getElement("_annotation"), this.printElement = this.pdfViewerBase.getElement("_print"), this.downloadElement = this.pdfViewerBase.getElement("_download"), this.highlightElement = this.pdfViewerBase.getElement("_highLight"), this.underlineElement = this.pdfViewerBase.getElement("_underline"), this.strikeThroughElement = this.pdfViewerBase.getElement("_strikethrough"), this.shapeElement = this.pdfViewerBase.getElement("_annotation_shapes"), this.calibrateElement = this.pdfViewerBase.getElement("_annotation_calibrate"), this.stampElement = this.pdfViewerBase.getElement("_annotation_stamp"), this.freeTextElement = this.pdfViewerBase.getElement("_annotation_freeTextEdit"), this.signatureElement = this.pdfViewerBase.getElement("_annotation_signature"), this.inkElement = this.pdfViewerBase.getElement("_annotation_ink"), this.annotationFontSizeInputElement = this.pdfViewerBase.getElement("_annotation_fontsize").children[0].children[0], this.annotationFontFamilyInputElement = this.pdfViewerBase.getElement("_annotation_fontname").children[0].children[0], this.annotationColorElement = this.pdfViewerBase.getElement("_annotation_color"), this.annotationStrokeColorElement = this.pdfViewerBase.getElement("_annotation_stroke"), this.annotationThicknessElement = this.pdfViewerBase.getElement("_annotation_thickness"), this.annotationOpacityElement = this.pdfViewerBase.getElement("_annotation_opacity"), this.annotationFontColorElement = this.pdfViewerBase.getElement("_annotation_textcolor"), this.annotationFontFamilyElement = this.pdfViewerBase.getElement("_annotation_fontname"), this.annotationFontSizeElement = this.pdfViewerBase.getElement("_annotation_fontsize"), this.annotationTextAlignElement = this.pdfViewerBase.getElement("_annotation_textalign"), this.annotationTextColorElement = this.pdfViewerBase.getElement("_annotation_textcolor"), this.annotationTextPropertiesElement = this.pdfViewerBase.getElement("_annotation_textproperties"), this.annotationDeleteElement = this.pdfViewerBase.getElement("_annotation_delete"), this.annotationCommentPanelElement = this.pdfViewerBase.getElement("_annotation_commentPanel"), this.annotationCloseElement = this.pdfViewerBase.getElement("_annotation_close"), this.mobileToolbarContainerElement = this.pdfViewerBase.getElement("_mobileToolbarContainer"), this.mobileSearchPreviousOccurenceElement = this.pdfViewerBase.getElement("_prev_occurrence"), this.mobileSearchNextOccurenceElement = this.pdfViewerBase.getElement("_next_occurrence")
             }, e.prototype.updateTotalPage = function() {
                 this.totalPageElement.textContent = this.pdfViewer.localeObj.getConstant("of") + this.pdfViewerBase.pageCount.toString()
             }, e.prototype.updateCurrentPage = function(e) {
@@ -14141,7 +14208,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return e.classList.contains(this.cssClass)
             }, e
         }(),
-        Xt = function(e, t, i, n) {
+        ei = function(e, t, i, n) {
             return new(i || (i = Promise))(function(o, s) {
                 function a(e) {
                     try {
@@ -14167,7 +14234,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 l((n = n.apply(e, t || [])).next())
             })
         },
-        Kt = function(e, t) {
+        ti = function(e, t) {
             function i(e) {
                 return function(t) {
                     return n([e, t])
@@ -14243,10 +14310,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this
             }), r
         },
-        qt = function() {
+        ii = function() {
             function s(e) {
                 var n = this;
-                this.pageSize = [], this.pageCount = 0, this.currentPageNumber = 0, this.activeElements = new Lt, this.mouseDownEvent = null, this.isDocumentLoaded = !1, this.renderedPagesList = [], this.pageGap = 8, this.signatureAdded = !1, this.pageLeft = 5, this.sessionLimit = 1e3, this.pageStopValue = 300, this.toolbarHeight = 56, this.pageLimit = 0, this.previousPage = 0, this.isViewerMouseDown = !1, this.isViewerMouseWheel = !1, this.scrollPosition = 0, this.sessionStorage = [], this.isLoadedFormFieldAdded = !1, this.pointerCount = 0, this.pointersForTouch = [], this.isPasswordAvailable = !1, this.passwordData = "", this.reRenderedCount = 0, this.mouseX = 0, this.mouseY = 0, this.mouseLeft = 0, this.mouseTop = 0, this.touchClientX = 0, this.touchClientY = 0, this.previousTime = 0, this.currentTime = 0, this.isTouchScrolled = !1, this.isLongTouchPropagated = !1, this.longTouchTimer = null, this.isViewerContainerDoubleClick = !1, this.dblClickTimer = null, this.pinchZoomStorage = [], this.isTextSelectionDisabled = !1, this.isPanMode = !1, this.dragX = 0, this.dragY = 0, this.isScrollbarMouseDown = !1, this.scrollX = 0, this.scrollY = 0, this.ispageMoved = !1, this.isThumb = !1, this.isTapHidden = !1, this.singleTapTimer = null, this.tapCount = 0, this.inputTapCount = 0, this.isInitialLoaded = !1, this.annotationPageList = [], this.importPageList = [], this.isImportAction = !1, this.isImportedAnnotation = !1, this.isAnnotationCollectionRemoved = !1, this.tool = null, this.action = "Select", this.eventArgs = null, this.inAction = !1, this.isMouseDown = !1, this.isStampMouseDown = !1, this.stampAdded = !1, this.customStampCount = 0, this.isDynamicStamp = !1, this.isMixedSizeDocument = !1, this.highestWidth = 0, this.highestHeight = 0, this.customStampCollection = [], this.isAlreadyAdded = !1, this.isWebkitMobile = !1, this.isFreeTextContextMenu = !1, this.isSelection = !1, this.isAddAnnotation = !1, this.annotationComments = null, this.isToolbarSignClicked = !1, this.signatureCount = 0, this.isSignatureAdded = !1, this.isNewSignatureAdded = !1, this.isInitialPageMode = !1, this.documentAnnotationCollections = null, this.annotationRenderredList = [], this.annotationStorage = {}, this.formFieldStorage = {}, this.isStorageExceed = !1, this.isNewStamp = !1, this.downloadCollections = {}, this.isAnnotationAdded = !1, this.annotationEvent = null, this.isAnnotationDrawn = !1, this.isAnnotationSelect = !1, this.isAnnotationMouseDown = !1, this.isAnnotationMouseMove = !1, this.validateForm = !1, this.isMinimumZoom = !1, this.documentLoaded = !1, this.tileRenderCount = 0, this.tileRequestCount = 0, this.isTileImageRendered = !1, this.isDataExits = !1, this.requestLists = [], this.tilerequestLists = [], this.isInkAdded = !1, this.inkCount = 0, this.isAddedSignClicked = !1, this.imageCount = 0, this.isMousedOver = !1, this.isFormFieldSelect = !1, this.isFormFieldMouseDown = !1, this.isFormFieldMouseMove = !1, this.isFormFieldMousedOver = !1, this.isPassword = !1, this.isAddComment = !1, this.drawSignatureWithTool = !1, this.formFieldCollection = [], this.nonFillableFields = {}, this.isInitialField = !1, this.isTouchDesignerMode = !1, this.isPrint = !1, this.clearSessionStorage = function() {
+                this.pageSize = [], this.pageCount = 0, this.currentPageNumber = 0, this.activeElements = new ct, this.mouseDownEvent = null, this.isDocumentLoaded = !1, this.renderedPagesList = [], this.pageGap = 8, this.signatureAdded = !1, this.pageLeft = 5, this.sessionLimit = 1e3, this.pageStopValue = 300, this.toolbarHeight = 56, this.pageLimit = 0, this.previousPage = 0, this.isViewerMouseDown = !1, this.isViewerMouseWheel = !1, this.scrollPosition = 0, this.sessionStorage = [], this.isLoadedFormFieldAdded = !1, this.pointerCount = 0, this.pointersForTouch = [], this.isPasswordAvailable = !1, this.passwordData = "", this.reRenderedCount = 0, this.mouseX = 0, this.mouseY = 0, this.mouseLeft = 0, this.mouseTop = 0, this.touchClientX = 0, this.touchClientY = 0, this.previousTime = 0, this.currentTime = 0, this.isTouchScrolled = !1, this.isLongTouchPropagated = !1, this.longTouchTimer = null, this.isViewerContainerDoubleClick = !1, this.dblClickTimer = null, this.pinchZoomStorage = [], this.isTextSelectionDisabled = !1, this.isPanMode = !1, this.dragX = 0, this.dragY = 0, this.isScrollbarMouseDown = !1, this.scrollX = 0, this.scrollY = 0, this.ispageMoved = !1, this.isThumb = !1, this.isTapHidden = !1, this.singleTapTimer = null, this.tapCount = 0, this.inputTapCount = 0, this.isInitialLoaded = !1, this.annotationPageList = [], this.importPageList = [], this.isImportAction = !1, this.isImportedAnnotation = !1, this.isAnnotationCollectionRemoved = !1, this.tool = null, this.action = "Select", this.eventArgs = null, this.inAction = !1, this.isMouseDown = !1, this.isStampMouseDown = !1, this.stampAdded = !1, this.customStampCount = 0, this.isDynamicStamp = !1, this.isMixedSizeDocument = !1, this.highestWidth = 0, this.highestHeight = 0, this.customStampCollection = [], this.isAlreadyAdded = !1, this.isWebkitMobile = !1, this.isFreeTextContextMenu = !1, this.isSelection = !1, this.isAddAnnotation = !1, this.annotationComments = null, this.isToolbarSignClicked = !1, this.signatureCount = 0, this.isSignatureAdded = !1, this.isNewSignatureAdded = !1, this.isInitialPageMode = !1, this.documentAnnotationCollections = null, this.annotationRenderredList = [], this.annotationStorage = {}, this.formFieldStorage = {}, this.isStorageExceed = !1, this.isNewStamp = !1, this.downloadCollections = {}, this.isAnnotationAdded = !1, this.annotationEvent = null, this.isAnnotationDrawn = !1, this.isAnnotationSelect = !1, this.isAnnotationMouseDown = !1, this.isAnnotationMouseMove = !1, this.validateForm = !1, this.isMinimumZoom = !1, this.documentLoaded = !1, this.tileRenderCount = 0, this.tileRequestCount = 0, this.isTileImageRendered = !1, this.isDataExits = !1, this.requestLists = [], this.tilerequestLists = [], this.isInkAdded = !1, this.inkCount = 0, this.isAddedSignClicked = !1, this.imageCount = 0, this.isMousedOver = !1, this.isFormFieldSelect = !1, this.isFormFieldMouseDown = !1, this.isFormFieldMouseMove = !1, this.isFormFieldMousedOver = !1, this.isPassword = !1, this.isDrawnCompletely = !1, this.isAddComment = !1, this.drawSignatureWithTool = !1, this.formFieldCollection = [], this.nonFillableFields = {}, this.isInitialField = !1, this.isTouchDesignerMode = !1, this.isPrint = !1, this.downloadFileName = "", this.clearSessionStorage = function() {
                     var e = "";
                     e = t.Browser.isIE || "edge" === t.Browser.info.name ? decodeURI(window.sessionStorage.getItem("hashId")) : window.sessionStorage.getItem("hashId");
                     var i = window.sessionStorage.getItem("documentLiveCount");
@@ -14426,15 +14493,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 r = new i.Rect(l + 10, h + 10, M.width - 10, M.height - 10)
                             }
                         }
-                        var L = n.pdfViewer.annotationModule ? n.pdfViewer.annotationModule.stampAnnotationModule : null;
+                        var w = n.pdfViewer.annotationModule ? n.pdfViewer.annotationModule.stampAnnotationModule : null;
                         !r || !r.containsPoint({
                             x: n.mouseX,
                             y: n.mouseY
-                        }) || L && L.isStampAnnotSelected ? (n.diagramMouseLeave(e), n.isAnnotationDrawn && "Ink" !== n.action && (n.diagramMouseUp(e), n.isAnnotationAdded = !0)) : (n.diagramMouseMove(e), n.annotationEvent = e), n.pdfViewer.enableStampAnnotations && L && L.isStampAnnotSelected && (n.pdfViewer.tool = "Stamp", n.tool = new at(n.pdfViewer, n), n.isMouseDown = !0, L.isStampAnnotSelected = !1, L.isNewStampAnnot = !0), n.isSignatureAdded && n.pdfViewer.enableHandwrittenSignature && (n.pdfViewer.tool = "Stamp", n.tool = new at(n.pdfViewer, n), n.isMouseDown = !0, n.isSignatureAdded = !1, n.isNewSignatureAdded = !0)
+                        }) || w && w.isStampAnnotSelected ? (n.diagramMouseLeave(e), n.isAnnotationDrawn && "Ink" !== n.action && (n.diagramMouseUp(e), n.isAnnotationAdded = !0)) : (n.diagramMouseMove(e), n.annotationEvent = e), n.pdfViewer.enableStampAnnotations && w && w.isStampAnnotSelected && (n.pdfViewer.tool = "Stamp", n.tool = new lt(n.pdfViewer, n), n.isMouseDown = !0, w.isStampAnnotSelected = !1, w.isNewStampAnnot = !0), n.isSignatureAdded && n.pdfViewer.enableHandwrittenSignature && (n.pdfViewer.tool = "Stamp", n.tool = new lt(n.pdfViewer, n), n.isMouseDown = !0, n.isSignatureAdded = !1, n.isNewSignatureAdded = !0)
                     }
                 }, this.panOnMouseMove = function(e) {
                     var t = !1;
-                    if ("Drag" !== n.action && -1 === n.action.indexOf("Rotate") && -1 === n.action.indexOf("Resize") || (t = !0), n.viewerContainer.contains(e.target) && e.target !== n.viewerContainer && e.target !== n.pageContainer && !t)
+                    if ("Ink" !== n.action && "Line" !== n.action && "Perimeter" !== n.action && "Polygon" !== n.action && "DrawTool" !== n.action && "Drag" !== n.action && -1 === n.action.indexOf("Rotate") && -1 === n.action.indexOf("Resize") || (t = !0), n.viewerContainer.contains(e.target) && e.target !== n.viewerContainer && e.target !== n.pageContainer && !t)
                         if (n.isViewerMouseDown) {
                             var i = n.dragX - e.pageX,
                                 o = n.dragY - e.pageY;
@@ -14609,23 +14676,23 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 break
                             }
                         } n.pdfViewer.magnificationModule && "fitToPage" === n.pdfViewer.magnificationModule.fitType && n.currentPageNumber > 0 && n.pageSize[n.currentPageNumber - 1] && (n.viewerContainer.scrollTop = n.pageSize[n.currentPageNumber - 1].top * n.getZoomFactor()), n.renderElementsVirtualScroll(n.currentPageNumber), (n.isViewerMouseDown || n.getPinchZoomed() || n.getPinchScrolled() || n.getPagesPinchZoomed()) && !n.isViewerMouseWheel ? n.showPageLoadingIndicator(n.currentPageNumber - 1, !1) : (n.pageViewScrollChanged(n.currentPageNumber), n.isViewerMouseWheel = !1), n.pdfViewer.toolbarModule && (t.isBlazor() || n.pdfViewer.toolbarModule.updateCurrentPage(n.currentPageNumber), n.viewerContainer.setAttribute("aria-labelledby", n.pdfViewer.element.id + "_pageDiv_" + (n.currentPageNumber - 1)), t.isBlazor() || t.Browser.isDevice && !n.pdfViewer.enableDesktopMode || n.pdfViewer.toolbarModule.updateNavigationButtons()), t.Browser.isDevice && !n.pdfViewer.enableDesktopMode && (n.mobileSpanContainer.innerHTML = n.currentPageNumber.toString(), n.mobilecurrentPageContainer.innerHTML = n.currentPageNumber.toString()), u !== n.currentPageNumber && (!i.pdfViewer.thumbnailViewModule || t.Browser.isDevice && !n.pdfViewer.enableDesktopMode || (i.pdfViewer.thumbnailViewModule.gotoThumbnailImage(i.currentPageNumber - 1), i.pdfViewer.thumbnailViewModule.isThumbnailClicked = !1), n.pdfViewer.firePageChange(u)), n.pdfViewer.magnificationModule && n.pdfViewer.magnificationModule.updatePagesForFitPage(n.currentPageNumber - 1);
-                    var L = n.getElement("_pageDiv_" + (n.currentPageNumber - 1));
-                    if (L && (L.style.visibility = "visible"), n.isViewerMouseDown)
+                    var w = n.getElement("_pageDiv_" + (n.currentPageNumber - 1));
+                    if (w && (w.style.visibility = "visible"), n.isViewerMouseDown)
                         if (n.getRerenderCanvasCreated() && !n.isPanMode && n.pdfViewer.magnificationModule.clearIntervalTimer(), n.getStoredData(n.currentPageNumber)) n.isDataExits = !0, n.initiatePageViewScrollChanged(), n.isDataExits = !1;
                         else {
-                            var w = n.pdfViewer.scrollSettings.delayPageRequestTimeOnScroll ? n.pdfViewer.scrollSettings.delayPageRequestTimeOnScroll : 100;
+                            var L = n.pdfViewer.scrollSettings.delayPageRequestTimeOnScroll ? n.pdfViewer.scrollSettings.delayPageRequestTimeOnScroll : 100;
                             n.scrollHoldTimer = setTimeout(function() {
                                 n.initiatePageViewScrollChanged()
-                            }, w)
+                            }, L)
                         } n.pdfViewer.annotation && n.navigationPane.commentPanelContainer && n.pdfViewer.annotation.stickyNotesAnnotationModule.updateCommentPanelScrollTop(n.currentPageNumber), t.Browser.isDevice && !n.pdfViewer.enableDesktopMode && e.touches && "e-pv-touch-ellipse" !== e.touches[0].target.className && setTimeout(function() {
                         n.updateMobileScrollerPosition()
                     }, 500), i.pdfViewer.enableServerDataBinding(o, !0)
-                }, this.pdfViewer = e, this.navigationPane = new Nt(this.pdfViewer, this), this.textLayer = new $t(this.pdfViewer, this), this.signatureModule = new ii(this.pdfViewer, this), this.isWebkitMobile = /Chrome/.test(navigator.userAgent) || /Google Inc/.test(navigator.vendor) || -1 !== navigator.userAgent.indexOf("Safari")
+                }, this.pdfViewer = e, this.navigationPane = new bt(this.pdfViewer, this), this.textLayer = new ni(this.pdfViewer, this), this.signatureModule = new ai(this.pdfViewer, this), this.isWebkitMobile = /Chrome/.test(navigator.userAgent) || /Google Inc/.test(navigator.vendor) || -1 !== navigator.userAgent.indexOf("Safari")
             }
             return s.prototype.initializeComponent = function() {
                 var e = document.getElementById(this.pdfViewer.element.id);
                 if (e) {
-                    this.blazorUIAdaptor = t.isBlazor() ? new Zt(this.pdfViewer, this) : null, t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && this.pdfViewer.element.classList.add("e-pv-mobile-view");
+                    this.blazorUIAdaptor = t.isBlazor() ? new $t(this.pdfViewer, this) : null, t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && this.pdfViewer.element.classList.add("e-pv-mobile-view");
                     var i = void 0;
                     this.viewerMainContainer = t.isBlazor() ? e.querySelector(".e-pv-viewer-main-container") : t.createElement("div", {
                         id: this.pdfViewer.element.id + "_viewerMainContainer",
@@ -14652,10 +14719,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var o = t.createElement("div", {
                         id: this.pdfViewer.element.id + "_loadingIndicator"
                     });
-                    this.viewerContainer.appendChild(o), ne({
-                        target: o,
-                        cssClass: "e-spin-center"
-                    }), this.setLoaderProperties(o), t.isBlazor() ? this.contextMenuModule = new Dt(this.pdfViewer, this) : this.contextMenuModule = new ei(this.pdfViewer, this), this.contextMenuModule.createContextMenu(), this.createFileInputElement(), this.wireEvents(), !this.pdfViewer.textSearchModule || t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.pdfViewer.textSearchModule.createTextSearchBox(), this.pdfViewer.documentPath && this.pdfViewer.load(this.pdfViewer.documentPath, null), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.initializeCollection()
+                    if (this.viewerContainer.appendChild(o), ne({
+                            target: o,
+                            cssClass: "e-spin-center"
+                        }), this.setLoaderProperties(o), t.isBlazor()) {
+                        this.contextMenuModule = new vt(this.pdfViewer, this);
+                        var s = document.getElementsByClassName(this.pdfViewer.element.id + "_spinner");
+                        s && s[0] && !s[0].classList.contains("e-spin-hide") && (s[0].classList.remove("e-spin-show"), s[0].classList.add("e-spin-hide"))
+                    } else this.contextMenuModule = new oi(this.pdfViewer, this);
+                    this.contextMenuModule.createContextMenu(), this.createFileInputElement(), this.wireEvents(), !this.pdfViewer.textSearchModule || t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.pdfViewer.textSearchModule.createTextSearchBox(), this.pdfViewer.documentPath && this.pdfViewer.load(this.pdfViewer.documentPath, null), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.initializeCollection()
                 }
             }, s.prototype.createMobilePageNumberContainer = function() {
                 this.mobilePageNoContainer = t.createElement("div", {
@@ -14677,14 +14749,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     id: this.pdfViewer.element.id + "_mobilespanContainer",
                     className: "e-pv-mobilespanscroll-container"
                 }), this.mobileSpanContainer.innerHTML = "1", this.mobilecurrentPageContainer.innerHTML = "1", this.mobilenumberContainer.innerHTML = "&#x2015;&#x2015;&#x2015;&#x2015;&#x2015;", this.mobileScrollerContainer.style.cssFloat = "right", this.mobileScrollerContainer.style.width = "40px", this.mobileScrollerContainer.style.height = "32px", this.mobileScrollerContainer.style.zIndex = "100", this.mobilePageNoContainer.style.width = "120px", this.mobilePageNoContainer.style.height = "100px", this.mobilePageNoContainer.style.zIndex = "100", this.mobilePageNoContainer.style.position = "fixed", this.mobileScrollerContainer.addEventListener("touchstart", this.mobileScrollContainerDown.bind(this)), this.mobileScrollerContainer.addEventListener("touchend", this.mobileScrollContainerEnd.bind(this)), this.mobileScrollerContainer.style.display = "none"
-            }, s.prototype.initiatePageRender = function(e, i) {
-                if (this.loadedData = e, this.documentId = this.createGUID(), this.viewerContainer && (this.viewerContainer.scrollTop = 0), t.isBlazor()) {
-                    var n = document.getElementsByClassName(this.pdfViewer.element.id + "_spinner");
-                    n && n[0] && !n[0].classList.contains("e-spin-hide") && (n[0].classList.remove("e-spin-show"), n[0].classList.add("e-spin-hide"))
-                }
-                this.showLoadingIndicator(!0), this.hashId = " ", this.isFileName = !1, this.saveDocumentInfo(), "Pan" === this.pdfViewer.interactionMode && this.initiatePanning(), e = this.checkDocumentData(e), this.setFileName(), this.pdfViewer.downloadFileName || (this.pdfViewer.downloadFileName = this.pdfViewer.fileName);
-                var o = this.constructJsonObject(e, i);
-                this.createAjaxRequest(o, e, i)
+            }, s.prototype.initiatePageRender = function(e, t) {
+                this.loadedData = e, this.documentId = this.createGUID(), this.viewerContainer && (this.viewerContainer.scrollTop = 0), this.showLoadingIndicator(!0), this.hashId = " ", this.isFileName = !1, this.saveDocumentInfo(), "Pan" === this.pdfViewer.interactionMode && this.initiatePanning(), e = this.checkDocumentData(e), this.setFileName(), this.pdfViewer.downloadFileName ? this.downloadFileName = this.pdfViewer.downloadFileName : this.downloadFileName = this.pdfViewer.fileName;
+                var i = this.constructJsonObject(e, t);
+                this.createAjaxRequest(i, e, t)
             }, s.prototype.mobileScrollContainerDown = function(e) {
                 if (this.ispageMoved = !1, this.isThumb = !0, this.isTextMarkupAnnotationModule() && null != this.pdfViewer.annotationModule.textMarkupAnnotationModule.selectTextMarkupCurrentPage && t.Browser.isDevice && !this.pdfViewer.enableDesktopMode) {
                     var i = this.pdfViewer.annotationModule.textMarkupAnnotationModule.selectTextMarkupCurrentPage;
@@ -14708,16 +14776,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.updateHeight = function() {
                 "auto" !== this.pdfViewer.height.toString() && (this.pdfViewer.element.style.height = this.pdfViewer.height)
             }, s.prototype.updateViewerContainer = function() {
-                this.getElement("_sideBarContentContainer") ? this.navigationPane.updateViewerContainerOnClose() : this.updateViewerContainerSize();
-                var e = this.pdfViewer.toolbarModule;
-                e && (t.isBlazor() ? (this.pdfViewer.enableToolbar || this.pdfViewer.enableAnnotationToolbar) && this.pdfViewer._dotnetInstance.invokeMethodAsync("RefreshToolbarItems") : (this.pdfViewer.enableToolbar && e.toolbar.refreshOverflow(), this.pdfViewer.enableAnnotationToolbar && e.annotationToolbarModule && e.annotationToolbarModule.toolbar.refreshOverflow()))
+                var e = this.getElement("_sideBarContentContainer");
+                e && "none" === e.style.display ? this.navigationPane.updateViewerContainerOnClose() : e && "block" === e.style.display ? this.navigationPane.updateViewerContainerOnExpand() : this.updateViewerContainerSize();
+                var i = this.pdfViewer.toolbarModule;
+                i && (t.isBlazor() ? (this.pdfViewer.enableToolbar || this.pdfViewer.enableAnnotationToolbar) && this.pdfViewer._dotnetInstance.invokeMethodAsync("RefreshToolbarItems") : (this.pdfViewer.enableToolbar && i.toolbar.refreshOverflow(), this.pdfViewer.enableAnnotationToolbar && i.annotationToolbarModule && i.annotationToolbarModule.toolbar.refreshOverflow()))
             }, s.prototype.updateViewerContainerSize = function() {
                 this.viewerContainer.style.width = this.pdfViewer.element.clientWidth + "px", this.pageContainer.style.width = this.viewerContainer.offsetWidth + "px", this.updateZoomValue()
             }, s.prototype.mobileScrollContainerEnd = function(e) {
                 this.ispageMoved || this.goToPagePopup.show(), this.isThumb = !1, this.ispageMoved = !1, this.mobileScrollerContainer.removeEventListener("touchmove", this.viewerContainerOnScroll.bind(this), !0), this.mobilePageNoContainer.style.display = "none"
             }, s.prototype.createAjaxRequest = function(e, t, i) {
                 var n = null;
-                n = this, this.pdfViewer.serverActionSettings && (this.loadRequestHandler = new ti(this.pdfViewer), this.loadRequestHandler.url = this.pdfViewer.serviceUrl + "/" + this.pdfViewer.serverActionSettings.load, this.loadRequestHandler.responseType = "json", this.loadRequestHandler.mode = !0, e.action = "Load", e.elementId = this.pdfViewer.element.id, this.loadRequestHandler.send(e), this.loadRequestHandler.onSuccess = function(e) {
+                n = this, this.pdfViewer.serverActionSettings && (this.loadRequestHandler = new si(this.pdfViewer), this.loadRequestHandler.url = this.pdfViewer.serviceUrl + "/" + this.pdfViewer.serverActionSettings.load, this.loadRequestHandler.responseType = "json", this.loadRequestHandler.mode = !0, e.action = "Load", e.elementId = this.pdfViewer.element.id, this.loadRequestHandler.send(e), this.loadRequestHandler.onSuccess = function(e) {
                     var o = e.data;
                     if (o) {
                         if ("object" != typeof o) try {
@@ -14804,7 +14873,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }), this.isPasswordAvailable ? (this.pdfViewer.fireDocumentLoadFailed(!0, i), o.classList.add("e-pv-password-error"), o.textContent = this.pdfViewer.localeObj.getConstant("Invalid Password"), o.focus(), this.isFileName ? this.document = e : this.document = "data:application/pdf;base64," + e) : (this.isFileName ? this.document = e : this.document = "data:application/pdf;base64," + e, this.isPasswordAvailable = !0, this.pdfViewer.fireDocumentLoadFailed(!0, null)), this.pdfViewer._dotnetInstance.invokeMethodAsync("OpenPasswordDialog")
                 } else this.isPasswordAvailable ? (this.pdfViewer.fireDocumentLoadFailed(!0, i), this.promptElement.classList.add("e-pv-password-error"), this.promptElement.textContent = this.pdfViewer.localeObj.getConstant("Invalid Password"), this.promptElement.focus(), this.isFileName ? this.document = e : this.document = "data:application/pdf;base64," + e, this.passwordPopup.show()) : (this.isFileName ? this.document = e : this.document = "data:application/pdf;base64," + e, this.isPasswordAvailable = !0, this.createPasswordPopup(), this.pdfViewer.fireDocumentLoadFailed(!0, null), this.passwordPopup.show())
             }, s.prototype.renderCorruptPopup = function() {
-                this.pdfViewer.fireDocumentLoadFailed(!1, null), this.documentId = null, t.isBlazor() ? this.pdfViewer._dotnetInstance.invokeMethodAsync("OpenCorruptedDialog") : (this.createCorruptedPopup(), this.corruptPopup.show())
+                this.pdfViewer.fireDocumentLoadFailed(!1, null), this.documentId = null, this.pdfViewer.showNotificationDialog && (t.isBlazor() ? this.pdfViewer._dotnetInstance.invokeMethodAsync("OpenCorruptedDialog") : (this.createCorruptedPopup(), this.corruptPopup.show()))
             }, s.prototype.constructJsonObject = function(e, t) {
                 var i;
                 return t ? (this.isPasswordAvailable = !0, this.passwordData = t, i = {
@@ -14852,13 +14921,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }), this.setLoaderProperties(t))
             }, s.prototype.showLoadingIndicator = function(e) {
                 var t = this.getElement("_loadingIndicator");
-                t && (e ? Oe(t) : Fe(t))
+                t && (e ? Fe(t) : Ye(t))
             }, s.prototype.showPageLoadingIndicator = function(e, t) {
                 var i = this.getElement("_pageDiv_" + e);
-                null != i && (t ? Oe(i) : Fe(i), this.updateWaitingPopup(e))
+                null != i && (t ? Fe(i) : Ye(i), this.updateWaitingPopup(e))
             }, s.prototype.showPrintLoadingIndicator = function(e) {
                 var t = this.getElement("_printLoadingIndicator");
-                null != t && (e ? (this.printMainContainer.style.display = "block", Oe(t)) : (this.printMainContainer.style.display = "none", Fe(t)))
+                null != t && (e ? (this.printMainContainer.style.display = "block", Fe(t)) : (this.printMainContainer.style.display = "none", Ye(t)))
             }, s.prototype.setLoaderProperties = function(e) {
                 var t = e.firstChild.firstChild.firstChild;
                 t && (t.style.height = "48px", t.style.width = "48px", t.style.transformOrigin = "24px 24px 24px")
@@ -14898,7 +14967,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     t = null;
                 return t = this, new Promise(function(i, n) {
                     var o = t.constructJsonDownload();
-                    e.dowonloadRequestHandler = new ti(e.pdfViewer), e.dowonloadRequestHandler.url = t.pdfViewer.serviceUrl + "/" + t.pdfViewer.serverActionSettings.download, e.dowonloadRequestHandler.responseType = "text", e.dowonloadRequestHandler.send(o), e.dowonloadRequestHandler.onSuccess = function(e) {
+                    e.dowonloadRequestHandler = new si(e.pdfViewer), e.dowonloadRequestHandler.url = t.pdfViewer.serviceUrl + "/" + t.pdfViewer.serverActionSettings.download, e.dowonloadRequestHandler.responseType = "text", e.dowonloadRequestHandler.send(o), e.dowonloadRequestHandler.onSuccess = function(e) {
                         var n = e.data;
                         if (n && ("object" == typeof n && (n = JSON.parse(n)), "object" != typeof n && -1 === n.indexOf("data:application/pdf") && (t.onControlError(500, n, t.pdfViewer.serverActionSettings.download), n = null), n)) {
                             t.pdfViewer.fireAjaxRequestSuccess(t.pdfViewer.serverActionSettings.download, n);
@@ -14912,9 +14981,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }
                 })
             }, s.prototype.clear = function(e) {
-                if (this.isPasswordAvailable = !1, this.isDocumentLoaded = !1, this.isInitialLoaded = !1, this.isImportAction = !1, this.annotationPageList = [], this.annotationComments = null, this.pdfViewer.isDocumentEdited = !1, this.pdfViewer.annotationCollection = [], this.pdfViewer.signatureCollection = [], this.pdfViewer.formFieldCollection = [], this.isAnnotationCollectionRemoved = !1, this.documentAnnotationCollections = null, this.annotationRenderredList = [], this.isImportAction = !1, this.isImportedAnnotation = !1, this.importedAnnotation = [], this.isStorageExceed = !1, this.annotationStorage = {}, this.formFieldStorage = {}, this.downloadCollections = {}, this.annotationEvent = null, this.highestWidth = 0, this.highestHeight = 0, this.requestLists = [], this.tilerequestLists = [], this.pdfViewer.formFieldCollections = [], this.pdfViewer.formDesignerModule && (this.pdfViewer.formDesignerModule.formFieldIndex = 0), this.initiateTextSelectMode(), this.RestrictionEnabled(this.restrictionList, !0), this.restrictionList = null, t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.navigationPane.sideBarToolbar && this.navigationPane.clear(), (!t.isBlazor() && t.Browser.isDevice || !this.pdfViewer.enableDesktopMode) && this.navigationPane.clear(), this.pdfViewer.thumbnailViewModule && this.pdfViewer.thumbnailViewModule.clear(), this.pdfViewer.bookmarkViewModule && this.pdfViewer.bookmarkViewModule.clear(), this.pdfViewer.magnificationModule && this.pdfViewer.magnificationModule.clearIntervalTimer(), this.pdfViewer.textSelectionModule && this.pdfViewer.textSelectionModule.clearTextSelection(), this.pdfViewer.textSearchModule && this.pdfViewer.textSearchModule.resetTextSearch(), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.clear(), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.initializeCollection(), this.pdfViewer.formFieldsModule && (this.pdfViewer.formFieldsModule.readOnlyCollection = [], this.pdfViewer.formFieldsModule.signatureFieldCollection = [], this.pdfViewer.formFieldsModule.currentTarget = null), this.signatureModule && (this.signatureModule.signaturecollection = [], this.signatureModule.outputcollection = []), this.pageSize && (this.pageSize = []), this.renderedPagesList && (this.renderedPagesList = []), this.pageContainer)
+                if (this.isPasswordAvailable = !1, this.isDocumentLoaded = !1, this.isInitialLoaded = !1, this.isImportAction = !1, this.annotationPageList = [], this.annotationComments = null, this.pdfViewer.isDocumentEdited = !1, this.pdfViewer.annotationCollection = [], this.pdfViewer.signatureCollection = [], this.pdfViewer.formFieldCollection = [], this.isAnnotationCollectionRemoved = !1, this.documentAnnotationCollections = null, this.isDrawnCompletely = !1, this.annotationRenderredList = [], this.isImportAction = !1, this.isImportedAnnotation = !1, this.importedAnnotation = [], this.isStorageExceed = !1, this.annotationStorage = {}, this.formFieldStorage = {}, this.downloadCollections = {}, this.annotationEvent = null, this.highestWidth = 0, this.highestHeight = 0, this.requestLists = [], this.tilerequestLists = [], this.isToolbarInkClicked = !1, this.pdfViewer.formFieldCollections = [], this.pdfViewer.formDesignerModule && (this.pdfViewer.formDesignerModule.formFieldIndex = 0), this.initiateTextSelectMode(), this.RestrictionEnabled(this.restrictionList, !0), this.restrictionList = null, t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.navigationPane.sideBarToolbar && this.navigationPane.clear(), (!t.isBlazor() && t.Browser.isDevice || !this.pdfViewer.enableDesktopMode) && this.navigationPane.clear(), this.pdfViewer.thumbnailViewModule && this.pdfViewer.thumbnailViewModule.clear(), this.pdfViewer.bookmarkViewModule && this.pdfViewer.bookmarkViewModule.clear(), this.pdfViewer.magnificationModule && (this.pdfViewer.magnificationModule.isMagnified = !1, this.pdfViewer.magnificationModule.clearIntervalTimer()), this.pdfViewer.textSelectionModule && this.pdfViewer.textSelectionModule.clearTextSelection(), this.pdfViewer.textSearchModule && this.pdfViewer.textSearchModule.resetTextSearch(), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.clear(), this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.initializeCollection(), this.pdfViewer.formFieldsModule && (this.pdfViewer.formFieldsModule.readOnlyCollection = [], this.pdfViewer.formFieldsModule.signatureFieldCollection = [], this.pdfViewer.formFieldsModule.currentTarget = null), this.signatureModule && (this.signatureModule.signaturecollection = [], this.signatureModule.outputcollection = []), this.pageSize && (this.pageSize = []), this.renderedPagesList && (this.renderedPagesList = []), this.pageContainer)
                     for (; this.pageContainer.hasChildNodes();) this.pageContainer.removeChild(this.pageContainer.lastChild);
-                this.pageCount > 0 && (this.unloadDocument(this), this.textLayer.characterBound = new Array), this.windowSessionStorageClear(), this.pinchZoomStorage && (this.pinchZoomStorage = []), !this.previousZoomValue && 0 !== this.previousZoomValue || this.previousZoomValue === this.pdfViewer.zoomValue || (this.pdfViewer.zoomValue = this.previousZoomValue), e && this.pageCount > 0 && this.pdfViewer.fireDocumentUnload(this.pdfViewer.fileName), this.pdfViewer.fileName = null, this.pdfViewer.downloadFileName = null
+                this.pageCount > 0 && (this.unloadDocument(this), this.textLayer.characterBound = new Array), this.windowSessionStorageClear(), this.pinchZoomStorage && (this.pinchZoomStorage = []), !this.previousZoomValue && 0 !== this.previousZoomValue || this.previousZoomValue === this.pdfViewer.zoomValue || (this.pdfViewer.zoomValue = this.previousZoomValue), e && this.pageCount > 0 && this.pdfViewer.fireDocumentUnload(this.pdfViewer.fileName), this.pdfViewer.fileName = null
             }, s.prototype.destroy = function() {
                 t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && this.pdfViewer.element.classList.remove("e-pv-mobile-view"), this.unWireEvents(), this.clear(!1), this.pageContainer.parentNode.removeChild(this.pageContainer), this.viewerContainer.parentNode.removeChild(this.viewerContainer), this.contextMenuModule.destroy(), this.pdfViewer.toolbarModule && this.navigationPane.destroy();
                 var e = document.getElementById("measureElement");
@@ -14943,8 +15012,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             })
                         }
                     } catch (e) {
-                        this.unloadRequestHandler = new ti(this.pdfViewer), this.unloadRequestHandler.send(o)
-                    } else window.sessionStorage.getItem("serviceURL") && t.isBlazor() && (this.unloadRequestHandler = new ti(this.pdfViewer), this.unloadRequestHandler.url = window.sessionStorage.getItem("serviceURL") + "/" + s, this.unloadRequestHandler.mode = !1, this.unloadRequestHandler.responseType = null, this.unloadRequestHandler.send(o), this.unloadRequestHandler.onSuccess = function(t) {
+                        this.unloadRequestHandler = new si(this.pdfViewer), this.unloadRequestHandler.send(o)
+                    } else window.sessionStorage.getItem("serviceURL") && t.isBlazor() && (this.unloadRequestHandler = new si(this.pdfViewer), this.unloadRequestHandler.url = window.sessionStorage.getItem("serviceURL") + "/" + s, this.unloadRequestHandler.mode = !1, this.unloadRequestHandler.responseType = null, this.unloadRequestHandler.send(o), this.unloadRequestHandler.onSuccess = function(t) {
                         var i = t.data;
                         i && ("object" != typeof i && -1 === i.indexOf("Document") && (e.onControlError(500, i, s), i = null), i && e.pdfViewer.fireAjaxRequestSuccess(e.pdfViewer.serverActionSettings.unload, i))
                     }, this.unloadRequestHandler.onFailure = function(t) {
@@ -15003,16 +15072,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     beforeClose: function() {
                         e.corruptPopup.destroy(), e.getElement("_corrupted_popup").remove(), e.corruptPopup = null;
                         var t = e.getElement("_loadingIndicator");
-                        null != t && Fe(t)
+                        null != t && Ye(t)
                     }
                 }), this.pdfViewer.enableRtl ? (this.corruptPopup.content = '<div id="templatertl" class="e-pv-notification-icon-rtl"> <div class="e-pv-corrupted-popup-content-rtl" tabindex="0">' + this.pdfViewer.localeObj.getConstant("File Corrupted Content") + "</div></div>", this.corruptPopup.enableRtl = !0) : this.corruptPopup.content = '<div id="template" class="e-pv-notification-icon"> <div class="e-pv-corrupted-popup-content" tabindex="0">' + this.pdfViewer.localeObj.getConstant("File Corrupted Content") + "</div></div>", this.corruptPopup.appendTo(i)
             }, s.prototype.hideLoadingIndicator = function() {
                 var e = this.getElement("_loadingIndicator");
-                null !== e && Fe(e)
+                null !== e && Ye(e)
             }, s.prototype.closeCorruptPopup = function() {
                 this.corruptPopup.hide();
                 var e = this.getElement("_loadingIndicator");
-                null !== e && Fe(e)
+                null !== e && Ye(e)
             }, s.prototype.createPrintPopup = function() {
                 var e = document.getElementById(this.pdfViewer.element.id);
                 this.printMainContainer = t.createElement("div", {
@@ -15123,7 +15192,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     beforeClose: function() {
                         e.passwordPopup.destroy(), e.getElement("_password_popup").remove(), e.passwordPopup = null;
                         var t = e.getElement("_loadingIndicator");
-                        null != t && Fe(t)
+                        null != t && Ye(t)
                     }
                 }), !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? this.passwordPopup.buttons = [{
                     buttonModel: {
@@ -15157,11 +15226,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.passwordCancel = function(e) {
                 e.isInteraction && (this.clear(!1), this.passwordDialogReset(), this.passwordInput.value = "");
                 var t = this.getElement("_loadingIndicator");
-                null !== t && Fe(t)
+                null !== t && Ye(t)
             }, s.prototype.passwordCancelClick = function() {
                 this.clear(!1), this.passwordDialogReset(), this.passwordPopup.hide();
                 var e = this.getElement("_loadingIndicator");
-                null !== e && Fe(e)
+                null !== e && Ye(e)
             }, s.prototype.passwordDialogReset = function() {
                 if (t.isBlazor()) {
                     var e = document.querySelector("#" + this.pdfViewer.element.id + "_password_input"),
@@ -15190,22 +15259,23 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.updateFreeTextProperties = function(e) {
                 this.pdfViewer.enableShapeLabel && (this.pdfViewer.shapeLabelSettings.fillColor && (e.labelFillColor = this.pdfViewer.shapeLabelSettings.fillColor), this.pdfViewer.shapeLabelSettings.fontColor && (e.fontColor = this.pdfViewer.shapeLabelSettings.fontColor), this.pdfViewer.shapeLabelSettings.fontSize && (e.fontSize = this.pdfViewer.shapeLabelSettings.fontSize), this.pdfViewer.shapeLabelSettings.fontFamily && (e.fontFamily = this.pdfViewer.shapeLabelSettings.fontFamily), this.pdfViewer.shapeLabelSettings.opacity && (e.labelOpacity = this.pdfViewer.shapeLabelSettings.opacity), this.pdfViewer.shapeLabelSettings.labelContent && (e.labelContent = this.pdfViewer.shapeLabelSettings.labelContent))
             }, s.prototype.mouseDownHandler = function(e) {
-                var i, n = [],
-                    o = [];
-                if (e && e.target && (this.mouseDownEvent = e, this.contextMenuModule.currentTarget = e.target), this.pdfViewer.annotationModule.isEnableDelete() || o.push("DeleteContext"), "None" === this.pdfViewer.contextMenuOption) i = !0;
+                var i, n = !1,
+                    o = [],
+                    s = [];
+                if (e && e.target && (this.mouseDownEvent = e, this.contextMenuModule.currentTarget = e.target), this.pdfViewer.annotationModule && (n = this.pdfViewer.annotationModule.isEnableDelete()), n || s.push("DeleteContext"), "None" === this.pdfViewer.contextMenuOption) i = !0;
                 else if (this.pdfViewer.textSelectionModule || this.isShapeBasedAnnotationsEnabled()) {
                     if (e) {
-                        var s = this.isClickWithinSelectionBounds(e);
-                        this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.freeTextAnnotationModule && this.pdfViewer.annotationModule.freeTextAnnotationModule.isInuptBoxInFocus ? (this.isFreeTextContextMenu = !0, this.pdfViewer.annotation.freeTextAnnotationModule && !this.pdfViewer.annotation.freeTextAnnotationModule.isTextSelected && (o.push("Cut"), o.push("Copy")), this.pdfViewer.annotation.freeTextAnnotationModule && "" === this.pdfViewer.annotation.freeTextAnnotationModule.selectedText && o.push("Paste"), n.push("HighlightContext"), n.push("UnderlineContext"), n.push("StrikethroughContext"), n.push("ScaleRatio"), n.push("Properties"), n.push("Comment"), n.push("DeleteContext")) : s && this.pdfViewer.textSelectionModule ? (!e.target.classList.contains("e-pv-maintaincontent") && e.target.classList.contains("e-pv-text") || e.target.classList.contains("e-pv-text-layer") ? this.checkIsNormalText() && (i = !0) : (t.Browser.isIE || "edge" === t.Browser.info.name) && e.target.classList.contains("e-pv-page-container") && (i = !0), n.push("Cut"), n.push("Paste"), n.push("DeleteContext"), n.push("ScaleRatio"), n.push("Comment"), n.push("Properties")) : 0 === this.pdfViewer.selectedItems.annotations.length || "HandWrittenSignature" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "SignatureText" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "SignatureImage" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType ? 0 !== this.pdfViewer.selectedItems.annotations.length && "Path" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType ? this.shapeMenuItems(n, o, !0) : this.pdfViewer.annotation && this.pdfViewer.annotation.isShapeCopied && (e.target.classList.contains("e-pv-text-layer") || e.target.classList.contains("e-pv-text")) && !this.pdfViewer.annotationModule.textMarkupAnnotationModule.currentTextMarkupAnnotation ? (n.push("Properties"), this.shapeMenuItems(n, o, !1)) : this.isCalibrateAnnotationModule() && this.pdfViewer.annotationModule.measureAnnotationModule.currentAnnotationMode ? (n.push("HighlightContext"), n.push("UnderlineContext"), n.push("StrikethroughContext"), n.push("Properties"), o.push("Cut"), o.push("Copy"), o.push("Paste"), o.push("DeleteContext"), o.push("Comment")) : this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.textMarkupAnnotationModule.currentTextMarkupAnnotation ? (n.push("HighlightContext"), n.push("UnderlineContext"), n.push("StrikethroughContext"), n.push("Properties"), n.push("Cut"), n.push("Copy"), n.push("Paste"), n.push("ScaleRatio")) : i = !0 : this.shapeMenuItems(n, o, !1, !0)
-                    } else this.pdfViewer.textSelectionModule && "MouseUp" === this.pdfViewer.contextMenuOption ? (n.push("Cut"), n.push("Paste"), n.push("DeleteContext"), n.push("ScaleRatio"), n.push("Comment"), n.push("Properties")) : 0 === this.pdfViewer.selectedItems.annotations.length && (n.push("Cut"), n.push("Paste"), n.push("DeleteContext"), n.push("ScaleRatio"), n.push("Properties"));
-                    this.pdfViewer.enableCommentPanel || o.push("Comment")
+                        var a = this.isClickWithinSelectionBounds(e);
+                        this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.freeTextAnnotationModule && this.pdfViewer.annotationModule.freeTextAnnotationModule.isInuptBoxInFocus ? (this.isFreeTextContextMenu = !0, this.pdfViewer.annotation.freeTextAnnotationModule && !this.pdfViewer.annotation.freeTextAnnotationModule.isTextSelected && (s.push("Cut"), s.push("Copy")), this.pdfViewer.annotation.freeTextAnnotationModule && "" === this.pdfViewer.annotation.freeTextAnnotationModule.selectedText && s.push("Paste"), o.push("HighlightContext"), o.push("UnderlineContext"), o.push("StrikethroughContext"), o.push("ScaleRatio"), o.push("Properties"), o.push("Comment"), o.push("DeleteContext")) : a && this.pdfViewer.textSelectionModule ? (!e.target.classList.contains("e-pv-maintaincontent") && e.target.classList.contains("e-pv-text") || e.target.classList.contains("e-pv-text-layer") ? this.checkIsNormalText() && (i = !0) : (t.Browser.isIE || "edge" === t.Browser.info.name) && e.target.classList.contains("e-pv-page-container") && (i = !0), o.push("Cut"), o.push("Paste"), o.push("DeleteContext"), o.push("ScaleRatio"), o.push("Comment"), o.push("Properties")) : 0 === this.pdfViewer.selectedItems.annotations.length || "HandWrittenSignature" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "SignatureText" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType && "SignatureImage" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType ? 0 !== this.pdfViewer.selectedItems.annotations.length && "Path" !== this.pdfViewer.selectedItems.annotations[0].shapeAnnotationType ? this.shapeMenuItems(o, s, !0) : this.pdfViewer.annotation && this.pdfViewer.annotation.isShapeCopied && (e.target.classList.contains("e-pv-text-layer") || e.target.classList.contains("e-pv-text")) && !this.pdfViewer.annotationModule.textMarkupAnnotationModule.currentTextMarkupAnnotation ? (o.push("Properties"), this.shapeMenuItems(o, s, !1)) : this.isCalibrateAnnotationModule() && this.pdfViewer.annotationModule.measureAnnotationModule.currentAnnotationMode ? (o.push("HighlightContext"), o.push("UnderlineContext"), o.push("StrikethroughContext"), o.push("Properties"), s.push("Cut"), s.push("Copy"), s.push("Paste"), s.push("DeleteContext"), s.push("Comment")) : this.pdfViewer.annotationModule && this.pdfViewer.annotationModule.textMarkupAnnotationModule.currentTextMarkupAnnotation ? (o.push("HighlightContext"), o.push("UnderlineContext"), o.push("StrikethroughContext"), o.push("Properties"), o.push("Cut"), o.push("Copy"), o.push("Paste"), o.push("ScaleRatio")) : i = !0 : this.shapeMenuItems(o, s, !1, !0)
+                    } else this.pdfViewer.textSelectionModule && "MouseUp" === this.pdfViewer.contextMenuOption ? (o.push("Cut"), o.push("Paste"), o.push("DeleteContext"), o.push("ScaleRatio"), o.push("Comment"), o.push("Properties")) : 0 === this.pdfViewer.selectedItems.annotations.length && (o.push("Cut"), o.push("Paste"), o.push("DeleteContext"), o.push("ScaleRatio"), o.push("Properties"));
+                    this.pdfViewer.enableCommentPanel || s.push("Comment")
                 } else i = !0;
-                var a = {
-                    hidenItems: n,
-                    disabledItems: o,
+                var r = {
+                    hidenItems: o,
+                    disabledItems: s,
                     isCancel: i
                 };
-                this.pdfViewer._dotnetInstance.invokeMethodAsync("MouseDownHandler", a)
+                this.pdfViewer._dotnetInstance.invokeMethodAsync("MouseDownHandler", r)
             }, s.prototype.OnItemSelected = function(e) {
                 var t = this.contextMenuModule.currentTarget;
                 switch (e) {
@@ -15299,8 +15369,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.DeleteKeyPressed = function(e) {
                 if (this.pdfViewer.formDesignerModule && this.pdfViewer.designerMode && 0 !== this.pdfViewer.selectedItems.formFields.length) this.pdfViewer.formDesignerModule.deleteFormField(this.pdfViewer.selectedItems.formFields[0].id);
                 else if (this.pdfViewer.annotation && !this.pdfViewer.designerMode && (this.isTextMarkupAnnotationModule() && !this.getPopupNoteVisibleStatus() && this.pdfViewer.annotationModule.deleteAnnotation(), this.pdfViewer.selectedItems.annotations.length > 0)) {
-                    var t = this.pdfViewer.selectedItems.annotations[0];
-                    t.annotationSettings && t.annotationSettings.isLock ? this.pdfViewer.annotationModule.checkAllowedInteractions("Delete", t) && (this.pdfViewer.remove(t), this.pdfViewer.renderSelector(this.pdfViewer.annotation.getEventPageNumber(e))) : (this.pdfViewer.remove(t), this.pdfViewer.renderSelector(this.pdfViewer.annotation.getEventPageNumber(e)))
+                    var t = this.pdfViewer.selectedItems.annotations[0],
+                        i = !0,
+                        n = t.shapeAnnotationType;
+                    if ("Path" === n || "SignatureField" === t.formFieldAnnotationType || "InitialField" === t.formFieldAnnotationType || "HandWrittenSignature" === n || "SignatureText" === n || "SignatureImage" === n) {
+                        var o = document.getElementById(t.id);
+                        o && o.disabled && (i = !0)
+                    }
+                    i || (t.annotationSettings && t.annotationSettings.isLock ? this.pdfViewer.annotationModule.checkAllowedInteractions("Delete", t) && (this.pdfViewer.remove(t), this.pdfViewer.renderSelector(this.pdfViewer.annotation.getEventPageNumber(e))) : (this.pdfViewer.remove(t), this.pdfViewer.renderSelector(this.pdfViewer.annotation.getEventPageNumber(e))))
                 }
             }, s.prototype.initiatePanning = function() {
                 this.isPanMode = !0, this.textLayer.modifyTextCursor(!1), this.disableTextSelectionMode(), this.pdfViewer.toolbar && this.pdfViewer.toolbar.annotationToolbarModule && !t.isBlazor() && this.pdfViewer.toolbar.annotationToolbarModule.deselectAllItems()
@@ -15345,7 +15421,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             var o = this.getElement("_more_option-popup");
                             o.firstElementChild && (o.classList.remove("e-popup-open"), o.classList.add("e-popup-close"), o.removeChild(o.firstElementChild))
                         }
-                        this.isTapHidden && t.Browser.isDevice && !this.pdfViewer.enableDesktopMode ? (this.mobileScrollerContainer.style.display = "", this.updateMobileScrollerPosition()) : t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && null == this.getSelectTextMarkupCurrentPage() && (this.mobileScrollerContainer.style.display = "none"), null == this.getSelectTextMarkupCurrentPage() && (t.isBlazor() ? this.blazorUIAdaptor.tapOnMobileDevice(this.isTapHidden) : this.pdfViewer.toolbarModule.showToolbar(!0), this.isTapHidden = !this.isTapHidden)
+                        this.isTapHidden && t.Browser.isDevice && !this.pdfViewer.enableDesktopMode ? (this.mobileScrollerContainer.style.display = "", this.updateMobileScrollerPosition()) : t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && null == this.getSelectTextMarkupCurrentPage() && (this.mobileScrollerContainer.style.display = "none"), null == this.getSelectTextMarkupCurrentPage() && (t.isBlazor() ? this.blazorUIAdaptor.tapOnMobileDevice(this.isTapHidden) : this.pdfViewer.enableToolbar && this.pdfViewer.toolbarModule.showToolbar(!0), this.isTapHidden = !this.isTapHidden)
                     }
                     this.tapCount = 0
                 }
@@ -15435,9 +15511,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var t = this.getElement("_pageDiv_" + e);
                 null == this.getElement("_pageCanvas_" + e) && null == t && e < this.pageSize.length && this.renderPageContainer(e, this.getPageWidth(e), this.getPageHeight(e), this.getPageTop(e))
             }, s.prototype.renderPagesVirtually = function() {
-                return Xt(this, void 0, void 0, function() {
+                return ei(this, void 0, void 0, function() {
                     var e, t = this;
-                    return Kt(this, function(i) {
+                    return ti(this, function(i) {
                         return e = this, setTimeout(function() {
                             t.initiateRenderPagesVirtually(e)
                         }, 500), [2]
@@ -15451,7 +15527,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     elementId: e.pdfViewer.element.id,
                     uniqueId: e.documentId
                 };
-                e.jsonDocumentId && (t.documentId = e.jsonDocumentId), this.virtualLoadRequestHandler = new ti(this.pdfViewer), this.virtualLoadRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.load, this.virtualLoadRequestHandler.responseType = "json", this.virtualLoadRequestHandler.mode = !0, this.virtualLoadRequestHandler.send(t), this.virtualLoadRequestHandler.onSuccess = function(t) {
+                e.jsonDocumentId && (t.documentId = e.jsonDocumentId), this.virtualLoadRequestHandler = new si(this.pdfViewer), this.virtualLoadRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.load, this.virtualLoadRequestHandler.responseType = "json", this.virtualLoadRequestHandler.mode = !0, this.virtualLoadRequestHandler.send(t), this.virtualLoadRequestHandler.onSuccess = function(t) {
                     var i = t.data;
                     if (i && "object" != typeof i) try {
                         i = JSON.parse(i)
@@ -15501,46 +15577,55 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         r.style.backgroundColor = "#fff", r.style.width = s + "px", r.style.height = a + "px";
                         var d = this.retrieveCurrentZoomFactor(),
                             u = this.documentId + "_" + i + "_" + d + "_" + e.tileX + "_" + e.tileY;
-                        if (-1 === this.tilerequestLists.indexOf(u) && this.pdfViewer.restrictZoomRequest || !this.pdfViewer.restrictZoomRequest) {
-                            this.tilerequestLists.push(u);
-                            var p = e.image,
-                                M = e.transformationMatrix;
-                            if (p) {
-                                var h = new Image;
-                                h.onload = function() {
-                                    var r = n.getElement("_pageCanvas_" + i);
-                                    if (r) {
-                                        var l = t.isNullOrUndefined(e.scaleFactor) ? 1.5 : e.scaleFactor,
-                                            d = parseInt(r.width.toString()),
-                                            u = parseInt((parseFloat(r.style.width) * l).toString());
-                                        isNaN(parseFloat(r.style.width)) || d === u || (r.style.width = s + "px", r.style.height = a + "px", r.height = parseInt((a * l).toString()), r.width = parseInt((s * l).toString())), o.tileRenderCount = o.tileRenderCount + 1;
-                                        var p = n.retrieveCurrentZoomFactor();
-                                        e.zoomFactor && (p = e.zoomFactor);
-                                        var L = M.Elements[0] * n.getZoomFactor() / p,
-                                            w = M.Elements[1] * n.getZoomFactor() / p,
-                                            c = M.Elements[2] * n.getZoomFactor() / p,
-                                            C = M.Elements[3] * n.getZoomFactor() / p,
-                                            g = M.Elements[4] * n.getZoomFactor() / p,
-                                            m = M.Elements[5] * n.getZoomFactor() / p,
-                                            f = r.getContext("2d");
-                                        f.setTransform(L, w, c, C, g, m), f.drawImage(h, 0, 0), n.showPageLoadingIndicator(i, !1);
-                                        var y = e.tileX ? e.tileX : 0,
-                                            j = e.tileY ? e.tileY : 0;
-                                        if (0 === y && 0 === j && 0 === i && n.isDocumentLoaded) {
-                                            n.renderPDFInformations(), n.isInitialLoaded = !0;
-                                            var S = window.sessionStorage.getItem(n.documentId + "_pagedata");
-                                            n.pageCount <= 100 && n.pdfViewer.fireDocumentLoad(S), n.isDocumentLoaded = !1, n.pdfViewer.textSearch && n.pdfViewer.isExtractText && n.pdfViewer.textSearchModule.getPDFDocumentTexts()
-                                        }
-                                        o.tileRenderCount === o.tileRequestCount && (o.isTileImageRendered = !1, o.tileRenderCount = 0, n.pdfViewer.magnificationModule && n.pdfViewer.magnificationModule.rerenderCountIncrement()), h.onload = null, h = null
+                        this.tilerequestLists.push(u);
+                        var p = e.image,
+                            M = e.transformationMatrix;
+                        if (p) {
+                            var h = new Image;
+                            h.onload = function() {
+                                var r = n.getElement("_pageCanvas_" + i),
+                                    u = t.isNullOrUndefined(e.scaleFactor) ? 1.5 : e.scaleFactor,
+                                    p = n.renderTileCanvas(s, a, i, l, d, u);
+                                if (r) {
+                                    var w = parseInt(r.width.toString()),
+                                        L = parseInt((parseFloat(r.style.width) * u).toString());
+                                    isNaN(parseFloat(r.style.width)) || w === L || (r.style.width = s + "px", r.style.height = a + "px", o.isDrawnCompletely && p ? (p.style.width = s + "px", p.style.height = a + "px", p.style.display = "block", r.style.display = "none") : (p.height = parseInt((a * u).toString()), p.width = parseInt((s * u).toString())), r.height = parseInt((a * u).toString()), r.width = parseInt((s * u).toString())), o.tileRenderCount = o.tileRenderCount + 1;
+                                    var c = n.retrieveCurrentZoomFactor();
+                                    e.zoomFactor && (c = e.zoomFactor);
+                                    var C = M.Elements[0] * n.getZoomFactor() / c,
+                                        g = M.Elements[1] * n.getZoomFactor() / c,
+                                        m = M.Elements[2] * n.getZoomFactor() / c,
+                                        f = M.Elements[3] * n.getZoomFactor() / c,
+                                        y = M.Elements[4] * n.getZoomFactor() / c,
+                                        j = M.Elements[5] * n.getZoomFactor() / c,
+                                        S = r.getContext("2d");
+                                    if (-1 != navigator.userAgent.indexOf("Firefox") ? S.setTransform(C + .001, g, m, f + .001, y, j) : S.setTransform(C, g, m, f, y, j), S.drawImage(h, 0, 0), !o.isDrawnCompletely && p) {
+                                        var A = p.getContext("2d");
+                                        A.setTransform(C, g, m, f, y, j), A.drawImage(h, 0, 0)
                                     }
-                                }, h.src = p
-                            }
+                                    n.showPageLoadingIndicator(i, !1);
+                                    var T = e.tileX ? e.tileX : 0,
+                                        x = e.tileY ? e.tileY : 0;
+                                    if (0 === T && 0 === x && 0 === i && n.isDocumentLoaded) {
+                                        n.renderPDFInformations(), n.isInitialLoaded = !0;
+                                        var N = window.sessionStorage.getItem(n.documentId + "_pagedata");
+                                        n.pageCount <= 100 && n.pdfViewer.fireDocumentLoad(N), n.isDocumentLoaded = !1, n.pdfViewer.textSearch && n.pdfViewer.isExtractText && n.pdfViewer.textSearchModule.getPDFDocumentTexts()
+                                    }
+                                    o.tileRenderCount === o.tileRequestCount && (o.isTileImageRendered = !1, o.tileRenderCount = 0, n.pdfViewer.magnificationModule && n.pdfViewer.magnificationModule.rerenderCountIncrement(), o.isDrawnCompletely && p && (r.style.backgroundColor = "#fff", r.style.display = "block", p.style.display = "none"), o.isDrawnCompletely = !0), h.onload = null, h = null
+                                }
+                            }, h.src = p
                         }
-                        var L = e.tileX ? e.tileX : 0,
-                            w = e.tileY ? e.tileY : 0;
-                        0 === L && 0 === w && this.onPageRender(e, i, l)
+                        var w = e.tileX ? e.tileX : 0,
+                            L = e.tileY ? e.tileY : 0;
+                        0 === w && 0 === L && this.onPageRender(e, i, l)
                     }
                 }
+            }, s.prototype.renderTileCanvas = function(e, i, n, o, s, a) {
+                var r = this.getElement("_pageTileCanvas_" + n);
+                return r || ((r = t.createElement("canvas", {
+                    id: this.pdfViewer.element.id + "_pageTileCanvas_" + n,
+                    className: "e-pv-pageTile-canvas"
+                })).style.width = e + "px", r.style.height = i + "px", r.style.display = "none", r.style.backgroundColor = "#fff", this.isMixedSizeDocument && this.highestWidth > 0 && (r.style.marginLeft = "auto", r.style.marginRight = "auto"), o.appendChild(r)), r
             }, s.prototype.calculateImageWidth = function(e, t, i, n) {
                 var o = e / this.getZoomFactor() * t * i;
                 return parseInt(n.toString()) === parseInt(o.toString()) && (n = o), n = n * this.getZoomFactor() / t
@@ -15565,8 +15650,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 if (d = e.zoomFactor ? n.calculateImageWidth(o, e.zoomFactor, M, d) : n.calculateImageWidth(o, h, M, d), parseInt((o * M).toString()) === parseInt(d.toString())) {
                                     if (isNaN(parseFloat(a.style.width)) || (a.style.width = o + "px", a.style.height = s + "px", a.height = s * window.devicePixelRatio, a.width = o * window.devicePixelRatio), o < parseFloat(r.style.width) && (r.style.boxShadow = "none"), l.setTransform(u.Elements[0], u.Elements[1], u.Elements[2], u.Elements[3], u.Elements[4], u.Elements[5]), l.drawImage(p, 0, 0, a.width, a.height), n.showPageLoadingIndicator(i, !1), 0 === i && n.isDocumentLoaded) {
                                         n.renderPDFInformations(), n.isInitialLoaded = !0;
-                                        var L = window.sessionStorage.getItem(n.documentId + "_pagedata");
-                                        n.pageCount <= 100 && n.pdfViewer.fireDocumentLoad(L), n.isDocumentLoaded = !1, n.pdfViewer.textSearch && n.pdfViewer.isExtractText && n.pdfViewer.textSearchModule.getPDFDocumentTexts()
+                                        var w = window.sessionStorage.getItem(n.documentId + "_pagedata");
+                                        n.pageCount <= 100 && n.pdfViewer.fireDocumentLoad(w), n.isDocumentLoaded = !1, n.pdfViewer.textSearch && n.pdfViewer.isExtractText && n.pdfViewer.textSearchModule.getPDFDocumentTexts()
                                     }
                                     n.pdfViewer.magnificationModule && n.pdfViewer.magnificationModule.rerenderCountIncrement()
                                 }
@@ -15705,7 +15790,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.downloadDocument = function(e) {
                 e = (URL || webkitURL).createObjectURL(e);
                 var i = t.createElement("a");
-                if (i.click) i.href = e, i.target = "_parent", "download" in i && (i.download = this.pdfViewer.downloadFileName), (document.body || document.documentElement).appendChild(i), i.click(), i.parentNode.removeChild(i);
+                if (i.click) i.href = e, i.target = "_parent", "download" in i && (i.download = this.downloadFileName), (document.body || document.documentElement).appendChild(i), i.click(), i.parentNode.removeChild(i);
                 else {
                     if (window.top === window && e.split("#")[0] === window.location.href.split("#")[0]) {
                         var n = -1 === e.indexOf("?") ? "?" : "&";
@@ -15740,7 +15825,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var r = o.createFormfieldsJsonData();
                     o.pdfViewer.fireFormExportStarted(r.pdfAnnotation), r.action = "ExportFormFields", r.hashId = o.hashId, r.fileName = o.pdfViewer.fileName, i && "" !== i && !e && (r.filePath = i), r.elementId = n.pdfViewer.element.id, o.jsonDocumentId && (r.document = o.jsonDocumentId);
                     var l = o.pdfViewer.serviceUrl + "/" + o.pdfViewer.serverActionSettings.exportFormFields;
-                    o.exportFormFieldsRequestHandler = new ti(n.pdfViewer), o.exportFormFieldsRequestHandler.url = l, o.exportFormFieldsRequestHandler.mode = !0, o.exportFormFieldsRequestHandler.responseType = "text", o.exportFormFieldsRequestHandler.send(r), o.exportFormFieldsRequestHandler.onSuccess = function(i) {
+                    o.exportFormFieldsRequestHandler = new si(n.pdfViewer), o.exportFormFieldsRequestHandler.url = l, o.exportFormFieldsRequestHandler.mode = !0, o.exportFormFieldsRequestHandler.responseType = "text", o.exportFormFieldsRequestHandler.send(r), o.exportFormFieldsRequestHandler.onSuccess = function(i) {
                         var n = i.data;
                         if (n && n)
                             if (o.pdfViewer.fireAjaxRequestSuccess(o.pdfViewer.serverActionSettings.exportFormFields, n), e) {
@@ -15761,9 +15846,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var t = null;
                 t = this;
                 var i = {};
-                "object" == typeof e ? i.data = JSON.stringify(e) : (i.data = e, i.fileName = t.pdfViewer.fileName), t.pdfViewer.fireFormImportStarted(e), i.action = "ImportFormFields", i.hashId = t.hashId, i.elementId = this.pdfViewer.element.id, t.jsonDocumentId && (i.document = t.jsonDocumentId);
+                "object" == typeof e ? i.data = JSON.stringify(e) : (i.data = e, "json" === e.split(".")[1] && (i.fileName = t.pdfViewer.fileName)), t.pdfViewer.fireFormImportStarted(e), i.action = "ImportFormFields", i.hashId = t.hashId, i.elementId = this.pdfViewer.element.id, t.jsonDocumentId && (i.document = t.jsonDocumentId);
                 var n = t.pdfViewer.serviceUrl + "/" + t.pdfViewer.serverActionSettings.importFormFields;
-                t.importFormFieldsRequestHandler = new ti(this.pdfViewer), t.importFormFieldsRequestHandler.url = n, t.importFormFieldsRequestHandler.mode = !0, t.importFormFieldsRequestHandler.responseType = "text", t.importFormFieldsRequestHandler.send(i), t.importFormFieldsRequestHandler.onSuccess = function(i) {
+                t.importFormFieldsRequestHandler = new si(this.pdfViewer), t.importFormFieldsRequestHandler.url = n, t.importFormFieldsRequestHandler.mode = !0, t.importFormFieldsRequestHandler.responseType = "text", t.importFormFieldsRequestHandler.send(i), t.importFormFieldsRequestHandler.onSuccess = function(i) {
                     var n = i.data;
                     if (n && "null" !== n) {
                         if ("object" != typeof n) try {
@@ -15856,18 +15941,22 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return !!this.pdfViewer.annotation && !(!this.pdfViewer.annotation || !this.pdfViewer.annotation.freeTextAnnotationModule)
             }, s.prototype.createRequestForDownload = function() {
                 var e = null;
-                (e = this).pdfViewer.fireDownloadStart(e.pdfViewer.downloadFileName);
+                (e = this).pdfViewer.fireDownloadStart(e.downloadFileName);
                 var i = this.constructJsonDownload();
-                this.dowonloadRequestHandler = new ti(this.pdfViewer), this.dowonloadRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.download, this.dowonloadRequestHandler.responseType = "text", this.validateForm && this.pdfViewer.enableFormFieldsValidation ? (this.pdfViewer.fireValidatedFailed(e.pdfViewer.serverActionSettings.download), this.validateForm = !1) : this.dowonloadRequestHandler.send(i), this.dowonloadRequestHandler.onSuccess = function(i) {
+                this.dowonloadRequestHandler = new si(this.pdfViewer), this.dowonloadRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.download, this.dowonloadRequestHandler.responseType = "text", this.validateForm && this.pdfViewer.enableFormFieldsValidation ? (this.pdfViewer.fireValidatedFailed(e.pdfViewer.serverActionSettings.download), this.validateForm = !1) : this.dowonloadRequestHandler.send(i), this.dowonloadRequestHandler.onSuccess = function(i) {
                     var n = i.data;
                     if (n) {
                         if ("object" != typeof n && -1 === n.indexOf("data:application/pdf") && (e.onControlError(500, n, e.pdfViewer.serverActionSettings.download), n = null), "object" == typeof n && (n = JSON.parse(n)), n) {
-                            e.pdfViewer.fireAjaxRequestSuccess(e.pdfViewer.serverActionSettings.download, n);
-                            var o = e.createBlobUrl(n.split("base64,")[1], "application/pdf");
-                            t.Browser.isIE || "edge" === t.Browser.info.name ? window.navigator.msSaveOrOpenBlob(o, e.pdfViewer.downloadFileName) : e.downloadDocument(o), e.pdfViewer.fireDownloadEnd(e.pdfViewer.downloadFileName, n)
+                            e.pdfViewer.downloadFileName && e.pdfViewer.downloadFileName !== e.downloadFileName && (e.downloadFileName = e.pdfViewer.downloadFileName), e.pdfViewer.fireAjaxRequestSuccess(e.pdfViewer.serverActionSettings.download, n);
+                            // Added download validation
+                            if(!e.pdfViewer.base64Download){
+                                var o = e.createBlobUrl(n.split("base64,")[1], "application/pdf");
+                                t.Browser.isIE || "edge" === t.Browser.info.name ? window.navigator.msSaveOrOpenBlob(o, e.downloadFileName) : e.downloadDocument(o);
+                            }
+                            e.pdfViewer.fireDownloadEnd(e.downloadFileName, n)
                         }
                         e.updateDocumentAnnotationCollections()
-                    } else e.pdfViewer.fireDownloadEnd(e.pdfViewer.downloadFileName, "PDF Document saved in server side successfully")
+                    } else e.pdfViewer.fireDownloadEnd(e.downloadFileName, "PDF Document saved in server side successfully")
                 }, this.dowonloadRequestHandler.onFailure = function(t) {
                     e.pdfViewer.fireAjaxRequestFailed(t.status, t.statusText, e.pdfViewer.serverActionSettings.download)
                 }, this.dowonloadRequestHandler.onError = function(t) {
@@ -15903,17 +15992,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             h = void 0;
                         if (1 === d) u = t.getStoredData(e), h = t.pageRequestSent(e, 0, 0);
                         else {
-                            var L = JSON.parse(t.getWindowSessionStorageTile(e, 0, 0, M));
-                            L && (u = L)
+                            var w = JSON.parse(t.getWindowSessionStorageTile(e, 0, 0, M));
+                            w && (u = w)
                         }
                         if (u && u.uniqueId === t.documentId) {
                             if (i.style.backgroundColor = "#fff", t.pdfViewer.magnification && t.pdfViewer.magnification.isPinchZoomed || !this.pageSize[e]) return;
-                            var w = this.retrieveCurrentZoomFactor();
-                            if (s = w > 2 && o <= 1200 ? 700 : 1200, t.pdfViewer.tileRenderingSettings.enableTileRendering || (s = 1200), s >= o || !t.pdfViewer.tileRenderingSettings.enableTileRendering) t.renderPage(u, e);
+                            var L = this.retrieveCurrentZoomFactor();
+                            if (s = L > 2 && o <= 1200 ? 700 : 1200, t.pdfViewer.tileRenderingSettings.enableTileRendering || (s = 1200), s >= o || !t.pdfViewer.tileRenderingSettings.enableTileRendering) t.renderPage(u, e);
                             else {
                                 t.isTileImageRendered = !0, t.tileRenderCount = 0, t.tileRenderPage(u, e);
                                 for (var c = 0; c < r; c++)
-                                    for (var C = 0; C < l; C++) 0 === c && 0 === C || (u = JSON.parse(this.getWindowSessionStorageTile(e, c, C, w))) && t.tileRenderPage(u, e)
+                                    for (var C = 0; C < l; C++) 0 === c && 0 === C || (u = JSON.parse(this.getWindowSessionStorageTile(e, c, C, L))) && t.tileRenderPage(u, e)
                             }
                             u = null
                         } else if (null === u || !h) {
@@ -15937,7 +16026,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         action: "RenderPdfPages",
                                         uniqueId: this.documentId,
                                         elementId: t.pdfViewer.element.id
-                                    }, this.jsonDocumentId && (f.documentId = this.jsonDocumentId), t.pageRequestHandler = new ti(this.pdfViewer), t.pageRequestHandler.url = t.pdfViewer.serviceUrl + "/" + t.pdfViewer.serverActionSettings.renderPages, t.pageRequestHandler.responseType = "json", t.pageRequestHandler.send(f), t.requestLists.push(t.documentId + "_" + e + "_" + g + "_" + m + "_" + y), t.pageRequestHandler.onSuccess = function(i) {
+                                    }, this.jsonDocumentId && (f.documentId = this.jsonDocumentId), t.pageRequestHandler = new si(this.pdfViewer), t.pageRequestHandler.url = t.pdfViewer.serviceUrl + "/" + t.pdfViewer.serverActionSettings.renderPages, t.pageRequestHandler.responseType = "json", t.pageRequestHandler.send(f), t.requestLists.push(t.documentId + "_" + e + "_" + g + "_" + m + "_" + y), t.pageRequestHandler.onSuccess = function(i) {
                                         if (!(t.pdfViewer.magnification && t.pdfViewer.magnification.isPinchZoomed || !t.pageSize[e])) {
                                             var n = i.data;
                                             if (n && "object" != typeof n) try {
@@ -15949,9 +16038,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                                 for (;
                                                     "object" != typeof n;) n = JSON.parse(n);
                                                 if (n.image && n.uniqueId === t.documentId) {
+                                                    var a = n.pageWidth && n.pageWidth > 0 ? n.pageWidth : o;
                                                     t.pdfViewer.fireAjaxRequestSuccess(t.pdfViewer.serverActionSettings.renderPages, n);
-                                                    var a = void 0 !== n.pageNumber ? n.pageNumber : e;
-                                                    s >= o || !t.pdfViewer.tileRenderingSettings.enableTileRendering ? t.storeWinData(n, a) : t.storeWinData(n, a, n.tileX, n.tileY), s >= o || !t.pdfViewer.tileRenderingSettings.enableTileRendering ? t.renderPage(n, a) : t.tileRenderPage(n, a)
+                                                    var r = void 0 !== n.pageNumber ? n.pageNumber : e;
+                                                    s >= a || !t.pdfViewer.tileRenderingSettings.enableTileRendering ? t.storeWinData(n, r) : t.storeWinData(n, r, n.tileX, n.tileY), s >= a || !t.pdfViewer.tileRenderingSettings.enableTileRendering ? t.renderPage(n, r) : t.tileRenderPage(n, r)
                                                 }
                                             }
                                         }
@@ -16172,18 +16262,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 }
                             }
                     }
-                    var L = 10 / this.getZoomFactor(),
-                        w = i.identityMatrix();
-                    i.rotateMatrix(w, e.rotateAngle + n.parentTransform, n.offsetX, n.offsetY);
+                    var w = 10 / this.getZoomFactor(),
+                        L = i.identityMatrix();
+                    i.rotateMatrix(L, e.rotateAngle + n.parentTransform, n.offsetX, n.offsetY);
                     var c = n.offsetX - n.pivot.x * n.actualSize.width,
                         C = n.offsetY - n.pivot.y * n.actualSize.height,
                         g = {
                             x: c + (.5 === n.pivot.x ? 2 * n.pivot.x : n.pivot.x) * n.actualSize.width / 2,
                             y: C - 30 / this.getZoomFactor()
                         };
-                    if (g = i.transformPointByMatrix(w, g), "Stamp" === e.shapeAnnotationType && i.contains(t, g, L)) return "Rotate";
-                    if ((s = this.inflate(L, s)).containsPoint(t, 0)) {
-                        var m = this.checkResizeHandles(this.pdfViewer, n, t, w, c, C);
+                    if (g = i.transformPointByMatrix(L, g), "Stamp" === e.shapeAnnotationType && i.contains(t, g, w)) return "Rotate";
+                    if ((s = this.inflate(w, s)).containsPoint(t, 0)) {
+                        var m = this.checkResizeHandles(this.pdfViewer, n, t, L, c, C);
                         if (m) return m
                     }
                     return this.pdfViewer.selectedItems.annotations.indexOf(e) > -1 ? "Drag" : this.pdfViewer.selectedItems.formFields.indexOf(e) > -1 && this.pdfViewer.designerMode ? "Drag" : "Select"
@@ -16250,7 +16340,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var n = this.pdfViewer.allowServerDataBinding;
                 this.pdfViewer.enableServerDataBinding(!1), this.currentPosition = this.getMousePosition(e), this.pdfViewer.firePageMouseover(this.currentPosition.x, this.currentPosition.y), this.pdfViewer.annotation ? this.activeElements.activePageID = this.pdfViewer.annotation.getEventPageNumber(e) : this.pdfViewer.formDesignerModule && (this.activeElements.activePageID = this.pdfViewer.formDesignerModule.getEventPageNumber(e));
                 var o = W(e, this, this.pdfViewer);
-                (this.tool instanceof ut || this.tool instanceof Mt) && (o = this.pdfViewer.drawingObject);
+                (this.tool instanceof Mt || this.tool instanceof wt) && (o = this.pdfViewer.drawingObject);
                 var s, a = this.pdfViewer.selectedItems.annotations.length > 0 && this.checkSignatureFormField(this.pdfViewer.selectedItems.annotations[0].id.split("_")[0]);
                 if (!1 === i.Point.equals(this.currentPosition, this.prevPosition) || this.inAction) {
                     if (!1 === this.isMouseDown) {
@@ -16259,7 +16349,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         r = e.target;
                         this.action = this.findToolToActivate(o, this.currentPosition), o && o.annotationSettings && o.annotationSettings.isLock && ("Select" === this.action && (this.pdfViewer.annotationModule.checkAllowedInteractions("Select", o) || (this.action = "")), "Drag" === this.action && (this.pdfViewer.annotationModule.checkAllowedInteractions("Move", o) || (this.action = "Select")), ("ResizeSouthEast" === this.action || "ResizeNorthEast" === this.action || "ResizeNorthWest" === this.action || "ResizeSouthWest" === this.action || "ResizeNorth" === this.action || "ResizeWest" === this.action || "ResizeEast" === this.action || "ResizeSouth" === this.action || this.action.includes("ConnectorSegmentPoint") || this.action.includes("Leader")) && (this.pdfViewer.annotationModule.checkAllowedInteractions("Resize", o) || (this.action = "Select"))), this.pdfViewer.designerMode || (t.isNullOrUndefined(s) || t.isNullOrUndefined(s.formFieldAnnotationType)) && !a || ("ResizeSouthEast" === this.action || "ResizeNorthEast" === this.action || "ResizeNorthWest" === this.action || "ResizeSouthWest" === this.action || "ResizeNorth" === this.action || "Drag" === this.action || "ResizeWest" === this.action || "ResizeEast" === this.action || "ResizeSouth" === this.action || this.action.includes("ConnectorSegmentPoint") || this.action.includes("Leader")) && (this.action = ""), this.tool = this.getTool(this.action), this.setCursor(r, e)
                     } else {
-                        if (this.pdfViewer.designerMode || (t.isNullOrUndefined(s) || t.isNullOrUndefined(s.formFieldAnnotationType)) && !a || ("ResizeSouthEast" === this.action || "ResizeNorthEast" === this.action || "ResizeNorthWest" === this.action || "ResizeSouthWest" === this.action || "ResizeNorth" === this.action || "Drag" === this.action || "ResizeWest" === this.action || "ResizeEast" === this.action || "ResizeSouth" === this.action || this.action.includes("ConnectorSegmentPoint") || this.action.includes("Leader")) && (this.action = "", this.tool = null), this.eventArgs && this.eventArgs.source) {
+                        if (!this.tool && this.action && "Rotate" === this.action && (this.tool = this.getTool(this.action), e.target && this.setCursor(e.target, e)), this.pdfViewer.designerMode || (t.isNullOrUndefined(s) || t.isNullOrUndefined(s.formFieldAnnotationType)) && !a || ("ResizeSouthEast" === this.action || "ResizeNorthEast" === this.action || "ResizeNorthWest" === this.action || "ResizeSouthWest" === this.action || "ResizeNorth" === this.action || "Drag" === this.action || "ResizeWest" === this.action || "ResizeEast" === this.action || "ResizeSouth" === this.action || this.action.includes("ConnectorSegmentPoint") || this.action.includes("Leader")) && (this.action = "", this.tool = null), this.eventArgs && this.eventArgs.source) {
                             var r = e.target;
                             this.updateDefaultCursor(this.eventArgs.source, r, e)
                         } else this.setCursor(e.target, e);
@@ -16268,7 +16358,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             l && "FreeText" === l.shapeAnnotationType && this.pdfViewer.freeTextSettings.allowEditTextOnly && ((r = event.target).style.cursor = "default", this.tool = null), null != this.tool && this.tool.mouseMove(this.eventArgs)
                         }
                     }
-                    if (this.pdfViewer.drawingObject && this.pdfViewer.drawingObject.formFieldAnnotationType && "Drag" !== this.action && !(this.tool instanceof dt) && (this.tool = this.getTool(this.action), this.tool instanceof ut)) {
+                    if (this.pdfViewer.drawingObject && this.pdfViewer.drawingObject.formFieldAnnotationType && "Drag" !== this.action && !(this.tool instanceof pt) && (this.tool = this.getTool(this.action), this.tool instanceof Mt)) {
                         var d = this.pdfViewer.drawingObject,
                             u = this.pdfViewer.formDesignerModule.updateFormFieldInitialSize(d, d.formFieldAnnotationType),
                             p = this.pageContainer.firstElementChild.clientWidth - u.width,
@@ -16276,8 +16366,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         if (this.pdfViewer.formDesignerModule && d.formFieldAnnotationType && this.currentPosition.x < p && this.currentPosition.y < M)
                             if (h = document.getElementById("FormField_helper_html_element")) {
                                 if (h) {
-                                    L = this.getMousePosition(event);
-                                    "Checkbox" === d.formFieldAnnotationType ? h.firstElementChild.firstElementChild.lastElementChild.style.visibility = "visible" : "SignatureField" === d.formFieldAnnotationType || "InitialField" === d.formFieldAnnotationType ? (h.firstElementChild.firstElementChild.style.visibility = "visible", h.firstElementChild.lastElementChild.style.visibility = "visible") : h.firstElementChild.firstElementChild.style.visibility = "visible", h.setAttribute("style", "height:" + u.height + "px; width:" + u.width + "px;left:" + L.x + "px; top:" + L.y + "px;position:absolute;opacity: 0.5;")
+                                    w = this.getMousePosition(event);
+                                    "Checkbox" === d.formFieldAnnotationType ? h.firstElementChild.firstElementChild.lastElementChild.style.visibility = "visible" : "SignatureField" === d.formFieldAnnotationType || "InitialField" === d.formFieldAnnotationType ? (h.firstElementChild.firstElementChild.style.visibility = "visible", h.firstElementChild.lastElementChild.style.visibility = "visible") : h.firstElementChild.firstElementChild.style.visibility = "visible", h.setAttribute("style", "height:" + u.height + "px; width:" + u.width + "px;left:" + w.x + "px; top:" + w.y + "px;position:absolute;opacity: 0.5;")
                                 }
                             } else {
                                 // Added comment: First Step
@@ -16287,8 +16377,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             var h = document.getElementById("FormField_helper_html_element");
                             if (h) {
                                 if (h) {
-                                    var L = this.getMousePosition(event);
-                                    h.setAttribute("style", "height:" + u.height + "px; width:" + u.width + "px;left:" + L.x + "px; top:" + L.y + "px;position:absolute;opacity: 0.5;"), "Checkbox" === d.formFieldAnnotationType ? h.firstElementChild.firstElementChild.lastElementChild.style.visibility = "hidden" : "SignatureField" === d.formFieldAnnotationType || "InitialField" === d.formFieldAnnotationType ? (h.firstElementChild.firstElementChild.style.visibility = "hidden", h.firstElementChild.lastElementChild.style.visibility = "hidden") : h.firstElementChild.firstElementChild.style.visibility = "hidden"
+                                    var w = this.getMousePosition(event);
+                                    h.setAttribute("style", "height:" + u.height + "px; width:" + u.width + "px;left:" + w.x + "px; top:" + w.y + "px;position:absolute;opacity: 0.5;"), "Checkbox" === d.formFieldAnnotationType ? h.firstElementChild.firstElementChild.lastElementChild.style.visibility = "hidden" : "SignatureField" === d.formFieldAnnotationType || "InitialField" === d.formFieldAnnotationType ? (h.firstElementChild.firstElementChild.style.visibility = "hidden", h.firstElementChild.lastElementChild.style.visibility = "hidden") : h.firstElementChild.firstElementChild.style.visibility = "hidden"
                                 }
                             } else this.pdfViewer.formDesignerModule.drawHelper(d.formFieldAnnotationType, d, e)
                         }
@@ -16310,15 +16400,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     this.prevPosition = this.currentPosition
                 }
             }, s.prototype.diagramMouseActionHelper = function(e) {
-                this.eventArgs.position = this.currentPosition, "Drag" === this.action && this.eventArgs.source instanceof Ke && this.getMouseEventArgs(this.currentPosition, this.eventArgs, e), this.getMouseEventArgs(this.currentPosition, this.eventArgs, e, this.eventArgs.source), this.inAction = !0, this.initialEventArgs = null
+                this.eventArgs.position = this.currentPosition, "Drag" === this.action && this.eventArgs.source instanceof $e && this.getMouseEventArgs(this.currentPosition, this.eventArgs, e), this.getMouseEventArgs(this.currentPosition, this.eventArgs, e, this.eventArgs.source), this.inAction = !0, this.initialEventArgs = null
             }, s.prototype.setCursor = function(e, i) {
                 var n, o = this.pdfViewer.annotationModule ? this.pdfViewer.annotationModule.freeTextAnnotationModule : null;
-                if (this.tool instanceof dt) "ResizeNorthWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "nw-resize" : n) : "ResizeNorthEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "ne-resize" : n) : "ResizeSouthWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "sw-resize" : n) : "ResizeSouthEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "se-resize" : n) : "ResizeNorth" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "n-resize" : n) : "ResizeWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "w-resize" : n) : "ResizeEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "e-resize" : n) : "ResizeSouth" === this.tool.corner && (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "s-resize" : n);
+                if (this.tool instanceof pt) "ResizeNorthWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "nw-resize" : n) : "ResizeNorthEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "ne-resize" : n) : "ResizeSouthWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "sw-resize" : n) : "ResizeSouthEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "se-resize" : n) : "ResizeNorth" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "n-resize" : n) : "ResizeWest" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "w-resize" : n) : "ResizeEast" === this.tool.corner ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "e-resize" : n) : "ResizeSouth" === this.tool.corner && (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "s-resize" : n);
                 else if (this.isCommentIconAdded && this.isAddComment) e.style.cursor = "crosshair";
-                else if (this.pdfViewer.enableHandwrittenSignature && this.isNewSignatureAdded && this.tool instanceof at) e.style.cursor = "crosshair";
-                else if (this.tool instanceof st) e.style.cursor = "move";
-                else if (this.tool instanceof ut || this.tool instanceof Mt || this.tool instanceof pt || o && o.isNewAddedAnnot || this.tool instanceof rt) e.style.cursor = "crosshair";
-                else if (this.tool instanceof lt) this.tool.endPoint && this.tool.endPoint.indexOf("Leader0") ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "nw-resize" : n) : this.tool.endPoint && this.tool.endPoint.indexOf("Leader1") ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "ne-resize" : n) : this.tool.endPoint && this.tool.endPoint.indexOf("ConnectorSegmentPoint") && (e.style.cursor = "sw-resize");
+                else if (this.pdfViewer.enableHandwrittenSignature && this.isNewSignatureAdded && this.tool instanceof lt) e.style.cursor = "crosshair";
+                else if (this.tool instanceof rt) e.style.cursor = "move";
+                else if (this.tool instanceof Mt || this.tool instanceof wt || this.tool instanceof ht || o && o.isNewAddedAnnot || this.tool instanceof dt) e.style.cursor = "crosshair";
+                else if (this.tool instanceof ut) this.tool.endPoint && this.tool.endPoint.indexOf("Leader0") ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "nw-resize" : n) : this.tool.endPoint && this.tool.endPoint.indexOf("Leader1") ? (n = this.setResizerCursorType(), e.style.cursor = t.isNullOrUndefined(n) ? "ne-resize" : n) : this.tool.endPoint && this.tool.endPoint.indexOf("ConnectorSegmentPoint") && (e.style.cursor = "sw-resize");
                 else if (e.classList.contains("e-pv-text")) e.style.cursor = "text";
                 else if (e.classList.contains("e-pv-hyperlink")) e.style.cursor = "pointer";
                 else if (this.isPanMode) {
@@ -16348,7 +16438,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         h = this.checkSignatureFormField(s.id.split("_")[0]);
                         if (s.formFieldAnnotationType) {
                             this.isFormFieldMousedOver = !0;
-                            L = {
+                            w = {
                                 value: s.value,
                                 fontFamily: s.fontFamily,
                                 fontSize: s.fontSize,
@@ -16370,11 +16460,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 isChecked: s.isChecked,
                                 isSelected: s.isSelected
                             };
-                            this.pdfViewer.fireFormFieldMouseoverEvent("formFieldMouseover", L, s.pageIndex, M.x, M.y, a.x, a.y)
+                            this.pdfViewer.fireFormFieldMouseoverEvent("formFieldMouseover", w, s.pageIndex, M.x, M.y, a.x, a.y)
                         } else h || this.pdfViewer.fireAnnotationMouseover(s.annotName, s.pageIndex, s.shapeAnnotationType, s.bounds, d, l, r)
                     } else if (e.style.cursor = "grab", this.isMousedOver) {
-                        w = void 0;
-                        w = this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.getEventPageNumber(i) : this.pdfViewer.annotation.getEventPageNumber(i), this.isFormFieldMousedOver ? this.pdfViewer.fireFormFieldMouseLeaveEvent("formFieldMouseLeave", null, w) : this.pdfViewer.fireAnnotationMouseLeave(w), this.isMousedOver = !1, this.isFormFieldMousedOver = !1
+                        L = void 0;
+                        L = this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.getEventPageNumber(i) : this.pdfViewer.annotation.getEventPageNumber(i), this.isFormFieldMousedOver ? this.pdfViewer.fireFormFieldMouseLeaveEvent("formFieldMouseLeave", null, L) : this.pdfViewer.fireAnnotationMouseLeave(L), this.isMousedOver = !1, this.isFormFieldMousedOver = !1
                     }
                 } else {
                     var u = W(i, this, this.pdfViewer);
@@ -16405,7 +16495,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var h = this.checkSignatureFormField(s.id.split("_")[0]);
                         if (s.formFieldAnnotationType) {
                             this.isFormFieldMousedOver = !0;
-                            var L = {
+                            var w = {
                                 value: s.value,
                                 fontFamily: s.fontFamily,
                                 fontSize: s.fontSize,
@@ -16427,12 +16517,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 isChecked: s.isChecked,
                                 isSelected: s.isSelected
                             };
-                            this.pdfViewer.fireFormFieldMouseoverEvent("formFieldMouseover", L, s.pageIndex, M.x, M.y, a.x, a.y)
+                            this.pdfViewer.fireFormFieldMouseoverEvent("formFieldMouseover", w, s.pageIndex, M.x, M.y, a.x, a.y)
                         } else h || this.pdfViewer.fireAnnotationMouseover(s.annotName, s.pageIndex, s.shapeAnnotationType, s.bounds, d, l, r)
                     } else {
                         if (this.isMousedOver) {
-                            var w = void 0;
-                            w = this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.getEventPageNumber(i) : this.pdfViewer.annotation.getEventPageNumber(i), this.isFormFieldMousedOver ? this.pdfViewer.fireFormFieldMouseLeaveEvent("formFieldMouseLeave", null, w) : this.pdfViewer.fireAnnotationMouseLeave(w), this.isMousedOver = !1, this.isFormFieldMousedOver = !1, e.style.cursor = "default"
+                            var L = void 0;
+                            L = this.pdfViewer.formDesignerModule ? this.pdfViewer.formDesignerModule.getEventPageNumber(i) : this.pdfViewer.annotation.getEventPageNumber(i), this.isFormFieldMousedOver ? this.pdfViewer.fireFormFieldMouseLeaveEvent("formFieldMouseLeave", null, L) : this.pdfViewer.fireAnnotationMouseLeave(L), this.isMousedOver = !1, this.isFormFieldMousedOver = !1, e.style.cursor = "default"
                         }
                         u && 1 === this.pdfViewer.selectedItems.annotations.length && "mousemove" === i.type ? e.style.cursor = "pointer" : e.style.cursor = "default"
                     }
@@ -16443,9 +16533,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, s.prototype.getTool = function(e) {
                 switch (e) {
                     case "Select":
-                        return new ot(this.pdfViewer, this);
+                        return new at(this.pdfViewer, this);
                     case "Drag":
-                        return new st(this.pdfViewer, this);
+                        return new rt(this.pdfViewer, this);
                     case "ResizeSouthEast":
                     case "ResizeSouthWest":
                     case "ResizeNorthEast":
@@ -16454,30 +16544,30 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     case "ResizeNorth":
                     case "ResizeWest":
                     case "ResizeEast":
-                        return new dt(this.pdfViewer, this, e);
+                        return new pt(this.pdfViewer, this, e);
                     case "ConnectorSourceEnd":
                     case "ConnectorTargetEnd":
                     case "Leader":
                     case "ConnectorSegmentPoint":
-                        return new lt(this.pdfViewer, this, e);
+                        return new ut(this.pdfViewer, this, e);
                     case "DrawTool":
-                        return new ut(this.pdfViewer, this, this.pdfViewer.drawingObject);
+                        return new Mt(this.pdfViewer, this, this.pdfViewer.drawingObject);
                     case "Polygon":
-                        return new pt(this.pdfViewer, this, "Polygon");
+                        return new ht(this.pdfViewer, this, "Polygon");
                     case "Distance":
-                        return new Mt(this.pdfViewer, this, "Leader1", void 0);
+                        return new wt(this.pdfViewer, this, "Leader1", void 0);
                     case "Line":
-                        return new Mt(this.pdfViewer, this, "ConnectorSegmentPoint_1", this.pdfViewer.drawingObject);
+                        return new wt(this.pdfViewer, this, "ConnectorSegmentPoint_1", this.pdfViewer.drawingObject);
                     case "Perimeter":
-                        return new pt(this.pdfViewer, this, "Perimeter");
+                        return new ht(this.pdfViewer, this, "Perimeter");
                     case "Rotate":
-                        return new ht(this.pdfViewer, this);
+                        return new Lt(this.pdfViewer, this);
                     case "Stamp":
-                        return new at(this.pdfViewer, this);
+                        return new lt(this.pdfViewer, this);
                     case "Ink":
-                        return new rt(this.pdfViewer, this, this.pdfViewer.drawingObject)
+                        return new dt(this.pdfViewer, this, this.pdfViewer.drawingObject)
                 }
-                return e.indexOf("ConnectorSegmentPoint") > -1 || e.indexOf("Leader") > -1 ? new lt(this.pdfViewer, this, e) : null
+                return e.indexOf("ConnectorSegmentPoint") > -1 || e.indexOf("Leader") > -1 ? new ut(this.pdfViewer, this, e) : null
             }, s.prototype.diagramMouseUp = function(e) {
                 var i = this.pdfViewer.allowServerDataBinding;
                 this.pdfViewer.enableServerDataBinding(!1);
@@ -16486,14 +16576,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         this.action = "Select";
                         o = W(e, this, this.pdfViewer)
                     }
-                    if (this.tool instanceof pt || this.tool instanceof Mt || this.tool instanceof ut || (this.inAction = !1, this.isMouseDown = !1), this.currentPosition = this.getMousePosition(e), this.tool) {
+                    if (this.tool instanceof ht || this.tool instanceof wt || this.tool instanceof Mt || (this.inAction = !1, this.isMouseDown = !1), this.currentPosition = this.getMousePosition(e), this.tool) {
                         this.eventArgs.position = this.currentPosition, this.getMouseEventArgs(this.currentPosition, this.eventArgs, e, this.eventArgs.source);
                         this.isMetaKey(e);
                         var n = {
                             ctrlKey: e.ctrlKey,
                             shiftKey: e.shiftKey
                         };
-                        this.eventArgs.info = n, this.eventArgs.clickCount = e.detail, this.tool.mouseUp(this.eventArgs), this.isAnnotationMouseDown = !1, this.isFormFieldMouseDown = !1, this.isAddComment = !1, (this.tool instanceof ut || this.tool instanceof Mt || this.tool instanceof pt) && !this.tool.dragging && (this.inAction = !1, this.isMouseDown = !1);
+                        this.eventArgs.info = n, this.eventArgs.clickCount = e.detail, this.tool.mouseUp(this.eventArgs), this.isAnnotationMouseDown = !1, this.isFormFieldMouseDown = !1, this.isAddComment = !1, (this.tool instanceof Mt || this.tool instanceof wt || this.tool instanceof ht) && !this.tool.dragging && (this.inAction = !1, this.isMouseDown = !1);
                         var o = W(e, this, this.pdfViewer);
                         this.isShapeAnnotationModule() && this.isCalibrateAnnotationModule() && this.pdfViewer.annotation.onShapesMouseup(o, e), this.isAnnotationDrawn = !1
                     }
@@ -16519,20 +16609,22 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (r && r.isNewStampAnnot) {
                         var l = a;
                         if (!l && this.pdfViewer.selectedItems.annotations[0] && (l = this.pdfViewer.selectedItems.annotations[0]), l) {
-                            if (this.isViewerMouseDown = !1, l.opacity = this.pdfViewer.stampSettings.opacity, this.isNewStamp = !0, this.pdfViewer.nodePropertyChange(l, {
-                                    opacity: this.pdfViewer.stampSettings.opacity
+                            this.isViewerMouseDown = !1, l.opacity = this.pdfViewer.stampSettings.opacity, this.isNewStamp = !0;
+                            var d = void 0;
+                            if (d = "Image" === l.shapeAnnotationType ? this.pdfViewer.customStampSettings.opacity : this.pdfViewer.stampSettings.opacity, this.pdfViewer.nodePropertyChange(l, {
+                                    opacity: d
                                 }), this.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !1, "Image" === l.shapeAnnotationType && !this.isAlreadyAdded) {
                                 this.stampAdded = !0;
-                                var d = l.id;
-                                r.currentStampAnnotation && r.currentStampAnnotation.signatureName && (d = r.currentStampAnnotation.signatureName);
-                                for (var u = !1, p = 0; p < this.customStampCollection.length; p++)
-                                    if (this.customStampCollection[p].customStampName === d) {
-                                        u = !0;
+                                var u = l.id;
+                                r.currentStampAnnotation && r.currentStampAnnotation.signatureName && (u = r.currentStampAnnotation.signatureName);
+                                for (var p = !1, M = 0; M < this.customStampCollection.length; M++)
+                                    if (this.customStampCollection[M].customStampName === u) {
+                                        p = !0;
                                         break
-                                    } u && (d = l.id), d = r.customStampName ? r.customStampName : r.currentStampAnnotation.signatureName, this.customStampCollection.push({
-                                    customStampName: d,
+                                    } p && (u = l.id), u = r.customStampName ? r.customStampName : r.currentStampAnnotation.signatureName, this.customStampCollection.push({
+                                    customStampName: u,
                                     customStampImageSource: l.data
-                                }), t.isBlazor() && this.pdfViewer._dotnetInstance.invokeMethodAsync("UpdateCustomStampCollection", d, l.data)
+                                }), t.isBlazor() && this.pdfViewer._dotnetInstance.invokeMethodAsync("UpdateCustomStampCollection", u, l.data)
                             }
                             this.pdfViewer.customStampSettings.enableCustomStamp && this.pdfViewer.customStampSettings.isAddToMenu && (this.stampAdded = !0), this.isAlreadyAdded = !1, r.updateDeleteItems(l.pageIndex, l, l.opacity), r.resetAnnotation(), r.isNewStampAnnot = !1
                         }
@@ -16540,67 +16632,67 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
                 if (this.isNewSignatureAdded) {
                     this.signatureCount++, this.currentSignatureAnnot = null;
-                    var M = a;
-                    if (t.isNullOrUndefined(M) && this.pdfViewer.selectedItems.annotations[0] && (M = this.pdfViewer.selectedItems.annotations[0]), M) {
-                        this.signatureAdded = !0, this.signatureModule.storeSignatureData(M.pageIndex, M);
-                        var h = {
-                            left: M.bounds.x,
-                            top: M.bounds.y,
-                            width: M.bounds.width,
-                            height: M.bounds.height
+                    var h = a;
+                    if (t.isNullOrUndefined(h) && this.pdfViewer.selectedItems.annotations[0] && (h = this.pdfViewer.selectedItems.annotations[0]), h) {
+                        this.signatureAdded = !0, this.signatureModule.storeSignatureData(h.pageIndex, h);
+                        var w = {
+                            left: h.bounds.x,
+                            top: h.bounds.y,
+                            width: h.bounds.width,
+                            height: h.bounds.height
                         };
-                        this.pdfViewer.fireSignatureAdd(M.pageIndex, M.signatureName, M.shapeAnnotationType, h, M.opacity, M.strokeColor, M.thickness, this.signatureModule.saveImageString)
+                        this.pdfViewer.fireSignatureAdd(h.pageIndex, h.signatureName, h.shapeAnnotationType, w, h.opacity, h.strokeColor, h.thickness, this.signatureModule.saveImageString)
                     }
                     this.isNewSignatureAdded = !1
                 }
                 if (this.pdfViewer.annotationModule) {
                     var L = this.pdfViewer.annotationModule.freeTextAnnotationModule,
-                        w = a;
-                    if (!0 === L.isNewFreeTextAnnot && (!w || "FreeText" !== w.shapeAnnotationType)) {
-                        var c = void 0;
+                        c = a;
+                    if (!0 === L.isNewFreeTextAnnot && (!c || "FreeText" !== c.shapeAnnotationType)) {
+                        var C = void 0;
                         if (e.target && (e.target.id.indexOf("_text") > -1 || e.target.id.indexOf("_annotationCanvas") > -1 || e.target.classList.contains("e-pv-hyperlink")) && this.pdfViewer.annotation) {
-                            var C = this.pdfViewer.annotation.getEventPageNumber(e),
-                                g = document.getElementById(this.pdfViewer.element.id + "_annotationCanvas_" + C);
-                            if (g) {
-                                var m = g.getBoundingClientRect(),
-                                    f = m.x ? m.x : m.left,
-                                    y = m.y ? m.y : m.top;
-                                c = new i.Rect(f + 10, y + 10, m.width - 10, m.height - 10)
+                            var g = this.pdfViewer.annotation.getEventPageNumber(e),
+                                m = document.getElementById(this.pdfViewer.element.id + "_annotationCanvas_" + g);
+                            if (m) {
+                                var f = m.getBoundingClientRect(),
+                                    y = f.x ? f.x : f.left,
+                                    j = f.y ? f.y : f.top;
+                                C = new i.Rect(y + 10, j + 10, f.width - 10, f.height - 10)
                             }
                         }
-                        if (o && (this.mouseX = o[0].clientX, this.mouseY = o[0].clientY), c && c.containsPoint({
+                        if (o && (this.mouseX = o[0].clientX, this.mouseY = o[0].clientY), C && C.containsPoint({
                                 x: this.mouseX,
                                 y: this.mouseY
                             }) && L.isNewAddedAnnot) {
-                            C = this.pdfViewer.annotation.getEventPageNumber(e);
-                            if (L.addInuptElemet(this.currentPosition, null, C), this.pdfViewer.toolbar && this.pdfViewer.toolbar.annotationToolbarModule) {
-                                var j = this.pdfViewer.toolbar.annotationToolbarModule;
-                                t.isBlazor() || j.primaryToolbar.deSelectItem(j.freeTextEditItem)
+                            g = this.pdfViewer.annotation.getEventPageNumber(e);
+                            if (L.addInuptElemet(this.currentPosition, null, g), this.pdfViewer.toolbar && this.pdfViewer.toolbar.annotationToolbarModule) {
+                                var S = this.pdfViewer.toolbar.annotationToolbarModule;
+                                t.isBlazor() || S.primaryToolbar.deSelectItem(S.freeTextEditItem)
                             }
                             e.preventDefault(), L.isNewAddedAnnot = !1
                         }
                     }
                 }
                 a && a.wrapper.children[0], (!this.tool || this.tool && !this.tool.drawingObject) && (s ? (this.action = "Select", this.tool = this.getTool(this.action)) : (this.action = this.findToolToActivate(a, this.currentPosition), a && a.annotationSettings && a.annotationSettings.isLock && ("Select" === this.action && (this.pdfViewer.annotationModule.checkAllowedInteractions("Select", a) || (this.action = "")), "Drag" === this.action && (this.pdfViewer.annotationModule.checkAllowedInteractions("Move", a) || (this.action = "Select")), ("ResizeSouthEast" === this.action || "ResizeNorthEast" === this.action || "ResizeNorthWest" === this.action || "ResizeSouthWest" === this.action || "ResizeSouth" === this.action || "ResizeNorth" === this.action || "ResizeWest" === this.action || "ResizeEast" === this.action || this.action.includes("ConnectorSegmentPoint") || this.action.includes("Leader")) && (this.pdfViewer.annotationModule.checkAllowedInteractions("Resize", a) || (this.action = "Select"))), this.tool = this.getTool(this.action), this.tool || (this.action = this.pdfViewer.tool || "Select", this.tool = this.getTool(this.action)))), this.getMouseEventArgs(this.currentPosition, this.eventArgs, e), this.eventArgs.position = this.currentPosition, this.tool && (this.isAnnotationMouseDown = !1, this.isFormFieldMouseDown = !1, this.isAnnotationMouseMove = !1, this.isFormFieldMouseMove = !1, this.tool.mouseDown(this.eventArgs), this.isAnnotationDrawn = !0, this.signatureAdded = !0), this.pdfViewer.annotation && this.pdfViewer.annotation.onAnnotationMouseDown(), this.pdfViewer.selectedItems && 1 === this.pdfViewer.selectedItems.formFields.length && (t.isNullOrUndefined(this.pdfViewer.toolbar) || t.isNullOrUndefined(this.pdfViewer.toolbar.formDesignerToolbarModule) || this.pdfViewer.toolbar.formDesignerToolbarModule.showHideDeleteIcon(!0));
-                var S = 1 === this.pdfViewer.selectedItems.annotations.length ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id.split("_")[0] + "_content"] : null;
-                if (S || (S = 1 === this.pdfViewer.selectedItems.annotations.length ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id] : null), this.eventArgs && this.eventArgs.source && (this.eventArgs.source.formFieldAnnotationType || S) && !this.pdfViewer.designerMode) {
-                    var A = void 0;
-                    if ((A = S ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id.split("_")[0]] : this.eventArgs.source) || (A = this.pdfViewer.formFieldCollections[this.pdfViewer.formFieldCollections.findIndex(function(e) {
-                            return e.id === S.id
-                        })]), A) {
-                        var T = {
-                                id: A.id,
-                                fontFamily: A.fontFamily,
-                                fontSize: A.fontSize,
-                                fontStyle: A.fontStyle,
-                                color: A.color,
-                                value: A.value,
-                                type: A.formFieldAnnotationType ? A.formFieldAnnotationType : A.type,
-                                backgroundColor: A.backgroundColor,
-                                alignment: A.alignment
+                var A = 1 === this.pdfViewer.selectedItems.annotations.length ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id.split("_")[0] + "_content"] : null;
+                if (A || (A = 1 === this.pdfViewer.selectedItems.annotations.length ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id] : null), this.eventArgs && this.eventArgs.source && (this.eventArgs.source.formFieldAnnotationType || A) && !this.pdfViewer.designerMode) {
+                    var T = void 0;
+                    if ((T = A ? this.pdfViewer.nameTable[this.pdfViewer.selectedItems.annotations[0].id.split("_")[0]] : this.eventArgs.source) || (T = this.pdfViewer.formFieldCollections[this.pdfViewer.formFieldCollections.findIndex(function(e) {
+                            return e.id === A.id
+                        })]), T) {
+                        var x = {
+                                id: T.id,
+                                fontFamily: T.fontFamily,
+                                fontSize: T.fontSize,
+                                fontStyle: T.fontStyle,
+                                color: T.color,
+                                value: T.value,
+                                type: T.formFieldAnnotationType ? T.formFieldAnnotationType : T.type,
+                                backgroundColor: T.backgroundColor,
+                                alignment: T.alignment
                             },
-                            x = document.getElementById(A.id);
-                        (x = x || (document.getElementById(A.id + "_content_html_element") ? document.getElementById(A.id + "_content_html_element").children[0].children[0] : null)) && (this.currentTarget = x, this.pdfViewer.fireFormFieldClickEvent("formFieldClicked", T, !1))
+                            N = document.getElementById(T.id);
+                        (N = N || (document.getElementById(T.id + "_content_html_element") ? document.getElementById(T.id + "_content_html_element").children[0].children[0] : null)) && (this.currentTarget = N, this.pdfViewer.fireFormFieldClickEvent("formFieldClicked", x, !1))
                     }
                 }
                 this.initialEventArgs = {
@@ -16648,7 +16740,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         annotationDataFormat: i
                     }, s.pdfViewer.fireExportStart(l.pdfAnnotation)) : (l = o.constructJsonDownload(), s.pdfViewer.fireExportStart(l), l.annotationDataFormat = i, l.action = "ExportAnnotations"), s.jsonDocumentId && (l.document = s.jsonDocumentId);
                     var d = s.pdfViewer.serviceUrl + "/" + s.pdfViewer.serverActionSettings.exportAnnotations;
-                    s.exportAnnotationRequestHandler = new ti(o.pdfViewer), s.exportAnnotationRequestHandler.url = d, s.exportAnnotationRequestHandler.mode = !0, s.exportAnnotationRequestHandler.responseType = "text", s.exportAnnotationRequestHandler.send(l), s.exportAnnotationRequestHandler.onSuccess = function(o) {
+                    s.exportAnnotationRequestHandler = new si(o.pdfViewer), s.exportAnnotationRequestHandler.url = d, s.exportAnnotationRequestHandler.mode = !0, s.exportAnnotationRequestHandler.responseType = "text", s.exportAnnotationRequestHandler.send(l), s.exportAnnotationRequestHandler.onSuccess = function(o) {
                         var r = o.data;
                         if (r) {
                             if ("object" == typeof r && (r = JSON.parse(r)), r)
@@ -16699,7 +16791,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         uniqueId: this.documentId
                     }), o.jsonDocumentId && (n.document = o.jsonDocumentId);
                     var s = o.pdfViewer.serviceUrl + "/" + o.pdfViewer.serverActionSettings.importAnnotations;
-                    o.importAnnotationRequestHandler = new ti(o.pdfViewer), o.importAnnotationRequestHandler.url = s, o.importAnnotationRequestHandler.mode = !0, o.importAnnotationRequestHandler.responseType = "text", o.importAnnotationRequestHandler.send(n), o.importAnnotationRequestHandler.onSuccess = function(t) {
+                    o.importAnnotationRequestHandler = new si(o.pdfViewer), o.importAnnotationRequestHandler.url = s, o.importAnnotationRequestHandler.mode = !0, o.importAnnotationRequestHandler.responseType = "text", o.importAnnotationRequestHandler.send(n), o.importAnnotationRequestHandler.onSuccess = function(t) {
                         var i = t.data;
                         if (i) {
                             if ("object" != typeof i) try {
@@ -16740,8 +16832,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 } else this.annotationPageList[t] = i, t += 1;
                             if (e[i].textMarkupAnnotation && 0 !== e[i].textMarkupAnnotation.length) {
                                 if (o) {
-                                    L = JSON.parse(o);
-                                    e[i].textMarkupAnnotation = this.checkAnnotationCollections(L, e[i].textMarkupAnnotation, i)
+                                    w = JSON.parse(o);
+                                    e[i].textMarkupAnnotation = this.checkAnnotationCollections(w, e[i].textMarkupAnnotation, i)
                                 }
                                 if (e[i].textMarkupAnnotation = this.checkAnnotationCommentsCollections(e[i].textMarkupAnnotation, i), n.textMarkupAnnotation = e[i].textMarkupAnnotation, 0 !== e[i].textMarkupAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].textMarkupAnnotation, i);
@@ -16750,8 +16842,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].shapeAnnotation && 0 !== e[i].shapeAnnotation.length) {
                                 if (s) {
-                                    L = JSON.parse(s);
-                                    e[i].shapeAnnotation = this.checkAnnotationCollections(L, e[i].shapeAnnotation, i)
+                                    w = JSON.parse(s);
+                                    e[i].shapeAnnotation = this.checkAnnotationCollections(w, e[i].shapeAnnotation, i)
                                 }
                                 if (e[i].shapeAnnotation = this.checkAnnotationCommentsCollections(e[i].shapeAnnotation, i), n.shapeAnnotation = e[i].shapeAnnotation, 0 !== e[i].shapeAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].shapeAnnotation, i);
@@ -16760,8 +16852,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].measureShapeAnnotation && 0 !== e[i].measureShapeAnnotation.length) {
                                 if (a) {
-                                    L = JSON.parse(a);
-                                    e[i].measureShapeAnnotation = this.checkAnnotationCollections(L, e[i].measureShapeAnnotation, i)
+                                    w = JSON.parse(a);
+                                    e[i].measureShapeAnnotation = this.checkAnnotationCollections(w, e[i].measureShapeAnnotation, i)
                                 }
                                 if (e[i].measureShapeAnnotation = this.checkAnnotationCommentsCollections(e[i].measureShapeAnnotation, i), n.measureShapeAnnotation = e[i].measureShapeAnnotation, 0 !== e[i].measureShapeAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].measureShapeAnnotation, i);
@@ -16770,8 +16862,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].stampAnnotations && 0 !== e[i].stampAnnotations.length) {
                                 if (r) {
-                                    L = JSON.parse(r);
-                                    e[i].stampAnnotations = this.checkAnnotationCollections(L, e[i].stampAnnotations, i)
+                                    w = JSON.parse(r);
+                                    e[i].stampAnnotations = this.checkAnnotationCollections(w, e[i].stampAnnotations, i)
                                 }
                                 if (e[i].stampAnnotations = this.checkAnnotationCommentsCollections(e[i].stampAnnotations, i), n.stampAnnotations = e[i].stampAnnotations, 0 !== e[i].stampAnnotations.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].stampAnnotations, i);
@@ -16780,8 +16872,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].stickyNotesAnnotation && 0 !== e[i].stickyNotesAnnotation.length) {
                                 if (l) {
-                                    L = JSON.parse(l);
-                                    e[i].stickyNotesAnnotation = this.checkAnnotationCollections(L, e[i].stickyNotesAnnotation, i)
+                                    w = JSON.parse(l);
+                                    e[i].stickyNotesAnnotation = this.checkAnnotationCollections(w, e[i].stickyNotesAnnotation, i)
                                 }
                                 if (e[i].stickyNotesAnnotation = this.checkAnnotationCommentsCollections(e[i].stickyNotesAnnotation, i), n.stickyNotesAnnotation = e[i].stickyNotesAnnotation, 0 !== e[i].stickyNotesAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].stickyNotesAnnotation, i);
@@ -16790,8 +16882,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].freeTextAnnotation && 0 !== e[i].freeTextAnnotation.length) {
                                 if (d) {
-                                    L = JSON.parse(d);
-                                    e[i].freeTextAnnotation = this.checkAnnotationCollections(L, e[i].freeTextAnnotation, i)
+                                    w = JSON.parse(d);
+                                    e[i].freeTextAnnotation = this.checkAnnotationCollections(w, e[i].freeTextAnnotation, i)
                                 }
                                 if (e[i].freeTextAnnotation = this.checkAnnotationCommentsCollections(e[i].freeTextAnnotation, i), n.freeTextAnnotation = e[i].freeTextAnnotation, 0 !== e[i].freeTextAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].freeTextAnnotation, i);
@@ -16800,16 +16892,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (e[i].signatureAnnotation && 0 !== e[i].signatureAnnotation.length) {
                                 if (u) {
-                                    L = JSON.parse(u);
-                                    e[i].signatureAnnotation = this.checkSignatureCollections(L, e[i].signatureAnnotation, i)
+                                    w = JSON.parse(u);
+                                    e[i].signatureAnnotation = this.checkSignatureCollections(w, e[i].signatureAnnotation, i)
                                 }
                                 if (n.signatureAnnotation = e[i].signatureAnnotation, 0 !== e[i].signatureAnnotation.length)
                                     for (h = 0; h < e[i].signatureAnnotation.length; h++) this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateCollections(this.signatureModule.updateSignatureCollections(e[i].signatureAnnotation[h], i), !0)
                             }
                             if (e[i].signatureInkAnnotation && 0 !== e[i].signatureInkAnnotation.length) {
                                 if (p) {
-                                    var L = JSON.parse(p);
-                                    e[i].signatureInkAnnotation = this.checkAnnotationCollections(L, e[i].signatureInkAnnotation, i)
+                                    var w = JSON.parse(p);
+                                    e[i].signatureInkAnnotation = this.checkAnnotationCollections(w, e[i].signatureInkAnnotation, i)
                                 }
                                 if (e[i].signatureInkAnnotation = this.checkAnnotationCommentsCollections(e[i].signatureInkAnnotation, i), n.signatureInkAnnotation = e[i].signatureInkAnnotation, 0 !== e[i].signatureInkAnnotation.length) {
                                     this.pdfViewer.annotationModule.stickyNotesAnnotationModule.renderAnnotationComments(e[i].signatureInkAnnotation, i);
@@ -16818,8 +16910,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             this.updateImportedAnnotationsInDocumentCollections(n, i)
                         } if (this.pageCount > 0 && this.pdfViewer.annotationModule.stickyNotesAnnotationModule && !this.pdfViewer.annotationModule.stickyNotesAnnotationModule.isAnnotationRendered) {
-                        var w = this.createAnnotationsCollection();
-                        w && (this.documentAnnotationCollections = this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationsInDocumentCollections(this.importedAnnotation, w))
+                        var L = this.createAnnotationsCollection();
+                        L && (this.documentAnnotationCollections = this.pdfViewer.annotationModule.stickyNotesAnnotationModule.updateAnnotationsInDocumentCollections(this.importedAnnotation, L))
                     }
                 }
             }, s.prototype.updateImportedAnnotationsInDocumentCollections = function(e, t) {
@@ -17181,34 +17273,34 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                             if (r.EnableShapeLabel = a.enableShapeLabel, "Distance calculation" === a.subject || "Perimeter calculation" === a.subject || "Area calculation" === a.subject || "Radius calculation" === a.subject || "Volume calculation" === a.subject) {
                                 r.AnnotType = "shape_measure";
-                                var L = a.calibrate;
-                                L && (r.Calibrate = {
-                                    Ratio: L.ratio,
+                                var w = a.calibrate;
+                                w && (r.Calibrate = {
+                                    Ratio: w.ratio,
                                     X: [{
-                                        Unit: L.x[0].unit,
-                                        ConversionFactor: L.x[0].conversionFactor,
-                                        FractionalType: L.x[0].fractionalType,
-                                        Denominator: L.x[0].denominator,
-                                        FormatDenominator: L.x[0].formatDenominator
+                                        Unit: w.x[0].unit,
+                                        ConversionFactor: w.x[0].conversionFactor,
+                                        FractionalType: w.x[0].fractionalType,
+                                        Denominator: w.x[0].denominator,
+                                        FormatDenominator: w.x[0].formatDenominator
                                     }],
                                     Distance: [{
-                                        Unit: L.distance[0].unit,
-                                        ConversionFactor: L.distance[0].conversionFactor,
-                                        FractionalType: L.distance[0].fractionalType,
-                                        Denominator: L.distance[0].denominator,
-                                        FormatDenominator: L.distance[0].formatDenominator
+                                        Unit: w.distance[0].unit,
+                                        ConversionFactor: w.distance[0].conversionFactor,
+                                        FractionalType: w.distance[0].fractionalType,
+                                        Denominator: w.distance[0].denominator,
+                                        FormatDenominator: w.distance[0].formatDenominator
                                     }],
                                     Area: [{
-                                        Unit: L.area[0].unit,
-                                        ConversionFactor: L.area[0].conversionFactor,
-                                        FractionalType: L.area[0].fractionalType,
-                                        Denominator: L.area[0].denominator,
-                                        FormatDenominator: L.area[0].formatDenominator
+                                        Unit: w.area[0].unit,
+                                        ConversionFactor: w.area[0].conversionFactor,
+                                        FractionalType: w.area[0].fractionalType,
+                                        Denominator: w.area[0].denominator,
+                                        FormatDenominator: w.area[0].formatDenominator
                                     }],
                                     Angle: null,
                                     Volume: null,
-                                    TargetUnitConversion: L.targetUnitConversion,
-                                    Depth: L.depth
+                                    TargetUnitConversion: w.targetUnitConversion,
+                                    Depth: w.depth
                                 }), r.Indent = a.indent, r.Caption = a.caption, r.CaptionPosition = a.captionPosition, r.LeaderLineExtension = a.leaderLineExtension, r.LeaderLength = a.leaderLength, r.LeaderLineOffset = a.leaderLineOffset, t[a.pageNumber].measureShapeAnnotation.push(r)
                             } else t[a.pageNumber].shapeAnnotation.push(r)
                         }
@@ -17268,7 +17360,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
             }, s
         }(),
-        $t = function() {
+        ni = function() {
             function e(e, t) {
                 var i = this;
                 this.textBoundsArray = [], this.characterBound = [], this.closeNotification = function() {
@@ -17322,8 +17414,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             h && (M = p.measureText(h.replace(/(\r\n|\n|\r)/gm, "")).width)
                         } else M = p.measureText(u.textContent.replace(/(\r\n|\n|\r)/gm, "")).width;
                         if (d) {
-                            var L = d.Width * this.pdfViewerBase.getZoomFactor() / M;
-                            this.applyTextRotation(L, u, o, d.Rotation)
+                            var w = d.Width * this.pdfViewerBase.getZoomFactor() / M;
+                            this.applyTextRotation(w, u, o, d.Rotation)
                         }
                         this.resizeExcessDiv(a, u)
                     } else a.parentElement.removeChild(a);
@@ -17390,11 +17482,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             var p = this.pdfViewerBase.getElement("_text_" + a + "_" + u),
                                 M = void 0,
                                 h = void 0,
-                                L = void 0;
+                                w = void 0;
                             if (p && p.textContent) {
-                                L = p.textContent.length;
-                                var w = p.textContent;
-                                p.textContent = "", u === r ? (M = a === e ? o : 0, h = L, this.convertToSpan(a, u, 0, M, w, null)) : u === l && a === t ? (M = 0, h = s) : (M = 0, h = L), r === l && e === t && (M = o, h = s), this.convertToSpan(a, u, M, h, w, "e-pv-maintaincontent"), u === l && a === t && this.convertToSpan(a, u, h, w.length, w, null)
+                                w = p.textContent.length;
+                                var L = p.textContent;
+                                p.textContent = "", u === r ? (M = a === e ? o : 0, h = w, this.convertToSpan(a, u, 0, M, L, null)) : u === l && a === t ? (M = 0, h = s) : (M = 0, h = w), r === l && e === t && (M = o, h = s), this.convertToSpan(a, u, M, h, L, "e-pv-maintaincontent"), u === l && a === t && this.convertToSpan(a, u, h, L.length, L, null)
                             }
                         }
                     }
@@ -17470,7 +17562,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }
             }, e
         }(),
-        ei = function() {
+        oi = function() {
             function i(e, t) {
                 this.copyContextMenu = [], this.pdfViewer = e, this.pdfViewerBase = t, this.copyContextMenu = [{
                     text: this.pdfViewer.localeObj.getConstant("Cut"),
@@ -17506,7 +17598,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     separator: !0,
                     id: e.element.id + "_context_menu_separator"
                 }, {
-                    text: this.pdfViewer.localeObj.getConstant("Properties")
+                    text: this.pdfViewer.localeObj.getConstant("Properties"),
+                    iconCss: "e-pv-property-icon"
                 }]
             }
             return i.prototype.createContextMenu = function() {
@@ -17573,7 +17666,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     this.pdfViewerBase.getElement("_context_menu_separator").classList.add("e-menu-hide")
                             }
                             var r = this.pdfViewer.localeObj.getConstant(a);
-                            if ("Scale Ratio" === r && (r = "ScaleRatio"), 0 === o && r !== e.ContextMenuItem[this.pdfViewer.contextMenuSettings.contextMenuItems[o]] && i.push(r), o > 0 && r === e.ContextMenuItem[this.pdfViewer.contextMenuSettings.contextMenuItems[o]])
+                            if (0 === o && r !== e.ContextMenuItem[this.pdfViewer.contextMenuSettings.contextMenuItems[o]] && i.push(r), o > 0 && r === e.ContextMenuItem[this.pdfViewer.contextMenuSettings.contextMenuItems[o]])
                                 for (var l = 0; l < i.length; l++)
                                     if (i[l] === r)
                                         if (this.pdfViewer.disableContextMenuItems && this.pdfViewer.disableContextMenuItems.length > 0) {
@@ -17607,7 +17700,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.contextMenuObj.open(e, t, i)
             }, i
         }(),
-        ti = function() {
+        si = function() {
             function e(e) {
                 this.type = "POST", this.mode = !0, this.contentType = "application/json;charset=UTF-8", this.pdfViewer = e, this.retryCount = e.retryCount
             }
@@ -17676,7 +17769,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 for (var e = 0; e < this.pdfViewer.ajaxRequestSettings.ajaxHeaders.length; e++) this.httpRequest.setRequestHeader(this.pdfViewer.ajaxRequestSettings.ajaxHeaders[e].headerName, this.pdfViewer.ajaxRequestSettings.ajaxHeaders[e].headerValue)
             }, e
         }(),
-        ii = function() {
+        ai = function() {
             function s(e, t) {
                 var i = this;
                 this.newObject = [], this.outputString = "", this.signaturecollection = [], this.outputcollection = [], this.fontsign = [], this.signfontStyle = [], this.isSaveSignature = !1, this.saveSignatureString = "", this.saveImageString = "", this.signatureImageString = "", this.maxSaveLimit = 5, this.addStampImage = function(e) {
@@ -17727,6 +17820,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         closeOnEscape: !1,
                         isModal: !0,
                         header: r,
+                        cssClass: "e-pv-signature-dialog-height",
                         target: this.pdfViewer.element,
                         content: a,
                         width: "750px",
@@ -17759,10 +17853,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         click: this.addSignatureInPage.bind(this)
                     }], this.signatureDialog.appendTo(s)), this.pdfViewer.enableRtl && (this.signatureDialog.enableRtl = this.pdfViewer.enableRtl);
                     var l = this.signatureDialog.content.ej2_instances[0].items[0];
-                    if ("DRAW" === l.header.text) {
+                    if ("DRAW" === l.header.label) {
                         var d = document.getElementById("checkbox");
                         this.hideSignatureCheckbox(d)
-                    } else if ("TYPE" === l.header.text) {
+                    } else if ("TYPE" === l.header.label) {
                         var u = document.getElementById("checkbox1");
                         this.hideSignatureCheckbox(u)
                     } else {
@@ -17941,13 +18035,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e && e.remove(), i && i.remove();
                 var o = t.createElement("div", {
                         id: this.pdfViewer.element.id + "Signature_appearance",
-                        className: "e-pv-signature-apperance"
+                        className: "e-pv-signature-apperance",
+                        styles: "margin-top:30px"
                     }),
                     s = t.createElement("canvas", {
                         id: this.pdfViewer.element.id + "_signatureCanvas_",
                         className: "e-pv-signature-canvas"
                     });
-                this.pdfViewer.element.offsetWidth > 750 ? (s.width = 715, s.style.width = "715px") : (s.width = this.pdfViewer.element.offsetWidth - 35, s.style.width = s.width + "px"), s.height = 335, s.style.height = "335px", s.style.border = "1px dotted #bdbdbd", s.style.backgroundColor = "white", s.style.boxSizing = "border-box", s.style.borderRadius = "2px", s.addEventListener("mousedown", this.signaturePanelMouseDown.bind(this)), s.addEventListener("mousemove", this.signaturePanelMouseMove.bind(this)), s.addEventListener("mouseup", this.signaturePanelMouseUp.bind(this)), s.addEventListener("mouseleave", this.signaturePanelMouseUp.bind(this)), s.addEventListener("touchstart", this.signaturePanelMouseDown.bind(this)), s.addEventListener("touchmove", this.signaturePanelMouseMove.bind(this)), s.addEventListener("touchend", this.signaturePanelMouseUp.bind(this)), o.appendChild(s);
+                this.pdfViewer.element.offsetWidth > 750 ? s.width = 714 : s.width = this.pdfViewer.element.offsetWidth - 35, s.classList.add("e-pv-canvas-signature"), s.height = 305, s.style.height = "305px", s.style.border = "1px dotted #bdbdbd", s.style.backgroundColor = "white", s.style.boxSizing = "border-box", s.style.borderRadius = "2px", s.addEventListener("mousedown", this.signaturePanelMouseDown.bind(this)), s.addEventListener("mousemove", this.signaturePanelMouseMove.bind(this)), s.addEventListener("mouseup", this.signaturePanelMouseUp.bind(this)), s.addEventListener("mouseleave", this.signaturePanelMouseUp.bind(this)), s.addEventListener("touchstart", this.signaturePanelMouseDown.bind(this)), s.addEventListener("touchmove", this.signaturePanelMouseMove.bind(this)), s.addEventListener("touchend", this.signaturePanelMouseUp.bind(this)), o.appendChild(s);
                 var a, l, u;
                 u = this.pdfViewerBase.isToolbarSignClicked && !this.pdfViewerBase.isInitialField ? this.pdfViewer.localeObj.getConstant("Save Signature") : this.pdfViewerBase.isInitialField ? this.pdfViewer.localeObj.getConstant("Save Initial") : this.pdfViewer.localeObj.getConstant("Save Signature"), this.pdfViewer.hideSaveSignature || ((l = document.createElement("input")).type = "checkbox", l.id = "checkbox", o.appendChild(l), (a = new d.CheckBox({
                     label: u,
@@ -17956,7 +18051,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 })).appendTo(l)), this.isSaveSignature && (a.checked = !0);
                 var p = t.createElement("div", {
                         id: this.pdfViewer.element.id + "type_appearance",
-                        className: "e-pv-signature-apperance"
+                        className: "e-pv-signature-apperance",
+                        styles: "margin-top:6px"
                     }),
                     M = document.createElement("input");
                 M.type = "text", M.id = this.pdfViewer.element.id + "_e-pv-Signtext-box", p.appendChild(M);
@@ -17965,20 +18061,22 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     floatLabelType: "Auto"
                 });
                 h.appendTo(M);
-                var L = t.createElement("div", {
-                    id: this.pdfViewer.element.id + "_font_appearance"
+                var w = t.createElement("div", {
+                    id: this.pdfViewer.element.id + "_font_appearance",
+                    className: "e-pv-font-appearance-style"
                 });
-                L.style.width = "715px", L.style.height = "270px", L.style.border = "1px dotted #bdbdbd", L.style.boxSizing = "border-box", L.style.borderRadius = "2px", L.style.backgroundColor = "white", L.style.color = "black", p.appendChild(L), (l = document.createElement("input")).type = "checkbox", l.id = "checkbox1", p.appendChild(l), (a = new d.CheckBox({
+                w.classList.add("e-pv-canvas-signature"), w.style.height = "270px", w.style.border = "1px dotted #bdbdbd", w.style.boxSizing = "border-box", w.style.borderRadius = "2px", w.style.backgroundColor = "white", w.style.color = "black", w.style.marginTop = "8px", p.appendChild(w), (l = document.createElement("input")).type = "checkbox", l.id = "checkbox1", p.appendChild(l), (a = new d.CheckBox({
                     label: u,
                     disabled: !1,
                     checked: !1
                 })).appendTo(l), h.addEventListener("input", this.renderSignatureText.bind(this)), this.enableCreateButton(!0);
-                var w = t.createElement("div", {
+                var L = t.createElement("div", {
                         id: this.pdfViewer.element.id + "Signature_tab"
                     }),
                     c = t.createElement("div", {
                         id: this.pdfViewer.element.id + "upload_appearance",
-                        className: "e-pv-signature-apperance"
+                        className: "e-pv-signature-apperance",
+                        styles: "padding-top:30px"
                     }),
                     C = document.createElement("div");
                 C.id = this.pdfViewer.element.id + "_e-pv-upload-button", c.appendChild(C);
@@ -17991,7 +18089,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     id: this.pdfViewer.element.id + "_signatureuploadCanvas_",
                     className: "e-pv-signature-uploadcanvas"
                 });
-                this.pdfViewer.element.offsetWidth > 750 ? (m.width = 715, m.style.width = "715px") : (m.width = this.pdfViewer.element.offsetWidth - 35, m.style.width = s.width + "px"), m.height = 335, m.style.height = "335px", g.element.style.left = parseFloat(m.style.width) / 2 - 50 + "px", g.element.style.top = parseFloat(m.style.height) / 2 - 10 + "px", m.style.border = "1px dotted #bdbdbd", m.style.backgroundColor = "white", m.style.boxSizing = "border-box", m.style.borderRadius = "2px", m.style.zIndex = "0", c.appendChild(m), (l = document.createElement("input")).type = "checkbox", l.id = "checkbox2", c.appendChild(l), (a = new d.CheckBox({
+                this.pdfViewer.element.offsetWidth > 750 ? m.width = 714 : m.width = this.pdfViewer.element.offsetWidth - 35, m.classList.add("e-pv-canvas-signature"), m.height = 305, m.style.height = "305px", g.element.style.left = m.width / 2 - 50 + "px", g.element.style.top = parseFloat(m.style.height) / 2 + 20 + "px", m.style.border = "1px dotted #bdbdbd", m.style.backgroundColor = "white", m.style.boxSizing = "border-box", m.style.borderRadius = "2px", m.style.zIndex = "0", c.appendChild(m), (l = document.createElement("input")).type = "checkbox", l.id = "checkbox2", c.appendChild(l), (a = new d.CheckBox({
                     label: u,
                     disabled: !1,
                     checked: !1
@@ -18005,7 +18103,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     FontName: "Symbol"
                 }];
                 var f = [];
-                if (!t.isNullOrUndefined(this.pdfViewer.handWrittenSignatureSettings.typeSignatureFonts))
+                if (this.pdfViewerBase.isToolbarSignClicked && !t.isNullOrUndefined(this.pdfViewer.handWrittenSignatureSettings.typeSignatureFonts))
                     for (var y = 0; y < 4; y++) t.isNullOrUndefined(this.pdfViewer.handWrittenSignatureSettings.typeSignatureFonts[y]) || (this.signfontStyle[y].FontName = this.pdfViewer.handWrittenSignatureSettings.typeSignatureFonts[y]);
                 for (var j = 0; j < this.signfontStyle.length; j++) f[j] = document.createElement("div"), f[j].id = "_font_signature" + j, f[j].classList.add("e-pv-font-sign");
                 this.fontsign = f;
@@ -18016,44 +18114,51 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         S.handleSelectEvent(e)
                     },
                     items: A
-                }), this.tabObj.appendTo(w), "DRAW" === A[0].header.text ? this.signaturetype = "Draw" : "TYPE" === A[0].header.text ? this.signaturetype = "Type" : this.signaturetype = "Image", w
+                }), this.tabObj.appendTo(L), L && L.lastElementChild && (L.lastElementChild.style.overflow = "hidden"), "DRAW" === A[0].header.label ? this.signaturetype = "Draw" : "TYPE" === A[0].header.label ? this.signaturetype = "Type" : this.signaturetype = "Image", L
             }, s.prototype.handleSelectEvent = function(e) {
-                var t = document.getElementById("checkbox");
-                if (t && t.checked) {
+                var t = "",
+                    i = document.getElementById(this.pdfViewer.element.id + "Signature_tab").ej2_instances[0];
+                if (i && i.items.length > 0)
+                    for (var n = 0; n < i.items.length; n++) i.items[n].header.text === e.selectedItem.textContent && (t = i.items[n].header.label);
+                var o = document.getElementById("checkbox");
+                if (o && o.checked) {
                     if (0 === e.previousIndex && "" !== this.outputString) {
                         this.isSaveSignature = !0, this.saveSignatureString = this.outputString;
-                        var i = document.getElementById(this.pdfViewer.element.id + "_signatureCanvas_");
-                        this.saveImageString = i.toDataURL(), this.signatureImageString = this.saveImageString
+                        var s = document.getElementById(this.pdfViewer.element.id + "_signatureCanvas_");
+                        this.saveImageString = s.toDataURL(), this.signatureImageString = this.saveImageString
                     }
                 } else this.isSaveSignature && (this.isSaveSignature = !1, this.saveSignatureString = "", this.saveImageString = "", this.signatureImageString = ""), this.clearSignatureCanvas();
-                if ("draw" === e.selectedItem.textContent.toLocaleLowerCase()) {
+                if ("draw" === t.toLocaleLowerCase()) {
                     this.signaturetype = "Draw", this.isSaveSignature && this.enableCreateButton(!1);
-                    var n = document.getElementById("checkbox");
-                    this.hideSignatureCheckbox(n)
-                } else if ("type" === e.selectedItem.textContent.toLocaleLowerCase()) {
+                    var a = document.getElementById("checkbox");
+                    this.hideSignatureCheckbox(a)
+                } else if ("type" === t.toLocaleLowerCase()) {
                     this.outputString = "", this.signaturetype = "Type", this.enableCreateButton(!0);
-                    var o = document.getElementById("checkbox1");
-                    this.hideSignatureCheckbox(o)
-                } else if ("upload" === e.selectedItem.textContent.toLocaleLowerCase()) {
+                    var r = document.getElementById("checkbox1");
+                    this.hideSignatureCheckbox(r)
+                } else if ("upload" === t.toLocaleLowerCase()) {
                     this.signaturetype = "Image", this.enableCreateButton(!0);
-                    var s = document.getElementById("checkbox2");
-                    this.hideSignatureCheckbox(s)
+                    var l = document.getElementById("checkbox2");
+                    this.hideSignatureCheckbox(l)
                 }
             }, s.prototype.showHideSignatureTab = function(t, i, n, o) {
                 var s = [];
                 return t & e.DisplayMode.Draw && s.push({
                     header: {
-                        text: this.pdfViewer.localeObj.getConstant("Draw-hand Signature")
+                        text: this.pdfViewer.localeObj.getConstant("Draw-hand Signature"),
+                        label: "DRAW"
                     },
                     content: i
                 }), t & e.DisplayMode.Text && s.push({
                     header: {
-                        text: this.pdfViewer.localeObj.getConstant("Type Signature")
+                        text: this.pdfViewer.localeObj.getConstant("Type Signature"),
+                        label: "TYPE"
                     },
                     content: n
                 }), t & e.DisplayMode.Upload && s.push({
                     header: {
-                        text: this.pdfViewer.localeObj.getConstant("Upload Signature")
+                        text: this.pdfViewer.localeObj.getConstant("Upload Signature"),
+                        label: "UPLOAD"
                     },
                     content: o
                 }), s
@@ -18064,7 +18169,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         type: "file"
                     }
                 });
-                e.setAttribute("accept", ".jpg,.jpeg"), e.style.position = "absolute", e.style.left = "0px", e.style.top = "0px", e.style.visibility = "hidden", document.body.appendChild(e), e.addEventListener("change", this.addStampImage)
+                e.setAttribute("accept", ".jpg,.jpeg,.png"), e.style.position = "absolute", e.style.left = "0px", e.style.top = "0px", e.style.visibility = "hidden", document.body.appendChild(e), e.addEventListener("change", this.addStampImage)
             }, s.prototype.uploadSignatureImage = function() {
                 var e = document.getElementById(this.pdfViewer.element.id + "_signElement");
                 e && e.click()
@@ -18100,9 +18205,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             var h = l[M];
                             if (-1 === o) o = h.x, a = h.x, s = h.y, r = h.y;
                             else {
-                                var L = h.x,
-                                    w = h.y;
-                                o >= L && (o = L), s >= w && (s = w), a <= L && (a = L), r <= w && (r = w)
+                                var w = h.x,
+                                    L = h.y;
+                                o >= w && (o = w), s >= L && (s = L), a <= w && (a = w), r <= L && (r = L)
                             }
                         }
                         var c = a - o,
@@ -18113,9 +18218,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             y = 0;
                         e ? (d.width = t.currentWidth, d.height = t.currentHeight, g = c / e.width, m = C / e.height, f = e.x - t.currentLeft, y = e.y - t.currentTop) : (d.width = 100, d.height = 100), u.beginPath();
                         for (var j = 0; j < l.length; j++) {
-                            var L = ((h = l[j]).x - o) / g + f,
-                                w = (h.y - s) / m + y;
-                            "M" === h.command ? u.moveTo(L, w) : "L" === h.command && u.lineTo(L, w)
+                            var w = ((h = l[j]).x - o) / g + f,
+                                L = (h.y - s) / m + y;
+                            "M" === h.command ? u.moveTo(w, L) : "L" === h.command && u.lineTo(w, L)
                         }
                         u.stroke(), u.closePath(), n = d.toDataURL()
                     }
@@ -18153,10 +18258,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         u = this.pdfViewer.handWrittenSignatureSettings.opacity ? this.pdfViewer.handWrittenSignatureSettings.opacity : 1,
                         p = this.pdfViewer.handWrittenSignatureSettings.strokeColor ? this.pdfViewer.handWrittenSignatureSettings.strokeColor : "#000000";
                     s = (parseFloat(o.style.width) / 2 - r / 2) / t, a = (parseFloat(o.style.height) / 2 - l / 2) / t;
-                    for (var M = "", h = void 0, L = void 0, w = 0; w < this.outputcollection.length; w++) {
-                        var c = this.outputcollection[w];
-                        if ((g = event.target) && g.id === "sign_" + w || g && g.id === "sign_border" + w) {
-                            M = c["sign_" + w];
+                    for (var M = "", h = void 0, w = void 0, L = 0; L < this.outputcollection.length; L++) {
+                        var c = this.outputcollection[L];
+                        if ((g = event.target) && g.id === "sign_" + L || g && g.id === "sign_border" + L) {
+                            M = c["sign_" + L];
                             break
                         }
                     }
@@ -18164,7 +18269,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var g = event.target,
                             m = this.signaturecollection[C].image[0].id.split("_")[1];
                         if (g && g.id === "sign_" + m || g && g.id === "sign_border" + m) {
-                            h = this.signaturecollection[C].image[0].signatureType, L = this.signaturecollection[C].image[0].fontFamily;
+                            h = this.signaturecollection[C].image[0].signatureType, w = this.signaturecollection[C].image[0].fontFamily;
                             break
                         }
                     }
@@ -18184,7 +18289,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         data: M,
                         shapeAnnotationType: h,
                         opacity: u,
-                        fontFamily: L,
+                        fontFamily: w,
                         strokeColor: p,
                         thickness: d,
                         signatureName: i
@@ -18192,7 +18297,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 } else this.pdfViewer.formFieldsModule.drawSignature()
             }, s.prototype.updateCanvasSize = function() {
                 var e = document.getElementById(this.pdfViewer.element.id + "_signatureCanvas_");
-                e && this.signatureDialog && this.signatureDialog.visible && (this.pdfViewer.element.offsetWidth > 750 ? (e.width = 715, e.style.width = "715px") : (e.width = this.pdfViewer.element.offsetWidth - 35, e.style.width = e.width + "px"))
+                e && this.signatureDialog && this.signatureDialog.visible && (this.pdfViewer.element.offsetWidth > 750 ? (e.width = 714, e.style.width = "714px") : (e.width = this.pdfViewer.element.offsetWidth - 35, e.style.width = e.width + "px"))
             }, s.prototype.signaturePanelMouseDown = function(e) {
                 "contextmenu" !== e.type && (e.preventDefault(), this.findMousePosition(e), this.mouseDetection = !0, this.oldX = this.mouseX, this.oldY = this.mouseY, this.newObject = [], this.drawMousePosition(e))
             }, s.prototype.enableCreateButton = function(e) {
@@ -18257,10 +18362,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 else {
                                     var h = t.createElement("canvas");
                                     h.width = 150, h.height = 2 * l.annotations[d].fontSize;
-                                    var L = h.getContext("2d"),
-                                        w = h.width / 2,
+                                    var w = h.getContext("2d"),
+                                        L = h.width / 2,
                                         c = h.height / 2 - 10;
-                                    L.textAlign = "center", L.font = l.annotations[d].fontSize + "px " + l.annotations[d].fontFamily, L.fillText(l.annotations[d].data, w, c), l.annotations[d].data = JSON.stringify(h.toDataURL("image/png")), l.annotations[d].shapeAnnotationType = "SignatureImage"
+                                    w.textAlign = "center", w.font = l.annotations[d].fontSize + "px " + l.annotations[d].fontFamily, w.fillText(l.annotations[d].data, L, c), l.annotations[d].data = JSON.stringify(h.toDataURL("image/png")), l.annotations[d].shapeAnnotationType = "SignatureImage"
                                 }
                             }
                             r = l.annotations
@@ -18529,7 +18634,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e && (e.removeEventListener("change", this.addStampImage), e.parentElement && e.parentElement.removeChild(e)), this.signatureDialog && this.signatureDialog.destroy()
             }, s
         }(),
-        ni = function() {
+        ri = function() {
             function e(e, t) {
                 this.zoomFactor = 1, this.previousZoomFactor = 1, this.scrollWidth = 25, this.zoomPercentages = [10, 25, 50, 75, 100, 125, 150, 200, 400], this.isNotPredefinedZoom = !1, this.pinchStep = .02, this.reRenderPageNumber = 0, this.magnifyPageRerenderTimer = null, this.rerenderOnScrollTimer = null, this.rerenderInterval = null, this.touchCenterX = 0, this.touchCenterY = 0, this.pageRerenderCount = 0, this.imageObjects = [], this.topValue = 0, this.isTapToFitZoom = !1, this.fitType = null, this.isPinchZoomed = !1, this.isPagePinchZoomed = !1, this.isRerenderCanvasCreated = !1, this.isMagnified = !1, this.isPagesZoomed = !1, this.isPinchScrolled = !1, this.isAutoZoom = !1, this.isWebkitMobile = !1, this.isFitToPageMode = !0, this.pdfViewer = e, this.pdfViewerBase = t, this.zoomLevel = 2, this.isWebkitMobile = /Chrome/.test(navigator.userAgent) || /Google Inc/.test(navigator.vendor) || -1 !== navigator.userAgent.indexOf("Safari")
             }
@@ -18634,7 +18739,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.responsivePages = function() {
                 this.isPagesZoomed = !0, this.clearRerenderTimer(), this.pdfViewer.textSelectionModule && this.pdfViewer.textSelectionModule.clearTextSelection(), this.pdfViewer.textSearchModule && this.pdfViewer.textSearchModule.clearAllOccurrences();
                 var e = this.pdfViewerBase.viewerContainer.scrollTop;
-                this.isAutoZoom = !1, this.updatePageLocation(), this.pdfViewerBase.pageContainer.style.height = this.topValue + this.pdfViewerBase.pageSize[this.pdfViewerBase.pageSize.length - 1].height * this.zoomFactor + "px", this.resizeCanvas(this.pdfViewerBase.currentPageNumber), this.pdfViewerBase.textLayer && this.pdfViewerBase.textLayer.clearTextLayers(!0), this.isPinchZoomed && this.calculateScrollValues(e), this.pdfViewerBase.renderedPagesList = [], this.pdfViewerBase.pinchZoomStorage = []
+                if (this.isAutoZoom = !1, this.updatePageLocation(), this.pdfViewerBase.pageContainer.style.height = this.topValue + this.pdfViewerBase.pageSize[this.pdfViewerBase.pageSize.length - 1].height * this.zoomFactor + "px", this.resizeCanvas(this.pdfViewerBase.currentPageNumber), this.pdfViewerBase.textLayer && this.pdfViewer.formDesignerModule && this.pdfViewerBase.textLayer.clearTextLayers(!0), this.isPinchZoomed && this.calculateScrollValues(e), this.pdfViewerBase.renderedPagesList = [], this.pdfViewerBase.pinchZoomStorage = [], this.pdfViewer.formFieldsModule && !this.pdfViewer.formDesignerModule) {
+                    var t = this;
+                    this.pdfViewerBase.documentLoaded || (this.magnifyPageRerenderTimer = setTimeout(function() {
+                        t.rerenderMagnifiedPages()
+                    }, 800))
+                }
             }, e.prototype.calculateScrollValues = function(e) {
                 var t = this.pdfViewerBase.currentPageNumber - 1,
                     i = this.pdfViewerBase.getElement("_pageDiv_" + t);
@@ -18656,7 +18766,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     for (var t = document.querySelectorAll('canvas[id*="' + this.pdfViewer.element.id + '_pageCanvas_"]'), i = 0; i < t.length; i++) {
                         var n = parseInt(t[i].id.split("_pageCanvas_")[1]),
                             o = this.pdfViewerBase.pageSize[n].width;
-                        816 < o && this.pdfViewer.tileRenderingSettings.enableTileRendering && (this.pdfViewer.restrictZoomRequest ? (t[i].style.width = o * this.pdfViewerBase.getZoomFactor() + "px", t[i].style.height = this.pdfViewerBase.pageSize[n].height * this.pdfViewerBase.getZoomFactor() + "px") : (t[i].width = o * this.pdfViewerBase.getZoomFactor(), t[i].height = this.pdfViewerBase.pageSize[n].height * this.pdfViewerBase.getZoomFactor()))
+                        816 < o && this.pdfViewer.tileRenderingSettings.enableTileRendering && (this.pdfViewer.restrictZoomRequest, t[i].style.width = o * this.pdfViewerBase.getZoomFactor() + "px", t[i].style.height = this.pdfViewerBase.pageSize[n].height * this.pdfViewerBase.getZoomFactor() + "px")
                     }
                     if (this.pdfViewerBase.textLayer)
                         for (var s = document.querySelectorAll('div[id*="' + this.pdfViewer.element.id + '_textLayer_"]'), i = 0; i < s.length; i++) s[i].style.display = "block";
@@ -18701,7 +18811,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.pdfViewerBase.isMinimumZoom && (t = e - 4, i = e + 4), t = t > 0 ? t : 0, i = i < this.pdfViewerBase.pageCount ? i : this.pdfViewerBase.pageCount - 1;
                 for (var n = t; n <= i; n++) {
                     var o = this.pdfViewerBase.getElement("_pageCanvas_" + n);
-                    o && !this.pdfViewer.restrictZoomRequest ? (o.id = this.pdfViewer.element.id + "_oldCanvas_" + n, o.style.backgroundColor = "#fff", (this.pdfViewerBase.isTextMarkupAnnotationModule() || this.pdfViewer.formDesignerModule) && (this.pdfViewerBase.getElement("_annotationCanvas_" + n).id = this.pdfViewer.element.id + "_old_annotationCanvas_" + n), this.pdfViewerBase.renderPageCanvas(this.pdfViewerBase.getElement("_pageDiv_" + n), this.pdfViewerBase.pageSize[n].width * this.zoomFactor, this.pdfViewerBase.pageSize[n].height * this.zoomFactor, n, "none")) : this.pdfViewerBase.renderPageCanvas(this.pdfViewerBase.getElement("_pageDiv_" + n), this.pdfViewerBase.pageSize[n].width * this.zoomFactor, this.pdfViewerBase.pageSize[n].height * this.zoomFactor, n, "none")
+                    o && !this.pdfViewer.restrictZoomRequest ? (o.id = this.pdfViewer.element.id + "_oldCanvas_" + n, o.style.backgroundColor = "#fff", (this.pdfViewerBase.isTextMarkupAnnotationModule() || this.pdfViewer.formDesignerModule) && (this.pdfViewerBase.getElement("_annotationCanvas_" + n).id = this.pdfViewer.element.id + "_old_annotationCanvas_" + n), this.pdfViewerBase.renderPageCanvas(this.pdfViewerBase.getElement("_pageDiv_" + n), this.pdfViewerBase.pageSize[n].width * this.zoomFactor, this.pdfViewerBase.pageSize[n].height * this.zoomFactor, n, "none")) : this.pdfViewer.restrictZoomRequest || this.pdfViewerBase.renderPageCanvas(this.pdfViewerBase.getElement("_pageDiv_" + n), this.pdfViewerBase.pageSize[n].width * this.zoomFactor, this.pdfViewerBase.pageSize[n].height * this.zoomFactor, n, "none")
                 }
                 this.isRerenderCanvasCreated = !0
             }, e.prototype.pageRerenderOnMouseWheel = function() {
@@ -18741,12 +18851,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 } else r.style.display = "none";
                                 this.pdfViewerBase.applyElementStyles(r, s)
                             }
-                            var L = i.getDiagramElement(this.pdfViewer.element.id + "_textLayer_" + s);
-                            if (L) {
-                                var w = i.getDiagramElement(this.pdfViewer.element.id + s + "_diagramAdorner_svg");
-                                w && (w.style.width = d + "px", w.style.height = u + "px");
+                            var w = i.getDiagramElement(this.pdfViewer.element.id + "_textLayer_" + s);
+                            if (w) {
+                                var L = i.getDiagramElement(this.pdfViewer.element.id + s + "_diagramAdorner_svg");
+                                L && (L.style.width = d + "px", L.style.height = u + "px");
                                 var c = i.getDiagramElement(this.pdfViewer.element.id + s + "_diagramAdornerLayer");
-                                c && (c.style.width = d + "px", c.style.height = u + "px"), L.style.width = d + "px", L.style.height = u + "px", this.pdfViewer.renderSelector(s, this.pdfViewer.annotationSelectorSettings), this.pdfViewerBase.applyElementStyles(c, s)
+                                c && (c.style.width = d + "px", c.style.height = u + "px"), w.style.width = d + "px", w.style.height = u + "px", this.pdfViewer.renderSelector(s, this.pdfViewer.annotationSelectorSettings), this.pdfViewerBase.applyElementStyles(c, s)
                             }
                         }
                     }
@@ -18808,7 +18918,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "Magnification"
             }, e
         }(),
-        oi = function() {
+        li = function() {
             function e(e, t) {
                 this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -18830,7 +18940,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "Navigation"
             }, e
         }(),
-        si = function() {
+        di = function() {
             function e(e, t) {
                 var i = this;
                 this.thumbnailLimit = 30, this.thumbnailThreshold = 50, this.thumbnailTopMargin = 10, this.isThumbnailClicked = !1, this.thumbnailClick = function(e) {
@@ -18874,7 +18984,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     elementId: e.pdfViewer.element.id,
                     uniqueId: e.pdfViewerBase.documentId
                 };
-                this.pdfViewerBase.jsonDocumentId && (t.documentId = this.pdfViewerBase.jsonDocumentId), this.thumbnailRequestHandler = new ti(this.pdfViewer), this.thumbnailRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.renderThumbnail, this.thumbnailRequestHandler.responseType = "json", this.thumbnailRequestHandler.send(t), this.thumbnailRequestHandler.onSuccess = function(t) {
+                this.pdfViewerBase.jsonDocumentId && (t.documentId = this.pdfViewerBase.jsonDocumentId), this.thumbnailRequestHandler = new si(this.pdfViewer), this.thumbnailRequestHandler.url = e.pdfViewer.serviceUrl + "/" + e.pdfViewer.serverActionSettings.renderThumbnail, this.thumbnailRequestHandler.responseType = "json", this.thumbnailRequestHandler.send(t), this.thumbnailRequestHandler.onSuccess = function(t) {
                     var i = t.data;
                     if (i) {
                         if ("object" != typeof i) try {
@@ -18995,15 +19105,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }
                 var n, o, s, a, r, l, d, u, p, M = e.scrollTop,
                     h = M + e.clientHeight,
-                    L = e.scrollLeft,
-                    w = L + e.clientWidth,
+                    w = e.scrollLeft,
+                    L = w + e.clientWidth,
                     c = [],
                     C = 0 === t.length ? 0 : this.binarySearchFirstItem(t, i);
                 t.length > 0 && (C = this.backtrackBeforeAllVisibleElements(C, t, M));
                 for (var g = -1, m = C, f = t.length; m < f; m++) {
                     if (n = this.getThumbnailElement(m), o = n, l = o.offsetLeft + o.clientLeft, s = o.offsetTop + o.clientTop, d = o.clientWidth, a = o.clientHeight, u = l + d, r = s + a, -1 === g) r >= h && (g = r);
                     else if (s > g) break;
-                    r <= M || s >= h || u <= L || l >= w || (p = (a - (Math.max(0, M - s) + Math.max(0, r - h))) * (d - (Math.max(0, L - l) + Math.max(0, u - w))) * 100 / a / d | 0, c.push({
+                    r <= M || s >= h || u <= w || l >= L || (p = (a - (Math.max(0, M - s) + Math.max(0, r - h))) * (d - (Math.max(0, w - l) + Math.max(0, u - L))) * 100 / a / d | 0, c.push({
                         id: n.id,
                         x: l,
                         y: s,
@@ -19041,7 +19151,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "ThumbnailView"
             }, e
         }(),
-        ai = function() {
+        ui = function() {
             function e(e, t, i) {
                 this.isToolbarHidden = !1, this.isTextboxBtnVisible = !0, this.isPasswordBtnVisible = !0, this.isCheckboxBtnVisible = !0, this.isRadiobuttonBtnVisible = !0, this.isDropdownBtnVisible = !0, this.isListboxBtnVisible = !0, this.isSignatureBtnVisible = !0, this.isDeleteBtnVisible = !0, this.toolbarBorderHeight = 1, this.pdfViewer = e, this.pdfViewerBase = t, this.primaryToolbar = i
             }
@@ -19171,14 +19281,15 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         iconCss: "e-pv-handwritten-icon e-pv-icon",
                         cssClass: "e-pv-handwritten-popup",
                         beforeItemRender: function(i) {
-                            if (e.pdfViewer.clearSelection(e.pdfViewerBase.currentPageNumber - 1), i.element && -1 !== i.element.className.indexOf("e-separator") && (i.element.style.margin = "8px 0"), "ADD SIGNATURE" === i.item.text && (i.element.innerHTML = "", (n = t.createElement("button")).classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), n.textContent = "ADD SIGNATURE", n.style.width = "auto", n.style.height = "36px", n.addEventListener("click", e.clickSignature.bind(e)), i.element.appendChild(n), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"), "ADD INITIAL" === i.item.text) {
+                            if (e.pdfViewer.clearSelection(e.pdfViewerBase.currentPageNumber - 1), i.element && -1 !== i.element.className.indexOf("e-separator") && (i.element.style.margin = "8px 0"), "ADD SIGNATURE" === i.item.text && (i.element.innerHTML = "", (n = t.createElement("button")).classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), n.textContent = e.pdfViewer.localeObj.getConstant("SignatureFieldDialogHeaderText"), n.style.width = "130px", n.style.height = "36px", n.addEventListener("click", e.clickSignature.bind(e)), i.element.appendChild(n), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"), "ADD INITIAL" === i.item.text) {
                                 i.element.innerHTML = "";
                                 var n = t.createElement("button");
-                                n.classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), n.textContent = "ADD INITIAL", n.style.width = "auto", n.style.height = "36px", n.addEventListener("click", e.clickInitial.bind(e)), i.element.appendChild(n), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
+                                n.classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), n.textContent = e.pdfViewer.localeObj.getConstant("InitialFieldDialogHeaderText"), n.style.width = "130px", n.style.height = "36px", n.addEventListener("click", e.clickInitial.bind(e)), i.element.appendChild(n), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
                             }
                         }
-                    };
-                new s.DropDownButton(n).appendTo(this.handWrittenSignatureItem)
+                    },
+                    o = new s.DropDownButton(n);
+                this.pdfViewer.enableRtl && (o.enableRtl = this.pdfViewer.enableRtl), o.appendTo(this.handWrittenSignatureItem)
             }, e.prototype.hoverInitialBtn = function(e) {
                 var i = e.target,
                     n = t.isNullOrUndefined(e.path) ? e.composedPath()[0].id : e.path[0].id;
@@ -19200,7 +19311,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.afterToolbarCreation = function() {
                 this.textboxItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_textbox", "e-pv-formdesigner-textbox", this.pdfViewer.localeObj.getConstant("Textbox")), this.passwordItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_passwordfield", "e-pv-formdesigner-passwordfield", this.pdfViewer.localeObj.getConstant("Password")), this.checkboxItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_checkbox", "e-pv-formdesigner-checkbox", this.pdfViewer.localeObj.getConstant("Check Box")), this.radioButtonItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_radiobutton", "e-pv-formdesigner-radiobutton", this.pdfViewer.localeObj.getConstant("Radio Button")), this.dropdownItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_dropdown", "e-pv-formdesigner-dropdown", this.pdfViewer.localeObj.getConstant("Dropdown")), this.listboxItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_listbox", "e-pv-formdesigner-listbox", this.pdfViewer.localeObj.getConstant("List Box")), this.deleteItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_delete", "e-pv-formdesigner-delete", this.pdfViewer.localeObj.getConstant("Delete FormField")), this.closeItem = this.primaryToolbar.addClassToolbarItem("_formdesigner_close", "e-pv-annotation-tools-close", null), this.showHideDeleteIcon(!1)
             }, e.prototype.showHideDeleteIcon = function(e) {
-                this.toolbar.enableItems(this.deleteItem.parentElement, e)
+                this.toolbar && this.toolbar.enableItems(this.deleteItem.parentElement, e)
             }, e.prototype.applyFormDesignerToolbarSettings = function() {
                 this.pdfViewer.toolbarSettings.formDesignerToolbarItems && (-1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("TextboxTool") ? this.showTextboxTool(!0) : this.showTextboxTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("PasswordTool") ? this.showPasswordTool(!0) : this.showPasswordTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("CheckBoxTool") ? this.showCheckboxTool(!0) : this.showCheckboxTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("RadioButtonTool") ? this.showRadioButtonTool(!0) : this.showRadioButtonTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("DropdownTool") ? this.showDropdownTool(!0) : this.showDropdownTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("ListboxTool") ? this.showListboxTool(!0) : this.showListboxTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("DrawSignatureTool") ? this.showDrawSignatureTool(!0) : this.showDrawSignatureTool(!1), -1 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.indexOf("DeleteTool") ? this.showDeleteTool(!0) : this.showDeleteTool(!1), this.showSeparator())
             }, e.prototype.showTextboxTool = function(e) {
@@ -19223,9 +19334,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.isSignatureBtnVisible || this.isDeleteBtnVisible || this.applyHideToToolbar(!1, 7, 7)
             }, e.prototype.applyHideToToolbar = function(e, t, i) {
                 for (var n = !e, o = t; o <= i; o++) this.toolbar.hideItem(o, n)
-            }, e.prototype.createDropDowns = function() {}, e
+            }, e.prototype.createDropDowns = function() {}, e.prototype.destroy = function() {
+                for (var e = [this.textboxItem, this.passwordItem, this.checkboxItem, this.radioButtonItem, this.listboxItem, this.dropdownItem, this.handWrittenSignatureItem, this.deleteItem], t = 0; t < e.length; t++) this.destroyDependentComponent(e[t])
+            }, e.prototype.destroyDependentComponent = function(e) {
+                for (var t = e.ej2_instances.length - 1; t >= 0; t--) e.ej2_instances[t].destroy()
+            }, e
         }(),
-        ri = function() {
+        pi = function() {
             function e(e, i) {
                 var n = this;
                 this.isPageNavigationToolDisabled = !1, this.isMagnificationToolDisabled = !1, this.isSelectionToolDisabled = !1, this.isScrollingToolDisabled = !1, this.isOpenBtnVisible = !0, this.isNavigationToolVisible = !0, this.isMagnificationToolVisible = !0, this.isSelectionBtnVisible = !0, this.isScrollingBtnVisible = !0, this.isDownloadBtnVisible = !0, this.isPrintBtnVisible = !0, this.isSearchBtnVisible = !0, this.isTextSearchBoxDisplayed = !1, this.isUndoRedoBtnsVisible = !0, this.isAnnotationEditBtnVisible = !0, this.isFormDesignerEditBtnVisible = !0, this.isCommentBtnVisible = !0, this.isSubmitbtnvisible = !0, this.onToolbarKeydown = function(e) {
@@ -19268,7 +19383,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }
             return e.prototype.intializeToolbar = function(e) {
                 var i;
-                return t.isBlazor() ? t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (i = this.pdfViewer.element.querySelector(".e-pv-toolbar"), this.toolbarElement = i) : i = this.createToolbar(e), !!document.documentMode && (t.isBlazor() ? this.pdfViewerBase.blazorUIAdaptor.totalPageElement.classList.add("e-pv-total-page-ms") : t.Browser.isDevice || this.totalPageItem.classList.add("e-pv-total-page-ms")), this.createFileElement(i), this.wireEvent(), t.isBlazor() ? (t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.initialEnableItems(), this.pdfViewerBase.navigationPane.adjustPane(), this.pdfViewer.enableToolbar && this.bindOpenIconEvent()), this.annotationToolbarModule = new li(this.pdfViewer, this.pdfViewerBase, this), (this.pdfViewer.enableToolbar && this.pdfViewer.enableAnnotationToolbar || this.pdfViewer.enableDesktopMode && t.Browser.isDevice) && this.annotationToolbarModule.afterAnnotationToolbarCreationInBlazor()) : (this.updateToolbarItems(), !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? (this.applyToolbarSettings(), this.initialEnableItems(), this.pdfViewerBase.navigationPane.adjustPane()) : this.initialEnableItems(), this.pdfViewer.annotationModule && (this.annotationToolbarModule = new li(this.pdfViewer, this.pdfViewerBase, this), t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.annotationToolbarModule.initializeAnnotationToolbar()), this.pdfViewer.formDesignerModule && (this.formDesignerToolbarModule = new ai(this.pdfViewer, this.pdfViewerBase, this), t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.formDesignerToolbarModule.initializeFormDesignerToolbar())), i
+                return t.isBlazor() ? t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (i = this.pdfViewer.element.querySelector(".e-pv-toolbar"), this.toolbarElement = i) : i = this.createToolbar(e), !!document.documentMode && (t.isBlazor() ? this.pdfViewerBase.blazorUIAdaptor.totalPageElement.classList.add("e-pv-total-page-ms") : t.Browser.isDevice || this.totalPageItem.classList.add("e-pv-total-page-ms")), this.createFileElement(i), this.wireEvent(), t.isBlazor() ? (t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.initialEnableItems(), this.pdfViewerBase.navigationPane.adjustPane(), this.pdfViewer.enableToolbar && this.bindOpenIconEvent()), this.annotationToolbarModule = new Mi(this.pdfViewer, this.pdfViewerBase, this), (this.pdfViewer.enableToolbar && this.pdfViewer.enableAnnotationToolbar || this.pdfViewer.enableDesktopMode && t.Browser.isDevice) && this.annotationToolbarModule.afterAnnotationToolbarCreationInBlazor()) : (this.updateToolbarItems(), !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? (this.applyToolbarSettings(), this.initialEnableItems(), this.pdfViewerBase.navigationPane.adjustPane()) : this.initialEnableItems(), this.pdfViewer.annotationModule && (this.annotationToolbarModule = new Mi(this.pdfViewer, this.pdfViewerBase, this), t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.annotationToolbarModule.initializeAnnotationToolbar()), this.pdfViewer.formDesignerModule && (this.formDesignerToolbarModule = new ui(this.pdfViewer, this.pdfViewerBase, this), t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || this.formDesignerToolbarModule.initializeFormDesignerToolbar())), i
             }, e.prototype.bindOpenIconEvent = function() {
                 var e = document.getElementById(this.pdfViewer.element.id + "_open");
                 e && e.addEventListener("click", this.openFileDialogBox.bind(this))
@@ -19277,7 +19392,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e = this.pdfViewer.element.querySelector(".e-pv-mobile-toolbar"), this.createFileElement(e), this.wireEvent()
             }, e.prototype.showToolbar = function(e) {
                 var i = this.toolbarElement;
-                e ? (i.style.display = "block", t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && this.pdfViewer.toolbarModule && this.pdfViewer.toolbarModule.annotationToolbarModule && this.pdfViewer.toolbarModule.annotationToolbarModule.hideMobileAnnotationToolbar()) : (this.pdfViewerBase.toolbarHeight = 0, t.Browser.isDevice && this.pdfViewer.toolbarModule.annotationToolbarModule.toolbar && (this.annotationToolbarModule.toolbarCreated = !1, this.annotationToolbarModule.adjustMobileViewer(), this.pdfViewer.toolbarModule.annotationToolbarModule.toolbar.element.style.display = "none"), t.Browser.isDevice && this.annotationToolbarModule.propertyToolbar && (this.annotationToolbarModule.propertyToolbar.element.style.display = "none"), i.style.display = "none")
+                e ? (i.style.display = "block", t.Browser.isDevice && !this.pdfViewer.enableDesktopMode && this.pdfViewer.toolbarModule && this.pdfViewer.toolbarModule.annotationToolbarModule && this.pdfViewer.toolbarModule.annotationToolbarModule.hideMobileAnnotationToolbar()) : (this.pdfViewerBase.toolbarHeight = 0, e && (t.Browser.isDevice && this.pdfViewer.toolbarModule.annotationToolbarModule.toolbar && (this.annotationToolbarModule.toolbarCreated = !1, this.annotationToolbarModule.adjustMobileViewer(), this.pdfViewer.toolbarModule.annotationToolbarModule.toolbar.element.style.display = "none"), t.Browser.isDevice && this.annotationToolbarModule.propertyToolbar && (this.annotationToolbarModule.propertyToolbar.element.style.display = "none")), i.style.display = "none")
             }, e.prototype.showNavigationToolbar = function(e) {
                 if (!t.Browser.isDevice || this.pdfViewer.enableDesktopMode) {
                     var i = this.pdfViewerBase.navigationPane.sideBarToolbar,
@@ -19317,6 +19432,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         break;
                     case "AnnotationEditTool":
                         this.showAnnotationEditTool(t);
+                        break;
+                    case "FormDesignerEditTool":
+                        this.showFormDesignerEditTool(t);
                         break;
                     case "CommentTool":
                         this.showCommentOption(t);
@@ -19433,7 +19551,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     e && (e.innerHTML = "")
                 }
             }, e.prototype.updateToolbarItems = function() {
-                !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? this.toolbar && (0 === this.pdfViewerBase.pageCount ? (this.toolbar.enableItems(this.downloadItem.parentElement, !1), this.toolbar.enableItems(this.printItem.parentElement, !1), this.toolbar.enableItems(this.commentItem.parentElement, !1), this.updateUndoRedoButtons(), this.updateNavigationButtons(), this.toolbar.enableItems(this.zoomInItem.parentElement, !1), this.toolbar.enableItems(this.zoomOutItem.parentElement, !1), this.pdfViewer.magnificationModule && (this.zoomDropDown.readonly = !0), this.toolbar.enableItems(this.submitItem.parentElement, !1), this.toolbar.enableItems(this.pdfViewerBase.getElement("_currentPageInputContainer"), !1), this.toolbar.enableItems(this.pdfViewerBase.getElement("_zoomDropDownContainer"), !1), this.toolbar.enableItems(this.textSelectItem.parentElement, !1), this.toolbar.enableItems(this.annotationItem.parentElement, !1), this.toolbar.enableItems(this.formDesignerItem.parentElement, !1), this.toolbar.enableItems(this.panItem.parentElement, !1), this.toolbar.enableItems(this.textSearchItem.parentElement, !1), this.deSelectItem(this.annotationItem), this.annotationToolbarModule && this.annotationToolbarModule.resetToolbar(), this.deSelectItem(this.formDesignerItem)) : this.pdfViewerBase.pageCount > 0 && (this.toolbar.enableItems(this.downloadItem.parentElement, !0), this.toolbar.enableItems(this.printItem.parentElement, !0), this.toolbar.enableItems(this.pdfViewerBase.getElement("_currentPageInputContainer"), !0), this.toolbar.enableItems(this.pdfViewerBase.getElement("_zoomDropDownContainer"), !0), this.updateUndoRedoButtons(), this.updateNavigationButtons(), this.updateZoomButtons(), this.pdfViewer.magnificationModule && (this.zoomDropDown.readonly = !1), this.updateInteractionItems(), this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotation && this.toolbar.enableItems(this.annotationItem.parentElement, !0), this.pdfViewer.formDesignerModule && this.pdfViewer.enableFormDesigner && this.toolbar.enableItems(this.formDesignerItem.parentElement, !0), this.pdfViewer.textSearchModule && this.pdfViewer.enableTextSearch && this.toolbar.enableItems(this.textSearchItem.parentElement, !0), this.pdfViewer.annotationModule && this.pdfViewer.enableStickyNotesAnnotation && this.toolbar.enableItems(this.commentItem.parentElement, !0)), this.pdfViewer.toolbarSettings.annotationToolbarItems && (0 !== this.pdfViewer.toolbarSettings.annotationToolbarItems.length && this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotationToolbar || this.enableToolbarItem(["AnnotationEditTool"], !1)), this.pdfViewer.toolbarSettings.formDesignerToolbarItems && (0 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.length && this.pdfViewer.formDesignerModule && this.pdfViewer.enableFormDesignerToolbar || this.enableToolbarItem(["FormDesignerEditTool"], !1)), this.pdfViewer.enableDownload || this.enableDownloadOption(!1), this.pdfViewer.enablePrint || this.enablePrintOption(!1)) : 0 === this.pdfViewerBase.pageCount ? (this.toolbar.enableItems(this.textSearchItem.parentElement, !1), this.toolbar.enableItems(this.moreOptionItem.parentElement, !1), this.toolbar.enableItems(this.annotationItem.parentElement, !1)) : this.pdfViewerBase.pageCount > 0 && (this.toolbar.enableItems(this.textSearchItem.parentElement, !0), this.toolbar.enableItems(this.moreOptionItem.parentElement, !0), this.toolbar.enableItems(this.annotationItem.parentElement, !0), this.updateUndoRedoButtons())
+                !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? this.toolbar && (0 === this.pdfViewerBase.pageCount ? (this.toolbar.enableItems(this.downloadItem.parentElement, !1), this.toolbar.enableItems(this.printItem.parentElement, !1), this.toolbar.enableItems(this.commentItem.parentElement, !1), this.updateUndoRedoButtons(), this.updateNavigationButtons(), this.toolbar.enableItems(this.zoomInItem.parentElement, !1), this.toolbar.enableItems(this.zoomOutItem.parentElement, !1), this.pdfViewer.magnificationModule && (this.zoomDropDown.readonly = !0), this.toolbar.enableItems(this.submitItem.parentElement, !1), this.toolbar.enableItems(this.pdfViewerBase.getElement("_currentPageInputContainer"), !1), this.toolbar.enableItems(this.pdfViewerBase.getElement("_zoomDropDownContainer"), !1), this.toolbar.enableItems(this.textSelectItem.parentElement, !1), this.toolbar.enableItems(this.annotationItem.parentElement, !1), this.toolbar.enableItems(this.formDesignerItem.parentElement, !1), this.toolbar.enableItems(this.panItem.parentElement, !1), this.toolbar.enableItems(this.textSearchItem.parentElement, !1), this.deSelectItem(this.annotationItem), this.annotationToolbarModule && this.annotationToolbarModule.resetToolbar(), this.deSelectItem(this.formDesignerItem)) : this.pdfViewerBase.pageCount > 0 && (this.toolbar.enableItems(this.downloadItem.parentElement, !0), this.toolbar.enableItems(this.printItem.parentElement, !0), this.toolbar.enableItems(this.pdfViewerBase.getElement("_currentPageInputContainer"), !0), this.toolbar.enableItems(this.pdfViewerBase.getElement("_zoomDropDownContainer"), !0), this.updateUndoRedoButtons(), this.updateNavigationButtons(), this.updateZoomButtons(), this.pdfViewer.magnificationModule && (this.zoomDropDown.readonly = !1), this.updateInteractionItems(), this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotation && this.toolbar.enableItems(this.annotationItem.parentElement, !0), this.pdfViewer.formDesignerModule && this.pdfViewer.enableFormDesigner && this.toolbar.enableItems(this.formDesignerItem.parentElement, !0), this.pdfViewer.textSearchModule && this.pdfViewer.enableTextSearch && this.toolbar.enableItems(this.textSearchItem.parentElement, !0), this.pdfViewer.annotationModule && this.pdfViewer.enableStickyNotesAnnotation && this.toolbar.enableItems(this.commentItem.parentElement, !0)), this.pdfViewer.toolbarSettings.annotationToolbarItems && (0 !== this.pdfViewer.toolbarSettings.annotationToolbarItems.length && this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotationToolbar || this.enableToolbarItem(["AnnotationEditTool"], !1)), this.pdfViewer.toolbarSettings.formDesignerToolbarItems && (0 !== this.pdfViewer.toolbarSettings.formDesignerToolbarItems.length && this.pdfViewer.formDesignerModule && this.pdfViewer.enableFormDesignerToolbar || this.enableToolbarItem(["FormDesignerEditTool"], !1)), this.pdfViewer.enableDownload || this.enableDownloadOption(!1), this.pdfViewer.enablePrint || this.enablePrintOption(!1)) : 0 === this.pdfViewerBase.pageCount ? (this.toolbar.enableItems(this.textSearchItem.parentElement, !1), this.toolbar.enableItems(this.moreOptionItem.parentElement, !1), this.toolbar.enableItems(this.annotationItem.parentElement, !1)) : this.pdfViewerBase.pageCount > 0 && (this.toolbar.enableItems(this.textSearchItem.parentElement, !0), this.toolbar.enableItems(this.moreOptionItem.parentElement, !0), this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotation && this.toolbar.enableItems(this.annotationItem.parentElement, !0), this.pdfViewer.annotationModule && this.pdfViewer.enableAnnotationToolbar || this.enableToolbarItem(["AnnotationEditTool"], !1), this.updateUndoRedoButtons())
             }, e.prototype.updateNavigationButtons = function() {
                 this.pdfViewer.navigationModule && !this.isPageNavigationToolDisabled ? 0 === this.pdfViewerBase.pageCount || 1 === this.pdfViewerBase.currentPageNumber && 1 === this.pdfViewerBase.pageCount ? (this.toolbar.enableItems(this.firstPageItem.parentElement, !1), this.toolbar.enableItems(this.previousPageItem.parentElement, !1), this.toolbar.enableItems(this.nextPageItem.parentElement, !1), this.toolbar.enableItems(this.lastPageItem.parentElement, !1)) : 1 === this.pdfViewerBase.currentPageNumber && this.pdfViewerBase.pageCount > 0 ? (this.toolbar.enableItems(this.firstPageItem.parentElement, !1), this.toolbar.enableItems(this.previousPageItem.parentElement, !1), this.toolbar.enableItems(this.nextPageItem.parentElement, !0), this.toolbar.enableItems(this.lastPageItem.parentElement, !0)) : this.pdfViewerBase.currentPageNumber === this.pdfViewerBase.pageCount && this.pdfViewerBase.pageCount > 0 ? (this.toolbar.enableItems(this.firstPageItem.parentElement, !0), this.toolbar.enableItems(this.previousPageItem.parentElement, !0), this.toolbar.enableItems(this.nextPageItem.parentElement, !1), this.toolbar.enableItems(this.lastPageItem.parentElement, !1)) : this.pdfViewerBase.currentPageNumber > 1 && this.pdfViewerBase.currentPageNumber < this.pdfViewerBase.pageCount && (this.toolbar.enableItems(this.firstPageItem.parentElement, !0), this.toolbar.enableItems(this.previousPageItem.parentElement, !0), this.toolbar.enableItems(this.nextPageItem.parentElement, !0), this.toolbar.enableItems(this.lastPageItem.parentElement, !0)) : (this.toolbar.enableItems(this.firstPageItem.parentElement, !1), this.toolbar.enableItems(this.previousPageItem.parentElement, !1), this.toolbar.enableItems(this.nextPageItem.parentElement, !1), this.toolbar.enableItems(this.lastPageItem.parentElement, !1), this.currentPageBox.readonly = !0)
             }, e.prototype.updateZoomButtons = function() {
@@ -19447,7 +19565,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.disableUndoRedoButtons = function() {
                 this.toolbar.enableItems(this.undoItem.parentElement, !1), this.toolbar.enableItems(this.redoItem.parentElement, !1)
             }, e.prototype.destroy = function() {
-                t.isBlazor() || (this.unWireEvent(), this.moreDropDown && this.moreDropDown.destroy(), this.annotationToolbarModule && this.annotationToolbarModule.destroy(), this.toolbar.destroy(), this.toolbarElement.remove())
+                t.isBlazor() || (this.unWireEvent(), this.destroyComponent(), this.moreDropDown && this.moreDropDown.destroy(), this.annotationToolbarModule && this.annotationToolbarModule.destroy(), this.formDesignerToolbarModule && this.formDesignerToolbarModule.destroy(), this.toolbar.destroy(), this.toolbarElement.remove())
+            }, e.prototype.destroyComponent = function() {
+                for (var e = [this.openDocumentItem, this.firstPageItem, this.previousPageItem, this.nextPageItem, this.lastPageItem, this.currentPageBoxElement, this.zoomOutItem, this.zoomInItem, this.zoomDropdownItem, this.textSelectItem, this.panItem, this.submitItem, this.undoItem, this.redoItem, this.commentItem, this.textSearchItem, this.annotationItem, this.formDesignerItem, this.printItem, this.downloadItem], t = 0; t < e.length; t++) this.destroyDependentComponent(e[t])
+            }, e.prototype.destroyDependentComponent = function(e) {
+                for (var t = e.ej2_instances.length - 1; t >= 0; t--) e.ej2_instances[t].destroy()
             }, e.prototype.updateCurrentPage = function(e) {
                 !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? (t.isBlazor() ? this.pdfViewerBase.blazorUIAdaptor.pageChanged(e) : (this.currentPageBox.value === e && (this.currentPageBoxElement.value = e.toString()), this.currentPageBox.value = e), this.pdfViewerBase.currentPageNumber = e, this.pdfViewer.currentPageNumber = e) : (this.pdfViewerBase.mobileSpanContainer.innerHTML = e.toString(), this.pdfViewerBase.mobilecurrentPageContainer.innerHTML = e.toString())
             }, e.prototype.updateTotalPage = function() {
@@ -19464,6 +19586,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     width: "",
                     height: "",
                     overflowMode: "Popup",
+                    cssClass: "e-pv-toolbar-scroll",
                     items: this.createToolbarItems(),
                     created: function() {
                         i.createZoomDropdown(), i.createNumericTextBox(), i.toolbar.refreshOverflow()
@@ -19474,7 +19597,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     t = this.createTotalPageTemplate(),
                     i = this.createZoomDropdownElement(),
                     n = [],
-                    o = '<button id="' + this.pdfViewer.element.id + '_submitForm" class="e-tbar-btn" style="font-size:15px"> Submit Form</button>';
+                    o = '<button id="' + this.pdfViewer.element.id + '_submitForm" class="e-tbar-btn" style="font-size:15px"><span id="' + this.pdfViewer.element.id + '_submitFormSpan" class="e-tbar-btn-text e-pv-submitform-text">' + this.pdfViewer.localeObj.getConstant("SubmitForm") + "</span></button>";
                 return n.push({
                     prefixIcon: "e-pv-open-document-icon e-pv-icon",
                     cssClass: "e-pv-open-document-container",
@@ -19703,7 +19826,23 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     percent: this.pdfViewer.localeObj.getConstant("Automatic"),
                     id: "11"
                 }];
-                this.zoomDropDown = new u.ComboBox({
+                this.pdfViewer.enableRtl ? this.zoomDropDown = new u.ComboBox({
+                    dataSource: e,
+                    text: "100%",
+                    enableRtl: !0,
+                    fields: {
+                        text: "percent",
+                        value: "id"
+                    },
+                    readonly: !0,
+                    cssClass: "e-pv-zoom-drop-down-rtl",
+                    popupHeight: "450px",
+                    showClearButton: !1,
+                    open: this.openZoomDropdown.bind(this),
+                    select: function(e) {
+                        "keydown" == e.e.type && e.itemData.text !== this.zoomDropDown.element.value && (e.cancel = !0)
+                    }
+                }) : this.zoomDropDown = new u.ComboBox({
                     dataSource: e,
                     text: "100%",
                     fields: {
@@ -19714,6 +19853,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     cssClass: "e-pv-zoom-drop-down",
                     popupHeight: "450px",
                     showClearButton: !1,
+                    open: this.openZoomDropdown.bind(this),
                     select: function(e) {
                         "keydown" == e.e.type && e.itemData.text !== this.zoomDropDown.element.value && (e.cancel = !0)
                     }
@@ -19931,6 +20071,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         this.pdfViewerBase.isAddComment = !0, this.pdfViewerBase.isCommentIconAdded = !0, this.addComments(e.originalEvent.target);
                         break;
                     case this.pdfViewer.element.id + "_submitForm":
+                    case this.pdfViewer.element.id + "_submitFormSpan":
                         this.pdfViewerBase.exportFormFields()
                 }
             }, e.prototype.addInkAnnotation = function() {
@@ -19941,6 +20082,19 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.annotationToolbarModule && (this.annotationToolbarModule.inkAnnotationSelected = !1)
             }, e.prototype.addComments = function(e) {
                 t.isBlazor() ? (this.pdfViewerBase.isCommentIconAdded = !0, this.pdfViewerBase.isAddComment = !0, document.getElementById(this.pdfViewer.element.id + "_comment").classList.add("e-pv-select")) : e.id === this.pdfViewer.element.id + "_comment" || e.id === this.pdfViewer.element.id + "_commentIcon" ? e.id === this.pdfViewer.element.id + "_commentIcon" && e.parentElement ? e.parentElement.classList.add("e-pv-select") : e.classList.add("e-pv-select") : this.pdfViewer.enableRtl ? e.className = "e-pv-comment-selection-icon e-pv-icon e-icon-left e-right" : e.className = "e-pv-comment-selection-icon e-pv-icon e-icon-left", this.updateStampItems(), document.getElementById(this.pdfViewer.element.id + "_pageDiv_" + (this.pdfViewerBase.currentPageNumber - 1)).addEventListener("mousedown", this.pdfViewer.annotationModule.stickyNotesAnnotationModule.drawIcons.bind(this))
+            }, e.prototype.openZoomDropdown = function() {
+                var e = this;
+                if (document.fullscreen)
+                    if (t.isBlazor()) setTimeout(function() {
+                        var t = document.getElementById(e.pdfViewer.element.id + "_zoomCombo_popup"),
+                            i = document.getElementById(e.toolbarElement.id);
+                        t && i.appendChild(t)
+                    }, 200);
+                    else {
+                        var i = document.getElementById(this.pdfViewer.element.id + "_zoomDropDown_popup"),
+                            n = document.getElementById(this.toolbarElement.id);
+                        i && n.appendChild(i)
+                    }
             }, e.prototype.onZoomDropDownInput = function(e) {
                 if ((e.which < 48 || e.which > 57) && 8 !== e.which && 13 !== e.which) return e.preventDefault(), !1;
                 if (13 === e.which) {
@@ -19970,7 +20124,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     } else this.zoomDropDown.text === i && (this.zoomDropDown.element.value = i), 11 === this.zoomDropDown.index && (this.zoomDropDown.value = 4), this.pdfViewerBase.isMinimumZoom = e <= .25, this.zoomDropDown.text = i
                 }
             }, e.prototype.updateInteractionItems = function() {
-                this.pdfViewer.textSelectionModule && this.pdfViewer.enableTextSelection ? this.toolbar.enableItems(this.textSelectItem.parentElement, !0) : this.toolbar.enableItems(this.textSelectItem.parentElement, !1), this.toolbar.enableItems(this.panItem.parentElement, !0), "TextSelection" === this.pdfViewer.interactionMode ? (this.selectItem(this.textSelectItem), this.deSelectItem(this.panItem)) : (this.selectItem(this.panItem), this.deSelectItem(this.textSelectItem), this.pdfViewerBase.initiatePanning())
+                this.pdfViewer.textSelectionModule && this.pdfViewer.enableTextSelection ? this.toolbar.enableItems(this.textSelectItem.parentElement, !0) : this.toolbar.enableItems(this.textSelectItem.parentElement, !1), this.toolbar.enableItems(this.panItem.parentElement, !0), "TextSelection" === this.pdfViewer.interactionMode && this.pdfViewer.enableTextSelection ? (this.selectItem(this.textSelectItem), this.deSelectItem(this.panItem)) : (this.selectItem(this.panItem), this.deSelectItem(this.textSelectItem), this.pdfViewerBase.initiatePanning())
             }, e.prototype.textSearchButtonHandler = function() {
                 if (!t.Browser.isDevice || this.pdfViewer.enableDesktopMode) {
                     if (this.pdfViewer.textSearchModule && this.pdfViewerBase.pageCount > 0)
@@ -19981,7 +20135,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         } else t.isBlazor() ? this.pdfViewerBase.getElement("_search").firstElementChild.blur() : (this.deSelectItem(this.textSearchItem), this.textSearchItem.blur())
                 } else this.showToolbar(!1), this.pdfViewerBase.navigationPane.createNavigationPaneMobile("search")
             }, e.prototype.initiateAnnotationMode = function(e) {
-                t.Browser.isDevice ? t.isBlazor() || (e === this.pdfViewer.element.id + "_annotation" && (e = this.pdfViewer.element.id + "_annotationIcon"), this.annotationToolbarModule.createAnnotationToolbarForMobile(e)) : this.annotationToolbarModule && this.pdfViewer.enableAnnotationToolbar && (this.annotationToolbarModule.showAnnotationToolbar(this.annotationItem), this.pdfViewer.isAnnotationToolbarVisible && this.pdfViewer.isFormDesignerToolbarVisible && (document.getElementById(this.pdfViewer.element.id + "_formdesigner_toolbar").style.display = "none", this.formDesignerToolbarModule.isToolbarHidden = !1, this.formDesignerToolbarModule.showFormDesignerToolbar(this.formDesignerItem), this.annotationToolbarModule.adjustViewer(!0)))
+                !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? this.annotationToolbarModule && this.pdfViewer.enableAnnotationToolbar && (this.annotationToolbarModule.showAnnotationToolbar(this.annotationItem), this.pdfViewer.isAnnotationToolbarVisible && this.pdfViewer.isFormDesignerToolbarVisible && (document.getElementById(this.pdfViewer.element.id + "_formdesigner_toolbar").style.display = "none", this.formDesignerToolbarModule.isToolbarHidden = !1, this.formDesignerToolbarModule.showFormDesignerToolbar(this.formDesignerItem), this.annotationToolbarModule.adjustViewer(!0))) : t.isBlazor() || (e === this.pdfViewer.element.id + "_annotation" && (e = this.pdfViewer.element.id + "_annotationIcon"), this.annotationToolbarModule.createAnnotationToolbarForMobile(e))
             }, e.prototype.initiateFormDesignerMode = function() {
                 this.formDesignerToolbarModule && this.pdfViewer.enableFormDesignerToolbar && (this.formDesignerToolbarModule.showFormDesignerToolbar(this.formDesignerItem), this.pdfViewer.isAnnotationToolbarVisible && this.pdfViewer.isFormDesignerToolbarVisible && (document.getElementById(this.pdfViewer.element.id + "_annotation_toolbar").style.display = "none", this.annotationToolbarModule.isToolbarHidden = !1, this.annotationToolbarModule.showAnnotationToolbar(this.annotationItem), this.formDesignerToolbarModule.adjustViewer(!0)))
             }, e.prototype.DisableInteractionTools = function() {
@@ -20031,7 +20185,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             type: "file"
                         }
                     });
-                    n.setAttribute("accept", ".jpg,.jpeg"), n.style.position = "absolute", n.style.left = "0px", n.style.top = "0px", n.style.visibility = "hidden", document.body.appendChild(n), n.click(), n.addEventListener("change", this.annotationToolbarModule.addStampImage), document.body.removeChild(n)
+                    n.setAttribute("accept", ".jpg,.jpeg,.png"), n.style.position = "absolute", n.style.left = "0px", n.style.top = "0px", n.style.visibility = "hidden", document.body.appendChild(n), n.click(), n.addEventListener("change", this.annotationToolbarModule.addStampImage), document.body.removeChild(n)
                 } else if ("Custom Stamp" === i && "" !== e.Item.Text)
                     for (var o = this.pdfViewerBase.customStampCollection, s = 0; s < o.length; s++) o[s].customStampName === e.Item.Text && (this.pdfViewer.annotationModule.stampAnnotationModule.customStampName = e.Item.Text, this.annotationToolbarModule.checkStampAnnotations(), this.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !0, this.pdfViewer.annotationModule.stampAnnotationModule.isStampAnnotSelected = !0, this.pdfViewerBase.stampAdded = !0, this.pdfViewerBase.isAlreadyAdded = !0, this.pdfViewer.annotationModule.stampAnnotationModule.createCustomStampAnnotation(o[s].customStampImageSource), this.pdfViewerBase.stampAdded = !1);
                 else "Dynamic" === e.Item.Text || "" === e.Item.Text || "Standard Business" === e.Item.Text || "Sign Here" !== i && "Sign Here" === e.Item.Text || (this.annotationToolbarModule.checkStampAnnotations(), this.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !0, this.pdfViewer.annotationModule.stampAnnotationModule.isStampAnnotSelected = !0, this.pdfViewerBase.stampAdded = !0, "Dynamic" === i ? (this.pdfViewerBase.isDynamicStamp = !0, this.pdfViewer.annotationModule.stampAnnotationModule.retrieveDynamicStampAnnotation(e.Item.Text)) : (this.pdfViewerBase.isDynamicStamp = !1, this.pdfViewer.annotationModule.stampAnnotationModule.retrievestampAnnotation(e.Item.Text)))
@@ -20039,7 +20193,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "Toolbar"
             }, e
         }(),
-        li = function() {
+        Mi = function() {
             function i(e, i, n) {
                 var o = this;
                 this.toolbarBorderHeight = 1, this.isToolbarHidden = !1, this.isMobileAnnotEnabled = !1, this.isHighlightEnabled = !1, this.isUnderlineEnabled = !1, this.isStrikethroughEnabled = !1, this.isHighlightBtnVisible = !0, this.isUnderlineBtnVisible = !0, this.isStrikethroughBtnVisible = !0, this.isColorToolVisible = !0, this.isOpacityToolVisible = !0, this.isDeleteAnnotationToolVisible = !0, this.isCurrentAnnotationOpacitySet = !1, this.isStampBtnVisible = !1, this.isShapeBtnVisible = !1, this.isSignatureBtnVisible = !1, this.isInkBtnVisible = !1, this.isFontFamilyToolVisible = !1, this.isFontSizeToolVisible = !1, this.isFontAlignToolVisible = !1, this.isFontColorToolVisible = !1, this.isFontStylesToolVisible = !1, this.isCommentPanelBtnVisible = !1, this.isFreeTextBtnVisible = !1, this.isCalibrateBtnVisible = !1, this.isStrokeColorToolVisible = !1, this.isThicknessToolVisible = !1, this.stampMenu = [], this.stampParentID = "", this.inkAnnotationSelected = !1, this.openSignaturePopup = !1, this.isSavedSignatureClicked = !1, this.saveSignatureCount = 0, this.saveInitialCount = 0, this.isToolbarCreated = !1, this.addStampImage = function(e) {
@@ -20094,6 +20248,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     width: "",
                     height: "",
                     overflowMode: "Popup",
+                    cssClass: "e-pv-toolbar-scroll",
                     items: this.createToolbarItems(),
                     clicked: this.onToolbarClicked.bind(this),
                     created: function() {
@@ -20334,50 +20489,43 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return a = [{
                     prefixIcon: "e-pv-comment-icon e-pv-icon",
                     className: "e-pv-comment-container",
-                    id: this.pdfViewer.element.id + "_comment",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_comment"
                 }, {
                     type: "Separator",
                     align: "Left"
                 }, {
                     prefixIcon: "e-pv-highlight-icon e-pv-icon",
                     className: "e-pv-highlight-container",
-                    id: this.pdfViewer.element.id + "_highlight",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_highlight"
                 }, {
                     prefixIcon: "e-pv-underline-icon e-pv-icon",
                     className: "e-pv-underline-container",
-                    id: this.pdfViewer.element.id + "_underline",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_underline"
                 }, {
                     prefixIcon: "e-pv-strikethrough-icon e-pv-icon",
                     className: "e-pv-strikethrough-container",
-                    id: this.pdfViewer.element.id + "_strikethrough",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_strikethrough"
                 }, {
                     type: "Separator",
                     align: "Left"
                 }, {
                     prefixIcon: "e-pv-annotation-shape-icon e-pv-icon",
                     className: "e-pv-annotation-shapes-container",
-                    id: this.pdfViewer.element.id + "_annotation_shapes",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_annotation_shapes"
                 }, {
                     type: "Separator",
                     align: "Left"
                 }, {
                     prefixIcon: "e-pv-annotation-calibrate-icon e-pv-icon",
                     className: "e-pv-annotation-calibrate-container",
-                    id: this.pdfViewer.element.id + "_annotation_calibrate",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_annotation_calibrate"
                 }, {
                     type: "Separator",
                     align: "Left"
                 }, {
                     prefixIcon: "e-pv-freetext-icon e-pv-icon",
                     className: "e-pv-annotation-freetextedit-container",
-                    id: this.pdfViewer.element.id + "_annotation_freeTextEdit",
-                    align: "Left"
+                    id: this.pdfViewer.element.id + "_annotation_freeTextEdit"
                 }, {
                     type: "Separator",
                     align: "Left"
@@ -20625,9 +20773,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         if (!a.isInitial && "" !== n) {
                                             (r = t.createElement("div")).id = "s" + o, r.style.display = "block", r.style.paddingBottom = "10px", (l = t.createElement("span")).id = "sign_border_" + o, l.classList.add("e-pv-align-border");
                                             d = void 0;
-                                            "SignatureText" === a.image[0].signatureType ? ((d = t.createElement("div")).innerText = n, d.style.fontFamily = a.image[0].fontFamily, d.style.fontSize = "15px", d.style.display = "inline-flex", d.style.alignItems = "center", d.style.position = "relative", d.id = "sign_" + o, d.style.width = "80px", d.style.height = "53px", d.style.overflow = "hidden", d.style.textOverflow = "ellipsis", d.style.paddingLeft = "11px") : ((d = t.createElement("img")).id = "sign_" + o, d.src = n, d.width = 80, d.height = 32, d.classList.add("e-pv-signatureimage"), d.style.paddingLeft = "20px", d.style.paddingRight = "18px", d.style.paddingTop = "12px", d.style.paddingBottom = "12px", d.style.boxSizing = "content-box"), d.addEventListener("mouseover", e.hoverSignatureImage.bind(e)), d.addEventListener("mouseleave", e.leaveSignatureImage.bind(e)), (u = t.createElement("span")).id = "delete_" + o, u.classList.add("e-pv-delete"), u.classList.add("e-pv-align"), l.append(d), l.append(u), r.append(l), i.element.appendChild(r), i.element.style.pointerEvents = "auto", i.element.style.background = "none", e.pdfViewerBase.getElement("_annotation_signature-popup").style.width = "206px", e.saveSignatureCount++
+                                            "SignatureText" === a.image[0].signatureType ? ((d = t.createElement("div")).classList.add("e-pv-align-border-div"), d.innerText = n, d.style.fontFamily = a.image[0].fontFamily, d.style.fontSize = "15px", d.style.display = "inline-flex", d.style.alignItems = "center", d.style.position = "relative", d.id = "sign_" + o, d.style.width = "80px", d.style.height = "53px", d.style.overflow = "hidden", d.style.textOverflow = "ellipsis", d.style.paddingLeft = "11px") : ((d = t.createElement("img")).id = "sign_" + o, d.src = n, d.width = 80, d.height = 32, d.classList.add("e-pv-signatureimage"), d.style.paddingLeft = "20px", d.style.paddingRight = "18px", d.style.paddingTop = "12px", d.style.paddingBottom = "12px", d.style.boxSizing = "content-box"), d.addEventListener("mouseover", e.hoverSignatureImage.bind(e)), d.addEventListener("mouseleave", e.leaveSignatureImage.bind(e)), (u = t.createElement("span")).id = "delete_" + o, u.classList.add("e-pv-delete"), u.classList.add("e-pv-align"), l.append(d), l.append(u), r.append(l), i.element.appendChild(r), i.element.style.pointerEvents = "auto", i.element.style.background = "none", e.pdfViewerBase.getElement("_annotation_signature-popup").style.width = "206px", e.saveSignatureCount++
                                         }
-                                    }(p = t.createElement("button")). classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), p.textContent = "ADD SIGNATURE", p.style.width = "auto", p.style.height = "36px", p.addEventListener("click", e.clickSignature.bind(e)), i.element.appendChild(p), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
+                                    }(p = t.createElement("button")). classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), p.textContent = e.pdfViewer.localeObj.getConstant("HandwrittenSignatureDialogHeaderText"), p.style.width = "130px", p.style.height = "36px", p.addEventListener("click", e.clickSignature.bind(e)), i.element.appendChild(p), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
                             }
                             if ("ADD INITIAL" === i.item.text) {
                                 e.saveInitialCount = 0, i.element.innerHTML = "";
@@ -20642,20 +20790,21 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                             var l = t.createElement("span");
                                             l.id = "sign_border_" + o, l.classList.add("e-pv-align-border");
                                             var d = void 0;
-                                            "SignatureText" === a.image[0].signatureType ? ((d = t.createElement("div")).innerText = n, d.style.fontFamily = a.image[0].fontFamily, d.style.fontSize = "15px", d.style.display = "inline-flex", d.style.alignItems = "center", d.style.position = "relative", d.id = "sign_" + o, d.style.width = "80px", d.style.height = "53px", d.style.overflow = "hidden", d.style.textOverflow = "ellipsis", d.style.paddingLeft = "11px") : ((d = t.createElement("img")).id = "sign_" + o, d.src = n, d.width = 80, d.height = 32, d.classList.add("e-pv-signatureimage"), d.style.paddingLeft = "20px", d.style.paddingRight = "18px", d.style.paddingTop = "12px", d.style.paddingBottom = "12px", d.style.boxSizing = "content-box"), d.addEventListener("mouseover", e.hoverSignatureImage.bind(e)), d.addEventListener("mouseleave", e.leaveSignatureImage.bind(e)), d.width = 80, d.height = 32;
+                                            "SignatureText" === a.image[0].signatureType ? ((d = t.createElement("div")).classList.add("e-pv-align-border-div"), d.innerText = n, d.style.fontFamily = a.image[0].fontFamily, d.style.fontSize = "15px", d.style.display = "inline-flex", d.style.alignItems = "center", d.style.position = "relative", d.id = "sign_" + o, d.style.width = "80px", d.style.height = "53px", d.style.overflow = "hidden", d.style.textOverflow = "ellipsis", d.style.paddingLeft = "11px") : ((d = t.createElement("img")).id = "sign_" + o, d.src = n, d.width = 80, d.height = 32, d.classList.add("e-pv-signatureimage"), d.style.paddingLeft = "20px", d.style.paddingRight = "18px", d.style.paddingTop = "12px", d.style.paddingBottom = "12px", d.style.boxSizing = "content-box"), d.addEventListener("mouseover", e.hoverSignatureImage.bind(e)), d.addEventListener("mouseleave", e.leaveSignatureImage.bind(e)), d.width = 80, d.height = 32;
                                             var u = t.createElement("span");
                                             u.id = "delete_" + o, u.classList.add("e-pv-delete"), u.classList.add("e-pv-align"), l.append(d), l.append(u), r.append(l), i.element.appendChild(r), i.element.style.pointerEvents = "auto", i.element.style.background = "none", e.pdfViewerBase.getElement("_annotation_signature-popup").style.width = "206px", e.saveInitialCount++
                                         }
                                     } e.isSignatureIteam = !1;
                                 var p = t.createElement("button");
-                                p.classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), p.textContent = "ADD INITIAL", p.style.width = "auto", p.style.height = "36px", p.addEventListener("click", e.clickInitial.bind(e)), i.element.appendChild(p), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
+                                p.classList.add("e-control", "e-btn", "e-lib", "e-outline", "e-primary"), p.textContent = e.pdfViewer.localeObj.getConstant("HandwrittenInitialDialogHeaderText"), p.style.width = "130px", p.style.height = "36px", p.addEventListener("click", e.clickInitial.bind(e)), i.element.appendChild(p), i.element.addEventListener("mouseover", e.hoverInitialBtn.bind(e)), i.element.style.width = "206px", i.element.style.display = "flex", i.element.style.flexDirection = "column", i.element.style.height = "auto", i.element.style.alignItems = "center"
                             }
                         },
                         select: function(t) {
                             e.pdfViewer.clearSelection(e.pdfViewerBase.currentPageNumber - 1)
                         }
-                    };
-                new s.DropDownButton(o).appendTo(this.handWrittenSignatureItem)
+                    },
+                    a = new s.DropDownButton(o);
+                this.pdfViewer.enableRtl && (a.enableRtl = this.pdfViewer.enableRtl), a.appendTo(this.handWrittenSignatureItem)
             }, i.prototype.updateSignatureCount = function() {
                 this.openSignaturePopup = !1;
                 for (var e = this.pdfViewerBase.signatureModule.signaturecollection, t = 0; t < e.length; t++) e[t].image[0].imageData
@@ -20712,8 +20861,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     } e.target.parentElement.remove()
             }, i.prototype.getTemplate = function(e, i, n) {
                 var o = t.createElement(e, {
-                    id: this.pdfViewer.element.id + i,
-                    styles: "text-align:left"
+                    id: this.pdfViewer.element.id + i
                 });
                 return n && (o.className = n), o.outerHTML
             }, i.prototype.createStampContainer = function() {
@@ -20728,15 +20876,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var s = [];
                     o.push({
                         text: this.pdfViewer.localeObj.getConstant("Dynamic"),
+                        label: "Dynamic",
                         items: s
-                    }), this.pdfViewer.stampSettings.dynamicStamps.forEach(function(t, i) {
-                        var n = e.DynamicStampItem[t];
-                        switch (n) {
+                    }), this.pdfViewer.stampSettings.dynamicStamps.forEach(function(t, n) {
+                        var o = e.DynamicStampItem[t];
+                        switch (o) {
                             case "NotApproved":
-                                n = "Not Approved"
+                                o = "Not Approved"
                         }
                         s.push({
-                            text: n
+                            text: i.pdfViewer.localeObj.getConstant(o),
+                            label: o
                         })
                     })
                 }
@@ -20744,18 +20894,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var a = [];
                     o.push({
                         text: this.pdfViewer.localeObj.getConstant("Sign Here"),
+                        label: "Sign Here",
                         items: a
-                    }), this.pdfViewer.stampSettings.signStamps.forEach(function(t, i) {
-                        var n = e.SignStampItem[t];
-                        switch (n) {
+                    }), this.pdfViewer.stampSettings.signStamps.forEach(function(t, n) {
+                        var o = e.SignStampItem[t];
+                        switch (o) {
                             case "InitialHere":
-                                n = "Initial Here";
+                                o = "Initial Here";
                                 break;
                             case "SignHere":
-                                n = "Sign Here"
+                                o = "Sign Here"
                         }
                         a.push({
-                            text: n
+                            text: i.pdfViewer.localeObj.getConstant(o),
+                            label: o
                         })
                     })
                 }
@@ -20763,30 +20915,32 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var l = [];
                     o.push({
                         text: this.pdfViewer.localeObj.getConstant("Standard Business"),
+                        label: "Standard Business",
                         items: l
-                    }), this.pdfViewer.stampSettings.standardBusinessStamps.forEach(function(t, i) {
-                        var n = e.StandardBusinessStampItem[t];
-                        switch (n) {
+                    }), this.pdfViewer.stampSettings.standardBusinessStamps.forEach(function(t, n) {
+                        var o = e.StandardBusinessStampItem[t];
+                        switch (o) {
                             case "NotApproved":
-                                n = "Not Approved";
+                                o = "Not Approved";
                                 break;
                             case "ForPublicRelease":
-                                n = "For Public Release";
+                                o = "For Public Release";
                                 break;
                             case "NotForPublicRelease":
-                                n = "Not For Public Release";
+                                o = "Not For Public Release";
                                 break;
                             case "ForComment":
-                                n = "For Comment";
+                                o = "For Comment";
                                 break;
                             case "PreliminaryResults":
-                                n = "Preliminary Results";
+                                o = "Preliminary Results";
                                 break;
                             case "InformationOnly":
-                                n = "Information Only"
+                                o = "Information Only"
                         }
                         l.push({
-                            text: n
+                            text: i.pdfViewer.localeObj.getConstant(o),
+                            label: o
                         })
                     })
                 }
@@ -20794,6 +20948,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     separator: !0
                 }), o.push({
                     text: this.pdfViewer.localeObj.getConstant("Custom Stamp"),
+                    label: "Custom Stamp",
                     items: []
                 })), this.stampMenu = [{
                     iconCss: "e-pv-stamp-icon e-pv-icon",
@@ -20844,10 +20999,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             n && n.click()
                         } else if (i.stampParentID === i.pdfViewer.localeObj.getConstant("Custom Stamp") && "" !== e.item.text)
                             for (var o = i.pdfViewerBase.customStampCollection, s = 0; s < o.length; s++) o[s].customStampName === e.item.text && (i.pdfViewer.annotationModule.stampAnnotationModule.customStampName = e.item.text, i.checkStampAnnotations(), i.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !0, i.pdfViewer.annotationModule.stampAnnotationModule.isStampAnnotSelected = !0, i.pdfViewerBase.stampAdded = !0, i.pdfViewerBase.isAlreadyAdded = !0, i.pdfViewer.annotationModule.stampAnnotationModule.createCustomStampAnnotation(o[s].customStampImageSource), i.pdfViewerBase.stampAdded = !1);
-                        else e.item.text === i.pdfViewer.localeObj.getConstant("Dynamic") || "" === e.item.text || "Standard Business" === e.item.text || "Sign Here" !== i.stampParentID && "Sign Here" === e.item.text || (i.updateInteractionTools(), i.checkStampAnnotations(), i.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !0, i.pdfViewer.annotationModule.stampAnnotationModule.isStampAnnotSelected = !0, i.pdfViewerBase.stampAdded = !0, i.stampParentID === i.pdfViewer.localeObj.getConstant("Dynamic") ? (i.pdfViewerBase.isDynamicStamp = !0, i.pdfViewer.annotationModule.stampAnnotationModule.retrieveDynamicStampAnnotation(e.item.text)) : (i.pdfViewerBase.isDynamicStamp = !1, i.pdfViewer.annotationModule.stampAnnotationModule.retrievestampAnnotation(e.item.text)), t.Browser.isDevice && i.stampToolMobileForMobile(i.pdfViewer.element.id + "_annotation_stamp"))
+                        else e.item.text === i.pdfViewer.localeObj.getConstant("Dynamic") || "" === e.item.text || "Standard Business" === e.item.text || "Sign Here" !== i.stampParentID && "Sign Here" === e.item.text || (i.updateInteractionTools(), i.checkStampAnnotations(), i.pdfViewer.annotation.stampAnnotationModule.isStampAddMode = !0, i.pdfViewer.annotationModule.stampAnnotationModule.isStampAnnotSelected = !0, i.pdfViewerBase.stampAdded = !0, i.stampParentID === i.pdfViewer.localeObj.getConstant("Dynamic") ? (i.pdfViewerBase.isDynamicStamp = !0, i.pdfViewer.annotationModule.stampAnnotationModule.retrieveDynamicStampAnnotation(e.item.label)) : (i.pdfViewerBase.isDynamicStamp = !1, i.pdfViewer.annotationModule.stampAnnotationModule.retrievestampAnnotation(e.item.label)), t.Browser.isDevice && i.stampToolMobileForMobile(i.pdfViewer.element.id + "_annotation_stamp"))
                     }
                 };
-                return this.menuItems = new r.Menu(d, "#" + this.pdfViewer.element.id + "contextMenuElement"), n.parentElement.classList.add("e-pv-stamp"), n
+                return this.menuItems = new r.Menu(d, "#" + this.pdfViewer.element.id + "contextMenuElement"), n.parentElement.classList.add("e-pv-stamp"), this.pdfViewer.enableRtl && (this.menuItems.enableRtl = !0), n
             }, i.prototype.createCustomStampElement = function() {
                 var e = t.createElement("input", {
                     id: this.pdfViewer.element.id + "_stampElement",
@@ -20855,7 +21010,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         type: "file"
                     }
                 });
-                e.setAttribute("accept", ".jpg,.jpeg"), e.style.position = "absolute", e.style.left = "0px", e.style.top = "0px", e.style.visibility = "hidden", document.body.appendChild(e), e.addEventListener("change", this.addStampImage)
+                e.setAttribute("accept", ".jpg,.jpeg,.png"), e.style.position = "absolute", e.style.left = "0px", e.style.top = "0px", e.style.visibility = "hidden", document.body.appendChild(e), e.addEventListener("change", this.addStampImage)
             }, i.prototype.checkStampAnnotations = function() {
                 if (this.pdfViewer.annotation.stampAnnotationModule.isStampAddMode && this.pdfViewer.selectedItems && this.pdfViewer.selectedItems.annotations)
                     for (var e = 0; e < this.pdfViewer.selectedItems.annotations.length; e++) {
@@ -20881,7 +21036,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var a = this.createSlider(this.opacityDropDownElement.id);
                     this.opacityDropDown = this.createDropDownButton(this.opacityDropDownElement, "e-pv-annotation-opacity-icon", a, this.pdfViewer.localeObj.getConstant("Opacity edit")), this.opacityDropDown.beforeOpen = this.opacityDropDownBeforeOpen.bind(this), this.opacitySlider.change = this.opacityChange.bind(this), this.opacitySlider.changed = this.opacityChange.bind(this), this.opacityDropDown.open = this.opacityDropDownOpen.bind(this)
                 }
-                t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.fontFamilyElement = this.pdfViewerBase.getElement("_annotation_fontname"), this.createDropDownListForFamily(this.fontFamilyElement), this.fontFamilyElement.style.textAlign = "left", this.fontFamilyElement.addEventListener("change", function() {
+                t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.fontFamilyElement = this.pdfViewerBase.getElement("_annotation_fontname"), this.createDropDownListForFamily(this.fontFamilyElement), this.fontFamilyElement.addEventListener("change", function() {
                     i.onFontFamilyChange.bind(i)
                 }), this.fontSizeElement = this.pdfViewerBase.getElement("_annotation_fontsize"), this.createDropDownListForSize(this.fontSizeElement), this.fontColorElement = this.pdfViewerBase.getElement("_annotation_textcolor"), this.fontColorPalette = this.createColorPicker(this.fontColorElement.id), this.fontColorPalette.change = this.onFontColorChange.bind(this), this.fontColorDropDown = this.createDropDownButton(this.fontColorElement, "e-pv-annotation-textcolor-icon", this.fontColorPalette.element.parentElement, this.pdfViewer.localeObj.getConstant("Font color")), this.textAlignElement = this.pdfViewerBase.getElement("_annotation_textalign"), this.alignmentToolbar = this.createShapeOptions(this.textAlignElement.id, void 0, !0), this.textAlignDropDown = this.createDropDownButton(this.textAlignElement, "e-pv-annotation-textalign-icon", this.alignmentToolbar.element, this.pdfViewer.localeObj.getConstant("Text Align")), this.textAlignDropDown.beforeOpen = this.textAlignDropDownBeforeOpen.bind(this), this.textPropElement = this.pdfViewerBase.getElement("_annotation_textproperties"), this.propertiesToolbar = this.createShapeOptions(this.textPropElement.id, void 0, !1, !0), this.textPropertiesDropDown = this.createPropDropDownButton(this.textPropElement, "e-pv-annotation-textprop-icon", this.propertiesToolbar.element, this.pdfViewer.localeObj.getConstant("Text Properties")), this.textPropertiesDropDown.beforeOpen = this.textPropertiesDropDownBeforeOpen.bind(this))
             }, i.prototype.mobileColorpicker = function(e) {
@@ -21137,7 +21292,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 }, s)).isStringTemplate = !0, this.afterAlignmentToolbarCreation()) : o ? ((a = new r.Toolbar({
                     items: this.textPropertiesToolbarItems(),
                     overflowMode: "MultiRow"
-                }, s)).isStringTemplate = !0, this.afterPropertiesToolbarCreation()) : i ? t.Browser.isDevice ? (this.toolbarElement = t.createElement("div", {
+                }, s)).isStringTemplate = !0, this.afterPropertiesToolbarCreation()) : i ? !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? ((a = new r.Toolbar({
+                    items: this.createShapeToolbarItems(),
+                    overflowMode: "MultiRow",
+                    clicked: this.onShapeToolbarClicked.bind(this)
+                }, s)).isStringTemplate = !0, this.afterShapeToolbarCreation()) : (this.toolbarElement = t.createElement("div", {
                     id: e + "_target",
                     className: "e-pv-mobile-annotation-toolbar",
                     styles: "bottom: 0px; position: absolute; width: 100%; float: left"
@@ -21146,10 +21305,6 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     overflowMode: "Scrollable",
                     clicked: this.onShapeToolbarClicked.bind(this)
                 }, this.toolbarElement)).isStringTemplate = !0, this.afterShapeToolbarCreationForMobile()) : ((a = new r.Toolbar({
-                    items: this.createShapeToolbarItems(),
-                    overflowMode: "MultiRow",
-                    clicked: this.onShapeToolbarClicked.bind(this)
-                }, s)).isStringTemplate = !0, this.afterShapeToolbarCreation()) : ((a = new r.Toolbar({
                     items: this.createCalibrateToolbarItems(),
                     overflowMode: "MultiRow",
                     clicked: this.onCalibrateToolbarClicked.bind(this)
@@ -21438,18 +21593,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     value: "Left",
                     click: this.onClickTextAlignment.bind(this)
                 }), e.push({
-                    prefixIcon: "e-pv-right-align-icon e-pv-icon",
-                    cssClass: "",
-                    id: this.pdfViewer.element.id + "_right_align",
-                    align: "Left",
-                    value: "Right",
-                    click: this.onClickTextAlignment.bind(this)
-                }), e.push({
                     prefixIcon: "e-pv-center-align-icon e-pv-icon",
                     cssClass: "",
                     id: this.pdfViewer.element.id + "_center_align",
                     align: "Left",
                     value: "Center",
+                    click: this.onClickTextAlignment.bind(this)
+                }), e.push({
+                    prefixIcon: "e-pv-right-align-icon e-pv-icon",
+                    cssClass: "",
+                    id: this.pdfViewer.element.id + "_right_align",
+                    align: "Left",
+                    value: "Right",
                     click: this.onClickTextAlignment.bind(this)
                 }), e.push({
                     prefixIcon: "e-pv-justfiy-align-icon e-pv-icon",
@@ -21460,13 +21615,21 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     click: this.onClickTextAlignment.bind(this)
                 }), e
             }, i.prototype.afterAlignmentToolbarCreation = function() {
-                this.primaryToolbar.addClassToolbarItem("_left_align", "e-pv-left-align", this.pdfViewer.localeObj.getConstant("Align left")), this.primaryToolbar.addClassToolbarItem("_right_align", "e-pv-right-align", this.pdfViewer.localeObj.getConstant("Align right")), this.primaryToolbar.addClassToolbarItem("_center_align", "e-pv-center-align", this.pdfViewer.localeObj.getConstant("Center")), this.primaryToolbar.addClassToolbarItem("_justify_align", "e-pv-justfiy-align", this.pdfViewer.localeObj.getConstant("Justify"))
+                this.alignLeftElement = this.primaryToolbar.addClassToolbarItem("_left_align", "e-pv-left-align", this.pdfViewer.localeObj.getConstant("Align left")), this.alignRightElement = this.primaryToolbar.addClassToolbarItem("_right_align", "e-pv-right-align", this.pdfViewer.localeObj.getConstant("Align right")), this.alignCenterElement = this.primaryToolbar.addClassToolbarItem("_center_align", "e-pv-center-align", this.pdfViewer.localeObj.getConstant("Center")), this.alignJustifyElement = this.primaryToolbar.addClassToolbarItem("_justify_align", "e-pv-justfiy-align", this.pdfViewer.localeObj.getConstant("Justify"))
             }, i.prototype.afterPropertiesToolbarCreation = function() {
-                this.primaryToolbar.addClassToolbarItem("_bold", "e-pv-bold", this.pdfViewer.localeObj.getConstant("Bold")), this.primaryToolbar.addClassToolbarItem("_italic", "e-pv-italic", this.pdfViewer.localeObj.getConstant("Italic")), this.primaryToolbar.addClassToolbarItem("_strikeout", "e-pv-strikeout", this.pdfViewer.localeObj.getConstant("Strikethroughs")), this.primaryToolbar.addClassToolbarItem("_underline_textinput", "e-pv-underlinetext", this.pdfViewer.localeObj.getConstant("Underlines"))
+                this.boldElement = this.primaryToolbar.addClassToolbarItem("_bold", "e-pv-bold", this.pdfViewer.localeObj.getConstant("Bold")), this.italicElement = this.primaryToolbar.addClassToolbarItem("_italic", "e-pv-italic", this.pdfViewer.localeObj.getConstant("Italic")), this.fontStyleStrikethroughItem = this.primaryToolbar.addClassToolbarItem("_strikeout", "e-pv-strikeout", this.pdfViewer.localeObj.getConstant("Strikethroughs")), this.fontStyleUnderlineItem = this.primaryToolbar.addClassToolbarItem("_underline_textinput", "e-pv-underlinetext", this.pdfViewer.localeObj.getConstant("Underlines"))
             }, i.prototype.createDropDownListForSize = function(e) {
                 var t = this,
                     i = ["8px", "9px", "10px", "11px", "12px", "14px", "16px", "18px", "20px", "22px", "24px", "26px", "28px", "36px", "48px", "72px", "96px"];
-                this.fontSize = new u.ComboBox({
+                this.pdfViewer.enableRtl ? this.fontSize = new u.ComboBox({
+                    dataSource: i,
+                    cssClass: "e-pv-prop-dropdown-rtl",
+                    allowCustom: !0,
+                    showClearButton: !1,
+                    width: "80px",
+                    popupWidth: "100px",
+                    enableRtl: !0
+                }) : this.fontSize = new u.ComboBox({
                     dataSource: i,
                     cssClass: "e-pv-prop-dropdown",
                     allowCustom: !0,
@@ -21487,7 +21650,21 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }, {
                         FontName: "Times New Roman"
                     }];
-                this.fontFamily = new u.ComboBox({
+                this.pdfViewer.enableRtl ? this.fontFamily = new u.ComboBox({
+                    dataSource: i,
+                    query: (new p.Query).select(["FontName"]),
+                    fields: {
+                        text: "FontName",
+                        value: "FontName"
+                    },
+                    cssClass: "e-pv-prop-dropdown-rtl",
+                    itemTemplate: '<span style="font-family: ${FontName};">${FontName}</span>',
+                    allowCustom: !0,
+                    showClearButton: !1,
+                    width: "110px",
+                    popupWidth: "190px",
+                    enableRtl: !0
+                }) : this.fontFamily = new u.ComboBox({
                     dataSource: i,
                     query: (new p.Query).select(["FontName"]),
                     fields: {
@@ -21498,7 +21675,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     itemTemplate: '<span style="font-family: ${FontName};">${FontName}</span>',
                     allowCustom: !0,
                     showClearButton: !1,
-                    width: "100px",
+                    width: "110px",
                     popupWidth: "190px"
                 }), this.fontFamily.isStringTemplate = !0, this.fontFamily.value = "Helvetica", this.fontFamily.appendTo(e), this.primaryToolbar.createTooltip(e, this.pdfViewer.localeObj.getConstant("Font family")), this.fontFamily.addEventListener("change", function() {
                     t.onFontFamilyChange(t)
@@ -21636,9 +21813,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, i.prototype.afterShapeToolbarCreationForMobile = function() {
                 this.primaryToolbar.addClassToolbarItem("_annotation_color", "e-pv-annotation-color-container", this.pdfViewer.localeObj.getConstant("Change Color")), this.primaryToolbar.addClassToolbarItem("_annotation_stroke", "e-pv-annotation-stroke-container", this.pdfViewer.localeObj.getConstant("Change Stroke Color")), this.primaryToolbar.addClassToolbarItem("_annotation_thickness", "e-pv-annotation-thickness-container", this.pdfViewer.localeObj.getConstant("Chnage Border Thickness")), this.primaryToolbar.addClassToolbarItem("_annotation_opacity", "e-annotation-opacity-container", this.pdfViewer.localeObj.getConstant("Change Opacity")), this.primaryToolbar.addClassToolbarItem("_shape_line", "e-pv-shape-line", this.pdfViewer.localeObj.getConstant("Add line")), this.primaryToolbar.addClassToolbarItem("_shape_arrow", "e-pv-shape-arrow", this.pdfViewer.localeObj.getConstant("Add arrow")), this.primaryToolbar.addClassToolbarItem("_shape_rectangle", "e-pv-shape-rectangle", this.pdfViewer.localeObj.getConstant("Add rectangle")), this.primaryToolbar.addClassToolbarItem("_shape_circle", "e-pv-shape-circle", this.pdfViewer.localeObj.getConstant("Add circle")), this.primaryToolbar.addClassToolbarItem("_shape_pentagon", "e-pv-shape-pentagon", this.pdfViewer.localeObj.getConstant("Add polygon"))
             }, i.prototype.afterShapeToolbarCreation = function() {
-                this.primaryToolbar.addClassToolbarItem("_shape_line", "e-pv-shape-line", this.pdfViewer.localeObj.getConstant("Add line")), this.primaryToolbar.addClassToolbarItem("_shape_arrow", "e-pv-shape-arrow", this.pdfViewer.localeObj.getConstant("Add arrow")), this.primaryToolbar.addClassToolbarItem("_shape_rectangle", "e-pv-shape-rectangle", this.pdfViewer.localeObj.getConstant("Add rectangle")), this.primaryToolbar.addClassToolbarItem("_shape_circle", "e-pv-shape-circle", this.pdfViewer.localeObj.getConstant("Add circle")), this.primaryToolbar.addClassToolbarItem("_shape_pentagon", "e-pv-shape-pentagon", this.pdfViewer.localeObj.getConstant("Add polygon"))
+                this.lineElement = this.primaryToolbar.addClassToolbarItem("_shape_line", "e-pv-shape-line", this.pdfViewer.localeObj.getConstant("Add line")), this.arrowElement = this.primaryToolbar.addClassToolbarItem("_shape_arrow", "e-pv-shape-arrow", this.pdfViewer.localeObj.getConstant("Add arrow")), this.rectangleElement = this.primaryToolbar.addClassToolbarItem("_shape_rectangle", "e-pv-shape-rectangle", this.pdfViewer.localeObj.getConstant("Add rectangle")), this.circleElement = this.primaryToolbar.addClassToolbarItem("_shape_circle", "e-pv-shape-circle", this.pdfViewer.localeObj.getConstant("Add circle")), this.polygonElement = this.primaryToolbar.addClassToolbarItem("_shape_pentagon", "e-pv-shape-pentagon", this.pdfViewer.localeObj.getConstant("Add polygon"))
             }, i.prototype.afterCalibrateToolbarCreation = function() {
-                this.primaryToolbar.addClassToolbarItem("_calibrate_distance", "e-pv-calibrate-distance", this.pdfViewer.localeObj.getConstant("Calibrate Distance")), this.primaryToolbar.addClassToolbarItem("_calibrate_perimeter", "e-pv-calibrate-perimeter", this.pdfViewer.localeObj.getConstant("Calibrate Perimeter")), this.primaryToolbar.addClassToolbarItem("_calibrate_area", "e-pv-calibrate-area", this.pdfViewer.localeObj.getConstant("Calibrate Area")), this.primaryToolbar.addClassToolbarItem("_calibrate_radius", "e-pv-calibrate-radius", this.pdfViewer.localeObj.getConstant("Calibrate Radius")), this.primaryToolbar.addClassToolbarItem("_calibrate_volume", "e-pv-calibrate-volume", this.pdfViewer.localeObj.getConstant("Calibrate Volume"))
+                this.calibrateDistance = this.primaryToolbar.addClassToolbarItem("_calibrate_distance", "e-pv-calibrate-distance", this.pdfViewer.localeObj.getConstant("Calibrate Distance")), this.calibratePerimeter = this.primaryToolbar.addClassToolbarItem("_calibrate_perimeter", "e-pv-calibrate-perimeter", this.pdfViewer.localeObj.getConstant("Calibrate Perimeter")), this.calibrateArea = this.primaryToolbar.addClassToolbarItem("_calibrate_area", "e-pv-calibrate-area", this.pdfViewer.localeObj.getConstant("Calibrate Area")), this.calibrateRadius = this.primaryToolbar.addClassToolbarItem("_calibrate_radius", "e-pv-calibrate-radius", this.pdfViewer.localeObj.getConstant("Calibrate Radius")), this.calibrateVolume = this.primaryToolbar.addClassToolbarItem("_calibrate_volume", "e-pv-calibrate-volume", this.pdfViewer.localeObj.getConstant("Calibrate Volume"))
             }, i.prototype.afterMobileToolbarCreation = function() {
                 this.highlightItem = this.primaryToolbar.addClassToolbarItem("_highlight", "e-pv-highlight", this.pdfViewer.localeObj.getConstant("Highlight")), this.underlineItem = this.primaryToolbar.addClassToolbarItem("_underline", "e-pv-underline", this.pdfViewer.localeObj.getConstant("Underline")), this.strikethroughItem = this.primaryToolbar.addClassToolbarItem("_strikethrough", "e-pv-strikethrough", this.pdfViewer.localeObj.getConstant("Strikethrough")), this.shapesItem = this.primaryToolbar.addClassToolbarItem("_annotation_shapes", "e-pv-annotation-shapes", this.pdfViewer.localeObj.getConstant("Add Shapes")), this.calibrateItem = this.primaryToolbar.addClassToolbarItem("_annotation_calibrate", "e-pv-annotation-calibrate", this.pdfViewer.localeObj.getConstant("Calibrate")), this.freeTextEditItem = this.primaryToolbar.addClassToolbarItem("_annotation_freeTextEdit", "e-pv-annotation-freeTextEdit", this.pdfViewer.localeObj.getConstant("Free Text")), this.commentItem = this.primaryToolbar.addClassToolbarItem("_comment", "e-pv-comment", this.pdfViewer.localeObj.getConstant("Add Comments")), this.commentItem = this.primaryToolbar.addClassToolbarItem("_annotation_commentPanel", "e-pv-annotation-comment-panel", this.pdfViewer.localeObj.getConstant("Comment Panel")), this.inkAnnotationItem = this.primaryToolbar.addClassToolbarItem("_annotation_ink", "e-pv-annotation-ink", this.pdfViewer.localeObj.getConstant("Draw Ink")), this.selectAnnotationDeleteItem(!1), this.enableCommentPanelTool(this.pdfViewer.enableCommentPanel)
             }, i.prototype.createColorPicker = function(e) {
@@ -21871,7 +22048,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var i = document.getElementById(this.pdfViewer.element.id + e);
                 t ? i.classList.add("textprop-option-active") : i.classList.remove("textprop-option-active")
             }, i.prototype.showAnnotationToolbar = function(e, i) {
-                if (!t.Browser.isDevice) {
+                if (!t.Browser.isDevice || this.pdfViewer.enableDesktopMode) {
                     if (this.isToolbarHidden) {
                         var n = this.toolbarElement.style.display;
                         this.toolbarElement.style.display = "block", i || (this.pdfViewer.isAnnotationToolbarVisible = !0), e ? this.primaryToolbar.selectItem(e) : this.pdfViewer.enableToolbar && this.primaryToolbar.selectItem(this.primaryToolbar.annotationItem), "none" === n && this.adjustViewer(!0)
@@ -21974,7 +22151,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, i.prototype.deselectAllItems = function() {
                 this.isHighlightEnabled = !1, this.isUnderlineEnabled = !1, this.isStrikethroughEnabled = !1, this.pdfViewerBase.isTextMarkupAnnotationModule() && (this.pdfViewer.annotationModule.textMarkupAnnotationModule.isTextMarkupAnnotationMode = !1, this.pdfViewer.annotationModule.textMarkupAnnotationModule.showHideDropletDiv(!0)), t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.primaryToolbar.deSelectItem(this.highlightItem), this.primaryToolbar.deSelectItem(this.underlineItem), this.primaryToolbar.deSelectItem(this.strikethroughItem), this.primaryToolbar.deSelectItem(this.freeTextEditItem), this.primaryToolbar.deSelectItem(this.inkAnnotationItem)), this.resetFreeTextAnnot(), this.clearTextMarkupMode(), this.clearShapeMode(), this.clearMeasureMode(), this.pdfViewer.tool = "", t.Browser.isDevice && !this.pdfViewer.enableDesktopMode || (this.enableTextMarkupAnnotationPropertiesTools(!1), this.enableFreeTextAnnotationPropertiesTools(!1), this.updateColorInIcon(this.colorDropDownElement, "#000000"), this.updateColorInIcon(this.strokeDropDownElement, "#000000"), this.updateColorInIcon(this.fontColorElement, "#000000"), this.selectAnnotationDeleteItem(!1)), this.pdfViewer.annotationModule && (this.pdfViewer.annotationModule.freeTextAnnotationModule.isNewFreeTextAnnot = !1)
             }, i.prototype.updateInteractionTools = function() {
-                this.pdfViewerBase.initiateTextSelectMode(), t.Browser.isDevice || this.pdfViewer.toolbar.updateInteractionTools(!0)
+                this.pdfViewer.enableTextSelection ? (this.pdfViewerBase.initiateTextSelectMode(), t.Browser.isDevice || this.pdfViewer.toolbar.updateInteractionTools(!0)) : t.Browser.isDevice || this.pdfViewer.toolbar.updateInteractionTools(!1)
             }, i.prototype.selectAnnotationDeleteItem = function(e) {
                 if (!t.isBlazor() && !t.Browser.isDevice && this.toolbar)
                     if (e) {
@@ -22032,9 +22209,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, i.prototype.clear = function() {
                 this.deselectAllItems()
             }, i.prototype.destroy = function() {
-                this.colorDropDown.destroy(), this.opacityDropDown.destroy(), this.strokeDropDown.destroy(), this.thicknessDropDown.destroy(), this.shapeDropDown.destroy(), this.calibrateDropDown.destroy(), this.toolbar.destroy(), this.fontColorDropDown.destroy(), this.textAlignDropDown.destroy(), this.textPropertiesDropDown.destroy();
+                this.destroyComponent(), this.shapeDropDown.destroy(), this.calibrateDropDown.destroy(), this.fontColorDropDown.destroy(), this.textAlignDropDown.destroy(), this.colorDropDown.destroy(), this.strokeDropDown.destroy(), this.thicknessDropDown.destroy(), this.opacityDropDown.destroy(), this.textPropertiesDropDown.destroy(), this.toolbar.destroy();
                 var e = document.getElementById(this.pdfViewer.element.id + "_stampElement");
                 e && e.parentElement.removeChild(e)
+            }, i.prototype.destroyComponent = function() {
+                for (var e = [this.highlightItem, this.underlineItem, this.strikethroughItem, this.lineElement, this.arrowElement, this.rectangleElement, this.circleElement, this.polygonElement, this.calibrateDistance, this.calibrateArea, this.calibrateRadius, this.calibrateVolume, this.calibratePerimeter, this.freeTextEditItem, this.stampElement, this.handWrittenSignatureItem, this.inkAnnotationItem, this.fontFamilyElement, this.fontSizeElement, this.alignLeftElement, this.alignRightElement, this.alignCenterElement, this.alignJustifyElement, this.boldElement, this.italicElement, this.fontStyleStrikethroughItem, this.fontStyleUnderlineItem, this.deleteItem, this.commentItem, this.shapeDropDown.activeElem[0], this.calibrateDropDown.activeElem[0], this.fontColorDropDown.activeElem[0], this.textAlignDropDown.activeElem[0], this.colorDropDown.activeElem[0], this.strokeDropDown.activeElem[0], this.thicknessDropDown.activeElem[0], this.opacityDropDown.activeElem[0], this.textPropertiesDropDown.activeElem[0]], t = 0; t < e.length; t++) this.destroyDependentComponent(e[t])
+            }, i.prototype.destroyDependentComponent = function(e) {
+                for (var t = e.ej2_instances.length - 1; t >= 0; t--) e.ej2_instances[t].destroy()
             }, i.prototype.getElementHeight = function(e) {
                 try {
                     return e.getBoundingClientRect().height
@@ -22059,9 +22240,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.UnderlineElement.classList.contains("e-pv-select") ? this.primaryToolbar.deSelectItem(this.UnderlineElement) : this.UnderlineElement.classList.contains("e-pv-select") || this.primaryToolbar.selectItem(this.UnderlineElement), this.StrikethroughElement.classList.contains("e-pv-select") && this.primaryToolbar.deSelectItem(this.StrikethroughElement), this.HighlightElement.classList.contains("e-pv-select") && this.primaryToolbar.deSelectItem(this.HighlightElement)
             }, i.prototype.handleStrikethroughInBlazor = function() {
                 this.StrikethroughElement.classList.contains("e-pv-select") ? this.primaryToolbar.deSelectItem(this.StrikethroughElement) : this.StrikethroughElement.classList.contains("e-pv-select") || this.primaryToolbar.selectItem(this.StrikethroughElement), this.HighlightElement.classList.contains("e-pv-select") && this.primaryToolbar.deSelectItem(this.HighlightElement), this.UnderlineElement.classList.contains("e-pv-select") && this.primaryToolbar.deSelectItem(this.UnderlineElement)
+            }, i.prototype.AnnotationSliderOpened = function() {
+                var e = 100 * this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.opacity,
+                    t = this.pdfViewer.selectedItems.annotations[0].wrapper.children[0].style.strokeWidth;
+                this.pdfViewer._dotnetInstance.invokeMethodAsync("UpdateAnnotationSlider", e, t)
             }, i
         }(),
-        di = function() {
+        hi = function() {
             var e = function(t, i) {
                 return (e = Object.setPrototypeOf || {
                         __proto__: []
@@ -22079,7 +22264,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 e(t, i), t.prototype = null === i ? Object.create(i) : (n.prototype = i.prototype, new n)
             }
         }(),
-        ui = function(e, t, i, n) {
+        wi = function(e, t, i, n) {
             var o, s = arguments.length,
                 a = s < 3 ? t : null === n ? n = Object.getOwnPropertyDescriptor(t, i) : n;
             if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(e, t, i, n);
@@ -22087,7 +22272,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 for (var r = e.length - 1; r >= 0; r--)(o = e[r]) && (a = (s < 3 ? o(a) : s > 3 ? o(t, i, a) : o(t, i)) || a);
             return s > 3 && a && Object.defineProperty(t, i, a), a
         },
-        pi = function(e, t, i, n) {
+        Li = function(e, t, i, n) {
             return new(i || (i = Promise))(function(o, s) {
                 function a(e) {
                     try {
@@ -22113,7 +22298,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 l((n = n.apply(e, t || [])).next())
             })
         },
-        Mi = function(e, t) {
+        ci = function(e, t) {
             function i(e) {
                 return function(t) {
                     return n([e, t])
@@ -22189,385 +22374,385 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this
             }), r
         },
-        hi = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
-            }
-            return di(i, e), ui([t.Property(!0)], i.prototype, "showTooltip", void 0), ui([t.Property()], i.prototype, "toolbarItems", void 0), ui([t.Property()], i.prototype, "annotationToolbarItems", void 0), ui([t.Property()], i.prototype, "formDesignerToolbarItems", void 0), i
-        }(t.ChildProperty),
-        Li = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
-            }
-            return di(i, e), ui([t.Property()], i.prototype, "ajaxHeaders", void 0), ui([t.Property(!1)], i.prototype, "withCredentials", void 0), i
-        }(t.ChildProperty),
-        wi = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
-            }
-            return di(i, e), ui([t.Property("")], i.prototype, "customStampName", void 0), ui([t.Property("")], i.prototype, "customStampImageSource", void 0), i
-        }(t.ChildProperty),
-        ci = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
-            }
-            return di(i, e), ui([t.Property(!0)], i.prototype, "showTooltip", void 0), ui([t.Property()], i.prototype, "annotationToolbarItem", void 0), i
-        }(t.ChildProperty),
         Ci = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(!0)], i.prototype, "showTooltip", void 0), ui([t.Property()], i.prototype, "formDesignerToolbarItem", void 0), i
+            return hi(i, e), wi([t.Property(!0)], i.prototype, "showTooltip", void 0), wi([t.Property()], i.prototype, "toolbarItems", void 0), wi([t.Property()], i.prototype, "annotationToolbarItems", void 0), wi([t.Property()], i.prototype, "formDesignerToolbarItems", void 0), i
         }(t.ChildProperty),
         gi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property()], i.prototype, "signatureDialogSettings", void 0), ui([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), i
+            return hi(i, e), wi([t.Property()], i.prototype, "ajaxHeaders", void 0), wi([t.Property(!1)], i.prototype, "withCredentials", void 0), i
         }(t.ChildProperty),
         mi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property(!1)], i.prototype, "isInitialField", void 0), ui([t.Property()], i.prototype, "initialDialogSettings", void 0), ui([t.Property()], i.prototype, "initialIndicatorSettings", void 0), i
+            return hi(i, e), wi([t.Property("")], i.prototype, "customStampName", void 0), wi([t.Property("")], i.prototype, "customStampImageSource", void 0), i
         }(t.ChildProperty),
         fi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("orange")], i.prototype, "backgroundColor", void 0), ui([t.Property(19)], i.prototype, "width", void 0), ui([t.Property(10)], i.prototype, "height", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property(null)], i.prototype, "text", void 0), ui([t.Property("black")], i.prototype, "color", void 0), i
+            return hi(i, e), wi([t.Property(!0)], i.prototype, "showTooltip", void 0), wi([t.Property()], i.prototype, "annotationToolbarItem", void 0), i
         }(t.ChildProperty),
-        yi = function(i) {
-            function n() {
-                return null !== i && i.apply(this, arguments) || this
+        yi = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
             }
-            return di(n, i), ui([t.Property(e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload)], n.prototype, "displayMode", void 0), ui([t.Property(!1)], n.prototype, "hideSaveSignature", void 0), n
+            return hi(i, e), wi([t.Property(!0)], i.prototype, "showTooltip", void 0), wi([t.Property()], i.prototype, "formDesignerToolbarItem", void 0), i
         }(t.ChildProperty),
         ji = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("Load")], i.prototype, "load", void 0), ui([t.Property("Unload")], i.prototype, "unload", void 0), ui([t.Property("RenderPdfPages")], i.prototype, "renderPages", void 0), ui([t.Property("RenderPdfPages")], i.prototype, "print", void 0), ui([t.Property("Download")], i.prototype, "download", void 0), ui([t.Property("RenderThumbnailImages")], i.prototype, "renderThumbnail", void 0), ui([t.Property("RenderAnnotationComments")], i.prototype, "renderComments", void 0), ui([t.Property("ImportAnnotations")], i.prototype, "importAnnotations", void 0), ui([t.Property("ExportAnnotations")], i.prototype, "exportAnnotations", void 0), ui([t.Property("ImportFormFields")], i.prototype, "importFormFields", void 0), ui([t.Property("ExportFormFields")], i.prototype, "exportFormFields", void 0), ui([t.Property("RenderPdfTexts")], i.prototype, "renderTexts", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property()], i.prototype, "signatureDialogSettings", void 0), wi([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), i
         }(t.ChildProperty),
         Si = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ff0000")], i.prototype, "color", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), ui([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property(!1)], i.prototype, "isInitialField", void 0), wi([t.Property()], i.prototype, "initialDialogSettings", void 0), wi([t.Property()], i.prototype, "initialIndicatorSettings", void 0), i
         }(t.ChildProperty),
         Ai = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#00ff00")], i.prototype, "color", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), ui([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("orange")], i.prototype, "backgroundColor", void 0), wi([t.Property(19)], i.prototype, "width", void 0), wi([t.Property(10)], i.prototype, "height", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property(null)], i.prototype, "text", void 0), wi([t.Property("black")], i.prototype, "color", void 0), i
         }(t.ChildProperty),
-        Ti = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
+        Ti = function(i) {
+            function n() {
+                return null !== i && i.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffff00")], i.prototype, "color", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), ui([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(n, i), wi([t.Property(e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload)], n.prototype, "displayMode", void 0), wi([t.Property(!1)], n.prototype, "hideSaveSignature", void 0), n
         }(t.ChildProperty),
         xi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), ui([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), ui([t.Property(0)], i.prototype, "borderDashArray", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property("Load")], i.prototype, "load", void 0), wi([t.Property("Unload")], i.prototype, "unload", void 0), wi([t.Property("RenderPdfPages")], i.prototype, "renderPages", void 0), wi([t.Property("RenderPdfPages")], i.prototype, "print", void 0), wi([t.Property("Download")], i.prototype, "download", void 0), wi([t.Property("RenderThumbnailImages")], i.prototype, "renderThumbnail", void 0), wi([t.Property("RenderAnnotationComments")], i.prototype, "renderComments", void 0), wi([t.Property("ImportAnnotations")], i.prototype, "importAnnotations", void 0), wi([t.Property("ExportAnnotations")], i.prototype, "exportAnnotations", void 0), wi([t.Property("ImportFormFields")], i.prototype, "importFormFields", void 0), wi([t.Property("ExportFormFields")], i.prototype, "exportFormFields", void 0), wi([t.Property("RenderPdfTexts")], i.prototype, "renderTexts", void 0), i
         }(t.ChildProperty),
         Ni = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), ui([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), ui([t.Property(0)], i.prototype, "borderDashArray", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ff0000")], i.prototype, "color", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), wi([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Di = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(100)], i.prototype, "width", void 0), ui([t.Property(50)], i.prototype, "height", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#00ff00")], i.prototype, "color", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), wi([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         bi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(100)], i.prototype, "width", void 0), ui([t.Property(100)], i.prototype, "height", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffff00")], i.prototype, "color", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(!1)], i.prototype, "enableMultiPageAnnotation", void 0), wi([t.Property(!1)], i.prototype, "enableTextMarkupResizer", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         vi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#000")], i.prototype, "fontColor", void 0), ui([t.Property(16)], i.prototype, "fontSize", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property("Label")], i.prototype, "labelContent", void 0), ui([t.Property("")], i.prototype, "notes", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), wi([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), wi([t.Property(0)], i.prototype, "borderDashArray", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Ii = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), wi([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), wi([t.Property(0)], i.prototype, "borderDashArray", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Ei = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(150)], i.prototype, "width", void 0), ui([t.Property(50)], i.prototype, "height", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property([])], i.prototype, "dynamicStamps", void 0), ui([t.Property([])], i.prototype, "signStamps", void 0), ui([t.Property([])], i.prototype, "standardBusinessStamps", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(100)], i.prototype, "width", void 0), wi([t.Property(50)], i.prototype, "height", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Vi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property(0)], i.prototype, "width", void 0), ui([t.Property(0)], i.prototype, "height", void 0), ui([t.Property(0)], i.prototype, "left", void 0), ui([t.Property(0)], i.prototype, "top", void 0), ui([t.Property(!1)], i.prototype, "isAddToMenu", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property("")], i.prototype, "customStamps", void 0), ui([t.Property(!0)], i.prototype, "enableCustomStamp", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(100)], i.prototype, "width", void 0), wi([t.Property(100)], i.prototype, "height", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
-        zi = function(i) {
-            function n() {
-                return null !== i && i.apply(this, arguments) || this
+        zi = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
             }
-            return di(n, i), ui([t.Property({
-                x: 0,
-                y: 0
-            })], n.prototype, "offset", void 0), ui([t.Property(1)], n.prototype, "pageNumber", void 0), ui([t.Property(1)], n.prototype, "opacity", void 0), ui([t.Property("#ff0000")], n.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], n.prototype, "strokeColor", void 0), ui([t.Property("Guest")], n.prototype, "author", void 0), ui([t.Property("1")], n.prototype, "thickness", void 0), ui([t.Property("None")], n.prototype, "lineHeadStartStyle", void 0), ui([t.Property("None")], n.prototype, "lineHeadEndStyle", void 0), ui([t.Property(0)], n.prototype, "borderDashArray", void 0), ui([t.Property("")], n.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], n.prototype, "minHeight", void 0), ui([t.Property(0)], n.prototype, "minWidth", void 0), ui([t.Property(0)], n.prototype, "maxHeight", void 0), ui([t.Property(0)], n.prototype, "maxWidth", void 0), ui([t.Property(!1)], n.prototype, "isLock", void 0), ui([t.Property(null)], n.prototype, "customData", void 0), ui([t.Property(40)], n.prototype, "leaderLength", void 0), ui([t.Property(e.CursorType.move)], n.prototype, "resizeCursorType", void 0), ui([t.Property(["None"])], n.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], n.prototype, "isPrint", void 0), n
+            return hi(i, e), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#000")], i.prototype, "fontColor", void 0), wi([t.Property(16)], i.prototype, "fontSize", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property("Label")], i.prototype, "labelContent", void 0), wi([t.Property("")], i.prototype, "notes", void 0), i
         }(t.ChildProperty),
         ki = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), ui([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), ui([t.Property(0)], i.prototype, "borderDashArray", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Oi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(150)], i.prototype, "width", void 0), wi([t.Property(50)], i.prototype, "height", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property([])], i.prototype, "dynamicStamps", void 0), wi([t.Property([])], i.prototype, "signStamps", void 0), wi([t.Property([])], i.prototype, "standardBusinessStamps", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Pi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(100)], i.prototype, "width", void 0), ui([t.Property(90)], i.prototype, "height", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property(0)], i.prototype, "width", void 0), wi([t.Property(0)], i.prototype, "height", void 0), wi([t.Property(0)], i.prototype, "left", void 0), wi([t.Property(0)], i.prototype, "top", void 0), wi([t.Property(!1)], i.prototype, "isAddToMenu", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property("")], i.prototype, "customStamps", void 0), wi([t.Property(!0)], i.prototype, "enableCustomStamp", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
-        Fi = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
+        Fi = function(i) {
+            function n() {
+                return null !== i && i.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(n, i), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("1")], i.prototype, "thickness", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], n.prototype, "offset", void 0), wi([t.Property(1)], n.prototype, "pageNumber", void 0), wi([t.Property(1)], n.prototype, "opacity", void 0), wi([t.Property("#ff0000")], n.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], n.prototype, "strokeColor", void 0), wi([t.Property("Guest")], n.prototype, "author", void 0), wi([t.Property("1")], n.prototype, "thickness", void 0), wi([t.Property("None")], n.prototype, "lineHeadStartStyle", void 0), wi([t.Property("None")], n.prototype, "lineHeadEndStyle", void 0), wi([t.Property(0)], n.prototype, "borderDashArray", void 0), wi([t.Property("")], n.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], n.prototype, "minHeight", void 0), wi([t.Property(0)], n.prototype, "minWidth", void 0), wi([t.Property(0)], n.prototype, "maxHeight", void 0), wi([t.Property(0)], n.prototype, "maxWidth", void 0), wi([t.Property(!1)], n.prototype, "isLock", void 0), wi([t.Property(null)], n.prototype, "customData", void 0), wi([t.Property(40)], n.prototype, "leaderLength", void 0), wi([t.Property(e.CursorType.move)], n.prototype, "resizeCursorType", void 0), wi([t.Property(["None"])], n.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], n.prototype, "isPrint", void 0), n
         }(t.ChildProperty),
         Bi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(0)], i.prototype, "width", void 0), ui([t.Property(0)], i.prototype, "height", void 0), ui([t.Property(0)], i.prototype, "path", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("None")], i.prototype, "lineHeadStartStyle", void 0), wi([t.Property("None")], i.prototype, "lineHeadEndStyle", void 0), wi([t.Property(0)], i.prototype, "borderDashArray", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Yi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Ui = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "scaleRatio", void 0), ui([t.Property("in")], i.prototype, "conversionUnit", void 0), ui([t.Property("in")], i.prototype, "displayUnit", void 0), ui([t.Property(96)], i.prototype, "depth", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(100)], i.prototype, "width", void 0), wi([t.Property(90)], i.prototype, "height", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Qi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0
-            })], i.prototype, "offset", void 0), ui([t.Property(1)], i.prototype, "pageNumber", void 0), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#ffffff00")], i.prototype, "borderColor", void 0), ui([t.Property(1)], i.prototype, "borderWidth", void 0), ui([t.Property("solid")], i.prototype, "borderStyle", void 0), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), ui([t.Property(16)], i.prototype, "fontSize", void 0), ui([t.Property(151)], i.prototype, "width", void 0), ui([t.Property(24.6)], i.prototype, "height", void 0), ui([t.Property("#000")], i.prototype, "fontColor", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property("TypeHere")], i.prototype, "defaultText", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("Left")], i.prototype, "textAlignment", void 0), ui([t.Property(!1)], i.prototype, "allowEditTextOnly", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), ui([t.Property(!0)], i.prototype, "isPrint", void 0), ui([t.Property(!1)], i.prototype, "isReadonly", void 0), i
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("1")], i.prototype, "thickness", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
-        _i = function(i) {
-            function n() {
-                return null !== i && i.apply(this, arguments) || this
+        _i = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
             }
-            return di(n, i), ui([t.Property("")], n.prototype, "selectionBorderColor", void 0), ui([t.Property("black")], n.prototype, "resizerBorderColor", void 0), ui([t.Property("#FF4081")], n.prototype, "resizerFillColor", void 0), ui([t.Property(8)], n.prototype, "resizerSize", void 0), ui([t.Property(1)], n.prototype, "selectionBorderThickness", void 0), ui([t.Property("Square")], n.prototype, "resizerShape", void 0), ui([t.Property("")], n.prototype, "selectorLineDashArray", void 0), ui([t.Property(e.AnnotationResizerLocation.Corners | e.AnnotationResizerLocation.Edges)], n.prototype, "resizerLocation", void 0), ui([t.Property(null)], n.prototype, "resizerCursorType", void 0), n
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(0)], i.prototype, "width", void 0), wi([t.Property(0)], i.prototype, "height", void 0), wi([t.Property(0)], i.prototype, "path", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ff0000")], i.prototype, "strokeColor", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Ri = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("#fdd835")], i.prototype, "searchHighlightColor", void 0), ui([t.Property("#8b4c12")], i.prototype, "searchColor", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), i
         }(t.ChildProperty),
         Wi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(1)], i.prototype, "opacity", void 0), ui([t.Property("#000000")], i.prototype, "strokeColor", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property(150)], i.prototype, "width", void 0), ui([t.Property(100)], i.prototype, "height", void 0), ui([t.Property(1)], i.prototype, "saveSignatureLimit", void 0), ui([t.Property(1)], i.prototype, "saveInitialLimit", void 0), ui([t.Property([])], i.prototype, "signatureItem", void 0), ui([t.Property()], i.prototype, "typeSignatureFonts", void 0), ui([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), ui([t.Property()], i.prototype, "signatureDialogSettings", void 0), ui([t.Property()], i.prototype, "initialDialogSettings", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "scaleRatio", void 0), wi([t.Property("in")], i.prototype, "conversionUnit", void 0), wi([t.Property("in")], i.prototype, "displayUnit", void 0), wi([t.Property(96)], i.prototype, "depth", void 0), i
         }(t.ChildProperty),
         Ji = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("Guest")], i.prototype, "author", void 0), ui([t.Property(0)], i.prototype, "minHeight", void 0), ui([t.Property(0)], i.prototype, "minWidth", void 0), ui([t.Property(0)], i.prototype, "maxHeight", void 0), ui([t.Property(0)], i.prototype, "maxWidth", void 0), ui([t.Property(!1)], i.prototype, "isLock", void 0), ui([t.Property(!1)], i.prototype, "skipPrint", void 0), ui([t.Property(!1)], i.prototype, "skipDownload", void 0), ui([t.Property(null)], i.prototype, "customData", void 0), ui([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0
+            })], i.prototype, "offset", void 0), wi([t.Property(1)], i.prototype, "pageNumber", void 0), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#ffffff00")], i.prototype, "borderColor", void 0), wi([t.Property(1)], i.prototype, "borderWidth", void 0), wi([t.Property("solid")], i.prototype, "borderStyle", void 0), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property("#ffffff00")], i.prototype, "fillColor", void 0), wi([t.Property(16)], i.prototype, "fontSize", void 0), wi([t.Property(151)], i.prototype, "width", void 0), wi([t.Property(24.6)], i.prototype, "height", void 0), wi([t.Property("#000")], i.prototype, "fontColor", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property("TypeHere")], i.prototype, "defaultText", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("Left")], i.prototype, "textAlignment", void 0), wi([t.Property(!1)], i.prototype, "allowEditTextOnly", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), wi([t.Property(!0)], i.prototype, "isPrint", void 0), wi([t.Property(!1)], i.prototype, "isReadonly", void 0), i
         }(t.ChildProperty),
-        Hi = function(e) {
-            function i() {
-                return null !== e && e.apply(this, arguments) || this
+        Hi = function(i) {
+            function n() {
+                return null !== i && i.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property()], i.prototype, "textData", void 0), ui([t.Property()], i.prototype, "pageText", void 0), ui([t.Property()], i.prototype, "pageSize", void 0), i
+            return hi(n, i), wi([t.Property("")], n.prototype, "selectionBorderColor", void 0), wi([t.Property("black")], n.prototype, "resizerBorderColor", void 0), wi([t.Property("#FF4081")], n.prototype, "resizerFillColor", void 0), wi([t.Property(8)], n.prototype, "resizerSize", void 0), wi([t.Property(1)], n.prototype, "selectionBorderThickness", void 0), wi([t.Property("Square")], n.prototype, "resizerShape", void 0), wi([t.Property("")], n.prototype, "selectorLineDashArray", void 0), wi([t.Property(e.AnnotationResizerLocation.Corners | e.AnnotationResizerLocation.Edges)], n.prototype, "resizerLocation", void 0), wi([t.Property(null)], n.prototype, "resizerCursorType", void 0), n
         }(t.ChildProperty),
         Gi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property()], i.prototype, "bounds", void 0), ui([t.Property()], i.prototype, "text", void 0), i
+            return hi(i, e), wi([t.Property("#fdd835")], i.prototype, "searchHighlightColor", void 0), wi([t.Property("#8b4c12")], i.prototype, "searchColor", void 0), i
         }(t.ChildProperty),
         Zi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property()], i.prototype, "size", void 0), ui([t.Property()], i.prototype, "x", void 0), ui([t.Property()], i.prototype, "y", void 0), ui([t.Property()], i.prototype, "width", void 0), ui([t.Property()], i.prototype, "height", void 0), ui([t.Property()], i.prototype, "left", void 0), ui([t.Property()], i.prototype, "top", void 0), ui([t.Property()], i.prototype, "right", void 0), ui([t.Property()], i.prototype, "bottom", void 0), ui([t.Property()], i.prototype, "isEmpty", void 0), i
+            return hi(i, e), wi([t.Property(1)], i.prototype, "opacity", void 0), wi([t.Property("#000000")], i.prototype, "strokeColor", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property(150)], i.prototype, "width", void 0), wi([t.Property(100)], i.prototype, "height", void 0), wi([t.Property(1)], i.prototype, "saveSignatureLimit", void 0), wi([t.Property(1)], i.prototype, "saveInitialLimit", void 0), wi([t.Property([])], i.prototype, "signatureItem", void 0), wi([t.Property()], i.prototype, "typeSignatureFonts", void 0), wi([t.Property("")], i.prototype, "annotationSelectorSettings", void 0), wi([t.Property()], i.prototype, "signatureDialogSettings", void 0), wi([t.Property()], i.prototype, "initialDialogSettings", void 0), i
         }(t.ChildProperty),
         Xi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(!0)], i.prototype, "enableTileRendering", void 0), ui([t.Property(0)], i.prototype, "x", void 0), ui([t.Property(0)], i.prototype, "y", void 0), i
+            return hi(i, e), wi([t.Property("Guest")], i.prototype, "author", void 0), wi([t.Property(0)], i.prototype, "minHeight", void 0), wi([t.Property(0)], i.prototype, "minWidth", void 0), wi([t.Property(0)], i.prototype, "maxHeight", void 0), wi([t.Property(0)], i.prototype, "maxWidth", void 0), wi([t.Property(!1)], i.prototype, "isLock", void 0), wi([t.Property(!1)], i.prototype, "skipPrint", void 0), wi([t.Property(!1)], i.prototype, "skipDownload", void 0), wi([t.Property(null)], i.prototype, "customData", void 0), wi([t.Property(["None"])], i.prototype, "allowedInteractions", void 0), i
         }(t.ChildProperty),
         Ki = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property(100)], i.prototype, "delayPageRequestTimeOnScroll", void 0), i
+            return hi(i, e), wi([t.Property()], i.prototype, "textData", void 0), wi([t.Property()], i.prototype, "pageText", void 0), wi([t.Property()], i.prototype, "pageSize", void 0), i
         }(t.ChildProperty),
         qi = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property(!1)], i.prototype, "isChecked", void 0), ui([t.Property(!1)], i.prototype, "isSelected", void 0), ui([t.Property("")], i.prototype, "id", void 0), ui([t.Property("")], i.prototype, "value", void 0), ui([t.Property("")], i.prototype, "type", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property([""])], i.prototype, "signatureType", void 0), ui([t.Property("")], i.prototype, "fontName", void 0), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("black")], i.prototype, "color", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property("Left")], i.prototype, "alignment", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(0)], i.prototype, "maxLength", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property("")], i.prototype, "options", void 0), ui([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), ui([t.Property(!1)], i.prototype, "isMultiline", void 0), i
+            return hi(i, e), wi([t.Property()], i.prototype, "bounds", void 0), wi([t.Property()], i.prototype, "text", void 0), i
         }(t.ChildProperty),
         $i = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("RightClick")], i.prototype, "contextMenuAction", void 0), ui([t.Property([])], i.prototype, "contextMenuItems", void 0), i
+            return hi(i, e), wi([t.Property()], i.prototype, "size", void 0), wi([t.Property()], i.prototype, "x", void 0), wi([t.Property()], i.prototype, "y", void 0), wi([t.Property()], i.prototype, "width", void 0), wi([t.Property()], i.prototype, "height", void 0), wi([t.Property()], i.prototype, "left", void 0), wi([t.Property()], i.prototype, "top", void 0), wi([t.Property()], i.prototype, "right", void 0), wi([t.Property()], i.prototype, "bottom", void 0), wi([t.Property()], i.prototype, "isEmpty", void 0), i
         }(t.ChildProperty),
         en = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property("")], i.prototype, "value", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("black")], i.prototype, "color", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property("Left")], i.prototype, "alignment", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(0)], i.prototype, "maxLength", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), ui([t.Property(!1)], i.prototype, "isMultiline", void 0), i
+            return hi(i, e), wi([t.Property(!0)], i.prototype, "enableTileRendering", void 0), wi([t.Property(0)], i.prototype, "x", void 0), wi([t.Property(0)], i.prototype, "y", void 0), i
         }(t.ChildProperty),
         tn = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property("")], i.prototype, "value", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("black")], i.prototype, "color", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property("Left")], i.prototype, "alignment", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(0)], i.prototype, "maxLength", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+            return hi(i, e), wi([t.Property(100)], i.prototype, "delayPageRequestTimeOnScroll", void 0), i
         }(t.ChildProperty),
         nn = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property(!1)], i.prototype, "isChecked", void 0), wi([t.Property(!1)], i.prototype, "isSelected", void 0), wi([t.Property("")], i.prototype, "id", void 0), wi([t.Property("")], i.prototype, "value", void 0), wi([t.Property("")], i.prototype, "type", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property([""])], i.prototype, "signatureType", void 0), wi([t.Property("")], i.prototype, "fontName", void 0), wi([t.Property({
                 x: 0,
                 y: 0,
                 width: 0,
                 height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property(!1)], i.prototype, "isChecked", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+            })], i.prototype, "bounds", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("black")], i.prototype, "color", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property("Left")], i.prototype, "alignment", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(0)], i.prototype, "maxLength", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property("")], i.prototype, "options", void 0), wi([t.Property()], i.prototype, "signatureIndicatorSettings", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), wi([t.Property(!1)], i.prototype, "isMultiline", void 0), i
         }(t.ChildProperty),
         on = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property(!1)], i.prototype, "isSelected", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+            return hi(i, e), wi([t.Property("RightClick")], i.prototype, "contextMenuAction", void 0), wi([t.Property([])], i.prototype, "contextMenuItems", void 0), i
         }(t.ChildProperty),
         sn = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0,
                 width: 0,
                 height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property("")], i.prototype, "value", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("black")], i.prototype, "color", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property("Left")], i.prototype, "alignment", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property("")], i.prototype, "options", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property("")], i.prototype, "value", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("black")], i.prototype, "color", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property("Left")], i.prototype, "alignment", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(0)], i.prototype, "maxLength", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), wi([t.Property(!1)], i.prototype, "isMultiline", void 0), i
         }(t.ChildProperty),
         an = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property({
+            return hi(i, e), wi([t.Property({
                 x: 0,
                 y: 0,
                 width: 0,
                 height: 0
-            })], i.prototype, "bounds", void 0), ui([t.Property("")], i.prototype, "name", void 0), ui([t.Property("")], i.prototype, "value", void 0), ui([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), ui([t.Property(10)], i.prototype, "fontSize", void 0), ui([t.Property(0)], i.prototype, "pageNumber", void 0), ui([t.Property("None")], i.prototype, "fontStyle", void 0), ui([t.Property("black")], i.prototype, "color", void 0), ui([t.Property("white")], i.prototype, "backgroundColor", void 0), ui([t.Property("Left")], i.prototype, "alignment", void 0), ui([t.Property(!1)], i.prototype, "isReadOnly", void 0), ui([t.Property("visible")], i.prototype, "visibility", void 0), ui([t.Property(!1)], i.prototype, "isRequired", void 0), ui([t.Property(!1)], i.prototype, "isPrint", void 0), ui([t.Property("")], i.prototype, "tooltip", void 0), ui([t.Property([])], i.prototype, "options", void 0), ui([t.Property(1)], i.prototype, "thickness", void 0), ui([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property("")], i.prototype, "value", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("black")], i.prototype, "color", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property("Left")], i.prototype, "alignment", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(0)], i.prototype, "maxLength", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), i
         }(t.ChildProperty),
         rn = function(e) {
             function i() {
                 return null !== e && e.apply(this, arguments) || this
             }
-            return di(i, e), ui([t.Property("")], i.prototype, "itemName", void 0), ui([t.Property("")], i.prototype, "itemValue", void 0), i
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property(!1)], i.prototype, "isChecked", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), i
         }(t.ChildProperty),
-        ln = function(i) {
+        ln = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property(!1)], i.prototype, "isSelected", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+        }(t.ChildProperty),
+        dn = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property("")], i.prototype, "value", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("black")], i.prototype, "color", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property("Left")], i.prototype, "alignment", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property("")], i.prototype, "options", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+        }(t.ChildProperty),
+        un = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return hi(i, e), wi([t.Property({
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            })], i.prototype, "bounds", void 0), wi([t.Property("")], i.prototype, "name", void 0), wi([t.Property("")], i.prototype, "value", void 0), wi([t.Property("Helvetica")], i.prototype, "fontFamily", void 0), wi([t.Property(10)], i.prototype, "fontSize", void 0), wi([t.Property(0)], i.prototype, "pageNumber", void 0), wi([t.Property("None")], i.prototype, "fontStyle", void 0), wi([t.Property("black")], i.prototype, "color", void 0), wi([t.Property("white")], i.prototype, "backgroundColor", void 0), wi([t.Property("Left")], i.prototype, "alignment", void 0), wi([t.Property(!1)], i.prototype, "isReadOnly", void 0), wi([t.Property("visible")], i.prototype, "visibility", void 0), wi([t.Property(!1)], i.prototype, "isRequired", void 0), wi([t.Property(!1)], i.prototype, "isPrint", void 0), wi([t.Property("")], i.prototype, "tooltip", void 0), wi([t.Property([])], i.prototype, "options", void 0), wi([t.Property(1)], i.prototype, "thickness", void 0), wi([t.Property("#303030")], i.prototype, "borderColor", void 0), i
+        }(t.ChildProperty),
+        pn = function(e) {
+            function i() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return hi(i, e), wi([t.Property("")], i.prototype, "itemName", void 0), wi([t.Property("")], i.prototype, "itemValue", void 0), i
+        }(t.ChildProperty),
+        Mn = function(i) {
             function n(e, t) {
                 var n = i.call(this, e, t) || this;
                 return n.signatureCollection = [], n.fileName = null, n.zIndex = -1, n.nameTable = {}, n.clipboardData = {}, n.zIndexTable = [], n.isTextSelectionStarted = !1, n.defaultLocale = {
@@ -22768,10 +22953,37 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     "Delete Item": "Delete",
                     Up: "Up",
                     Down: "Down",
-                    Multiline: "Multiline"
-                }, n.viewerBase = new qt(n), n.drawing = new tt(n), n
+                    Multiline: "Multiline",
+                    Revised: "Revised",
+                    Reviewed: "Reviewed",
+                    Received: "Received",
+                    Confidential: "Confidential",
+                    Approved: "Approved",
+                    "Not Approved": "Not Approved",
+                    Witness: "Witness",
+                    "Initial Here": "Initial Here",
+                    Draft: "Draft",
+                    Final: "Final",
+                    "For Public Release": "For Public Release",
+                    "Not For Public Release": "Not For Public Release",
+                    "For Comment": "For Comment",
+                    Void: "Void",
+                    "Preliminary Results": "Preliminary Results",
+                    "Information Only": "Information Only",
+                    in: "in",
+                    m: "m",
+                    ft_in: "ft_in",
+                    ft: "ft",
+                    p: "p",
+                    cm: "cm",
+                    mm: "mm",
+                    pt: "pt",
+                    cu: "cu",
+                    sq: "sq",
+                    Initial: "Initial"
+                }, n.viewerBase = new ii(n), n.drawing = new nt(n), n
             }
-            return di(n, i), Object.defineProperty(n.prototype, "zoomPercentage", {
+            return hi(n, i), Object.defineProperty(n.prototype, "zoomPercentage", {
                 get: function() {
                     return 100 * this.magnificationModule.zoomFactor
                 },
@@ -22896,7 +23108,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             case "enableFormFields":
                                 if (this.enableFormFields && this.formFieldsModule)
                                     for (var d = 0; d < this.pageCount; d++) this.formFieldsModule.renderFormFields(d);
-                                else this.formFieldsModule = new hn(this, this.viewerBase), this.formFieldsModule.formFieldsReadOnly(this.enableFormFields);
+                                else this.formFieldsModule = new Cn(this, this.viewerBase), this.formFieldsModule.formFieldsReadOnly(this.enableFormFields);
                                 break;
                             case "designerMode":
                                 this.designerMode ? this.formDesignerModule.setMode("designer") : this.formDesignerModule.setMode("edit");
@@ -23027,9 +23239,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 };
                 this.trigger("buttonFieldClick", n)
             }, n.prototype.fireFormFieldClickEvent = function(e, i, n) {
-                return pi(this, void 0, void 0, function() {
+                return Li(this, void 0, void 0, function() {
                     var o, s;
-                    return Mi(this, function(a) {
+                    return ci(this, function(a) {
                         switch (a.label) {
                             case 0:
                                 return o = {
@@ -23042,7 +23254,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             case 2:
                                 this.triggerEvent("formFieldClick", o), a.label = 3;
                             case 3:
-                                return "SignatureField" !== i.type && "InitialField" !== i.type || ("InitialField" === i.type ? this.viewerBase.isInitialField = !0 : this.viewerBase.isInitialField = !1, s = document.getElementById(i.id), s = s || (document.getElementById(i.id + "_content_html_element") ? document.getElementById(i.id + "_content_html_element").children[0].children[0] : null), !o.cancel && s && s.classList.contains("e-pdfviewer-signatureformfields") && this.viewerBase.signatureModule.showSignatureDialog(!0)), [2]
+                                return "SignatureField" !== i.type && "InitialField" !== i.type || ("InitialField" === i.type ? this.viewerBase.isInitialField = !0 : this.viewerBase.isInitialField = !1, s = document.getElementById(i.id), s = s || (document.getElementById(i.id + "_content_html_element") ? document.getElementById(i.id + "_content_html_element").children[0].children[0] : null), !this.signatureFieldSettings.isReadOnly && !o.cancel && s && s.classList.contains("e-pdfviewer-signatureformfields") && this.viewerBase.signatureModule.showSignatureDialog(!0)), [2]
                         }
                     })
                 })
@@ -23062,7 +23274,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.trigger("formFieldRemove", n)
             }, n.prototype.fireFormFieldDoubleClickEvent = function(e) {
                 return this.trigger("formFieldDoubleClick", e), e
-            }, n.prototype.fireFormFieldPropertiesChangeEvent = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, L, w, c, C, g, m, rr) {
+            }, n.prototype.fireFormFieldPropertiesChangeEvent = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, w, L, c, C, g, m) {
                 var f = {
                     name: e,
                     field: t,
@@ -23078,9 +23290,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isAlignmentChanged: p,
                     isReadOnlyChanged: M,
                     isVisibilityChanged: h,
-                    isRoleChanged: rr,
-                    isMaxLengthChanged: L,
-                    isRequiredChanged: w,
+                    isMaxLengthChanged: w,
+                    isRequiredChanged: L,
                     isPrintChanged: c,
                     isToolTipChanged: C,
                     oldValue: g,
@@ -23211,9 +23422,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 };
                 this.trigger("zoomChange", e)
             }, n.prototype.fireHyperlinkClick = function(e, i) {
-                return pi(this, void 0, void 0, function() {
+                return Li(this, void 0, void 0, function() {
                     var n;
-                    return Mi(this, function(o) {
+                    return ci(this, function(o) {
                         switch (o.label) {
                             case 0:
                                 return n = {
@@ -23440,8 +23651,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     };
                     this.trigger("textSelectionEnd", n), this.isTextSelectionStarted = !1
                 }
-            }, n.prototype.renderDrawing = function(e, t) {
-                t || !this.viewerBase.activeElements.activePageID || this.viewerBase.isPrint || (t = this.viewerBase.activeElements.activePageID), this.annotation ? this.annotation.renderAnnotations(t, null, null, null, e) : this.formDesignerModule.updateCanvas(t, e)
+            }, n.prototype.renderDrawing = function(e, i) {
+                t.isNullOrUndefined(i) && this.viewerBase.activeElements.activePageID && !this.viewerBase.isPrint && (i = this.viewerBase.activeElements.activePageID), this.annotation ? this.annotation.renderAnnotations(i, null, null, null, e) : this.formDesignerModule.updateCanvas(i, e)
             }, n.prototype.fireAnnotationResize = function(e, t, i, n, o, s, a, r, l, d) {
                 var u = {
                     name: "annotationResize",
@@ -23501,9 +23712,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 };
                 this.trigger("downloadEnd", i)
             }, n.prototype.firePrintStart = function() {
-                return pi(this, void 0, void 0, function() {
+                return Li(this, void 0, void 0, function() {
                     var e;
-                    return Mi(this, function(i) {
+                    return ci(this, function(i) {
                         switch (i.label) {
                             case 0:
                                 return e = {
@@ -23520,9 +23731,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     })
                 })
             }, n.prototype.triggerEvent = function(e, i) {
-                return pi(this, void 0, void 0, function() {
+                return Li(this, void 0, void 0, function() {
                     var n;
-                    return Mi(this, function(o) {
+                    return ci(this, function(o) {
                         switch (o.label) {
                             case 0:
                                 return [4, this.trigger(e, i)];
@@ -23758,7 +23969,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 void 0 === i && (i = !1), t.isBlazor() && (this.allowServerDataBinding = e, i && (this.bulkChanges = {}))
             }, n.prototype.checkBoundaryConstraints = function(e, t, i, n, o, s) {
                 return this.drawing.checkBoundaryConstraints(e, t, i, n, o, s)
-            }, ui([t.Property()], n.prototype, "serviceUrl", void 0), ui([t.Property(0)], n.prototype, "pageCount", void 0), ui([t.Property(!1)], n.prototype, "isDocumentEdited", void 0), ui([t.Property(0)], n.prototype, "currentPageNumber", void 0), ui([t.Property()], n.prototype, "documentPath", void 0), ui([t.Property(null)], n.prototype, "exportAnnotationFileName", void 0), ui([t.Property()], n.prototype, "downloadFileName", void 0), ui([t.Property("auto")], n.prototype, "height", void 0), ui([t.Property("auto")], n.prototype, "width", void 0), ui([t.Property(!0)], n.prototype, "enableToolbar", void 0), ui([t.Property(1)], n.prototype, "retryCount", void 0), ui([t.Property(!0)], n.prototype, "showNotificationDialog", void 0), ui([t.Property(!0)], n.prototype, "enableNavigationToolbar", void 0), ui([t.Property(!0)], n.prototype, "enableCommentPanel", void 0), ui([t.Property(!1)], n.prototype, "isCommandPanelOpen", void 0), ui([t.Property(!1)], n.prototype, "enableTextMarkupResizer", void 0), ui([t.Property(!1)], n.prototype, "enableMultiLineOverlap", void 0), ui([t.Property(!1)], n.prototype, "isValidFreeText", void 0), ui([t.Property(!1)], n.prototype, "isAnnotationToolbarOpen", void 0), ui([t.Property(!1)], n.prototype, "isAnnotationToolbarVisible", void 0), ui([t.Property(!1)], n.prototype, "isFormDesignerToolbarVisible", void 0), ui([t.Property(!1)], n.prototype, "enableMultiPageAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableDownload", void 0), ui([t.Property(!0)], n.prototype, "enablePrint", void 0), ui([t.Property(!0)], n.prototype, "enableThumbnail", void 0), ui([t.Property(!1)], n.prototype, "isThumbnailViewOpen", void 0), ui([t.Property(!1)], n.prototype, "isSignatureEditable", void 0), ui([t.Property(!0)], n.prototype, "enableBookmark", void 0), ui([t.Property(!1)], n.prototype, "enableBookmarkStyles", void 0), ui([t.Property(!0)], n.prototype, "enableHyperlink", void 0), ui([t.Property(!0)], n.prototype, "enableHandwrittenSignature", void 0), ui([t.Property(!0)], n.prototype, "enableInkAnnotation", void 0), ui([t.Property(!1)], n.prototype, "restrictZoomRequest", void 0), ui([t.Property("CurrentTab")], n.prototype, "hyperlinkOpenState", void 0), ui([t.Property("RightClick")], n.prototype, "contextMenuOption", void 0), ui([t.Property([])], n.prototype, "disableContextMenuItems", void 0), ui([t.Property({
+            }, wi([t.Property()], n.prototype, "serviceUrl", void 0), wi([t.Property(0)], n.prototype, "pageCount", void 0), wi([t.Property(!1)], n.prototype, "isDocumentEdited", void 0), wi([t.Property(0)], n.prototype, "currentPageNumber", void 0), wi([t.Property()], n.prototype, "documentPath", void 0), wi([t.Property(null)], n.prototype, "exportAnnotationFileName", void 0), wi([t.Property()], n.prototype, "downloadFileName", void 0), wi([t.Property("auto")], n.prototype, "height", void 0), wi([t.Property("auto")], n.prototype, "width", void 0), wi([t.Property(!0)], n.prototype, "enableToolbar", void 0), wi([t.Property(1)], n.prototype, "retryCount", void 0), wi([t.Property(!0)], n.prototype, "showNotificationDialog", void 0), wi([t.Property(!0)], n.prototype, "enableNavigationToolbar", void 0), wi([t.Property(!0)], n.prototype, "enableCommentPanel", void 0), wi([t.Property(!1)], n.prototype, "isCommandPanelOpen", void 0), wi([t.Property(!1)], n.prototype, "enableTextMarkupResizer", void 0), wi([t.Property(!1)], n.prototype, "enableMultiLineOverlap", void 0), wi([t.Property(!1)], n.prototype, "isValidFreeText", void 0), wi([t.Property(!1)], n.prototype, "isAnnotationToolbarOpen", void 0), wi([t.Property(!1)], n.prototype, "isAnnotationToolbarVisible", void 0), wi([t.Property(!1)], n.prototype, "isFormDesignerToolbarVisible", void 0), wi([t.Property(!1)], n.prototype, "enableMultiPageAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableDownload", void 0), wi([t.Property(!0)], n.prototype, "enablePrint", void 0), wi([t.Property(!0)], n.prototype, "enablePrintRotation", void 0), wi([t.Property(!0)], n.prototype, "enableThumbnail", void 0), wi([t.Property(!1)], n.prototype, "isThumbnailViewOpen", void 0), wi([t.Property(!1)], n.prototype, "isSignatureEditable", void 0), wi([t.Property(!0)], n.prototype, "enableBookmark", void 0), wi([t.Property(!1)], n.prototype, "enableBookmarkStyles", void 0), wi([t.Property(!0)], n.prototype, "enableHyperlink", void 0), wi([t.Property(!0)], n.prototype, "enableHandwrittenSignature", void 0), wi([t.Property(!0)], n.prototype, "enableInkAnnotation", void 0), wi([t.Property(!1)], n.prototype, "restrictZoomRequest", void 0), wi([t.Property("CurrentTab")], n.prototype, "hyperlinkOpenState", void 0), wi([t.Property("RightClick")], n.prototype, "contextMenuOption", void 0), wi([t.Property([])], n.prototype, "disableContextMenuItems", void 0), wi([t.Property({
                 name: "",
                 id: "",
                 type: "",
@@ -23779,7 +23990,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 maxLength: 0,
                 isRequired: !1,
                 isPrint: !1,
-                tooltip: "",
+                tooltip: "Operador",
                 options: [],
                 signatureIndicatorSettings: {
                     opacity: 1,
@@ -23790,18 +24001,18 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     text: null,
                     color: "black"
                 }
-            })], n.prototype, "formFieldCollections", void 0), ui([t.Property(!0)], n.prototype, "enableNavigation", void 0), ui([t.Property(!0)], n.prototype, "enableAutoComplete", void 0), ui([t.Property(!0)], n.prototype, "enableMagnification", void 0), ui([t.Property(!1)], n.prototype, "enableShapeLabel", void 0), ui([t.Property(!0)], n.prototype, "enableImportAnnotationMeasurement", void 0), ui([t.Property(!0)], n.prototype, "enablePinchZoom", void 0), ui([t.Property(!0)], n.prototype, "enableTextSelection", void 0), ui([t.Property(!0)], n.prototype, "enableTextSearch", void 0), ui([t.Property(!0)], n.prototype, "enableAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableFormFields", void 0), ui([t.Property(!0)], n.prototype, "enableFormDesigner", void 0), ui([t.Property(!1)], n.prototype, "designerMode", void 0), ui([t.Property(!1)], n.prototype, "enableFormFieldsValidation", void 0), ui([t.Property(!1)], n.prototype, "isFormFieldDocument", void 0), ui([t.Property(!1)], n.prototype, "enableDesktopMode", void 0), ui([t.Property(!1)], n.prototype, "hideSaveSignature", void 0), ui([t.Property(!0)], n.prototype, "enableFreeText", void 0), ui([t.Property(!0)], n.prototype, "enableTextMarkupAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableShapeAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableMeasureAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableStampAnnotations", void 0), ui([t.Property(!0)], n.prototype, "enableStickyNotesAnnotation", void 0), ui([t.Property(!0)], n.prototype, "enableAnnotationToolbar", void 0), ui([t.Property(!0)], n.prototype, "enableFormDesignerToolbar", void 0), ui([t.Property(!1)], n.prototype, "isBookmarkPanelOpen", void 0), ui([t.Property(!1)], n.prototype, "isInitialFieldToolbarSelection", void 0), ui([t.Property("TextSelection")], n.prototype, "interactionMode", void 0), ui([t.Property("Default")], n.prototype, "zoomMode", void 0), ui([t.Property("Default")], n.prototype, "signatureFitMode", void 0), ui([t.Property("Default")], n.prototype, "printMode", void 0), ui([t.Property(0)], n.prototype, "zoomValue", void 0), ui([t.Property(!0)], n.prototype, "enableZoomOptimization", void 0), ui([t.Property(!1)], n.prototype, "isExtractText", void 0), ui([t.Property(!1)], n.prototype, "isMaintainSelection", void 0), ui([t.Property("M/d/yyyy h:mm:ss a")], n.prototype, "dateTimeFormat", void 0), ui([t.Property({
+            })], n.prototype, "formFieldCollections", void 0), wi([t.Property(!0)], n.prototype, "enableNavigation", void 0), wi([t.Property(!0)], n.prototype, "enableAutoComplete", void 0), wi([t.Property(!0)], n.prototype, "enableMagnification", void 0), wi([t.Property(!1)], n.prototype, "enableShapeLabel", void 0), wi([t.Property(!0)], n.prototype, "enableImportAnnotationMeasurement", void 0), wi([t.Property(!0)], n.prototype, "enablePinchZoom", void 0), wi([t.Property(!0)], n.prototype, "enableTextSelection", void 0), wi([t.Property(!0)], n.prototype, "enableTextSearch", void 0), wi([t.Property(!0)], n.prototype, "enableAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableFormFields", void 0), wi([t.Property(!0)], n.prototype, "enableFormDesigner", void 0), wi([t.Property(!1)], n.prototype, "designerMode", void 0), wi([t.Property(!1)], n.prototype, "enableFormFieldsValidation", void 0), wi([t.Property(!1)], n.prototype, "isFormFieldDocument", void 0), wi([t.Property(!1)], n.prototype, "enableDesktopMode", void 0), wi([t.Property(!1)], n.prototype, "hideSaveSignature", void 0), wi([t.Property(!0)], n.prototype, "enableFreeText", void 0), wi([t.Property(!0)], n.prototype, "enableTextMarkupAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableShapeAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableMeasureAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableStampAnnotations", void 0), wi([t.Property(!0)], n.prototype, "enableStickyNotesAnnotation", void 0), wi([t.Property(!0)], n.prototype, "enableAnnotationToolbar", void 0), wi([t.Property(!0)], n.prototype, "enableFormDesignerToolbar", void 0), wi([t.Property(!1)], n.prototype, "isBookmarkPanelOpen", void 0), wi([t.Property(!1)], n.prototype, "isInitialFieldToolbarSelection", void 0), wi([t.Property("TextSelection")], n.prototype, "interactionMode", void 0), wi([t.Property("Default")], n.prototype, "zoomMode", void 0), wi([t.Property("Default")], n.prototype, "signatureFitMode", void 0), wi([t.Property("Default")], n.prototype, "printMode", void 0), wi([t.Property(0)], n.prototype, "zoomValue", void 0), wi([t.Property(!0)], n.prototype, "enableZoomOptimization", void 0), wi([t.Property(!1)], n.prototype, "isExtractText", void 0), wi([t.Property(!1)], n.prototype, "isMaintainSelection", void 0), wi([t.Property("M/d/yyyy h:mm:ss a")], n.prototype, "dateTimeFormat", void 0), wi([t.Property({
                 showTooltip: !0,
                 toolbarItems: ["OpenOption", "UndoRedoTool", "PageNavigationTool", "MagnificationTool", "PanTool", "SelectionTool", "CommentTool", "SubmitForm", "AnnotationEditTool", "FormDesignerEditTool", "FreeTextAnnotationOption", "InkAnnotationOption", "ShapeAnnotationOption", "StampAnnotation", "SignatureOption", "SearchOption", "PrintOption", "DownloadOption"],
                 annotationToolbarItems: ["HighlightTool", "UnderlineTool", "StrikethroughTool", "ColorEditTool", "OpacityEditTool", "AnnotationDeleteTool", "StampAnnotationTool", "HandWrittenSignatureTool", "InkAnnotationTool", "ShapeTool", "CalibrateTool", "StrokeColorEditTool", "ThicknessEditTool", "FreeTextAnnotationTool", "FontFamilyAnnotationTool", "FontSizeAnnotationTool", "FontStylesAnnotationTool", "FontAlignAnnotationTool", "FontColorAnnotationTool", "CommentPanelTool"],
                 formDesignerToolbarItems: ["TextboxTool", "PasswordTool", "CheckBoxTool", "RadioButtonTool", "DropdownTool", "ListboxTool", "DrawSignatureTool", "DeleteTool"]
-            })], n.prototype, "toolbarSettings", void 0), ui([t.Property({
+            })], n.prototype, "toolbarSettings", void 0), wi([t.Property({
                 ajaxHeaders: [],
                 withCredentials: !1
-            })], n.prototype, "ajaxRequestSettings", void 0), ui([t.Property({
+            })], n.prototype, "ajaxRequestSettings", void 0), wi([t.Property({
                 customStampName: "",
                 customStampImageSource: ""
-            })], n.prototype, "customStamp", void 0), ui([t.Property({
+            })], n.prototype, "customStamp", void 0), wi([t.Property({
                 load: "Load",
                 renderPages: "RenderPdfPages",
                 unload: "Unload",
@@ -23814,7 +24025,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 importFormFields: "ImportFormFields",
                 exportFormFields: "ExportFormFields",
                 renderTexts: "RenderPdfTexts"
-            })], n.prototype, "serverActionSettings", void 0), ui([t.Property({
+            })], n.prototype, "serverActionSettings", void 0), wi([t.Property({
                 signatureIndicatorSettings: {
                     opacity: 1,
                     backgroundColor: "orange",
@@ -23828,7 +24039,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     displayMode: e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload,
                     hideSaveSignature: !1
                 }
-            })], n.prototype, "signatureFieldSettings", void 0), ui([t.Property({
+            })], n.prototype, "signatureFieldSettings", void 0), wi([t.Property({
                 signatureIndicatorSettings: {
                     opacity: 1,
                     backgroundColor: "orange",
@@ -23842,7 +24053,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     displayMode: e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload,
                     hideSaveSignature: !1
                 }
-            })], n.prototype, "initialFieldSettings", void 0), ui([t.Property({
+            })], n.prototype, "initialFieldSettings", void 0), wi([t.Property({
                 opacity: 1,
                 color: "#FFDF56",
                 author: "Guest",
@@ -23861,7 +24072,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 enableTextMarkupResizer: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "highlightSettings", void 0), ui([t.Property({
+            })], n.prototype, "highlightSettings", void 0), wi([t.Property({
                 opacity: 1,
                 color: "#ff0000",
                 author: "Guest",
@@ -23880,7 +24091,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 enableTextMarkupResizer: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "strikethroughSettings", void 0), ui([t.Property({
+            })], n.prototype, "strikethroughSettings", void 0), wi([t.Property({
                 opacity: 1,
                 color: "#00ff00",
                 author: "Guest",
@@ -23899,7 +24110,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 enableTextMarkupResizer: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "underlineSettings", void 0), ui([t.Property({
+            })], n.prototype, "underlineSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -23926,7 +24137,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "lineSettings", void 0), ui([t.Property({
+            })], n.prototype, "lineSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -23953,7 +24164,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "arrowSettings", void 0), ui([t.Property({
+            })], n.prototype, "arrowSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -23977,7 +24188,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "rectangleSettings", void 0), ui([t.Property({
+            })], n.prototype, "rectangleSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 borderColor: "#ff0000",
@@ -23986,7 +24197,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 labelHeight: 24.6,
                 labelMaxWidth: 151,
                 labelContent: "Label"
-            })], n.prototype, "shapeLabelSettings", void 0), ui([t.Property({
+            })], n.prototype, "shapeLabelSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24010,7 +24221,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "circleSettings", void 0), ui([t.Property({
+            })], n.prototype, "circleSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24034,7 +24245,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "polygonSettings", void 0), ui([t.Property({
+            })], n.prototype, "polygonSettings", void 0), wi([t.Property({
                 opacity: 1,
                 author: "Guest",
                 annotationSelectorSettings: {
@@ -24058,7 +24269,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 standardBusinessStamps: [e.StandardBusinessStampItem.Approved, e.StandardBusinessStampItem.NotApproved, e.StandardBusinessStampItem.Draft, e.StandardBusinessStampItem.Final, e.StandardBusinessStampItem.Completed, e.StandardBusinessStampItem.Confidential, e.StandardBusinessStampItem.ForPublicRelease, e.StandardBusinessStampItem.NotForPublicRelease, e.StandardBusinessStampItem.ForComment, e.StandardBusinessStampItem.Void, e.StandardBusinessStampItem.PreliminaryResults, e.StandardBusinessStampItem.InformationOnly],
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "stampSettings", void 0), ui([t.Property({
+            })], n.prototype, "stampSettings", void 0), wi([t.Property({
                 opacity: 1,
                 author: "Guest",
                 width: 0,
@@ -24073,7 +24284,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 enableCustomStamp: !0,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "customStampSettings", void 0), ui([t.Property({
+            })], n.prototype, "customStampSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24102,7 +24313,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 resizeCursorType: e.CursorType.move,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "distanceSettings", void 0), ui([t.Property({
+            })], n.prototype, "distanceSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24129,7 +24340,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 },
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "perimeterSettings", void 0), ui([t.Property({
+            })], n.prototype, "perimeterSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24153,7 +24364,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 },
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "areaSettings", void 0), ui([t.Property({
+            })], n.prototype, "areaSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24177,7 +24388,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "radiusSettings", void 0), ui([t.Property({
+            })], n.prototype, "radiusSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 strokeColor: "#ff0000",
@@ -24201,7 +24412,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 },
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "volumeSettings", void 0), ui([t.Property({
+            })], n.prototype, "volumeSettings", void 0), wi([t.Property({
                 author: "Guest",
                 opacity: 1,
                 annotationSelectorSettings: {
@@ -24218,7 +24429,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "stickyNotesSettings", void 0), ui([t.Property({
+            })], n.prototype, "stickyNotesSettings", void 0), wi([t.Property({
                 opacity: 1,
                 fillColor: "#ffffff00",
                 borderColor: "#ffffff00",
@@ -24252,12 +24463,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 allowedInteractions: ["None"],
                 isPrint: !0,
                 isReadonly: !1
-            })], n.prototype, "freeTextSettings", void 0), ui([t.Property({
+            })], n.prototype, "freeTextSettings", void 0), wi([t.Property({
                 conversionUnit: "in",
                 displayUnit: "in",
                 scaleRatio: 1,
                 depth: 96
-            })], n.prototype, "measurementSettings", void 0), ui([t.Property({
+            })], n.prototype, "measurementSettings", void 0), wi([t.Property({
                 selectionBorderColor: "",
                 resizerBorderColor: "black",
                 resizerFillColor: "#FF4081",
@@ -24267,16 +24478,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 selectorLineDashArray: [],
                 resizerLocation: e.AnnotationResizerLocation.Corners | e.AnnotationResizerLocation.Edges,
                 resizerCursorType: null
-            })], n.prototype, "annotationSelectorSettings", void 0), ui([t.Property({
+            })], n.prototype, "annotationSelectorSettings", void 0), wi([t.Property({
                 searchHighlightColor: "#fdd835",
                 searchColor: "#8b4c12"
-            })], n.prototype, "textSearchColorSettings", void 0), ui([t.Property({
+            })], n.prototype, "textSearchColorSettings", void 0), wi([t.Property({
                 displayMode: e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload,
                 hideSaveSignature: !1
-            })], n.prototype, "signatureDialogSettings", void 0), ui([t.Property({
+            })], n.prototype, "signatureDialogSettings", void 0), wi([t.Property({
                 displayMode: e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload,
                 hideSaveSignature: !1
-            })], n.prototype, "initialDialogSettings", void 0), ui([t.Property({
+            })], n.prototype, "initialDialogSettings", void 0), wi([t.Property({
                 signatureItem: ["Signature", "Initial"],
                 saveSignatureLimit: 1,
                 saveInitialLimit: 1,
@@ -24305,7 +24516,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     displayMode: e.DisplayMode.Draw | e.DisplayMode.Text | e.DisplayMode.Upload,
                     hideSaveSignature: !1
                 }
-            })], n.prototype, "handWrittenSignatureSettings", void 0), ui([t.Property({
+            })], n.prototype, "handWrittenSignatureSettings", void 0), wi([t.Property({
                 author: "Guest",
                 opacity: 1,
                 strokeColor: "#ff0000",
@@ -24324,7 +24535,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 isLock: !1,
                 allowedInteractions: ["None"],
                 isPrint: !0
-            })], n.prototype, "inkAnnotationSettings", void 0), ui([t.Property({
+            })], n.prototype, "inkAnnotationSettings", void 0), wi([t.Property({
                 author: "Guest",
                 minHeight: 0,
                 minWidth: 0,
@@ -24334,13 +24545,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 skipPrint: !1,
                 skipDownload: !1,
                 allowedInteractions: ["None"]
-            })], n.prototype, "annotationSettings", void 0), ui([t.Property({
+            })], n.prototype, "annotationSettings", void 0), wi([t.Property({
                 enableTileRendering: !0,
                 x: 0,
                 y: 0
-            })], n.prototype, "tileRenderingSettings", void 0), ui([t.Property({
+            })], n.prototype, "tileRenderingSettings", void 0), wi([t.Property({
                 delayPageRequestTimeOnScroll: 100
-            })], n.prototype, "scrollSettings", void 0), ui([t.Property({
+            })], n.prototype, "scrollSettings", void 0), wi([t.Property({
                 name: "",
                 value: "",
                 fontFamily: "Helvetica",
@@ -24355,8 +24566,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 maxLength: 0,
                 isRequired: !1,
                 isPrint: !1,
-                tooltip: ""
-            })], n.prototype, "textFieldSettings", void 0), ui([t.Property({
+                tooltip: "Operador"
+            })], n.prototype, "textFieldSettings", void 0), wi([t.Property({
                 name: "",
                 value: "",
                 fontFamily: "Helvetica",
@@ -24371,8 +24582,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 maxLength: 0,
                 isRequired: !1,
                 isPrint: !1,
-                tooltip: ""
-            })], n.prototype, "passwordFieldSettings", void 0), ui([t.Property({
+                tooltip: "Operador"
+            })], n.prototype, "passwordFieldSettings", void 0), wi([t.Property({
                 name: "",
                 isChecked: !1,
                 backgroundColor: "white",
@@ -24380,8 +24591,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 visibility: "visible",
                 rol: "Operador", // Added rol property
                 isPrint: !1,
-                tooltip: ""
-            })], n.prototype, "checkBoxFieldSettings", void 0), ui([t.Property({
+                tooltip: "Operador"
+            })], n.prototype, "checkBoxFieldSettings", void 0), wi([t.Property({
                 name: "",
                 isSelected: !1,
                 backgroundColor: "white",
@@ -24389,8 +24600,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 visibility: "visible",
                 rol: "Operador", // Added rol property
                 isPrint: !1,
-                tooltip: ""
-            })], n.prototype, "radioButtonFieldSettings", void 0), ui([t.Property({
+                tooltip: "Operador"
+            })], n.prototype, "radioButtonFieldSettings", void 0), wi([t.Property({
                 name: "",
                 value: "",
                 fontFamily: "Helvetica",
@@ -24404,9 +24615,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 rol: "Operador", // Added rol property
                 isRequired: !1,
                 isPrint: !1,
-                tooltip: "",
+                tooltip: "Operador",
                 options: []
-            })], n.prototype, "DropdownFieldSettings", void 0), ui([t.Property({
+            })], n.prototype, "DropdownFieldSettings", void 0), wi([t.Property({
                 name: "",
                 value: "",
                 fontFamily: "Helvetica",
@@ -24420,14 +24631,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 rol: "Operador", // Added rol property
                 isRequired: !1,
                 isPrint: !1,
-                tooltip: "",
+                tooltip: "Operador",
                 options: []
-            })], n.prototype, "listBoxFieldSettings", void 0), ui([t.Property({
+            })], n.prototype, "listBoxFieldSettings", void 0), wi([t.Property({
                 contextMenuAction: "RightClick",
                 contextMenuItems: [e.ContextMenuItem.Comment, e.ContextMenuItem.Copy, e.ContextMenuItem.Cut, e.ContextMenuItem.Delete, e.ContextMenuItem.Highlight, e.ContextMenuItem.Paste, e.ContextMenuItem.Properties, e.ContextMenuItem.ScaleRatio, e.ContextMenuItem.Strikethrough, e.ContextMenuItem.Underline]
-            })], n.prototype, "contextMenuSettings", void 0), ui([t.Complex({}, Ke)], n.prototype, "selectedItems", void 0), ui([t.Event()], n.prototype, "created", void 0), ui([t.Event()], n.prototype, "documentLoad", void 0), ui([t.Event()], n.prototype, "documentUnload", void 0), ui([t.Event()], n.prototype, "documentLoadFailed", void 0), ui([t.Event()], n.prototype, "ajaxRequestFailed", void 0), ui([t.Event()], n.prototype, "ajaxRequestSuccess", void 0), ui([t.Event()], n.prototype, "validateFormFields", void 0), ui([t.Event()], n.prototype, "pageClick", void 0), ui([t.Event()], n.prototype, "pageChange", void 0), ui([t.Event()], n.prototype, "hyperlinkClick", void 0), ui([t.Event()], n.prototype, "hyperlinkMouseOver", void 0), ui([t.Event()], n.prototype, "zoomChange", void 0), ui([t.Event()], n.prototype, "annotationAdd", void 0), ui([t.Event()], n.prototype, "annotationRemove", void 0), ui([t.Event()], n.prototype, "annotationPropertiesChange", void 0), ui([t.Event()], n.prototype, "annotationResize", void 0), ui([t.Event()], n.prototype, "addSignature", void 0), ui([t.Event()], n.prototype, "removeSignature", void 0), ui([t.Event()], n.prototype, "moveSignature", void 0), ui([t.Event()], n.prototype, "signaturePropertiesChange", void 0), ui([t.Event()], n.prototype, "resizeSignature", void 0), ui([t.Event()], n.prototype, "signatureSelect", void 0), ui([t.Event()], n.prototype, "annotationSelect", void 0), ui([t.Event()], n.prototype, "annotationUnSelect", void 0), ui([t.Event()], n.prototype, "annotationDoubleClick", void 0), ui([t.Event()], n.prototype, "annotationMove", void 0), ui([t.Event()], n.prototype, "annotationMouseover", void 0), ui([t.Event()], n.prototype, "annotationMouseLeave", void 0), ui([t.Event()], n.prototype, "pageMouseover", void 0), ui([t.Event()], n.prototype, "importStart", void 0), ui([t.Event()], n.prototype, "exportStart", void 0), ui([t.Event()], n.prototype, "importSuccess", void 0), ui([t.Event()], n.prototype, "exportSuccess", void 0), ui([t.Event()], n.prototype, "importFailed", void 0), ui([t.Event()], n.prototype, "exportFailed", void 0), ui([t.Event()], n.prototype, "extractTextCompleted", void 0), ui([t.Event()], n.prototype, "thumbnailClick", void 0), ui([t.Event()], n.prototype, "bookmarkClick", void 0), ui([t.Event()], n.prototype, "textSelectionStart", void 0), ui([t.Event()], n.prototype, "textSelectionEnd", void 0), ui([t.Event()], n.prototype, "downloadStart", void 0), ui([t.Event()], n.prototype, "buttonFieldClick", void 0), ui([t.Event()], n.prototype, "formFieldClick", void 0), ui([t.Event()], n.prototype, "downloadEnd", void 0), ui([t.Event()], n.prototype, "printStart", void 0), ui([t.Event()], n.prototype, "printEnd", void 0), ui([t.Event()], n.prototype, "textSearchStart", void 0), ui([t.Event()], n.prototype, "textSearchComplete", void 0), ui([t.Event()], n.prototype, "textSearchHighlight", void 0), ui([t.Event()], n.prototype, "ajaxRequestInitiate", void 0), ui([t.Event()], n.prototype, "commentAdd", void 0), ui([t.Event()], n.prototype, "commentEdit", void 0), ui([t.Event()], n.prototype, "commentDelete", void 0), ui([t.Event()], n.prototype, "commentSelect", void 0), ui([t.Event()], n.prototype, "commentStatusChanged", void 0), ui([t.Event()], n.prototype, "beforeAddFreeText", void 0), ui([t.Event()], n.prototype, "formFieldFocusOut", void 0), ui([t.Event()], n.prototype, "formFieldAdd", void 0), ui([t.Event()], n.prototype, "formFieldRemove", void 0), ui([t.Event()], n.prototype, "formFieldPropertiesChange", void 0), ui([t.Event()], n.prototype, "formFieldMouseLeave", void 0), ui([t.Event()], n.prototype, "formFieldMouseover", void 0), ui([t.Event()], n.prototype, "formFieldMove", void 0), ui([t.Event()], n.prototype, "formFieldResize", void 0), ui([t.Event()], n.prototype, "formFieldSelect", void 0), ui([t.Event()], n.prototype, "formFieldUnselect", void 0), ui([t.Event()], n.prototype, "formFieldDoubleClick", void 0), ui([t.Collection([], Je)], n.prototype, "annotations", void 0), ui([t.Collection([], He)], n.prototype, "formFields", void 0), ui([t.Property()], n.prototype, "drawingObject", void 0), n = ui([t.NotifyPropertyChanges], n)
+            })], n.prototype, "contextMenuSettings", void 0), wi([t.Complex({}, $e)], n.prototype, "selectedItems", void 0), wi([t.Event()], n.prototype, "created", void 0), wi([t.Event()], n.prototype, "documentLoad", void 0), wi([t.Event()], n.prototype, "documentUnload", void 0), wi([t.Event()], n.prototype, "documentLoadFailed", void 0), wi([t.Event()], n.prototype, "ajaxRequestFailed", void 0), wi([t.Event()], n.prototype, "ajaxRequestSuccess", void 0), wi([t.Event()], n.prototype, "validateFormFields", void 0), wi([t.Event()], n.prototype, "pageClick", void 0), wi([t.Event()], n.prototype, "pageChange", void 0), wi([t.Event()], n.prototype, "hyperlinkClick", void 0), wi([t.Event()], n.prototype, "hyperlinkMouseOver", void 0), wi([t.Event()], n.prototype, "zoomChange", void 0), wi([t.Event()], n.prototype, "annotationAdd", void 0), wi([t.Event()], n.prototype, "annotationRemove", void 0), wi([t.Event()], n.prototype, "annotationPropertiesChange", void 0), wi([t.Event()], n.prototype, "annotationResize", void 0), wi([t.Event()], n.prototype, "addSignature", void 0), wi([t.Event()], n.prototype, "removeSignature", void 0), wi([t.Event()], n.prototype, "moveSignature", void 0), wi([t.Event()], n.prototype, "signaturePropertiesChange", void 0), wi([t.Event()], n.prototype, "resizeSignature", void 0), wi([t.Event()], n.prototype, "signatureSelect", void 0), wi([t.Event()], n.prototype, "annotationSelect", void 0), wi([t.Event()], n.prototype, "annotationUnSelect", void 0), wi([t.Event()], n.prototype, "annotationDoubleClick", void 0), wi([t.Event()], n.prototype, "annotationMove", void 0), wi([t.Event()], n.prototype, "annotationMouseover", void 0), wi([t.Event()], n.prototype, "annotationMouseLeave", void 0), wi([t.Event()], n.prototype, "pageMouseover", void 0), wi([t.Event()], n.prototype, "importStart", void 0), wi([t.Event()], n.prototype, "exportStart", void 0), wi([t.Event()], n.prototype, "importSuccess", void 0), wi([t.Event()], n.prototype, "exportSuccess", void 0), wi([t.Event()], n.prototype, "importFailed", void 0), wi([t.Event()], n.prototype, "exportFailed", void 0), wi([t.Event()], n.prototype, "extractTextCompleted", void 0), wi([t.Event()], n.prototype, "thumbnailClick", void 0), wi([t.Event()], n.prototype, "bookmarkClick", void 0), wi([t.Event()], n.prototype, "textSelectionStart", void 0), wi([t.Event()], n.prototype, "textSelectionEnd", void 0), wi([t.Event()], n.prototype, "downloadStart", void 0), wi([t.Event()], n.prototype, "buttonFieldClick", void 0), wi([t.Event()], n.prototype, "formFieldClick", void 0), wi([t.Event()], n.prototype, "downloadEnd", void 0), wi([t.Event()], n.prototype, "printStart", void 0), wi([t.Event()], n.prototype, "printEnd", void 0), wi([t.Event()], n.prototype, "textSearchStart", void 0), wi([t.Event()], n.prototype, "textSearchComplete", void 0), wi([t.Event()], n.prototype, "textSearchHighlight", void 0), wi([t.Event()], n.prototype, "ajaxRequestInitiate", void 0), wi([t.Event()], n.prototype, "commentAdd", void 0), wi([t.Event()], n.prototype, "commentEdit", void 0), wi([t.Event()], n.prototype, "commentDelete", void 0), wi([t.Event()], n.prototype, "commentSelect", void 0), wi([t.Event()], n.prototype, "commentStatusChanged", void 0), wi([t.Event()], n.prototype, "beforeAddFreeText", void 0), wi([t.Event()], n.prototype, "formFieldFocusOut", void 0), wi([t.Event()], n.prototype, "formFieldAdd", void 0), wi([t.Event()], n.prototype, "formFieldRemove", void 0), wi([t.Event()], n.prototype, "formFieldPropertiesChange", void 0), wi([t.Event()], n.prototype, "formFieldMouseLeave", void 0), wi([t.Event()], n.prototype, "formFieldMouseover", void 0), wi([t.Event()], n.prototype, "formFieldMove", void 0), wi([t.Event()], n.prototype, "formFieldResize", void 0), wi([t.Event()], n.prototype, "formFieldSelect", void 0), wi([t.Event()], n.prototype, "formFieldUnselect", void 0), wi([t.Event()], n.prototype, "formFieldDoubleClick", void 0), wi([t.Collection([], Ge)], n.prototype, "annotations", void 0), wi([t.Collection([], Ze)], n.prototype, "formFields", void 0), wi([t.Property()], n.prototype, "drawingObject", void 0), n = wi([t.NotifyPropertyChanges], n)
         }(t.Component),
-        dn = function() {
+        hn = function() {
             function e(e, t) {
                 var i = this;
                 this.childNavigateCount = 0, this.bookmarkClick = function(e) {
@@ -24435,8 +24646,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     else {
                         var t = e.data.Id;
                         i.childNavigateCount = 0, i.pdfViewerBase.navigationPane.goBackToToolbar();
-                        var n = i.treeObj.getTreeData(e.node);
-                        i.navigateToBookmark(t, e.node.textContent, n[0].FileName)
+                        var n = i.bookmarkList.getSelectedItems();
+                        i.navigateToBookmark(t, e.text, n.data.FileName)
                     }
                     return !1
                 }, this.nodeClick = function(e) {
@@ -24476,7 +24687,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         elementId: this.pdfViewer.element.id,
                         uniqueId: this.pdfViewerBase.documentId
                     };
-                this.pdfViewerBase.jsonDocumentId && (i.documentId = this.pdfViewerBase.jsonDocumentId), this.pdfViewer.enableBookmarkStyles && (i.bookmarkStyles = this.pdfViewer.enableBookmarkStyles), this.bookmarkRequestHandler = new ti(this.pdfViewer), this.bookmarkRequestHandler.url = e.pdfViewer.serviceUrl + "/Bookmarks", this.bookmarkRequestHandler.responseType = "json", this.bookmarkRequestHandler.send(i), this.bookmarkRequestHandler.onSuccess = function(i) {
+                this.pdfViewerBase.jsonDocumentId && (i.documentId = this.pdfViewerBase.jsonDocumentId), this.pdfViewer.enableBookmarkStyles && (i.bookmarkStyles = this.pdfViewer.enableBookmarkStyles), this.bookmarkRequestHandler = new si(this.pdfViewer), this.bookmarkRequestHandler.url = e.pdfViewer.serviceUrl + "/Bookmarks", this.bookmarkRequestHandler.responseType = "json", this.bookmarkRequestHandler.send(i), this.bookmarkRequestHandler.onSuccess = function(i) {
                     e.pdfViewerBase.navigationPane && e.pdfViewerBase.navigationPane.disableBookmarkButton();
                     var n = i.data;
                     if (n) {
@@ -24593,7 +24804,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "BookmarkView"
             }, e
         }(),
-        un = function() {
+        wn = function() {
             function e(e, t) {
                 var i = this;
                 this.isTextSelection = !1, this.selectionStartPage = null, this.isBackwardPropagatedSelection = !1, this.contextMenuHeight = 144, this.selectionRangeArray = [], this.selectionAnchorTouch = null, this.selectionFocusTouch = null, this.scrollMoveTimer = 0, this.isMouseLeaveSelection = !1, this.isTouchSelection = !1, this.previousScrollDifference = 0, this.topStoreLeft = null, this.topStoreRight = null, this.isTextSearched = !1, this.isSelectionStartTriggered = !1, this.onLeftTouchSelectElementTouchStart = function(e) {
@@ -24621,12 +24832,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 var p = i.dropDivElementLeft.getBoundingClientRect(),
                                     M = i.pdfViewerBase.pageSize[i.pdfViewerBase.currentPageNumber - 1].top,
                                     h = i.getClientValueTop(r, i.pdfViewerBase.currentPageNumber - 1),
-                                    L = a - i.pdfViewerBase.getElement("_pageDiv_" + (i.pdfViewerBase.currentPageNumber - 1)).getBoundingClientRect().left;
+                                    w = a - i.pdfViewerBase.getElement("_pageDiv_" + (i.pdfViewerBase.currentPageNumber - 1)).getBoundingClientRect().left;
                                 i.dropDivElementLeft.style.top = M * i.pdfViewerBase.getZoomFactor() + h + "px", i.topStoreLeft = {
                                     pageTop: M,
                                     topClientValue: i.getMagnifiedValue(h),
                                     pageNumber: i.pdfViewerBase.currentPageNumber - 1,
-                                    left: i.getMagnifiedValue(L),
+                                    left: i.getMagnifiedValue(w),
                                     isHeightNeeded: !1
                                 }, i.dropDivElementLeft.style.left = a - i.pdfViewerBase.viewerContainer.getBoundingClientRect().left - p.width / 2 + "px", i.previousScrollDifference = l
                             }
@@ -24650,12 +24861,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     M = i.getClientValueTop(r, i.pdfViewerBase.currentPageNumber - 1),
                                     h = i.dropDivElementRight.getBoundingClientRect();
                                 i.dropDivElementRight.style.top = p * i.pdfViewerBase.getZoomFactor() + M + "px";
-                                var L = a - i.pdfViewerBase.getElement("_pageDiv_" + (i.pdfViewerBase.currentPageNumber - 1)).getBoundingClientRect().left;
+                                var w = a - i.pdfViewerBase.getElement("_pageDiv_" + (i.pdfViewerBase.currentPageNumber - 1)).getBoundingClientRect().left;
                                 i.topStoreRight = {
                                     pageTop: p,
                                     topClientValue: i.getMagnifiedValue(M),
                                     pageNumber: i.pdfViewerBase.currentPageNumber - 1,
-                                    left: i.getMagnifiedValue(L),
+                                    left: i.getMagnifiedValue(w),
                                     isHeightNeeded: !1
                                 }, i.dropDivElementRight.style.left = a - i.pdfViewerBase.viewerContainer.getBoundingClientRect().left - h.width / 2 + "px", i.previousScrollDifference = l
                             }
@@ -24684,9 +24895,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var M = document.getElementById(this.pdfViewer.element.id + "_droplet_left");
                         if (this.pdfViewerBase.isSelection && a && a.rangeCount > 0) {
                             var h = a.getRangeAt(0).getBoundingClientRect(),
-                                L = h.left,
-                                w = h.top;
-                            this.pdfViewer.annotation.textMarkupAnnotationModule.updateLeftposition(L, w), this.pdfViewerBase.isSelection = !1
+                                w = h.left,
+                                L = h.top;
+                            this.pdfViewer.annotation.textMarkupAnnotationModule.updateLeftposition(w, L), this.pdfViewerBase.isSelection = !1
                         } else M && "none" === M.style.display && this.pdfViewer.annotation.textMarkupAnnotationModule.updateLeftposition(t, i);
                         this.pdfViewer.annotation.textMarkupAnnotationModule.updatePosition(t, i)
                     }
@@ -24708,7 +24919,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }
                     s.selectNodeContents(o);
                     for (var l = 0, d = s.endOffset; l < d;) {
-                        if (s.setStart(o, l), s.setEnd(o, l + 1), (L = s.getBoundingClientRect()).left <= t && L.right >= t && parseInt(L.top.toString()) <= i && L.bottom >= i) return n ? (null !== a.anchorNode && a.anchorNode.parentNode.classList.contains("e-pv-text") && s.setStart(a.anchorNode, a.anchorOffset), a.removeAllRanges(), a.addRange(s), a.extend(o, l)) : a.focusNode && (s.setEnd(a.focusNode, a.focusOffset), a.removeAllRanges(), a.addRange(s)), this.isTextSelection || (this.selectionStartPage = this.pdfViewerBase.currentPageNumber - 1), this.isTextSelection = !0, s.detach(), !0;
+                        if (s.setStart(o, l), s.setEnd(o, l + 1), (w = s.getBoundingClientRect()).left <= t && w.right >= t && parseInt(w.top.toString()) <= i && w.bottom >= i) return n ? (null !== a.anchorNode && a.anchorNode.parentNode.classList.contains("e-pv-text") && s.setStart(a.anchorNode, a.anchorOffset), a.removeAllRanges(), a.addRange(s), a.extend(o, l)) : a.focusNode && (s.setEnd(a.focusNode, a.focusOffset), a.removeAllRanges(), a.addRange(s)), this.isTextSelection || (this.selectionStartPage = this.pdfViewerBase.currentPageNumber - 1), this.isTextSelection = !0, s.detach(), !0;
                         l += 1
                     }
                     if (this.pdfViewerBase.isSelection) {
@@ -24721,8 +24932,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 } else
                     for (var h = 0; h < o.childNodes.length; h++)
                         if (o.childNodes[h].nodeType === o.TEXT_NODE) {
-                            var L = (s = this.getSelectionRange(h, o)).getBoundingClientRect();
-                            L.left <= t && L.right >= t && parseInt(L.top.toString()) <= i && L.bottom >= i ? (s.detach(), this.textSelectionOnDrag(o.childNodes[h], t, i, n)) : s.detach()
+                            var w = (s = this.getSelectionRange(h, o)).getBoundingClientRect();
+                            w.left <= t && w.right >= t && parseInt(w.top.toString()) <= i && w.bottom >= i ? (s.detach(), this.textSelectionOnDrag(o.childNodes[h], t, i, n)) : s.detach()
                         } return null
             }, e.prototype.selectTextRegion = function(e, t) {
                 for (var i = null, n = e - 1, o = 0; o < t.length; o++) {
@@ -24736,11 +24947,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             if (u[p]) {
                                 var M = u[p].getBoundingClientRect(),
                                     h = this.getClientValueTop(M.top, n),
-                                    L = M.left - this.pdfViewerBase.getElement("_pageDiv_" + n).getBoundingClientRect().left,
-                                    w = L + M.width,
+                                    w = M.left - this.pdfViewerBase.getElement("_pageDiv_" + n).getBoundingClientRect().left,
+                                    L = w + M.width,
                                     c = parseInt(u[p].style.left),
                                     C = parseInt(u[p].style.top),
-                                    g = this.checkLeftBounds(L, c, w, a),
+                                    g = this.checkLeftBounds(w, c, L, a),
                                     m = this.checkTopBounds(h, C, r);
                                 if (g && m) {
                                     i = u[p];
@@ -24776,9 +24987,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.selectAWord = function(e, i, n, o) {
                 if (e.nodeType === e.TEXT_NODE) {
                     var s = window.getSelection();
-                    (w = e.ownerDocument.createRange()).selectNodeContents(e);
-                    for (var a = 0, r = w.endOffset; a < r;) {
-                        if (w.setStart(e, a), w.setEnd(e, a + 1), (c = w.getBoundingClientRect()).left <= i && c.right >= i && c.top <= n && c.bottom >= n) {
+                    (L = e.ownerDocument.createRange()).selectNodeContents(e);
+                    for (var a = 0, r = L.endOffset; a < r;) {
+                        if (L.setStart(e, a), L.setEnd(e, a + 1), (c = L.getBoundingClientRect()).left <= i && c.right >= i && c.top <= n && c.bottom >= n) {
                             for (var l = e.textContent, d = [], u = void 0, p = void 0, M = 0; M < l.length; M++) " " === l[M] && d.push(M);
                             for (var h = 0; h < d.length; h++) {
                                 if (a === d[h] && (u = d[h], p = d[h]), d[0] > a) {
@@ -24787,24 +24998,24 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 }
                                 a > d[h] && a < d[h + 1] ? (u = d[h], p = d[h + 1]) : a > d[h] && (d[h + 1] || (u = d[h]))
                             }
-                            p || (p = l.length), 0 === u ? w.setStart(e, u) : w.setStart(e, u + 1), w.setEnd(e, p), s.removeAllRanges(), s.addRange(w), this.isTextSelection = !0;
-                            var L = t.isNullOrUndefined(w.startContainer.parentElement) ? w.startContainer.parentNode : w.startContainer.parentElement;
-                            this.selectionStartPage = parseInt(L.id.split("_text_")[1]), o && (this.selectionAnchorTouch = {
+                            p || (p = l.length), 0 === u ? L.setStart(e, u) : L.setStart(e, u + 1), L.setEnd(e, p), s.removeAllRanges(), s.addRange(L), this.isTextSelection = !0;
+                            var w = t.isNullOrUndefined(L.startContainer.parentElement) ? L.startContainer.parentNode : L.startContainer.parentElement;
+                            this.selectionStartPage = parseInt(w.id.split("_text_")[1]), o && (this.selectionAnchorTouch = {
                                 anchorNode: s.anchorNode.parentElement.id,
                                 anchorOffset: s.anchorOffset
                             }, this.selectionFocusTouch = {
                                 focusNode: s.focusNode.parentElement.id,
                                 focusOffset: s.focusOffset
-                            }), t.Browser.isIE || w.detach();
+                            }), t.Browser.isIE || L.detach();
                             break
                         }
                         a += 1
                     }
                 } else
                     for (M = 0; M < e.childNodes.length; M++) {
-                        var w = this.getSelectionRange(M, e),
-                            c = w.getBoundingClientRect();
-                        c.left <= i && c.right >= i && c.top <= n && c.bottom >= n ? (w.detach(), this.selectAWord(e.childNodes[M], i, n, o)) : w.detach()
+                        var L = this.getSelectionRange(M, e),
+                            c = L.getBoundingClientRect();
+                        c.left <= i && c.right >= i && c.top <= n && c.bottom >= n ? (L.detach(), this.selectAWord(e.childNodes[M], i, n, o)) : L.detach()
                     }
             }, e.prototype.getSelectionRange = function(e, t) {
                 var i = t.childNodes[e].ownerDocument.createRange();
@@ -24830,10 +25041,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var M = window.getSelection();
                     M.removeAllRanges();
                     var h = document.createRange(),
-                        L = t.length - 1,
-                        w = document.getElementById(t[0]),
-                        c = document.getElementById(t[L]);
-                    c.childNodes.length > 0 ? (h.setStart(w.childNodes[0], 0), h.setEnd(c.childNodes[0], c.textContent.length)) : (h.setStart(w.childNodes[0], 0), h.setEnd(c, 1)), this.selectionStartPage = parseInt(h.startContainer.parentElement.id.split("_text_")[1]), M.addRange(h), this.isTextSelection = !0, null != M && "MouseUp" === this.pdfViewer.contextMenuSettings.contextMenuAction && this.calculateContextMenuPosition(e.clientY, e.clientY)
+                        w = t.length - 1,
+                        L = document.getElementById(t[0]),
+                        c = document.getElementById(t[w]);
+                    c.childNodes.length > 0 ? (h.setStart(L.childNodes[0], 0), h.setEnd(c.childNodes[0], c.textContent.length)) : (h.setStart(L.childNodes[0], 0), h.setEnd(c, 1)), this.selectionStartPage = parseInt(h.startContainer.parentElement.id.split("_text_")[1]), M.addRange(h), this.isTextSelection = !0, null != M && "MouseUp" === this.pdfViewer.contextMenuSettings.contextMenuAction && this.calculateContextMenuPosition(e.clientY, e.clientY)
                 }
             }, e.prototype.enableTextSelectionMode = function() {
                 this.pdfViewerBase.isTextSelectionDisabled = !1, this.pdfViewerBase.viewerContainer.classList.remove("e-disable-text-selection"), this.pdfViewerBase.viewerContainer.classList.add("e-enable-text-selection"), this.pdfViewerBase.viewerContainer.addEventListener("selectstart", function() {
@@ -25145,13 +25356,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 if (this.getNodeElementFromNode(e.startContainer) !== this.getNodeElementFromNode(e.endContainer))
                     for (var o = 0, s = 0, a = 0, r = this.pdfViewerBase.textLayer.getPageIndex(e.startContainer), l = this.pdfViewerBase.textLayer.getTextIndex(e.startContainer, r), d = this.pdfViewerBase.textLayer.getPageIndex(e.endContainer), u = this.pdfViewerBase.textLayer.getTextIndex(e.endContainer, d), p = this.pdfViewerBase.getElement("_textLayer_" + d).childNodes, M = a = t === r ? l : 0; M < p.length; M++) {
                         var h = p[M];
-                        o = M === l ? e.startOffset : 0, s = M === u ? e.endOffset : h.textContent.length;
-                        for (var L = document.createRange(), w = 0; w < h.childNodes.length; w++) {
-                            var c = h.childNodes[w];
-                            L.setStart(c, o), L.setEnd(c, s)
+                        if (o = M === l ? e.startOffset : 0, s = M === u ? e.endOffset : h.textContent.length, 0 !== o || 0 !== s) {
+                            for (var w = document.createRange(), L = 0; L < h.childNodes.length; L++) {
+                                var c = h.childNodes[L];
+                                w.setStart(c, o), w.setEnd(c, s)
+                            }
+                            var C = this.normalizeBounds(w.getBoundingClientRect(), t);
+                            if (i.push(C), w.detach(), M === u) break
                         }
-                        var C = this.normalizeBounds(L.getBoundingClientRect(), t);
-                        if (i.push(C), L.detach(), M === u) break
                     } else n = this.normalizeBounds(e.getBoundingClientRect(), t), i.push(n);
                 return i
             }, e.prototype.getTextId = function(e) {
@@ -25417,7 +25629,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "TextSelection"
             }, e
         }(),
-        pn = function() {
+        Ln = function() {
             function e(e, i) {
                 var n = this;
                 this.isTextSearch = !1, this.searchCount = 0, this.searchIndex = 0, this.currentSearchIndex = 0, this.searchPageIndex = null, this.searchString = null, this.isMatchCase = !1, this.searchRequestHandler = null, this.textContents = new Array, this.searchMatches = new Array, this.searchCollection = new Array, this.searchedPages = [], this.isPrevSearch = !1, this.tempElementStorage = new Array, this.isMessagePopupOpened = !1, this.isTextRetrieved = !1, this.isTextSearched = !1, this.isTextSearchEventTriggered = !1, this.checkBoxOnChange = function(e) {
@@ -25443,7 +25655,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     className: "e-pv-search-bar"
                 });
                 var i;
-                (i = t.isBlazor() ? document.getElementById("toolbarContainer") : this.pdfViewerBase.getElement("_toolbarContainer")) && (this.searchBox.style.top = i.clientHeight + "px");
+                (i = t.isBlazor() ? document.getElementById("toolbarContainer") : this.pdfViewerBase.getElement("_toolbarContainer")) && (t.isBlazor() ? this.searchBox.style.top = i.style.height : this.searchBox.style.top = i.clientHeight + "px");
                 var n = t.createElement("div", {
                         id: this.pdfViewer.element.id + "_search_box_elements",
                         className: "e-pv-search-bar-elements"
@@ -25498,7 +25710,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 t && (t.style.height = "18px", t.style.width = "18px", t.style.transformOrigin = "9px 9px 9px")
             }, e.prototype.showLoadingIndicator = function(e) {
                 var t = document.getElementById(this.pdfViewer.element.id + "_textSearchLoadingIndicator");
-                t && (e ? Oe(t) : Fe(t))
+                t && (e ? Fe(t) : Ye(t))
             }, e.prototype.textSearchBoxOnResize = function() {
                 if (this.pdfViewer.toolbarModule && this.pdfViewer.enableToolbar) {
                     var e = this.pdfViewerBase.getElement("_toolbarContainer_popup");
@@ -25510,7 +25722,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.isTextSearch && (this.initSearch(this.searchPageIndex, !0), this.highlightOthers())
             }, e.prototype.initiateTextSearch = function(e) {
                 var t = e.value;
-                this.initiateSearch(t)
+                t && t.length > 0 && " " === t[t.length - 1] && (t = t.slice(0, t.length - 1)), this.initiateSearch(t)
             }, e.prototype.initiateSearch = function(e) {
                 e !== this.searchString && (this.isTextSearch = !1, this.searchPageIndex = this.pdfViewerBase.currentPageNumber - 1), this.clearAllOccurrences(), "" !== e && (this.searchMatches[this.searchPageIndex] && e === this.searchString ? 0 === this.searchMatches[this.searchPageIndex].length ? this.initSearch(this.searchPageIndex, !1) : this.nextSearch() : (this.resetVariables(), this.searchIndex = 0, this.textSearch(e)))
             }, e.prototype.textSearch = function(e) {
@@ -25647,36 +25859,50 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     M = !1;
                 t[e] && (p = t[e].X, u = t[e].Y);
                 var h = 0;
-                for (e - a != 0 && (h = e - a, i += 1), h = h; h < i; h++) t[e] && (p > (w = t[e]).X && (M = !0), l = l > (c = (u = u < w.Y ? u : w.Y) < w.Y ? w.Y - u : u - w.Y) + w.Height ? l : c + w.Height, e++);
-                var L = !1;
+                for (e - a != 0 && (h = e - a, i += 1), h = h; h < i; h++) t[e] && (p > (L = t[e]).X && (M = !0), l = l > (c = (u = u < L.Y ? u : L.Y) < L.Y ? L.Y - u : u - L.Y) + L.Height ? l : c + L.Height, e++);
+                var w = !1;
                 if (M) {
-                    var w = t[a + i - 1];
-                    p = w.X, d = t[a].X - t[a + i - 1].X;
-                    var c = (u = u < w.Y ? u : w.Y) < w.Y ? w.Y - u : u - w.Y;
-                    l = l > c + w.Height ? l : c + w.Height;
-                    for (var C = t[a - 1].Y - t[a].Y, g = a + i - 1; g >= a; g--) 0 === (w = t[g]).Width && (C = w.Y - t[g - 1].Y);
+                    var L = t[a + i - 1];
+                    p = L.X, d = t[a].X - t[a + i - 1].X;
+                    var c = (u = u < L.Y ? u : L.Y) < L.Y ? L.Y - u : u - L.Y;
+                    l = l > c + L.Height ? l : c + L.Height;
+                    for (var C = t[a - 1].Y - t[a].Y, g = a + i - 1; g >= a; g--) 0 === (L = t[g]).Width && (C = L.Y - t[g - 1].Y);
                     d += C
-                } else a + i !== e ? (L = !0, t[e - 1] && (d = t[e - 1].X - p)) : (L = !1, t[e] ? d = t[e].X - p : t[e - 1] && (d = t[e - 1].X - p));
-                return this.createSearchTextDiv(o, s, l, d, u, p, n, L, r), e
+                } else if (a + i !== e) w = !0, t[e - 1] && (d = t[e - 1].X - p);
+                else {
+                    w = !1;
+                    var m = this.pdfViewerBase.getStoredData(s, !0),
+                        f = null;
+                    if (m) f = m.pageText;
+                    else if (this.pdfViewer.isExtractText && 0 !== this.documentTextCollection.length) {
+                        var y = this.documentTextCollection[s][s];
+                        f = y.pageText ? y.pageText : y.PageText
+                    }
+                    t[e] ? d = !f || "" !== f[e] && " " !== f[e] && "\r" !== f[e] && "\n" !== f[e] || 0 !== t[e].Width ? t[e].X - p : t[e - 1].X - p + t[e - 1].Width : t[e - 1] && (d = t[e - 1].X - p)
+                }
+                return this.createSearchTextDiv(o, s, l, d, u, p, n, w, r), e
             }, e.prototype.createSearchTextDiv = function(e, i, n, o, s, a, r, l, d) {
                 var u = "_searchtext_" + i + "_" + e;
                 if (l && (u += "_" + d), !this.pdfViewerBase.getElement(u)) {
                     var p = t.createElement("div", {
-                        id: this.pdfViewer.element.id + u
-                    });
-                    if (p.style.height = n * this.pdfViewerBase.getZoomFactor() + "px", p.style.width = o * this.pdfViewerBase.getZoomFactor() + "px", p.style.top = s * this.pdfViewerBase.getZoomFactor() + "px", p.style.left = a * this.pdfViewerBase.getZoomFactor() + "px", p.classList.add(r), "e-pv-search-text-highlight" === r) {
+                            id: this.pdfViewer.element.id + u
+                        }),
+                        M = this.pdfViewerBase.pageSize[i];
+                    if (this.calculateBounds(p, n, o, s, a, M), p.classList.add(r), "e-pv-search-text-highlight" === r) {
                         p.style.backgroundColor = "" === this.pdfViewer.textSearchColorSettings.searchHighlightColor ? "#fdd835" : this.pdfViewer.textSearchColorSettings.searchHighlightColor;
-                        var M = {
+                        var h = {
                             left: a,
                             top: s,
                             width: o,
                             height: n
                         };
-                        this.pdfViewer.fireTextSearchHighlight(this.searchString, this.isMatchCase, M, i + 1)
+                        this.pdfViewer.fireTextSearchHighlight(this.searchString, this.isMatchCase, h, i + 1)
                     } else "e-pv-search-text-highlightother" === r && (p.style.backgroundColor = "" === this.pdfViewer.textSearchColorSettings.searchColor ? "#8b4c12" : this.pdfViewer.textSearchColorSettings.searchColor);
-                    var h = this.pdfViewerBase.getElement("_textLayer_" + i);
-                    h && h.appendChild(p)
+                    var w = this.pdfViewerBase.getElement("_textLayer_" + i);
+                    w && w.appendChild(p)
                 }
+            }, e.prototype.calculateBounds = function(e, t, i, n, o, s) {
+                0 === s.rotation || 2 === s.rotation ? (e.style.height = t * this.pdfViewerBase.getZoomFactor() + "px", e.style.width = i * this.pdfViewerBase.getZoomFactor() + "px", e.style.top = n * this.pdfViewerBase.getZoomFactor() + "px", e.style.left = o * this.pdfViewerBase.getZoomFactor() + "px") : 1 === s.rotation ? (e.style.height = i * this.pdfViewerBase.getZoomFactor() + "px", e.style.width = t * this.pdfViewerBase.getZoomFactor() + "px", e.style.top = o * this.pdfViewerBase.getZoomFactor() + "px", e.style.left = (s.height - n - t) * this.pdfViewerBase.getZoomFactor() + "px") : 3 === s.rotation && (e.style.height = i * this.pdfViewerBase.getZoomFactor() + "px", e.style.width = t * this.pdfViewerBase.getZoomFactor() + "px", e.style.left = (s.width - s.height + n) * this.pdfViewerBase.getZoomFactor() + "px", e.style.top = (s.height - o - i) * this.pdfViewerBase.getZoomFactor() + "px")
             }, e.prototype.isClassAvailable = function() {
                 for (var e = !1, t = 0; t < this.tempElementStorage.length; t++)
                     if (this.tempElementStorage[t].classString && ("e-pv-search-text-highlight" === this.tempElementStorage[t].classString || "e-pv-search-text-highlightother" === this.tempElementStorage[t].classString)) {
@@ -25722,59 +25948,61 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.onTextSearchClose = function() {
                 this.isPrevSearch = !1, this.isTextSearch = !1, this.pdfViewerBase.pageCount > 0 && this.clearAllOccurrences()
             }, e.prototype.createRequestForSearch = function(e) {
-                var t = this,
-                    i = this.pdfViewer.element.clientHeight,
-                    n = this.pdfViewerBase.pageSize[e].width,
-                    o = (this.pdfViewerBase.pageSize[e].height, this.pdfViewerBase.getTileCount(n)),
-                    s = 816 >= n ? 1 : o,
-                    a = 816 >= n ? 1 : o,
-                    r = !1,
-                    l = this.pdfViewer.tileRenderingSettings;
-                l.enableTileRendering && l.x > 0 && l.y > 0 && (s = 816 >= n ? 1 : l.x, a = 816 >= n ? 1 : l.y), s > 1 && a > 1 && (r = !0);
-                for (var d = this, u = 0; u < s; u++) ! function(l) {
-                    for (var u = 0; u < a; u++) ! function(u) {
-                        var p = void 0;
-                        p = {
-                            xCoordinate: l,
-                            yCoordinate: u,
+                var i = this,
+                    n = this.pdfViewer.element.clientHeight,
+                    o = this.pdfViewerBase.pageSize[e].width,
+                    s = (this.pdfViewerBase.pageSize[e].height, this.pdfViewerBase.getTileCount(o)),
+                    a = 816 >= o ? 1 : s,
+                    r = 816 >= o ? 1 : s,
+                    l = !1,
+                    d = this.pdfViewer.tileRenderingSettings;
+                d.enableTileRendering && d.x > 0 && d.y > 0 && (a = 816 >= o ? 1 : d.x, r = 816 >= o ? 1 : d.y), a > 1 && r > 1 && (l = !0);
+                for (var u = this, p = 0; p < a; p++) ! function(d) {
+                    for (var p = 0; p < r; p++) ! function(p) {
+                        var M = void 0;
+                        M = {
+                            xCoordinate: d,
+                            yCoordinate: p,
                             pageNumber: e,
                             viewPortWidth: 816,
-                            viewPortHeight: i,
-                            documentId: t.pdfViewerBase.getDocumentId(),
-                            hashId: t.pdfViewerBase.hashId,
-                            zoomFactor: t.pdfViewerBase.getZoomFactor(),
-                            tilecount: o,
+                            viewPortHeight: n,
+                            documentId: i.pdfViewerBase.getDocumentId(),
+                            hashId: i.pdfViewerBase.hashId,
+                            zoomFactor: i.pdfViewerBase.getZoomFactor(),
+                            tilecount: s,
                             action: "Search",
-                            elementId: t.pdfViewer.element.id,
-                            uniqueId: t.pdfViewerBase.documentId,
-                            tileXCount: s,
-                            tileYCount: a
-                        }, d.pdfViewerBase.jsonDocumentId && (p.documentId = d.pdfViewerBase.jsonDocumentId), d.searchRequestHandler = new ti(d.pdfViewer), d.searchRequestHandler.url = d.pdfViewer.serviceUrl + "/" + d.pdfViewer.serverActionSettings.renderPages, d.searchRequestHandler.responseType = "json", d.searchRequestHandler.send(p), d.searchRequestHandler.onSuccess = function(i) {
-                            var o = i.data;
-                            if (o) {
-                                if ("object" != typeof o) try {
-                                    o = JSON.parse(o)
+                            elementId: i.pdfViewer.element.id,
+                            uniqueId: i.pdfViewerBase.documentId,
+                            tileXCount: a,
+                            tileYCount: r
+                        }, u.pdfViewerBase.jsonDocumentId && (M.documentId = u.pdfViewerBase.jsonDocumentId), u.searchRequestHandler = new si(u.pdfViewer), u.searchRequestHandler.url = u.pdfViewer.serviceUrl + "/" + u.pdfViewer.serverActionSettings.renderPages, u.searchRequestHandler.responseType = "json", u.searchRequestHandler.send(M), u.searchRequestHandler.onSuccess = function(n) {
+                            var s = n.data;
+                            if (s) {
+                                if ("object" != typeof s) try {
+                                    s = JSON.parse(s)
                                 } catch (e) {
-                                    t.pdfViewerBase.onControlError(500, o, this.pdfViewer.serverActionSettings.renderPages), o = null
+                                    i.pdfViewerBase.onControlError(500, s, this.pdfViewer.serverActionSettings.renderPages), s = null
                                 }
-                                if (o)
-                                    if (o.pageText && o.uniqueId === t.pdfViewerBase.documentId) {
-                                        t.pdfViewer.fireAjaxRequestSuccess(this.pdfViewer.serverActionSettings.renderPages, o);
-                                        d = void 0 !== o.pageNumber ? o.pageNumber : e;
-                                        816 >= n ? t.pdfViewerBase.storeWinData(o, d) : t.pdfViewerBase.storeWinData(o, d, o.tileX, o.tileY), r ? l === s - 1 && u === a - 1 && t.initSearch(e, !1) : t.initSearch(e, !1)
-                                    } else if (r && o.uniqueId === t.pdfViewerBase.documentId) {
-                                    t.pdfViewer.fireAjaxRequestSuccess(this.pdfViewer.serverActionSettings.renderPages, o);
-                                    var d = void 0 !== o.pageNumber ? o.pageNumber : e;
-                                    t.pdfViewerBase.storeWinData(o, d, o.tileX, o.tileY), l === s - 1 && u === a - 1 && t.initSearch(e, !1)
-                                }
+                                if (s)
+                                    if (t.isNullOrUndefined(s.pageText) || s.uniqueId !== i.pdfViewerBase.documentId) {
+                                        if (l && s.uniqueId === i.pdfViewerBase.documentId) {
+                                            i.pdfViewer.fireAjaxRequestSuccess(this.pdfViewer.serverActionSettings.renderPages, s);
+                                            u = void 0 !== s.pageNumber ? s.pageNumber : e;
+                                            i.pdfViewerBase.storeWinData(s, u, s.tileX, s.tileY), d === a - 1 && p === r - 1 && i.initSearch(e, !1)
+                                        }
+                                    } else {
+                                        i.pdfViewer.fireAjaxRequestSuccess(this.pdfViewer.serverActionSettings.renderPages, s);
+                                        var u = void 0 !== s.pageNumber ? s.pageNumber : e;
+                                        816 >= o ? i.pdfViewerBase.storeWinData(s, u) : i.pdfViewerBase.storeWinData(s, u, s.tileX, s.tileY), l ? d === a - 1 && p === r - 1 && i.initSearch(e, !1) : i.initSearch(e, !1)
+                                    }
                             }
-                        }, d.searchRequestHandler.onFailure = function(e) {
-                            t.pdfViewer.fireAjaxRequestFailed(e.status, e.statusText, this.pdfViewer.serverActionSettings.renderPages)
-                        }, d.searchRequestHandler.onError = function(e) {
-                            t.pdfViewerBase.openNotificationPopup(), t.pdfViewer.fireAjaxRequestFailed(e.status, e.statusText, this.pdfViewer.serverActionSettings.renderPages)
+                        }, u.searchRequestHandler.onFailure = function(e) {
+                            i.pdfViewer.fireAjaxRequestFailed(e.status, e.statusText, this.pdfViewer.serverActionSettings.renderPages)
+                        }, u.searchRequestHandler.onError = function(e) {
+                            i.pdfViewerBase.openNotificationPopup(), i.pdfViewer.fireAjaxRequestFailed(e.status, e.statusText, this.pdfViewer.serverActionSettings.renderPages)
                         }
-                    }(u)
-                }(u)
+                    }(p)
+                }(p)
             }, e.prototype.getPDFDocumentTexts = function() {
                 var e = 50,
                     t = this.pdfViewerBase.pageCount;
@@ -25789,7 +26017,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     action: "RenderPdfTexts",
                     elementId: n.pdfViewer.element.id,
                     uniqueId: n.pdfViewerBase.documentId
-                }, this.pdfViewerBase.jsonDocumentId && (i.documentId = this.pdfViewerBase.jsonDocumentId), this.searchRequestHandler = new ti(this.pdfViewer), this.searchRequestHandler.url = this.pdfViewer.serviceUrl + "/" + this.pdfViewer.serverActionSettings.renderTexts, this.searchRequestHandler.responseType = "json", this.searchRequestHandler.send(i), this.searchRequestHandler.onSuccess = function(i) {
+                }, this.pdfViewerBase.jsonDocumentId && (i.documentId = this.pdfViewerBase.jsonDocumentId), this.searchRequestHandler = new si(this.pdfViewer), this.searchRequestHandler.url = this.pdfViewer.serviceUrl + "/" + this.pdfViewer.serverActionSettings.renderTexts, this.searchRequestHandler.responseType = "json", this.searchRequestHandler.send(i), this.searchRequestHandler.onSuccess = function(i) {
                     var o = i.data;
                     if (o) {
                         if ("object" != typeof o) try {
@@ -25842,7 +26070,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.onMessageBoxOpen = function() {
                 this.showLoadingIndicator(!1), this.pdfViewerBase.getElement("_search_input").blur(), this.isMessagePopupOpened = !0, !t.Browser.isDevice || this.pdfViewer.enableDesktopMode ? this.pdfViewerBase.textLayer.createNotificationPopup(this.pdfViewer.localeObj.getConstant("No matches")) : this.pdfViewerBase.navigationPane.createTooltipMobile(this.pdfViewer.localeObj.getConstant("No Text Found"))
             }, e.prototype.searchText = function(e, t) {
-                this.searchString = e, this.isMatchCase = t, this.searchIndex = 0, this.textSearch(e)
+                e && e.length > 0 && " " === e[e.length - 1] && (e = e.slice(0, e.length - 1)), this.searchString = e, this.isMatchCase = t, this.searchIndex = 0, this.textSearch(e)
             }, e.prototype.searchNext = function() {
                 this.nextSearch()
             }, e.prototype.searchPrevious = function() {
@@ -25855,7 +26083,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "TextSearch"
             }, e
         }(),
-        Mn = function() {
+        cn = function() {
             function e(e, t) {
                 this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -25883,7 +26111,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         elementId: this.pdfViewer.element.id,
                         uniqueId: this.pdfViewerBase.documentId
                     };
-                this.pdfViewerBase.jsonDocumentId && (a.documentId = this.pdfViewerBase.jsonDocumentId), s.pdfViewerBase.createFormfieldsJsonData(), s.printRequestHandler = new ti(s.pdfViewer), s.printRequestHandler.url = s.pdfViewer.serviceUrl + "/" + s.pdfViewer.serverActionSettings.print, s.printRequestHandler.responseType = null, s.printRequestHandler.mode = !1, this.pdfViewerBase.validateForm && this.pdfViewer.enableFormFieldsValidation ? (this.pdfViewer.fireValidatedFailed(s.pdfViewer.serverActionSettings.download), this.pdfViewerBase.validateForm = !1, this.pdfViewerBase.showPrintLoadingIndicator(!1)) : s.printRequestHandler.send(a), s.printRequestHandler.onSuccess = function(o) {
+                this.pdfViewerBase.jsonDocumentId && (a.documentId = this.pdfViewerBase.jsonDocumentId), s.pdfViewerBase.createFormfieldsJsonData(), s.printRequestHandler = new si(s.pdfViewer), s.printRequestHandler.url = s.pdfViewer.serviceUrl + "/" + s.pdfViewer.serverActionSettings.print, s.printRequestHandler.responseType = null, s.printRequestHandler.mode = !1, this.pdfViewerBase.validateForm && this.pdfViewer.enableFormFieldsValidation ? (this.pdfViewer.fireValidatedFailed(s.pdfViewer.serverActionSettings.download), this.pdfViewerBase.validateForm = !1, this.pdfViewerBase.showPrintLoadingIndicator(!1)) : s.printRequestHandler.send(a), s.printRequestHandler.onSuccess = function(o) {
                     s.pdfViewerBase.isPrint = !0;
                     var a = o.data;
                     if (a && "object" != typeof a) try {
@@ -25903,13 +26131,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         p = d.shapeAnnotation,
                                         M = d.measureShapeAnnotation,
                                         h = d.stampAnnotations,
-                                        L = d.stickyNotesAnnotation;
-                                    r = s.pdfViewer.annotationModule.textMarkupAnnotationModule.printTextMarkupAnnotations(u, a.pageNumber, h, p, M, L)
+                                        w = d.stickyNotesAnnotation;
+                                    r = s.pdfViewer.annotationModule.textMarkupAnnotationModule.printTextMarkupAnnotations(u, a.pageNumber, h, p, M, w)
                                 } else r = s.pdfViewer.annotationModule.textMarkupAnnotationModule.printTextMarkupAnnotations(d.textMarkupAnnotation, a.pageNumber, d.stampAnnotations, d.shapeAnnotation, d.measureShapeAnnotation, d.stickyNoteAnnotation)
                             }
                             s.pdfViewerBase.isAnnotationCollectionRemoved && (r = s.pdfViewer.annotationModule.textMarkupAnnotationModule.printTextMarkupAnnotations(null, a.pageNumber, null, null, null, null))
                         }
-                        var w = a.pageNumber;
+                        var L = a.pageNumber;
                         s.printCanvas = t.createElement("canvas", {
                             id: s.pdfViewer.element.id + "_printCanvas_" + e,
                             className: "e-pv-print-canvas"
@@ -25919,7 +26147,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             C = new Image,
                             g = new Image;
                         C.onload = function() {
-                            n > i ? (c.drawImage(C, 0, 0, s.printCanvas.width, s.printCanvas.height), r && c.drawImage(g, 0, 0, s.printCanvas.width, s.printCanvas.height)) : (c.translate(.5 * s.printCanvas.width, .5 * s.printCanvas.height), c.rotate(-.5 * Math.PI), c.translate(.5 * -s.printCanvas.height, .5 * -s.printCanvas.width), c.drawImage(C, 0, 0, s.printCanvas.height, s.printCanvas.width), r && c.drawImage(g, 0, 0, s.printCanvas.height, s.printCanvas.width)), w === s.pdfViewerBase.pageCount - 1 && s.printWindowOpen(), s.pdfViewer.renderDrawing(null, e)
+                            n > i || !s.pdfViewer.enablePrintRotation ? (c.drawImage(C, 0, 0, s.printCanvas.width, s.printCanvas.height), r && c.drawImage(g, 0, 0, s.printCanvas.width, s.printCanvas.height)) : (c.translate(.5 * s.printCanvas.width, .5 * s.printCanvas.height), c.rotate(-.5 * Math.PI), c.translate(.5 * -s.printCanvas.height, .5 * -s.printCanvas.width), c.drawImage(C, 0, 0, s.printCanvas.height, s.printCanvas.width), r && c.drawImage(g, 0, 0, s.printCanvas.height, s.printCanvas.width)), L === s.pdfViewerBase.pageCount - 1 && s.printWindowOpen(), s.pdfViewer.renderDrawing(null, e)
                         }, C.src = a.image, g.src = r, s.printViewerContainer.appendChild(s.printCanvas)
                     }
                     s.pdfViewerBase.isPrint = !1
@@ -25945,14 +26173,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     l.style.letterSpacing = p + "px", l.style.fontFamily = "monospace"
                                 }
                                 var M = this.pdfViewerBase.pageSize[e];
-                                if (M.width > M.height) {
+                                if (M.width > M.height && this.pdfViewer.enablePrintRotation) {
                                     l.style.transform = "rotate(-90deg)";
                                     var h = parseFloat(l.style.left),
-                                        L = parseFloat(l.style.width) / 2,
-                                        w = parseFloat(l.style.height) / 2,
+                                        w = parseFloat(l.style.width) / 2,
+                                        L = parseFloat(l.style.height) / 2,
                                         c = parseFloat(l.style.top),
                                         C = parseFloat(l.style.height);
-                                    l.style.left = w - L + c + "px", l.style.top = M.width - C - (L - w + h) + "px"
+                                    l.style.left = L - w + c + "px", l.style.top = M.width / i - C / t - (w / t - L / t + h) + "px"
                                 }
                                 l.style.backgroundColor = "transparent", r.IsSignatureField || (l.style.borderColor = "transparent"), o.appendChild(l)
                             }
@@ -26008,7 +26236,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     if (e.write('<div style="margin:0mm;width:816px;height:1056px;position:relative"><img src="' + s + '" id="image_' + o + '" /><div id="fields_' + o + '" style="margin:0px;top:0px;left:0px;position:absolute;width:816px;height:1056px;z-index:2"></div></div>'), this.pdfViewer.formFieldsModule || this.pdfViewer.formDesignerModule) {
                         var a, r, l = this.pdfViewerBase.pageSize[o].width,
                             d = this.pdfViewerBase.pageSize[o].height;
-                        d < l ? (a = d / 816, r = l / 1056) : (a = d / 1056, r = l / 816), this.renderFieldsForPrint(o, a, r)
+                        d < l && this.pdfViewer.enablePrintRotation ? (a = d / 816, r = l / 1056) : (a = d / 1056, r = l / 816), this.renderFieldsForPrint(o, a, r)
                     }
                 }
                 if (t.Browser.isIE || "edge" === t.Browser.info.name) try {
@@ -26039,7 +26267,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "Print"
             }, e
         }(),
-        hn = function() {
+        Cn = function() {
             function e(e, t) {
                 this.maintainTabIndex = {}, this.maintanMinTabindex = {}, this.isSignatureField = !1, this.isKeyDownCheck = !1, this.readOnlyCollection = [], this.isSignatureRendered = !1, this.signatureFieldCollection = [], this.selectedIndex = [], this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -26062,13 +26290,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                     p = s.BackColor,
                                     M = s.LineBounds,
                                     h = "rgba(" + p.R + "," + p.G + "," + p.B + ",1)";
-                                "#000000ff" === (h = this.rgbaToHex(h)) && (h = "#daeaf7ff");
-                                var L = s.FontColor,
-                                    w = this.ConvertPointToPixel(M.X),
+                                "#000000ff" === (h = this.rgbaToHex(h)) && (h = "#ffffffff");
+                                var w = s.FontColor,
+                                    L = this.ConvertPointToPixel(M.X),
                                     c = this.ConvertPointToPixel(M.Y),
                                     C = this.ConvertPointToPixel(M.Width),
                                     g = this.ConvertPointToPixel(M.Height),
-                                    m = "rgba(" + L.R + "," + L.G + "," + L.B + ",1)";
+                                    m = "rgba(" + w.R + "," + w.G + "," + w.B + ",1)";
                                 m = this.rgbaToHex(m);
                                 var f = s.BorderColor,
                                     y = "rgba(" + f.R + "," + f.G + "," + f.B + ",1)";
@@ -26077,7 +26305,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 this.selectedIndex = [];
                                 var S = {
                                     bounds: {
-                                        X: w,
+                                        X: L,
                                         Y: c,
                                         Width: C,
                                         Height: g
@@ -26128,7 +26356,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                         x.style.letterSpacing = b + "px", x.style.fontFamily = "monospace"
                                     }
                                     s.uniqueID = this.pdfViewer.element.id + "input_" + e + "_" + o;
-                                    for (var v = 0; v < this.pdfViewer.formFieldCollections.length; v++) "text" !== x.type && "password" !== x.type && "textarea" !== x.type || "SignatureField" === s.Name || s.uniqueID === this.pdfViewer.formFieldCollections[v].id && (this.pdfViewer.formFieldCollections[v].value = s.Value);
+                                    for (var v = 0; v < this.pdfViewer.formFieldCollections.length; v++) "text" !== x.type && "password" !== x.type && "textarea" !== x.type || "SignatureField" === s.Name || s.uniqueID === this.pdfViewer.formFieldCollections[v].id && (this.pdfViewer.formFieldCollections[v].value = s.Text);
                                     if (this.applyCommonProperties(x, e, o, s), this.checkIsReadonly(s, x), this.applyTabIndex(s, x, e), this.checkIsRequiredField(s, x), this.applyDefaultColor(x), 0 === s.Rotation) {
                                         var I = this.getAngle(e);
                                         N ? N.style.transform = "rotate(" + I + "deg)" : x.style.transform = "rotate(" + I + "deg)"
@@ -26258,7 +26486,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         isChecked: "RadioButton" !== t && e.Selected,
                         type: t,
                         value: "ListBox" === t || "DropDown" === t ? e.SelectedValue : e.Value,
-                        fontName: e.Font ? e.Font.Name : ""
+                        fontName: e.FontFamily ? e.FontFamily : ""
                     };
                 this.pdfViewer.formFieldCollections[this.pdfViewer.formFieldCollections.findIndex(function(e) {
                     return e.id === i.id
@@ -26266,7 +26494,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.updateFormFieldValues = function(e) {
                 if (this.readOnlyCollection.push(e.id), e) {
                     var t = document.getElementById(e.id);
-                    t && (e.isReadOnly ? (t.disabled = !0, t.style.backgroundColor = "", t.style.cursor = "default") : ("" === t.style.backgroundColor && (t.style.backgroundColor = "rgba(0, 20, 200, 0.2)"), t.disabled = !1, t.style.cursor = ""))
+                    t && (e.isReadOnly ? (t.disabled = !0, t.style.backgroundColor = "", t.style.cursor = "default") : ("" === t.style.backgroundColor && (t.style.backgroundColor = "rgba(0, 20, 200, 0.2)"), t.disabled = !1, t.style.cursor = "")), this.updateDataInSession(t)
                 }
             }, e.prototype.retriveFieldName = function(e) {
                 var t;
@@ -26335,43 +26563,62 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, e.prototype.downloadFormFieldsData = function() {
                 var e = this.pdfViewerBase.getItemFromSessionStorage("_formfields");
                 if (e) {
-                    for (var t = JSON.parse(e), n = {}, o = 0; o < t.length; o++) {
-                        var s = t[o];
-                        if ("Textbox" === s.Name || "Password" === s.Name || s.Multiline) "" === s.Text || null === s.Text ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[s.FieldName] = s.Text) : delete this.pdfViewerBase.nonFillableFields[s.FieldName], n[s.FieldName] = s.Text;
-                        else if ("RadioButton" === s.Name && s.Selected) !1 === s.Selected ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[s.GroupName] = s.Value) : delete this.pdfViewerBase.nonFillableFields[s.GroupName], n[s.GroupName] = s.Value;
-                        else if ("CheckBox" === s.Name) !1 === s.Selected ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[s.GroupName] = s.Selected) : delete this.pdfViewerBase.nonFillableFields[s.GroupName], s.CheckboxIndex && s.Selected ? n[s.GroupName] = s.CheckboxIndex : void 0 !== n[s.GroupName] && null !== n[s.GroupName] || (n[s.GroupName] = s.Selected);
-                        else if ("DropDown" === s.Name) "" === s.SelectedValue ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[s.Text] = s.SelectedValue) : delete this.pdfViewerBase.nonFillableFields[s.Text], n[s.Text] = s.SelectedValue;
-                        else if ("ListBox" === s.Name) {
-                            for (var a = s.TextList, r = [], l = 0; l < s.SelectedList.length; l++) {
-                                var d = s.SelectedList[l];
-                                r.push(a[d])
+                    for (var t = JSON.parse(e), n = {}, o = [], s = 0; s < t.length; s++) {
+                        var a = t[s];
+                        if ("Textbox" === a.Name || "Password" === a.Name || a.Multiline) "" === a.Text || null === a.Text ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[a.FieldName] = a.Text) : delete this.pdfViewerBase.nonFillableFields[a.FieldName], o = {
+                            fieldValue: a.Text,
+                            isReadOnly: a.IsReadonly
+                        }, n[a.FieldName] = o;
+                        else if ("RadioButton" === a.Name && a.Selected) !1 === a.Selected ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[a.GroupName] = a.Value) : delete this.pdfViewerBase.nonFillableFields[a.GroupName], o = {
+                            fieldValue: a.Value,
+                            isReadOnly: a.IsReadonly
+                        }, n[a.GroupName] = o;
+                        else if ("CheckBox" === a.Name) !1 === a.Selected ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[a.GroupName] = a.Selected) : delete this.pdfViewerBase.nonFillableFields[a.GroupName], a.CheckboxIndex && a.Selected ? (o = {
+                            fieldValue: a.CheckboxIndex,
+                            isReadOnly: a.IsReadonly
+                        }, n[a.GroupName] = o) : void 0 !== n[a.GroupName] && null !== n[a.GroupName] || (o = {
+                            fieldValue: a.Selected,
+                            isReadOnly: a.IsReadonly
+                        }, n[a.GroupName] = o);
+                        else if ("DropDown" === a.Name) "" === a.SelectedValue ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[a.Text] = a.SelectedValue) : delete this.pdfViewerBase.nonFillableFields[a.Text], o = {
+                            fieldValue: a.SelectedValue,
+                            isReadOnly: a.IsReadonly
+                        }, n[a.Text] = o;
+                        else if ("ListBox" === a.Name) {
+                            for (var r = a.TextList, l = [], d = 0; d < a.SelectedList.length; d++) {
+                                var u = a.SelectedList[d];
+                                l.push(r[u])
                             }
-                            n[s.Text] = JSON.stringify(r)
-                        } else if ("SignatureField" === s.Name) {
-                            var u = void 0;
-                            if (null !== s.Value && "" !== s.Value || this.addSignaturePath(s), s.Value && "" !== s.Value) {
-                                u = s.Value;
-                                var p = s.fontFamily ? s.fontFamily : s.FontFamily;
-                                if (p) n[s.FieldName + "fontName"] = p, n[s.FieldName + "fontSize"] = s.fontSize ? s.fontSize : s.FontSize;
-                                else if (s.Value.split("base64,")[1]) n[s.FieldName + "ImageData"] = !0;
+                            o = {
+                                fieldValue: JSON.stringify(l),
+                                isReadOnly: a.IsReadonly
+                            }, n[a.Text] = o
+                        } else if ("SignatureField" === a.Name) {
+                            var p = void 0;
+                            if (null !== a.Value && "" !== a.Value || this.addSignaturePath(a), a.Value && "" !== a.Value) {
+                                p = a.Value;
+                                var M = a.fontFamily ? a.fontFamily : a.FontFamily;
+                                if (M) n[a.FieldName + "fontName"] = M, n[a.FieldName + "fontSize"] = a.fontSize ? a.fontSize : a.FontSize;
+                                else if (a.Value.split("base64,")[1]) n[a.FieldName + "ImageData"] = !0;
                                 else {
-                                    var M = i.processPathData(s.Value);
-                                    u = i.splitArrayCollection(M)
+                                    var h = i.processPathData(a.Value);
+                                    p = i.splitArrayCollection(h)
                                 }
                             }
-                            if (null === s.Value || "" === s.Value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[s.FieldName] = JSON.stringify(u)) : delete this.pdfViewerBase.nonFillableFields[s.FieldName], n[s.FieldName] = JSON.stringify(u), s.Bounds) {
-                                L = this.getSignatureBounds(s.LineBounds, s.Bounds, s.PageIndex);
-                                s.Bounds.x = L.x, s.Bounds.y = L.y, n[s.FieldName + "bounds"] = JSON.stringify(s.Bounds)
+                            if (null === a.Value || "" === a.Value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[a.FieldName] = JSON.stringify(p)) : delete this.pdfViewerBase.nonFillableFields[a.FieldName], n[a.FieldName] = JSON.stringify(p), a.Bounds) {
+                                L = this.getSignatureBounds(a.LineBounds, a.Bounds, a.PageIndex);
+                                a.Bounds.x = L.x, a.Bounds.y = L.y, n[a.FieldName + "bounds"] = JSON.stringify(a.Bounds)
                             } else {
-                                var h = s.LineBounds,
+                                var w = a.LineBounds,
                                     L = {
-                                        x: this.ConvertPointToPixel(h.X),
-                                        y: this.ConvertPointToPixel(h.Y),
-                                        width: this.ConvertPointToPixel(h.Width),
-                                        height: this.ConvertPointToPixel(h.Height)
+                                        x: this.ConvertPointToPixel(w.X),
+                                        y: this.ConvertPointToPixel(w.Y),
+                                        width: this.ConvertPointToPixel(w.Width),
+                                        height: this.ConvertPointToPixel(w.Height)
                                     };
-                                n[s.FieldName + "bounds"] = JSON.stringify(L)
+                                n[a.FieldName + "bounds"] = JSON.stringify(L)
                             }
+                            n[a.FieldName + "isReadOnly"] = a.IsReadonly
                         }
                     }
                     return JSON.stringify(n)
@@ -26405,17 +26652,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     u = this.pdfViewer.nameTable[d];
                 i && i.offsetParent && u && (a = i.getBoundingClientRect(), r = i.offsetParent.offsetParent.offsetParent.getBoundingClientRect(), this.pdfViewerBase.drawSignatureWithTool = !0, i.nextSibling && -1 !== i.nextSibling.id.indexOf("initial") && (this.pdfViewer.isInitialFieldToolbarSelection = !0));
                 var p, M, h = t || this.pdfViewerBase.signatureModule.outputString,
-                    L = n || this.pdfViewerBase.signatureModule.fontName,
-                    w = this.pdfViewerBase.getZoomFactor(),
-                    c = this.pdfViewerBase.drawSignatureWithTool ? a.width / w : parseFloat(l.style.width) / w,
-                    C = this.pdfViewerBase.drawSignatureWithTool ? a.height / w : parseFloat(l.style.height) / w,
-                    g = this.pdfViewerBase.drawSignatureWithTool ? (a.left - r.left) / w : parseFloat(l.style.left) / w,
-                    m = this.pdfViewerBase.drawSignatureWithTool ? (a.top - r.top) / w : parseFloat(l.style.top) / w,
+                    w = n || this.pdfViewerBase.signatureModule.fontName,
+                    L = this.pdfViewerBase.getZoomFactor(),
+                    c = this.pdfViewerBase.drawSignatureWithTool ? a.width / L : parseFloat(l.style.width) / L,
+                    C = this.pdfViewerBase.drawSignatureWithTool ? a.height / L : parseFloat(l.style.height) / L,
+                    g = this.pdfViewerBase.drawSignatureWithTool ? (a.left - r.left) / L : parseFloat(l.style.left) / L,
+                    m = this.pdfViewerBase.drawSignatureWithTool ? (a.top - r.top) / L : parseFloat(l.style.top) / L,
                     f = this.pdfViewerBase.drawSignatureWithTool ? this.pdfViewer.currentPageNumber - 1 : parseFloat(l.id.split("_")[1]),
                     y = this.pdfViewerBase.drawSignatureWithTool && i.nextElementSibling ? parseFloat(i.nextElementSibling.id.split("_")[1]) : parseFloat(l.id.split("_")[2]),
                     j = this.pdfViewerBase.signatureModule.saveImageString,
                     S = this.getAngle(f);
-                if ("Type" === e) L || (L = "Helvetica"), s = this.getSignBounds(y, S, f, w, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
+                if ("Type" === e) w || (w = "Helvetica"), s = this.getSignBounds(y, S, f, L, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
                     id: l.id,
                     bounds: {
                         x: s.x,
@@ -26437,10 +26684,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         modifiedDate: "",
                         author: ""
                     },
-                    fontFamily: L,
+                    fontFamily: w,
                     fontSize: s.height / 2
                 }).data, p = o.fontFamily, M = o.fontSize;
-                else if ("Image" === e) s = this.getSignBounds(y, S, f, w, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
+                else if ("Image" === e) s = this.getSignBounds(y, S, f, L, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
                     id: l.id,
                     bounds: {
                         x: s.x,
@@ -26463,7 +26710,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         author: ""
                     }
                 }).data;
-                else if (-1 !== h.indexOf("base64")) s = this.getSignBounds(y, S, f, w, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
+                else if (-1 !== h.indexOf("base64")) s = this.getSignBounds(y, S, f, L, g, m, c, C), "Default" === this.pdfViewer.signatureFitMode && (s = this.getDefaultBoundsforSign(s)), j = (o = {
                     id: l.id,
                     bounds: {
                         x: s.x,
@@ -26489,8 +26736,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 else {
                     if ("Default" === this.pdfViewer.signatureFitMode) {
                         var A = this.updateSignatureAspectRatio(h, !1, l);
-                        (s = this.getSignBounds(y, S, f, w, g, m, A.width, A.height, !0)).x = s.x + A.left, s.y = s.y + A.top
-                    } else s = this.getSignBounds(y, S, f, w, g, m, c, C);
+                        (s = this.getSignBounds(y, S, f, L, g, m, A.width, A.height, !0)).x = s.x + A.left, s.y = s.y + A.top
+                    } else s = this.getSignBounds(y, S, f, L, g, m, c, C);
                     o = {
                         id: l.id,
                         bounds: {
@@ -26621,12 +26868,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.updateDataInSession(t)
             }, e.prototype.updateSignatureAspectRatio = function(e, t, n) {
                 for (var o = i.processPathData(e), s = i.splitArrayCollection(o), a = -1, r = -1, l = -1, d = -1, u = document.getElementById(this.pdfViewer.element.id + "_signatureCanvas_"), p = 0, M = 0, h = 0; h < s.length; h++) {
-                    var L = s[h];
-                    if (-1 === a) a = parseFloat(L.x.toString()), l = parseFloat(L.x.toString()), r = parseFloat(L.y.toString()), d = parseFloat(L.y.toString());
+                    var w = s[h];
+                    if (-1 === a) a = parseFloat(w.x.toString()), l = parseFloat(w.x.toString()), r = parseFloat(w.y.toString()), d = parseFloat(w.y.toString());
                     else {
-                        var w = parseFloat(L.x.toString()),
-                            c = parseFloat(L.y.toString());
-                        a >= w && (a = w), r >= c && (r = c), l <= w && (l = w), d <= c && (d = c)
+                        var L = parseFloat(w.x.toString()),
+                            c = parseFloat(w.y.toString());
+                        a >= L && (a = L), r >= c && (r = c), l <= L && (l = L), d <= c && (d = c)
                     }
                 }
                 var C = l - a,
@@ -26669,7 +26916,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         if (d.uniqueID === e.id) {
                             if (e && "text" === e.type || "password" === e.type || "textarea" === e.type) {
                                 var u = e;
-                                u.classList.contains("e-pdfviewer-signatureformfields") || u.classList.contains("e-pdfviewer-signatureformfields-signature") ? (d.Value = t, n && (d.Bounds = n), o ? (d.fontFamily = o, d.fontSize = s) : d.fontFamily = null) : (d.Text = e.value, d.Value = e.value)
+                                u.classList.contains("e-pdfviewer-signatureformfields") || u.classList.contains("e-pdfviewer-signatureformfields-signature") ? (t && (d.Value = t), n && (d.Bounds = n), o && (d.FontFamily = o, d.FontSize = s)) : (d.Text = e.value, d.Value = e.value)
                             } else if ("radio" === e.type) {
                                 for (p = 0; p < r.length; p++) {
                                     r[p];
@@ -26687,14 +26934,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                                 }
                                 e.checked ? d.Selected = !0 : d.Selected = !1
                             } else if ("select-one" === e.type && 0 === e.size)
-                                for (var h = e.options[e.selectedIndex].text, L = e.children, w = 0; w < L.length; w++) L[w].text === h && (d.SelectedValue = h);
+                                for (var h = e.options[e.selectedIndex].text, w = e.children, L = 0; L < w.length; L++) w[L].text === h && (d.SelectedValue = h);
                             else if ("select-multiple" === e.type || e.size > 0) {
                                 h = e.selectedOptions;
                                 d.SelectedList = [];
                                 for (var c = 0; c < h.length; c++)
-                                    for (var L = e.children, w = 0; w < L.length; w++) L[w] === h[c] && d.SelectedList.push(w)
+                                    for (var w = e.children, L = 0; L < w.length; L++) w[L] === h[c] && d.SelectedList.push(L)
                             }
-                            this.updateFormFieldsCollection(d);
+                            e.disabled && (d.IsReadonly = !0), this.updateFormFieldsCollection(d);
                             break
                         }
                         e && null != e.getAttribute("list") && "text" === e.type && d.uniqueID === e.list.id && (d.SelectedValue = e.value), this.updateFormFieldsCollection(d)
@@ -26707,17 +26954,23 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     this.pdfViewer.formDesignerModule.updateFormDesignerFieldInSessionStorage(g, C.wrapper.children[0], C.formFieldAnnotationType, C)
                 }
             }, e.prototype.removeExistingFormFields = function() {
-                for (var e = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"), t = JSON.parse(e), i = 0; i < t.length; i++) this.pdfViewer.formDesignerModule.deleteFormField(t[i].Key.split("_")[0])
+                var e = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"),
+                    t = JSON.parse(e);
+                if (t)
+                    for (var i = 0; i < t.length; i++) this.pdfViewer.formDesignerModule.deleteFormField(t[i].Key.split("_")[0])
             }, e.prototype.applyCommonProperties = function(e, t, i, n) {
                 var o = document.getElementById(this.pdfViewer.element.id + "input_" + t + "_" + i);
-                o && o.remove();
-                var s, a, r, l, d = document.getElementById("signIcon" + t + "_" + t),
-                    u = parseFloat(e.style.left),
-                    p = parseInt(e.style.top),
-                    M = parseFloat(e.style.width),
-                    h = parseFloat(e.style.height),
+                if (o) {
+                    var s = document.getElementById(this.pdfViewer.element.id + "_textLayer_" + t);
+                    "text" === e.type && o.parentElement !== s && o.parentElement.remove(), o.remove()
+                }
+                var a, r, l, d, u = document.getElementById("signIcon" + t + "_" + t),
+                    p = parseFloat(e.style.left),
+                    M = parseInt(e.style.top),
+                    h = parseFloat(e.style.width),
+                    w = parseFloat(e.style.height),
                     L = this.pdfViewerBase.getZoomFactor();
-                d && (s = parseFloat(d.style.width), a = parseFloat(d.style.height), "rotate(90deg)" == d.style.transform && (d.style.transform = "rotate(0deg)", r = h / 2, l = s * L, d.style.left = u - (r - s * L) + l / 2 + "px"), "rotate(180deg)" == d.style.transform && (d.style.transform = "rotate(0deg)", d.style.left = u + "px", d.style.top = p + "px"), "rotate(270deg)" == d.style.transform && (d.style.transform = "rotate(0deg)", r = h / 2, l = s * L, d.style.left = u - (r - l) + l / 2 + "px", d.style.top = p + (M + a * L) + a * L / 2 + "px")), n.IsSignatureField && this.isSignatureField ? (e.className = "e-pdfviewer-signatureformfields-signature", e.style.pointerEvents = "none") : n.IsSignatureField ? e.className = "e-pdfviewer-signatureformfields" : "Button" !== n.Name && (e.className = "e-pdfviewer-formFields"), e.id = this.pdfViewer.element.id + "input_" + t + "_" + i, e.style.zIndex = 1e3
+                u && (a = parseFloat(u.style.width), r = parseFloat(u.style.height), "rotate(90deg)" == u.style.transform && (u.style.transform = "rotate(0deg)", l = w / 2, d = a * L, u.style.left = p - (l - a * L) + d / 2 + "px"), "rotate(180deg)" == u.style.transform && (u.style.transform = "rotate(0deg)", u.style.left = p + "px", u.style.top = M + "px"), "rotate(270deg)" == u.style.transform && (u.style.transform = "rotate(0deg)", l = w / 2, d = a * L, u.style.left = p - (l - d) + d / 2 + "px", u.style.top = M + (h + r * L) + r * L / 2 + "px")), n.IsSignatureField && this.isSignatureField ? (e.className = "e-pdfviewer-signatureformfields-signature", e.style.pointerEvents = "none") : n.IsSignatureField ? e.className = "e-pdfviewer-signatureformfields" : "Button" !== n.Name && (e.className = "e-pdfviewer-formFields"), e.id = this.pdfViewer.element.id + "input_" + t + "_" + i, e.style.zIndex = 1e3
             }, e.prototype.createFormFields = function(e, t, i, n) {
                 var o;
                 switch (e.Name) {
@@ -26902,20 +27155,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = e.LineBounds,
                     M = (e.Font, this.ConvertPointToPixel(p.X)),
                     h = this.ConvertPointToPixel(p.Y),
-                    L = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height > p.Height / 2 ? p.Height / 2 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height,
-                    w = l > p.Width / 2 ? p.Width / 2 : l,
-                    c = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize > L / 2 ? 10 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize;
+                    w = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height > p.Height / 2 ? p.Height / 2 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height,
+                    L = l > p.Width / 2 ? p.Width / 2 : l,
+                    c = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize > w / 2 ? 10 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize;
                 d.style.position = "absolute", d.id = "signIcon" + i + "_" + n;
                 var C = this.pdfViewerBase.getZoomFactor(),
                     g = this.getAngle(i),
                     m = {
                         left: M,
                         top: h,
-                        width: w,
-                        height: L
+                        width: L,
+                        height: w
                     },
                     f = this.getBounds(m, i);
-                return d.style.transform = "rotate(" + g + "deg)", d.style.left = f.left * C + "px", d.style.top = f.top * C + "px", t.Browser.isDevice && !this.pdfViewer.enableDesktopMode ? (d.style.height = "5px", d.style.width = "10px", d.style.fontSize = "3px") : (d.style.height = L + "px", d.style.width = w + "px", d.style.fontSize = c + "px", t.isBlazor() && (d.style.fontSize = c - 1 + "px")), d.style.padding = "2px", d.style.textAlign = "center", d.style.boxSizing = "content-box", d.innerHTML = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.text ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.text : r, d.style.color = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.color ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.color : "black", d.style.backgroundColor = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor : "orange", d.style.opacity = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.opacity ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.opacity : 1, u.appendChild(d), this.addSignaturePath(e), s
+                return d.style.transform = "rotate(" + g + "deg)", d.style.left = f.left * C + "px", d.style.top = f.top * C + "px", t.Browser.isDevice && !this.pdfViewer.enableDesktopMode ? (d.style.height = "5px", d.style.width = "10px", d.style.fontSize = "3px") : (d.style.height = w + "px", d.style.width = L + "px", d.style.fontSize = c + "px", t.isBlazor() && (d.style.fontSize = c - 1 + "px")), d.style.padding = "2px", d.style.textAlign = "center", d.style.boxSizing = "content-box", d.innerHTML = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.text ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.text : r, d.style.color = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.color ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.color : "black", d.style.backgroundColor = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor : "orange", d.style.opacity = this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.opacity ? this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.opacity : 1, u.appendChild(d), this.addSignaturePath(e), s
             }, e.prototype.addSignaturePath = function(e) {
                 this.isSignatureField = !1;
                 var t = this.pdfViewerBase.getItemFromSessionStorage("_formfields");
@@ -27071,13 +27324,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             }
                         }, "SignatureField" !== e.Name && "InitialField" !== e.Name || t.isNullOrUndefined(e.id)) this.pdfViewer.add(M);
                     else {
-                        var L = e.id,
-                            w = document.getElementById(L + "_content_html_element"),
-                            c = this.pdfViewer.nameTable[L];
+                        var w = e.id,
+                            L = document.getElementById(w + "_content_html_element"),
+                            c = this.pdfViewer.nameTable[w];
                         M.id = c.id + "_content";
                         var C = this.pdfViewer.add(M);
-                        if (c.wrapper.children.push(C.wrapper), !t.isNullOrUndefined(w) && this.isSignatureField) {
-                            var g = w.children[0].children[0];
+                        if (c.wrapper.children.push(C.wrapper), !t.isNullOrUndefined(L) && this.isSignatureField) {
+                            var g = L.children[0].children[0];
                             g.style.pointerEvents = "none", g.className = "e-pdfviewer-signatureformfields-signature", g.parentElement.style.pointerEvents = "none"
                         }
                     }
@@ -27158,7 +27411,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "FormFields"
             }, e
         }(),
-        Ln = function() {
+        gn = function() {
             function a(e, t) {
                 this.isFormFieldExistingInCollection = !1, this.multilineCheckboxCheckedState = !1, this.formFieldListItemCollection = [], this.formFieldListItemDataSource = [], this.isInitialField = !1, this.disableSignatureClickEvent = !1, this.formFieldIndex = 0, this.formFieldIdIndex = 0, this.isProgrammaticSelection = !1, this.isShapeCopied = !1, this.isDrawHelper = !1, this.pdfViewer = e, this.pdfViewerBase = t
             }
@@ -27210,9 +27463,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     d = this.createHtmlElement("div", M), t.template = "SignatureField" === e || "InitialField" === e ? d.appendChild(this.createSignatureDialog(s, n)) : "DropdownList" === e ? d.appendChild(this.createDropDownList(t, n)) : "ListBox" === e ? d.appendChild(this.createListBox(t, n)) : d.appendChild(this.createInputElement(e, n));
                     var h = document.createElement("div");
                     if (h.id = n.id + "_designer_name", h.style.fontSize = n.fontSize ? n.fontSize * l + "px" : 10 * l + "px", h.className = "e-pv-show-designer-name", this.pdfViewer.designerMode ? (h.innerHTML = n.name, h.style.position = "absolute") : (h.innerHTML = "", h.style.position = "initial"), d.appendChild(h), u.appendChild(d), a.appendChild(u), "RadioButton" === e && document.getElementsByClassName("e-pv-radiobtn-span").length > 0)
-                        for (var L = document.getElementsByClassName("e-pv-radiobtn-span"), w = 0; w < L.length; w++) {
+                        for (var w = document.getElementsByClassName("e-pv-radiobtn-span"), L = 0; L < w.length; L++) {
                             var c = this.getCheckboxRadioButtonBounds(n);
-                            L[w].style.width = c.width - 10 + "px", L[w].style.height = c.height - 10 + "px", (parseInt(L[w].style.width, 10) <= 1 || parseInt(L[w].style.height, 10) <= 1) && (L[w].style.width = "1px", L[w].style.height = "1px", L[w].style.margin = "1px")
+                            w[L].style.width = c.width - 10 + "px", w[L].style.height = c.height - 10 + "px", (parseInt(w[L].style.width, 10) <= 1 || parseInt(w[L].style.height, 10) <= 1) && (w[L].style.width = "1px", w[L].style.height = "1px", w[L].style.margin = "1px")
                         }
                     g = i.cornersPointsBeforeRotation(t).topLeft;
                     d.setAttribute("style", "height:" + t.actualSize.height * l + "px; width:" + t.actualSize.width * l + "px;left:" + g.x * l + "px; top:" + g.y * l + "px;position:absolute;transform:rotate(" + (t.rotateAngle + t.parentTransform) + "deg);pointer-events:" + (this.pdfViewer.designerMode ? "none" : "all") + ";visibility:" + (t.visible ? "visible" : "hidden") + ";opacity:" + t.style.opacity + ";"), this.updateFormDesignerFieldInSessionStorage(g, t, e, n);
@@ -27887,7 +28140,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var s = t.createElement("div");
                 s.className = "foreign-object", s.style.position = "absolute", s.style.width = "100%", s.style.height = "100%";
                 var a = t.createElement("div");
-                a.style.width = "100%", a.style.height = "100%", a.style.position = "absolute", a.style.backgroundColor = "transparent", a.style.border = "1px solid #303030", t.isNullOrUndefined(i.value) || "" === i.value ? (a.className = "e-pdfviewer-signatureformfields", a.style.pointerEvents = "") : (a.className = "e-pdfviewer-signatureformfields-signature", a.style.pointerEvents = "none"), a.id = i.id, a.addEventListener("click", this.openSignatureDialog.bind(this, e)), s.appendChild(a);
+                a.style.width = "100%", a.style.height = "100%", a.style.position = "absolute", a.style.backgroundColor = "transparent", a.style.border = "1px solid #303030", t.isNullOrUndefined(i.value) || "" === i.value ? (a.className = "e-pdfviewer-signatureformfields", a.style.pointerEvents = "") : (a.className = "e-pdfviewer-signatureformfields-signature", a.style.pointerEvents = "none"), a.id = i.id, s.appendChild(a);
                 var r = 19 === this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.width ? i.isInitialField ? 30 : 25 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.width,
                     l = i.signatureIndicatorSettings && i.signatureIndicatorSettings.width ? i.signatureIndicatorSettings.width : r,
                     d = 10 === this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height ? 13 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.height,
@@ -27895,24 +28148,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = "orange" === this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor ? "#FFE48559" : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.backgroundColor,
                     M = (i.isInitialField, i.bounds ? i.bounds.width : n.width),
                     h = i.bounds ? i.bounds.height : n.height,
-                    L = u > h / 2 ? h / 2 : u,
-                    w = l > M / 2 ? M / 2 : l,
+                    w = u > h / 2 ? h / 2 : u,
+                    L = l > M / 2 ? M / 2 : l,
                     c = 10;
-                c = i.signatureIndicatorSettings && i.signatureIndicatorSettings.fontSize ? i.signatureIndicatorSettings.fontSize > L / 2 ? 10 : i.signatureIndicatorSettings.fontSize : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize > L / 2 ? 10 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize;
+                c = i.signatureIndicatorSettings && i.signatureIndicatorSettings.fontSize ? i.signatureIndicatorSettings.fontSize > w / 2 ? 10 : i.signatureIndicatorSettings.fontSize : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize > w / 2 ? 10 : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.fontSize;
                 var C = t.createElement("span");
                 i.isInitialField ? (C.id = "initialIcon" + i.pageIndex + "_" + this.setFormFieldIdIndex(), C.innerHTML = i.signatureIndicatorSettings && i.signatureIndicatorSettings.text ? i.signatureIndicatorSettings.text : "Initial") : (C.id = "signIcon" + i.pageIndex + "_" + this.setFormFieldIdIndex(), C.innerHTML = i.signatureIndicatorSettings && i.signatureIndicatorSettings.text ? i.signatureIndicatorSettings.text : "Sign"), C.style.color = i.signatureIndicatorSettings && i.signatureIndicatorSettings.color ? i.signatureIndicatorSettings.color : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.color, C.style.backgroundColor = i.signatureIndicatorSettings && i.signatureIndicatorSettings.backgroundColor ? i.signatureIndicatorSettings.backgroundColor : p, C.style.opacity = i.signatureIndicatorSettings && i.signatureIndicatorSettings.opacity ? i.signatureIndicatorSettings.opacity : this.pdfViewer.signatureFieldSettings.signatureIndicatorSettings.opacity, C.style.position = "absolute";
                 var g = this.pdfViewerBase.getZoomFactor();
-                return C.style.width = w * g + NaN, C.style.height = L * g + NaN, C.style.textAlign = "center", C.style.fontSize = c * g + "px", C.style.paddingTop = "1px", o || s.appendChild(C), t.isNullOrUndefined(i.tooltip) || "" == i.tooltip || this.setToolTip(i.tooltip, s), s
-            }, a.prototype.openSignatureDialog = function(e, i) {
-                e.clearSelection(this.pdfViewerBase.activeElements.activePageID), this.pdfViewerBase.currentTarget = i.target;
-                var n = "";
-                n = -1 !== navigator.userAgent.indexOf("MSIE") || -1 !== navigator.userAgent.indexOf("Trident") ? this.pdfViewerBase.currentTarget.id : t.isNullOrUndefined(i.path) ? i.composedPath()[2].id.split("_")[0] : i.path[2].id.split("_")[0], "InitialField" === this.pdfViewer.nameTable[n].formFieldAnnotationType ? this.isInitialField = !0 : this.isInitialField = !1, this.pdfViewerBase.isToolbarSignClicked = !1, this.pdfViewerBase.isInitialField = this.isInitialField, this.pdfViewerBase.signatureModule.showSignatureDialog(!0)
+                return C.style.width = L * g + NaN, C.style.height = w * g + NaN, C.style.textAlign = "center", C.style.fontSize = c * g + "px", C.style.paddingTop = "1px", o || s.appendChild(C), t.isNullOrUndefined(i.tooltip) || "" == i.tooltip || this.setToolTip(i.tooltip, s), this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.signatureFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateSignatureFieldProperties(i, s, o), s
             }, a.prototype.createDropDownList = function(e, i) {
                 var n = i.options ? i.options : [],
                     o = t.createElement("div");
                 o.className = "foreign-object", o.style.position = "absolute", o.style.width = "100%", o.style.height = "100%";
                 var s = document.createElement("select");
-                s.addEventListener("change", this.dropdownChange.bind(this)), s.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), s.name = "editabledropdown" + this.pdfViewerBase.activeElements.activePageID + e.id, s.className = "e-pv-formfield-dropdown", s.style.width = "100%", s.style.height = "100%", this.updateDropdownListProperties(i, s);
+                s.addEventListener("change", this.dropdownChange.bind(this)), s.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), s.name = "editabledropdown" + this.pdfViewerBase.activeElements.activePageID + e.id, s.className = "e-pv-formfield-dropdown", s.style.width = "100%", s.style.height = "100%", this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.DropdownFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateDropdownListProperties(i, s);
                 for (var a = 0; a < n.length; a++) {
                     var r = document.createElement("option");
                     r.className = "e-pv-formfield-dropdown", r.value = n[a].itemValue, r.text = n[a].itemName, this.updateDropdownListProperties(i, r), s.appendChild(r)
@@ -27923,7 +28172,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     o = t.createElement("div");
                 o.className = "foreign-object", o.style.position = "absolute", o.style.width = "100%", o.style.height = "100%";
                 var s = document.createElement("select");
-                s.addEventListener("click", this.listBoxChange.bind(this)), s.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), s.name = "editabledropdown" + this.pdfViewerBase.activeElements.activePageID + e.id, s.className = "e-pv-formfield-listbox", s.style.width = "100%", s.style.height = "100%", s.multiple = !0, this.updateListBoxProperties(i, s);
+                s.addEventListener("click", this.listBoxChange.bind(this)), s.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), s.name = "editabledropdown" + this.pdfViewerBase.activeElements.activePageID + e.id, s.className = "e-pv-formfield-listbox", s.style.width = "100%", s.style.height = "100%", s.multiple = !0, this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.listBoxFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateListBoxProperties(i, s);
                 for (var a = 0; a < n.length; a++) {
                     var r = document.createElement("option");
                     if (r.className = "e-pv-formfield-listbox", r.value = n[a].itemValue, r.text = n[a].itemName, !t.isNullOrUndefined(i.selectedIndex))
@@ -27938,7 +28187,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 a.className = "foreign-object", a.style.position = "absolute", a.style.width = "100%", a.style.height = "100%";
                 var r, l, d, u = t.createElement("input"),
                     p = t.createElement("textarea");
-                if (u.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), "Textbox" === e) i.isMultiline ? (p = this.createTextAreaElement(u.id), this.updateTextboxProperties(i, p)) : (u = this.createTextboxElement(u.id), this.updateTextboxProperties(i, u));
+                if (u.id = i.id + "_" + i.pageIndex + "_" + this.setFormFieldIdIndex(), "Textbox" === e) i.isMultiline ? (p = this.createTextAreaElement(u.id), this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.textFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateTextboxProperties(i, p)) : (u = this.createTextboxElement(u.id), this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.textFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateTextboxProperties(i, u));
                 else if ("Checkbox" == e) {
                     a.style.textAlign = "chrome" === t.Browser.info.name ? "-webkit-center" : "center", a.style.display = "flex", a.style.alignItems = "center";
                     h = this.getCheckboxRadioButtonBounds(i, n);
@@ -27954,18 +28203,19 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         var M = parseInt(r.style.width, 10);
                         d.style.borderWidth = M > 20 ? "3px" : M <= 15 ? "1px" : "2px"
                     }
-                    u.type = "checkbox", u.style.margin = "0px", u.style.width = h.width + "px", u.style.height = h.height + "px", o ? this.updateCheckboxProperties(i, u) : this.updateCheckboxProperties(i, l), r.appendChild(u), r.appendChild(l), l.appendChild(d), o && (u.style.outlineWidth = i.thickness + "px", u.style.outlineColor = i.borderColor, u.style.outlineStyle = "solid", u.style.background = i.backgroundColor)
-                } else if ("PasswordField" == e) u.type = "password", u.className = "e-pv-formfield-input", u.style.width = "100%", u.style.height = "100%", u.addEventListener("click", this.inputElementClick.bind(this)), u.addEventListener("change", this.getTextboxValue.bind(this)), this.updatePasswordFieldProperties(i, u);
+                    u.type = "checkbox", u.style.margin = "0px", u.style.width = h.width + "px", u.style.height = h.height + "px", o ? this.updateCheckboxProperties(i, u) : (this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.checkBoxFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateCheckboxProperties(i, l)), r.appendChild(u), r.appendChild(l), l.appendChild(d), o && (u.style.outlineWidth = i.thickness + "px", u.style.outlineColor = i.borderColor, u.style.outlineStyle = "solid", u.style.background = i.backgroundColor)
+                } else if ("PasswordField" == e) u.type = "password", u.className = "e-pv-formfield-input", u.style.width = "100%", u.style.height = "100%", u.addEventListener("click", this.inputElementClick.bind(this)), u.addEventListener("change", this.getTextboxValue.bind(this)), this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.passwordFieldSettings.isReadOnly && (i.isReadonly = !0), this.updatePasswordFieldProperties(i, u);
                 else {
+                    // Change backgroud color
                     a.style.textAlign = "chrome" === t.Browser.info.name ? "-webkit-center" : "center", a.style.display = "flex", a.style.alignItems = "center";
                     var h = this.getCheckboxRadioButtonBounds(i, n);
                     a.style.display = h.display, (r = t.createElement("label", {
                         className: "e-pv-radiobtn-container"
-                    })).style.width = h.width + "px", r.style.height = h.height + "px", r.style.display = "table", r.style.verticalAlign = "middle", r.style.boxShadow = i.borderColor + " 0px 0px 0px " + i.thickness + "px", r.style.borderRadius = "50%", this.isDrawHelper ? r.style.cursor = "crosshair" : r.style.cursor = "pointer", r.style.background = i.backgroundColor, (d = t.createElement("span", {
+                    })).style.width = h.width + "px", r.style.height = h.height + "px", r.style.display = "table", r.style.verticalAlign = "middle", r.style.boxShadow = (!i.isRequired ? i.borderColor : "#ff0000") + " 0px 0px 0px " + i.thickness + "px", r.style.borderRadius = "50%", this.isDrawHelper ? r.style.cursor = "crosshair" : r.style.cursor = "pointer", r.style.backgroundColor = i.backgroundColor, (d = t.createElement("span", {
                         className: "e-pv-radiobtn-span"
                     })).id = i.id, d.style.width = Math.floor(h.width / 2) + "px", d.style.height = Math.floor(h.height / 2) + "px", s < 1 && h.width <= 20 && h.height <= 20 ? d.style.margin = Math.round(parseInt(r.style.width) / 3.5) + "px" : d.style.margin = "5px", r.addEventListener("click", this.setRadioButtonState.bind(this)), r.id = i.id + "_input_label", u.type = "radio", o || (u.className = "e-pv-radio-btn"), u.style.margin = "0px", u.addEventListener("click", function(e) {
                         e.stopPropagation()
-                    }), u.style.width = h.width + "px", u.style.height = h.height + "px", this.updateRadioButtonProperties(i, u), r.appendChild(u), r.appendChild(d)
+                    }), u.style.width = h.width + "px", u.style.height = h.height + "px", this.pdfViewer.isFormDesignerToolbarVisible && this.pdfViewer.radioButtonFieldSettings.isReadOnly && (i.isReadonly = !0), this.updateRadioButtonProperties(i, u), r.appendChild(u), r.appendChild(d)
                 }
                 return "Checkbox" !== e && "RadioButton" !== e || o ? i.isMultiline ? a.appendChild(p) : a.appendChild(u) : a.appendChild(r), t.isNullOrUndefined(i.tooltip) || "" == i.tooltip || ("RadioButton" === e ? this.setToolTip(i.tooltip, r) : this.setToolTip(i.tooltip, a)), this.isDrawHelper = !1, a
             }, a.prototype.listBoxChange = function(e) {
@@ -28035,7 +28285,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     } this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
             }, a.prototype.getTextboxValue = function(e) {
                 for (var t = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"), i = JSON.parse(t), n = 0; n < i.length; n++)
-                    if (i[n].Key.split("_")[0] === e.target.id.split("_")[0] || this.pdfViewer.nameTable[e.target.id.split("_")[0]].name === i[n].FormField.name) {
+                    // Added rol validation
+                    if (i[n].Key.split("_")[0] === e.target.id.split("_")[0] || 
+                        (
+                            this.pdfViewer.nameTable[e.target.id.split("_")[0]].name === i[n].FormField.name && 
+                            this.pdfViewer.nameTable[e.target.id.split("_")[0]].tooltip === i[n].FormField.tooltip
+                        )
+                    ) {
                         var o = this.pdfViewerBase.formFieldCollection[n].FormField.value;
                         if (i[n].FormField.value = e.target.value, this.pdfViewer.nameTable[i[n].Key.split("_")[0]].value = i[n].FormField.value, this.pdfViewerBase.formFieldCollection[n].FormField.value = i[n].FormField.value, i[n].Key.split("_")[0] !== e.target.id.split("_")[0]) {
                             var s = document.getElementById(i[n].Key.split("_")[0] + "_content_html_element");
@@ -28044,7 +28300,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         this.updateFormFieldCollections(this.pdfViewerBase.formFieldCollection[n].FormField), this.pdfViewer.fireFormFieldPropertiesChangeEvent("formFieldPropertiesChange", this.pdfViewerBase.formFieldCollection[n].FormField, this.pdfViewerBase.formFieldCollection[n].FormField.pageNumber, !0, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, o, e.target.value), this.pdfViewer.annotation.addAction(this.pdfViewerBase.formFieldCollection[n].FormField.pageNumber, null, this.pdfViewerBase.formFieldCollection[n].FormField, "FormField Value Change", "", o, e.target.value)
                     } this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
             }, a.prototype.inputElementClick = function(e) {
-                e.target.focus()
+                // Added blur event
+                e.target.blur();
+                e.target.focus();
             }, a.prototype.addFormField = function(e, i) {
                 var n = {
                     thickness: 0,
@@ -28057,7 +28315,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontFamily: t.isNullOrUndefined(i.fontFamily) ? "Helvetica" : i.fontFamily,
                     fontSize: t.isNullOrUndefined(i.fontSize) ? 10 : i.fontSize,
                     color: t.isNullOrUndefined(i.color) ? "black" : i.color,
-                    backgroundColor: t.isNullOrUndefined(i.backgroundColor) ? "#daeaf7ff" : i.backgroundColor,
+                    backgroundColor: t.isNullOrUndefined(i.backgroundColor) ? "#ffffffff" : i.backgroundColor,
                     alignment: t.isNullOrUndefined(i.alignment) ? "left" : i.alignment,
                     isReadonly: !!i.isReadOnly && i.isReadOnly
                 };
@@ -28093,7 +28351,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             y: i.bounds.Y,
                             width: i.bounds.Width,
                             height: i.bounds.Height
-                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#daeaf7ff" : i.backgroundColor, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.name = t.isNullOrUndefined(i.name) ? "Check Box" + this.setFormFieldIndex() : i.name, n.isChecked = !!i.isChecked && i.isChecked, n.visibility = i.visibility ? i.visibility : "visible", n.isRequired = !!i.isRequired && i.isRequired, n.thickness = t.isNullOrUndefined(i.thickness) ? 1 : i.thickness, n.borderColor = t.isNullOrUndefined(i.borderColor) ? "#303030" : i.borderColor;
+                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#ffffffff" : i.backgroundColor, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.name = t.isNullOrUndefined(i.name) ? "Check Box" + this.setFormFieldIndex() : i.name, n.isChecked = !!i.isChecked && i.isChecked, n.visibility = i.visibility ? i.visibility : "visible", n.isRequired = !!i.isRequired && i.isRequired, n.thickness = t.isNullOrUndefined(i.thickness) ? 1 : i.thickness, n.borderColor = t.isNullOrUndefined(i.borderColor) ? "#303030" : i.borderColor;
                         break;
                     case "RadioButton":
                         n.formFieldAnnotationType = e, n.bounds = {
@@ -28101,7 +28359,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             y: i.bounds.Y,
                             width: i.bounds.Width,
                             height: i.bounds.Height
-                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#daeaf7ff" : i.backgroundColor, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.name = t.isNullOrUndefined(i.name) ? "Radio Button" + this.setFormFieldIndex() : i.name, n.isSelected = !!i.isSelected && i.isSelected, n.visibility = i.visibility ? i.visibility : "visible", n.isRequired = !!i.isRequired && i.isRequired, n.thickness = t.isNullOrUndefined(i.thickness) ? 1 : i.thickness, n.borderColor = t.isNullOrUndefined(i.borderColor) ? "#303030" : i.borderColor;
+                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#ffffffff" : i.backgroundColor, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.name = t.isNullOrUndefined(i.name) ? "Radio Button" + this.setFormFieldIndex() : i.name, n.isSelected = !!i.isSelected && i.isSelected, n.visibility = i.visibility ? i.visibility : "visible", n.isRequired = !!i.isRequired && i.isRequired, n.thickness = t.isNullOrUndefined(i.thickness) ? 1 : i.thickness, n.borderColor = t.isNullOrUndefined(i.borderColor) ? "#303030" : i.borderColor;
                         break;
                     case "SignatureField":
                         n.formFieldAnnotationType = e, n.bounds = {
@@ -28109,7 +28367,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             y: i.bounds.Y,
                             width: i.bounds.Width,
                             height: i.bounds.Height
-                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#daeaf7ff" : i.backgroundColor, n.fontSize = t.isNullOrUndefined(i.fontSize) ? 10 : i.fontSize, n.fontStyle = t.isNullOrUndefined(i.fontStyle) ? "None" : i.fontStyle, n.name = t.isNullOrUndefined(i.name) ? "Signature" + +this.setFormFieldIndex() : i.name, n.isRequired = !!i.isRequired && i.isRequired, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.signatureIndicatorSettings = i.signatureIndicatorSettings ? {
+                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#ffffffff" : i.backgroundColor, n.fontSize = t.isNullOrUndefined(i.fontSize) ? 10 : i.fontSize, n.fontStyle = t.isNullOrUndefined(i.fontStyle) ? "None" : i.fontStyle, n.name = t.isNullOrUndefined(i.name) ? "Signature" + +this.setFormFieldIndex() : i.name, n.isRequired = !!i.isRequired && i.isRequired, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.signatureIndicatorSettings = i.signatureIndicatorSettings ? {
                             opacity: i.signatureIndicatorSettings.opacity ? i.signatureIndicatorSettings.opacity : 1,
                             backgroundColor: i.signatureIndicatorSettings.backgroundColor ? i.signatureIndicatorSettings.backgroundColor : "orange",
                             width: i.signatureIndicatorSettings.width ? i.signatureIndicatorSettings.width : 19,
@@ -28125,7 +28383,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                             y: i.bounds.Y,
                             width: i.bounds.Width,
                             height: i.bounds.Height
-                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#daeaf7ff" : i.backgroundColor, n.fontSize = t.isNullOrUndefined(i.fontSize) ? 10 : i.fontSize, n.fontStyle = t.isNullOrUndefined(i.fontStyle) ? "None" : i.fontStyle, n.name = t.isNullOrUndefined(i.name) ? "Initial" + +this.setFormFieldIndex() : i.name, n.isRequired = !!i.isRequired && i.isRequired, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.isInitialField = !0, n.signatureIndicatorSettings = i.signatureIndicatorSettings ? {
+                        }, n.backgroundColor = t.isNullOrUndefined(i.backgroundColor) ? "#ffffffff" : i.backgroundColor, n.fontSize = t.isNullOrUndefined(i.fontSize) ? 10 : i.fontSize, n.fontStyle = t.isNullOrUndefined(i.fontStyle) ? "None" : i.fontStyle, n.name = t.isNullOrUndefined(i.name) ? "Initial" + +this.setFormFieldIndex() : i.name, n.isRequired = !!i.isRequired && i.isRequired, n.isReadonly = !!i.isReadOnly && i.isReadOnly, n.isInitialField = !0, n.signatureIndicatorSettings = i.signatureIndicatorSettings ? {
                             opacity: i.signatureIndicatorSettings.opacity ? i.signatureIndicatorSettings.opacity : 1,
                             backgroundColor: i.signatureIndicatorSettings.backgroundColor ? i.signatureIndicatorSettings.backgroundColor : "orange",
                             width: i.signatureIndicatorSettings.width ? i.signatureIndicatorSettings.width : 19,
@@ -28248,8 +28506,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     p = !1,
                     M = !1,
                     h = !1,
-                    L = !1,
                     w = !1,
+                    L = !1,
                     c = !1,
                     C = !1,
                     g = !1,
@@ -28263,9 +28521,9 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var A = document.getElementById(n.id + "_designer_name");
                     A.innerHTML = n.name, A.style.fontSize = n.fontSize ? n.fontSize * S + "px" : 10 * S + "px", s.name = o.name, this.pdfViewer.nameTable[n.id.split("_")[0]].name = n.name
                 }
-                if ("SignatureField" !== n.formFieldAnnotationType && (o.thickness && (n.thickness !== o.thickness && (w = !0, a = n.thickness, r = o.thickness), s.style.borderWidth = o.thickness.toString(), n.thickness = o.thickness, this.pdfViewer.nameTable[n.id.split("_")[0]].thickness = o.thickness, w && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", n, !1, !1, !1, !1, !1, !1, !1, w, !1, !1, !1, !1, !1, !1, !1, a, r)), o.borderColor)) {
+                if ("SignatureField" !== n.formFieldAnnotationType && (o.thickness && (n.thickness !== o.thickness && (L = !0, a = n.thickness, r = o.thickness), s.style.borderWidth = o.thickness.toString(), n.thickness = o.thickness, this.pdfViewer.nameTable[n.id.split("_")[0]].thickness = o.thickness, L && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", n, !1, !1, !1, !1, !1, !1, !1, L, !1, !1, !1, !1, !1, !1, !1, a, r)), o.borderColor)) {
                     var T = this.colorNametoHashValue(o.borderColor);
-                    n.borderColor !== T && (L = !0, a = n.borderColor, r = T), n.borderColor = T, s.style.borderColor = T, "RadioButton" === n.formFieldAnnotationType && (s.parentElement.style.boxShadow = T + " 0px 0px 0px " + n.thickness + "px", this.setToolTip(o.tooltip, s.parentElement)), this.pdfViewer.nameTable[n.id.split("_")[0]].borderColor = T, L && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", n, !1, !1, !1, !1, !1, !1, L, !1, !1, !1, !1, !1, !1, !1, !1, a, r)
+                    n.borderColor !== T && (w = !0, a = n.borderColor, r = T), n.borderColor = T, s.style.borderColor = T, "RadioButton" === n.formFieldAnnotationType && (s.parentElement.style.boxShadow = T + " 0px 0px 0px " + n.thickness + "px", this.setToolTip(o.tooltip, s.parentElement)), this.pdfViewer.nameTable[n.id.split("_")[0]].borderColor = T, w && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", n, !1, !1, !1, !1, !1, !1, w, !1, !1, !1, !1, !1, !1, !1, !1, a, r)
                 }
                 if (o.backgroundColor) {
                     var x = this.colorNametoHashValue(o.backgroundColor);
@@ -28343,25 +28601,25 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "object" == typeof e && (i = this.getAnnotationsFromAnnotationCollections(e.id)) && (t = this.pdfViewer.nameTable[i.id]), "string" == typeof e && (i = this.getAnnotationsFromAnnotationCollections(e)) && (t = this.pdfViewer.nameTable[i.id]), t
             }, a.prototype.resetTextboxProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "textboxField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#daeaf7ff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.maxLength = 0, this.updateTextboxProperties(e, t))
+                t && (e.name = "textboxField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#ffffffff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.maxLength = 0, this.updateTextboxProperties(e, t))
             }, a.prototype.resetPasswordProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "passswordField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#daeaf7ff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.maxLength = 0, this.updatePasswordFieldProperties(e, t))
+                t && (e.name = "passswordField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#ffffffff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.maxLength = 0, this.updatePasswordFieldProperties(e, t))
             }, a.prototype.resetCheckboxProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "checkboxField", e.isChecked = !1, e.backgroundColor = "#daeaf7ff", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, this.updateCheckboxProperties(e, t))
+                t && (e.name = "checkboxField", e.isChecked = !1, e.backgroundColor = "#ffffffff", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, this.updateCheckboxProperties(e, t))
             }, a.prototype.resetRadioButtonProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "RadioButtonField", e.isSelected = !1, e.backgroundColor = "#daeaf7ff", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, this.updateRadioButtonProperties(e, t))
+                t && (e.name = "RadioButtonField", e.isSelected = !1, e.backgroundColor = "#ffffffff", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, this.updateRadioButtonProperties(e, t))
             }, a.prototype.resetDropdownListProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "dropDownField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#daeaf7ff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.options = [], this.updateDropdownListProperties(e, t), e.options && this.updateDropDownListDataSource(e, t))
+                t && (e.name = "dropDownField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#ffffffff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.options = [], this.updateDropdownListProperties(e, t), e.options && this.updateDropDownListDataSource(e, t))
             }, a.prototype.resetListBoxProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "listBoxField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#daeaf7ff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.options = [], this.updateListBoxProperties(e, t), e.options && this.updateDropDownListDataSource(e, t))
+                t && (e.name = "listBoxField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#ffffffff", e.alignment = "left", e.visibility = "visible", e.isReadonly = !1, e.isRequired = !1, e.tooltip = "", e.isPrint = !0, e.borderColor = "#303030", e.thickness = 1, e.options = [], this.updateListBoxProperties(e, t), e.options && this.updateDropDownListDataSource(e, t))
             }, a.prototype.resetSignatureTextboxProperties = function(e) {
                 var t = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild;
-                t && (e.name = "signatureField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#daeaf7ff", e.isRequired = !1, e.isReadonly = !1, e.tooltip = "", e.isPrint = !0, e.visibility = "visible", this.updateSignatureFieldProperties(e, t))
+                t && (e.name = "signatureField", e.value = "", e.fontFamily = "Helvetica", e.fontSize = 10, e.fontStyle = "None", e.color = "black", e.backgroundColor = "#ffffffff", e.isRequired = !1, e.isReadonly = !1, e.tooltip = "", e.isPrint = !0, e.visibility = "visible", this.updateSignatureFieldProperties(e, t))
             }, a.prototype.deleteFormField = function(e, i) {
                 void 0 === i && (i = !0);
                 var n = this.getFormField(e);
@@ -28370,7 +28628,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var i, n;
                 "object" == typeof e && (n = this.getAnnotationsFromAnnotationCollections(e.id), i = this.pdfViewer.nameTable[n.id]), "string" == typeof e && (n = this.getAnnotationsFromAnnotationCollections(e), i = this.pdfViewer.nameTable[n.id]), i && this.pdfViewer.selectedItems && !t.isNullOrUndefined(this.pdfViewer.selectedItems.properties.formFields) && this.pdfViewer.selectedItems.properties.formFields.length > 0 && this.pdfViewer.selectedItems.properties.formFields[0].id === i.id && this.pdfViewer.clearSelection(this.pdfViewerBase.activeElements.activePageID)
             }, a.prototype.setMode = function(e) {
-                e && -1 !== e.indexOf("designer") ? (this.enableDisableFormFieldsInteraction(!0), this.pdfViewerBase.disableTextSelectionMode()) : (this.enableDisableFormFieldsInteraction(!1), this.pdfViewer.textSelectionModule.enableTextSelectionMode())
+                e && -1 !== e.indexOf("designer") ? (this.enableDisableFormFieldsInteraction(!0), this.pdfViewerBase.disableTextSelectionMode()) : (this.enableDisableFormFieldsInteraction(!1), this.pdfViewer.textSelectionModule && this.pdfViewer.textSelectionModule.enableTextSelectionMode())
             }, a.prototype.enableDisableFormFieldsInteraction = function(e) {
                 var t = this.pdfViewer.formFieldCollection;
                 if (t && t.length > 0)
@@ -28428,7 +28686,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
                     fontStyle: "None",
                     color: "black",
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     thickness: 1,
                     borderColor: "#303030",
                     alignment: "left",
@@ -28438,8 +28696,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isRequired: !1,
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: "",
-                    rol: this.pdfViewer.defaultRol || "", // Added rol property
+                    tooltip: "Operador",
                     font: {
                         isItalic: !1,
                         isBold: !1,
@@ -28457,7 +28714,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontStyle: "None",
                     color: "black",
                     alignment: "left",
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     thickness: 1,
                     borderColor: "#303030",
                     isReadonly: !1,
@@ -28466,7 +28723,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isRequired: !1,
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: "",
+                    tooltip: "Operador",
                     font: {
                         isItalic: !1,
                         isBold: !1,
@@ -28480,7 +28737,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     name: "Check Box" + this.setFormFieldIndex(),
                     isChecked: !1,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     color: "black",
                     thickness: 1,
                     borderColor: "#303030",
@@ -28489,7 +28746,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     rol: this.pdfViewer.defaultRol || "", // Added rol property
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: ""
+                    tooltip: "Operador"
                 }, this.pdfViewer.tool = "DrawTool"
             }, a.prototype.activateRadioButtonElement = function(e) {
                 this.pdfViewer.drawingObject = {
@@ -28497,7 +28754,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     name: "Radio Button" + this.setFormFieldIndex(),
                     isSelected: !1,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     color: "black",
                     thickness: 1,
                     borderColor: "#303030",
@@ -28506,7 +28763,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     rol: this.pdfViewer.defaultRol || "", // Added rol property
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: ""
+                    tooltip: "Operador"
                 }, this.pdfViewer.tool = "DrawTool"
             }, a.prototype.activateDropDownListElement = function(e, t) {
                 this.pdfViewer.drawingObject = {
@@ -28516,7 +28773,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
                     fontStyle: "None",
                     color: "black",
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     thickness: 1,
                     borderColor: "#303030",
                     alignment: "left",
@@ -28526,7 +28783,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isRequired: !1,
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: "",
+                    tooltip: "Operador",
                     options: t,
                     isMultiSelect: !1,
                     font: {
@@ -28544,7 +28801,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
                     fontStyle: "None",
                     color: "black",
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     thickness: 1,
                     borderColor: "#303030",
                     alignment: "left",
@@ -28554,7 +28811,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isRequired: !1,
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: "",
+                    tooltip: "Operador",
                     options: t,
                     isMultiSelect: !0,
                     font: {
@@ -28572,7 +28829,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
                     fontStyle: "None",
                     color: "black",
-                    backgroundColor: "#daeaf7ff",
+                    backgroundColor: "#ffffffff",
                     alignment: "left",
                     isReadonly: !1,
                     visibility: "visible",
@@ -28580,7 +28837,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isRequired: !1,
                     isPrint: !0,
                     rotateAngle: 0,
-                    tooltip: "",
+                    tooltip: "Operador",
                     font: {
                         isItalic: !1,
                         isBold: !1,
@@ -28592,44 +28849,50 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, a.prototype.updateTextboxProperties = function(e, i) {
                 // Added comment: Updating properties
                 // Added rol data tag
-                i.setAttribute('rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
-                i.setAttribute('data-rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
+                i.setAttribute('rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                i.setAttribute('data-rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
 
                 i.name = e.name ? e.name : "Textbox" + this.setFormFieldIndex(), i.value = e.value ? e.value : "", i.style.fontFamily = e.fontFamily ? e.fontFamily : "Helvetica";
                 var n = this.pdfViewerBase.getZoomFactor();
-                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), void 0 != e.maxLength && (i.maxLength = 0 === e.maxLength ? 524288 : e.maxLength), i.tabIndex = this.formFieldIndex
+                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), void 0 != e.maxLength && (i.maxLength = 0 === e.maxLength ? 524288 : e.maxLength), i.tabIndex = this.formFieldIndex
             }, a.prototype.updatePasswordFieldProperties = function(e, i) {
                 i.name = e.name ? e.name : "Password" + this.setFormFieldIndex(), i.value = e.value ? e.value : "", i.style.fontFamily = e.fontFamily ? e.fontFamily : "Helvetica";
                 var n = this.pdfViewerBase.getZoomFactor();
-                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), void 0 != e.maxLength && (i.maxLength = 0 === e.maxLength ? 524288 : e.maxLength), i.tabIndex = this.formFieldIndex
+                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), void 0 != e.maxLength && (i.maxLength = 0 === e.maxLength ? 524288 : e.maxLength), i.tabIndex = this.formFieldIndex
             }, a.prototype.updateCheckboxProperties = function(e, i) {
                 // Added rol data tag
-                i.setAttribute('rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
-                i.setAttribute('data-rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
+                i.setAttribute('rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                i.setAttribute('data-rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                // Added name tag
+                i.setAttribute('name', e.name ? e.name : e.name);
 
-                i.name = e.name ? e.name : "Check Box" + this.setFormFieldIndex(), i.checked = !!e.isChecked, i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
+                i.name = e.name ? e.name : "Check Box" + this.setFormFieldIndex(), i.checked = !!e.isChecked, i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
             }, a.prototype.updateRadioButtonProperties = function(e, i) {
                 // Added rol data tag
-                i.setAttribute('rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
-                i.setAttribute('data-rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
+                i.setAttribute('rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                i.setAttribute('data-rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
 
-                i.name = e.name ? e.name : "Radio Button" + this.setFormFieldIndex(), i.checked = !!e.isSelected, i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
+                i.name = e.name ? e.name : "Radio Button" + this.setFormFieldIndex(), i.checked = !!e.isSelected, i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
             }, a.prototype.updateDropdownListProperties = function(e, i) {
                 // Added rol data tag
-                i.setAttribute('rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
-                i.setAttribute('data-rol', e.rol ? e.rol : this.pdfViewer.defaultRol);
+                i.setAttribute('rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                i.setAttribute('data-rol', e.tooltip ? e.tooltip : this.pdfViewer.defaultRol);
+                // Added variable
+                var _value = i.value;
 
                 i.name = e.name ? e.name : "Dropdown" + this.setFormFieldIndex(), i.value = e.value ? e.value : "", i.style.fontFamily = e.fontFamily ? e.fontFamily : "Helvetica";
                 var n = this.pdfViewerBase.getZoomFactor();
-                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
+                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex;
+                // Added validation
+                i.value = (i.tagName == 'OPTION') ? _value : i.value;
             }, a.prototype.updateListBoxProperties = function(e, i) {
                 i.name = e.name ? e.name : "List Box" + this.setFormFieldIndex(), i.value = e.value ? e.value : "", i.style.fontFamily = e.fontFamily ? e.fontFamily : "Helvetica";
                 var n = this.pdfViewerBase.getZoomFactor();
-                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#daeaf7ff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
-            }, a.prototype.updateSignatureFieldProperties = function(e, i) {
+                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.backgroundColor = e.backgroundColor ? e.backgroundColor : "#ffffffff", i.style.borderColor = e.borderColor ? e.borderColor : "#303030", i.style.textAlign = e.alignment ? e.alignment.toLowerCase() : "left", i.style.visibility = e.visibility ? e.visibility : "visible", i.style.pointerEvents = e.isReadonly ? "none" : "default", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
+            }, a.prototype.updateSignatureFieldProperties = function(e, i, n) {
                 i.name = e.name ? e.name : "Signature" + this.setFormFieldIndex(), i.value = e.value ? e.value : "", i.style.fontFamily = e.fontFamily ? e.fontFamily : "Helvetica";
-                var n = this.pdfViewerBase.getZoomFactor();
-                i.style.fontSize = e.fontSize ? e.fontSize * n + "px" : 10 * n + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.backgroundColor = "#FFE48559", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
+                var o = this.pdfViewerBase.getZoomFactor();
+                i.style.fontSize = e.fontSize ? e.fontSize * o + "px" : 10 * o + "px", e.font.isBold && (i.style.fontWeight = "bold"), e.font.isItalic && (i.style.fontStyle = "italic"), e.font.isStrikeout && (i.style.textDecoration = "line-through"), e.font.isUnderline && (i.style.textDecoration = "underline"), i.style.color = e.color ? e.color : "black", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px", i.style.backgroundColor = n ? "transparent" : "#FFE48559", e.isReadonly && (i.disabled = !0, i.style.cursor = "default", i.style.backgroundColor = "transparent"), e.isRequired && (i.required = !0, i.style.border = "1px solid red", i.style.borderWidth = t.isNullOrUndefined(e.thickness) ? "1px" : e.thickness + "px"), i.tabIndex = this.formFieldIndex
             }, a.prototype.createHtmlElement = function(e, i) {
                 var n = t.createElement(e);
                 return this.setAttributeHtml(n, i), n
@@ -28643,20 +28906,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, a.prototype.downloadFormDesigner = function() {
                 var e = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner");
                 if (e) {
-                    for (var t = JSON.parse(e), i = 0; i < t.length; i++) {
-                        var n = t[i].FormField;
-                        if (n.Multiline = n.isMultiline, "Textbox" === n.formFieldAnnotationType || "PasswordField" === n.formFieldAnnotationType || n.Multiline) null === n.value || "" === n.value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[n.name] = n.value) : delete this.pdfViewerBase.nonFillableFields[n.name];
-                        else if ("RadioButton" === n.formFieldAnnotationType) {
-                            if (n.radiobuttonItem) {
-                                for (var o = !1, s = 0; s < n.radiobuttonItem.length; s++)
-                                    if (n.radiobuttonItem[s].isSelected) {
-                                        o = !0;
+                    for (var i = JSON.parse(e), n = 0; n < i.length; n++) {
+                        var o = i[n].FormField;
+                        if (o.Multiline = o.isMultiline, "Textbox" === o.formFieldAnnotationType || "PasswordField" === o.formFieldAnnotationType || o.Multiline) null === o.value || "" === o.value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[o.name] = o.value) : delete this.pdfViewerBase.nonFillableFields[o.name];
+                        else if ("RadioButton" === o.formFieldAnnotationType) {
+                            if (o.radiobuttonItem) {
+                                for (var s = !1, a = 0; a < o.radiobuttonItem.length; a++)
+                                    if (o.radiobuttonItem[a].isSelected) {
+                                        s = !0;
                                         break
-                                    } o ? delete this.pdfViewerBase.nonFillableFields[n.name] : (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[n.name] = o)
+                                    } s ? delete this.pdfViewerBase.nonFillableFields[o.name] : (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[o.name] = s)
                             }
-                        } else "Checkbox" === n.formFieldAnnotationType ? !1 === n.isChecked ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[n.name] = n.isChecked) : delete this.pdfViewerBase.nonFillableFields[n.name] : "DropdownList" === n.formFieldAnnotationType || "ListBox" === n.formFieldAnnotationType ? null === n.selectedIndex || 0 === n.selectedIndex.length ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[n.name] = n.selectedIndex) : delete this.pdfViewerBase.nonFillableFields[n.name] : "SignatureField" !== n.formFieldAnnotationType && "InitialField" !== n.formFieldAnnotationType || (null === n.value || "" === n.value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[n.name] = n.value) : delete this.pdfViewerBase.nonFillableFields[n.name])
+                        } else "Checkbox" === o.formFieldAnnotationType ? !1 === o.isChecked ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[o.name] = o.isChecked) : delete this.pdfViewerBase.nonFillableFields[o.name] : "DropdownList" === o.formFieldAnnotationType || "ListBox" === o.formFieldAnnotationType ? t.isNullOrUndefined(o.selectedIndex) || 0 === o.selectedIndex.length ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[o.name] = o.selectedIndex) : delete this.pdfViewerBase.nonFillableFields[o.name] : "SignatureField" !== o.formFieldAnnotationType && "InitialField" !== o.formFieldAnnotationType || (null === o.value || "" === o.value ? (this.pdfViewerBase.validateForm = !0, this.pdfViewerBase.nonFillableFields[o.name] = o.value) : delete this.pdfViewerBase.nonFillableFields[o.name])
                     }
-                    return JSON.stringify(t)
+                    return JSON.stringify(i)
                 }
                 return null
             }, a.prototype.createAnnotationLayer = function(e, i, n, o, s) {
@@ -28676,21 +28939,21 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, a.prototype.getPropertyPanelHeaderContent = function(e) {
                 switch (e) {
                     case "Textbox":
-                        return "Textbox";
+                        return this.pdfViewer.localeObj.getConstant("Textbox");
                     case "PasswordField":
-                        return "Password";
+                        return this.pdfViewer.localeObj.getConstant("Password");
                     case "Checkbox":
-                        return "Checkbox";
+                        return this.pdfViewer.localeObj.getConstant("Check Box");
                     case "RadioButton":
-                        return "Radio Button";
+                        return this.pdfViewer.localeObj.getConstant("Radio Button");
                     case "DropdownList":
-                        return "Drop Down";
+                        return this.pdfViewer.localeObj.getConstant("Dropdown");
                     case "ListBox":
-                        return "List Box";
+                        return this.pdfViewer.localeObj.getConstant("List Box");
                     case "InitialField":
-                        return "Initial";
+                        return this.pdfViewer.localeObj.getConstant("Initial");
                     case "SignatureField":
-                        return "Signature"
+                        return this.pdfViewer.localeObj.getConstant("Signature")
                 }
             }, a.prototype.createPropertiesWindow = function() {
                 // Added comment: Open window properties
@@ -28726,7 +28989,11 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     click: this.onOkClicked.bind(this)
                 }], this.pdfViewer.enableRtl && (this.propertiesDialog.enableRtl = !0);
                 var r = t.createElement("div");
-                r.className = "e-pv-properties-bottom-spliter", s.appendChild(r), this.propertiesDialog.appendTo(s)
+                r.className = "e-pv-properties-bottom-spliter", s.appendChild(r), this.propertiesDialog.appendTo(s);
+                // Addes dialog style
+                if(this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType != 'DropdownList'){
+                    s.style.maxHeight = '450px';
+                }
             }, a.prototype.onOkClicked = function(e) {
                 var t = this.pdfViewer.selectedItems.formFields[0],
                     n = m(t);
@@ -28856,7 +29123,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var n = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"),
                         o = JSON.parse(n),
                         s = this.getFormFiledIndex(e.id.split("_")[0]);
-                    e.options = this.createDropdownDataSource(e), this.updateDropDownListDataSource(e, i), s > -1 && (o[s].FormField.option = e.options, this.pdfViewerBase.formFieldCollection[s].FormField.option = e.options), this.pdfViewer.nameTable[e.id.split("_")[0]].options = e.options, (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldRol || t) && this.updateRolPropertyChange(e, o, t, l, r), (this.formFieldFontFamily && this.formFieldFontFamily.value || t) && this.updateFontFamilyPropertyChange(e, i, t, s, o), (this.formFieldFontSize && this.formFieldFontSize.value || t) && this.updateFontSizePropertyChange(e, i, t, s, o), this.updateFontStylePropertyChange(e, i, t, s, o), (this.formFieldAlign || t) && this.updateAlignmentPropertyChange(e, i, t, s, o), (this.fontColorValue || t) && this.updateColorPropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o)
+                    e.options = this.createDropdownDataSource(e), this.updateDropDownListDataSource(e, i), e.selectedIndex = [], s > -1 && (o[s].FormField.option = e.options, this.pdfViewerBase.formFieldCollection[s].FormField.option = e.options, e.selectedIndex.push(s)), this.pdfViewer.nameTable[e.id.split("_")[0]].options = e.options, (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldRol || t) && this.updateRolPropertyChange(e, i, t, s, o), (this.formFieldFontFamily && this.formFieldFontFamily.value || t) && this.updateFontFamilyPropertyChange(e, i, t, s, o), (this.formFieldFontSize && this.formFieldFontSize.value || t) && this.updateFontSizePropertyChange(e, i, t, s, o), this.updateFontStylePropertyChange(e, i, t, s, o), (this.formFieldAlign || t) && this.updateAlignmentPropertyChange(e, i, t, s, o), (this.fontColorValue || t) && this.updateColorPropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o)
                 }
                 t && this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
             }, a.prototype.updateListBoxFormDesignerProperties = function(e, t) {
@@ -28865,7 +29132,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     var n = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"),
                         o = JSON.parse(n),
                         s = this.getFormFiledIndex(e.id.split("_")[0]);
-                    e.options = this.createDropdownDataSource(e), this.updateDropDownListDataSource(e, i), s > -1 && (o[s].FormField.option = e.options, this.pdfViewerBase.formFieldCollection[s].FormField.option = e.options), this.pdfViewer.nameTable[e.id.split("_")[0]].options = e.options, (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldFontFamily && this.formFieldFontFamily.value || t) && this.updateFontFamilyPropertyChange(e, i, t, s, o), (this.formFieldFontSize && this.formFieldFontSize.value || t) && this.updateFontSizePropertyChange(e, i, t, s, o), this.updateFontStylePropertyChange(e, i, t, s, o), (this.formFieldAlign || t) && this.updateAlignmentPropertyChange(e, i, t, s, o), (this.fontColorValue || t) && this.updateColorPropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o)
+                    e.options = this.createDropdownDataSource(e), this.updateDropDownListDataSource(e, i), e.selectedIndex = [], s > -1 && (o[s].FormField.option = e.options, this.pdfViewerBase.formFieldCollection[s].FormField.option = e.options, e.selectedIndex.push(s)), this.pdfViewer.nameTable[e.id.split("_")[0]].options = e.options, (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldFontFamily && this.formFieldFontFamily.value || t) && this.updateFontFamilyPropertyChange(e, i, t, s, o), (this.formFieldFontSize && this.formFieldFontSize.value || t) && this.updateFontSizePropertyChange(e, i, t, s, o), this.updateFontStylePropertyChange(e, i, t, s, o), (this.formFieldAlign || t) && this.updateAlignmentPropertyChange(e, i, t, s, o), (this.fontColorValue || t) && this.updateColorPropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o)
                 }
                 t && this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
             }, a.prototype.updateDropDownListDataSource = function(e, t) {
@@ -28896,13 +29163,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     n = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"),
                     o = JSON.parse(n),
                     s = this.getFormFiledIndex(e.id.split("_")[0]);
-                (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), this.formFieldChecked && (this.checkboxCheckedState = this.formFieldChecked.checked), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldRol || t) && this.updateRolPropertyChange(e, o, t, l, r), (void 0 != this.checkboxCheckedState || t) && this.updateIsCheckedPropertyChange(e, i, t, s, o), (this.pdfViewer.designerMode && this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.pdfViewer.designerMode && this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o), t && this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
+                (this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, i, t, s, o), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, i, t, s, o), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), this.formFieldChecked && (this.checkboxCheckedState = this.formFieldChecked.checked), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, s, o), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, i, t, s, o), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, i, t, s, o), (this.formFieldRol || t) && this.updateRolPropertyChange(e, i, t, s, o), (void 0 != this.checkboxCheckedState || t) && this.updateIsCheckedPropertyChange(e, i, t, s, o), (this.pdfViewer.designerMode && this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, i, t, s, o), (this.pdfViewer.designerMode && this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, i, t, s, o), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, i, t, s, o), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, i, t, s, o), t && this.pdfViewerBase.setItemInSessionStorage(this.pdfViewerBase.formFieldCollection, "_formDesigner")
             }, a.prototype.updateRadioButtonDesignerProperties = function(e, t) {
                 var n = document.getElementById(e.id + "_content_html_element").firstElementChild.firstElementChild.firstElementChild,
                     o = this.pdfViewerBase.getItemFromSessionStorage("_formDesigner"),
                     s = JSON.parse(o),
                     a = this.getFormFiledIndex(e.id.split("_")[0]);
-                if ((this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, n, t, a, s), this.formFieldChecked && (this.checkboxCheckedState = this.formFieldChecked.checked), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, a, s), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, n, t, a, s), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, n, t, a, s), (this.formFieldRol || t) && this.updateRolPropertyChange(e, o, t, l, r), (this.pdfViewer.designerMode && this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, n, t, a, s), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, n, t, a, s), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, n, t, a, s), (void 0 != this.checkboxCheckedState || t) && this.updateIsSelectedPropertyChange(e, n, t, a, s), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, n, t, a, s), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, n, t, a, s), t) {
+                if ((this.formFieldName && this.formFieldName.value || t) && this.updateNamePropertyChange(e, n, t, a, s), this.formFieldChecked && (this.checkboxCheckedState = this.formFieldChecked.checked), (this.formFieldPrinting || t) && this.updateIsPrintPropertyChange(e, t, a, s), (this.formFieldTooltip || t) && this.updateTooltipPropertyChange(e, n, t, a, s), (this.formFieldVisibility || t) && this.updateVisibilityPropertyChange(e, n, t, a, s), (this.formFieldRol || t) && this.updateRolPropertyChange(e, n, t, a, s), (this.pdfViewer.designerMode && this.formFieldBorderWidth || t) && this.updateBorderThicknessPropertyChange(e, n, t, a, s), (this.backgroundColorValue || t) && this.updateBackgroundColorPropertyChange(e, n, t, a, s), (this.borderColorValue || t) && this.updateBorderColorPropertyChange(e, n, t, a, s), (void 0 != this.checkboxCheckedState || t) && this.updateIsSelectedPropertyChange(e, n, t, a, s), (this.formFieldReadOnly || t) && this.updateIsReadOnlyPropertyChange(e, n, t, a, s), (this.formFieldRequired || t) && this.updateIsRequiredPropertyChange(e, n, t, a, s), t) {
                     var r = this.pdfViewer.nameTable[e.id.split("_")[0]],
                         l = i.cornersPointsBeforeRotation(r.wrapper.children[0]).topLeft;
                     this.updateFormDesignerFieldInSessionStorage(l, r.wrapper.children[0], r.formFieldAnnotationType, r)
@@ -29021,10 +29288,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     }
                 }
                 o > -1 && (s[o].FormField.visibility = e.visibility, this.pdfViewerBase.formFieldCollection[o].FormField.visibility = e.visibility), this.pdfViewer.nameTable[e.id.split("_")[0]].visibility = e.visibility, l && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", e, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, l, !1, !1, !1, !1, a, r)
-            }, a.prototype.updateRolPropertyChange = function(e, t, n, o, s) {
+            }, a.prototype.updateRolPropertyChange = function(e, i, o, s, a) {
                 // Added rol method
-                var r, l, d = !1;
-                this.formFieldRol && e.rol !== this.formFieldRol.value && (d = !0, r = e.rol, l = this.formFieldRol.value), e.rol = this.formFieldRol ? this.formFieldRol.value : e.rol, s > -1 && (a[s].FormField.rol = e.rol, this.pdfViewerBase.formFieldCollection[s].FormField.rol = e.rol), this.pdfViewer.nameTable[e.id.split("_")[0]].rol = this.formFieldRol.value, d && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", e, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, d, r, l)
+                this.formFieldTooltip = this.formFieldRol;
+                this.updateTooltipPropertyChange(e, i, o, s, a);
             }, a.prototype.updateTooltipPropertyChange = function(e, i, o, s, a) {
                 var r, l, d = !1;
                 this.formFieldTooltip && e.tooltip !== this.formFieldTooltip.value && (d = !0, r = e.tooltip, l = this.formFieldTooltip.value), o ? (this.formFieldTooltip = new n.TextBox, this.formFieldTooltip.value = e.tooltip) : e.tooltip = this.formFieldTooltip ? this.formFieldTooltip.value : e.tooltip, s > -1 && (a[s].FormField.tooltip = e.tooltip, this.pdfViewerBase.formFieldCollection[s].FormField.tooltip = e.tooltip), this.pdfViewer.nameTable[e.id.split("_")[0]].tooltip = this.formFieldTooltip.value, t.isNullOrUndefined(this.formFieldTooltip.value) || "" === this.formFieldTooltip.value || this.setToolTip(this.formFieldTooltip.value, "RadioButton" == e.formFieldAnnotationType ? i.parentElement : i), d && this.updateFormFieldPropertiesChanges("formFieldPropertiesChange", e, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, !1, d, r, l)
@@ -29073,8 +29340,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, a.prototype.setDropdownFontStyleValue = function(e, t, i) {
                 if (e.length > 0)
                     for (var n = 0; n < e.length; n++) "bold" === t ? e[n].style.fontWeight = i : "italic" === t ? e[n].style.fontStyle = i : "underline" === t ? e[n].style.textDecoration = i : "line-through" === t && (e[n].style.textDecoration = i)
-            }, a.prototype.updateFormFieldPropertiesChanges = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, L, w, c, C, g) {
-                // Added comment: Cgange properties
+            }, a.prototype.updateFormFieldPropertiesChanges = function(e, t, i, n, o, s, a, r, l, d, u, p, M, h, w, L, c, C, g) {
+                // Added comment: Change properties
                 var m = {
                     value: t.value,
                     fontFamily: t.fontFamily,
@@ -29085,7 +29352,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     alignment: t.alignment,
                     isReadonly: t.isReadonly,
                     visibility: t.visibility,
-                    rol: t.rol, // Added rol 
+                    rol: t.rol, // Added rol
                     maxLength: t.maxLength,
                     isRequired: t.isRequired,
                     isPrint: t.isPrint,
@@ -29095,7 +29362,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     isChecked: t.isChecked,
                     isSelected: t.isSelected
                 };
-                this.pdfViewer.fireFormFieldPropertiesChangeEvent("formFieldPropertiesChange", m, t.pageIndex, i, n, o, s, a, r, l, d, u, p, M, h, L, w, c, C, g)
+                this.pdfViewer.fireFormFieldPropertiesChangeEvent("formFieldPropertiesChange", m, t.pageIndex, i, n, o, s, a, r, l, d, u, p, M, h, w, L, c, C, g)
             }, a.prototype.onCancelClicked = function(e) {
                 this.propertiesDialog.hide()
             }, a.prototype.createAppearanceTab = function() {
@@ -29175,25 +29442,25 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     cssClass: "e-pv-properties-formfield-name"
                 }, p), a.appendChild(r);
                 var M = t.createElement("div", {
-                        className: "e-pv-properties-form-field-tooltip-main-div"
+                        className: "e-pv-properties-form-field-tooltip-main-div e-pv-properties-hide"
                     }),
                     h = t.createElement("div", {
                         className: "e-pv-properties-tooltip-edit-prop"
                     }),
-                    L = t.createElement("input", {
+                    w = t.createElement("input", {
                         className: "e-pv-properties-tooltip-prop-input e-input"
                     });
-                h.appendChild(L), M.appendChild(h), this.formFieldTooltip = new n.TextBox({
+                h.appendChild(w), M.appendChild(h), this.formFieldTooltip = new n.TextBox({
                     type: "text",
                     floatLabelType: "Always",
                     placeholder: this.pdfViewer.localeObj.getConstant("Tooltip"),
                     value: e.tooltip,
                     cssClass: "e-pv-properties-formfield-tooltip"
-                }, L), a.appendChild(M);
-                var w = t.createElement("div", {
+                }, w), a.appendChild(M);
+                var L = t.createElement("div", {
                     className: "e-pv-properties-visibility-style-prop"
                 });
-                s.appendChild(w);
+                s.appendChild(L);
 
                 // Added rol div
                 var rw = t.createElement("div", {
@@ -29210,15 +29477,13 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     g = t.createElement("input", {
                         className: "e-pv-properties-value-input e-input"
                     });
-
                 C.appendChild(g), c.appendChild(C), this.formFieldValue = new n.TextBox({
                     type: "text",
                     floatLabelType: "Always",
                     placeholder: this.pdfViewer.localeObj.getConstant("Value"),
                     value: e.value,
                     cssClass: "e-pv-properties-formfield-value"
-                }, g), "Textbox" !== this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType && (this.formFieldValue.enabled = !1, this.formFieldValue.value = ""), w.appendChild(c);
-
+                }, g), "Textbox" !== this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType && (this.formFieldValue.enabled = !1, this.formFieldValue.value = ""), L.appendChild(c);
                 var m = t.createElement("div", {
                         className: "e-pv-properties-form-field-visibility-main-div"
                     }),
@@ -29240,6 +29505,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     });
 
                 f.appendChild(y), m.appendChild(f);
+                // Added to section
                 rf.appendChild(ry), rm.appendChild(rf);
 
                 var j = "visible" === e.visibility ? 0 : 1;
@@ -29250,20 +29516,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     value: e.visibility,
                     placeholder: this.pdfViewer.localeObj.getConstant("Form Field Visibility"),
                     cssClass: "e-pv-properties-formfield-visibility"
-                }, y), w.appendChild(m);
+                }, y), L.appendChild(m);
 
                 // Added rol select
                 var rj = this.pdfViewer.roles.findIndex(function (rol) {
-                    return rol == e.rol;
+                    return rol == e.tooltip;
                 });
                 this.formFieldRol = new u.DropDownList({
                     dataSource: this.pdfViewer.roles,
                     floatLabelType: "Always",
-                    index: rj,
-                    value: Array.isArray(e.rol) ? e.rol[0] : e.rol,
+                    index: rj < 0 ? 0 : rj,
+                    value: e.tooltip,
                     placeholder: this.pdfViewer.localeObj.getConstant("Form Field Rol"),
                     cssClass: "e-pv-properties-formfield-rol"
-                }, ry), w.appendChild(rm);
+                }, ry), a.appendChild(rm);
 
                 var S = t.createElement("div", {
                         className: "e-pv-properties-checkbox-main-div-prop"
@@ -29271,11 +29537,10 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     A = t.createElement("input", {
                         className: "e-pv-properties-checkbox-readonly-input e-input"
                     });
-
                 if (S.appendChild(A), this.formFieldReadOnly = new d.CheckBox({
                         label: this.pdfViewer.localeObj.getConstant("Read Only"),
                         checked: e.isReadonly,
-                        cssClass: "e-pv-properties-form-field-checkbox e-pv-properties-hide",
+                        cssClass: "e-pv-properties-form-field-checkbox e-pv-properties-hide"
                     }, A), "Checkbox" === this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType || "RadioButton" === this.pdfViewer.selectedItems.formFields[0].formFieldAnnotationType) {
                     var T = t.createElement("input", {
                         className: "e-pv-properties-checkbox-checked-input e-input"
@@ -29287,21 +29552,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         change: this.checkBoxChange.bind(this)
                     }, T)
                 }
-
                 var x = t.createElement("input", {
                     className: "e-pv-properties-checkbox-required-input e-input"
                 });
-
                 S.appendChild(x), this.formFieldRequired = new d.CheckBox({
                     label: this.pdfViewer.localeObj.getConstant("Required"),
                     checked: e.isRequired,
                     cssClass: "e-pv-properties-form-field-checkbox"
                 }, x);
-
                 var N = t.createElement("input", {
                     className: "e-pv-properties-checkbox-printing-input e-input"
                 });
-
                 if (S.appendChild(N), this.formFieldPrinting = new d.CheckBox({
                         label: this.pdfViewer.localeObj.getConstant("Show Printing"),
                         checked: e.isPrint,
@@ -29367,20 +29628,20 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     value: e.fontSize + "px",
                     cssClass: "e-pv-properties-formfield-fontsize"
                 }, h), this.setToolTip(this.pdfViewer.localeObj.getConstant("Font size"), M);
-                var L = t.createElement("div", {
+                var w = t.createElement("div", {
                     className: "e-pv-properties-form-field-font-style"
                 });
-                L.onclick = this.fontStyleClicked.bind(this), L.appendChild(this.addClassFontItem("_formField_bold", "e-pv-bold-icon", e.font.isBold)), L.appendChild(this.addClassFontItem("_formField_italic", "e-pv-italic-icon", e.font.isItalic)), L.appendChild(this.addClassFontItem("_formField_underline_textinput", "e-pv-underlinetext-icon", e.font.isUnderline)), L.appendChild(this.addClassFontItem("_formField_strikeout", "e-pv-strikeout-icon", e.font.isStrikeout)), l.appendChild(L), a.appendChild(l);
-                var w = t.createElement("div", {
+                w.onclick = this.fontStyleClicked.bind(this), w.appendChild(this.addClassFontItem("_formField_bold", "e-pv-bold-icon", e.font.isBold)), w.appendChild(this.addClassFontItem("_formField_italic", "e-pv-italic-icon", e.font.isItalic)), w.appendChild(this.addClassFontItem("_formField_underline_textinput", "e-pv-underlinetext-icon", e.font.isUnderline)), w.appendChild(this.addClassFontItem("_formField_strikeout", "e-pv-strikeout-icon", e.font.isStrikeout)), l.appendChild(w), a.appendChild(l);
+                var L = t.createElement("div", {
                         className: "e-pv-properties-font-color-container"
                     }),
                     c = t.createElement("div", {
                         className: "e-pv-properties-form-field-font-align"
                     });
-                c.onclick = this.fontAlignClicked.bind(this), c.appendChild(this.addClassFontItem("_formField_left_align", "e-pv-left-align-icon", "left" === e.alignment)), c.appendChild(this.addClassFontItem("_formField_center_align", "e-pv-center-align-icon", "center" === e.alignment)), c.appendChild(this.addClassFontItem("_formField_right_align", "e-pv-right-align-icon", "right" === e.alignment)), w.appendChild(c), this.fontColorElement = t.createElement("div", {
+                c.onclick = this.fontAlignClicked.bind(this), c.appendChild(this.addClassFontItem("_formField_left_align", "e-pv-left-align-icon", "left" === e.alignment)), c.appendChild(this.addClassFontItem("_formField_center_align", "e-pv-center-align-icon", "center" === e.alignment)), c.appendChild(this.addClassFontItem("_formField_right_align", "e-pv-right-align-icon", "right" === e.alignment)), L.appendChild(c), this.fontColorElement = t.createElement("div", {
                     className: "e-pv-formfield-textcolor-icon",
                     id: this.pdfViewer.element.id + "formField_textColor"
-                }), this.fontColorPalette = this.createColorPicker(this.fontColorElement.id, e.color), this.fontColorPalette.change = this.onFontColorChange.bind(this), this.fontColorDropDown = this.createDropDownButton(this.fontColorElement, "e-pv-annotation-textcolor-icon", this.fontColorPalette.element.parentElement), w.appendChild(this.fontColorElement), this.setToolTip(this.pdfViewer.localeObj.getConstant("Font color"), this.fontColorDropDown.element), this.updateColorInIcon(this.fontColorElement, this.pdfViewer.selectedItems.formFields[0].color), "Checkbox" !== e.formFieldAnnotationType && "RadioButton" !== e.formFieldAnnotationType || (this.fontColorPalette.disabled = !0, this.fontColorDropDown.disabled = !0, this.fontColorElement.style.pointerEvents = "none", this.fontColorElement.style.opacity = "0.5", c.style.pointerEvents = "none", c.style.opacity = "0.5", this.formFieldFontSize.enabled = !1, this.formFieldFontFamily.enabled = !1, d.style.pointerEvents = "none", M.style.pointerEvents = "none", L.style.pointerEvents = "none", L.style.opacity = "0.5");
+                }), this.fontColorPalette = this.createColorPicker(this.fontColorElement.id, e.color), this.fontColorPalette.change = this.onFontColorChange.bind(this), this.fontColorDropDown = this.createDropDownButton(this.fontColorElement, "e-pv-annotation-textcolor-icon", this.fontColorPalette.element.parentElement), L.appendChild(this.fontColorElement), this.setToolTip(this.pdfViewer.localeObj.getConstant("Font color"), this.fontColorDropDown.element), this.updateColorInIcon(this.fontColorElement, this.pdfViewer.selectedItems.formFields[0].color), "Checkbox" !== e.formFieldAnnotationType && "RadioButton" !== e.formFieldAnnotationType || (this.fontColorPalette.disabled = !0, this.fontColorDropDown.disabled = !0, this.fontColorElement.style.pointerEvents = "none", this.fontColorElement.style.opacity = "0.5", c.style.pointerEvents = "none", c.style.opacity = "0.5", this.formFieldFontSize.enabled = !1, this.formFieldFontFamily.enabled = !1, d.style.pointerEvents = "none", M.style.pointerEvents = "none", w.style.pointerEvents = "none", w.style.opacity = "0.5");
                 var C = t.createElement("div", {
                         className: "e-pv-formfield-maxlength-group",
                         id: this.pdfViewer.element.id + "formField_maxlength_group"
@@ -29401,7 +29662,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                     format: "n",
                     value: 0 !== e.maxLength ? e.maxLength : 0,
                     min: 0
-                }, f), w.appendChild(C), this.setToolTip(this.pdfViewer.localeObj.getConstant("Max Length"), this.maxLengthItem.element), "Textbox" !== e.formFieldAnnotationType && "PasswordField" !== e.formFieldAnnotationType && (this.maxLengthItem.enabled = !1, g.style.pointerEvents = "none"), a.appendChild(w);
+                }, f), L.appendChild(C), this.setToolTip(this.pdfViewer.localeObj.getConstant("Max Length"), this.maxLengthItem.element), "Textbox" !== e.formFieldAnnotationType && "PasswordField" !== e.formFieldAnnotationType && (this.maxLengthItem.enabled = !1, g.style.pointerEvents = "none"), a.appendChild(L);
                 var y = t.createElement("div", {
                         className: "e-pv-properties-color-container-style-prop"
                     }),
@@ -29485,16 +29746,16 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                         className: "e-pv-properties-form-field-export-value-main-div"
                     });
                 this.createLabelElement(this.pdfViewer.localeObj.getConstant("Export Value"), h, !0, "e-pv-properties-formfield-label", i + "_properties_formfield_exportValue");
-                var L = t.createElement("div", {
+                var w = t.createElement("div", {
                         className: "e-pv-properties-export-value-edit-prop"
                     }),
-                    w = t.createElement("input", {
+                    L = t.createElement("input", {
                         className: "e-pv-properties-export-value-input e-input"
                     });
-                L.appendChild(w), h.appendChild(L), this.formFieldListItem = new n.TextBox({
+                w.appendChild(L), h.appendChild(w), this.formFieldListItem = new n.TextBox({
                     type: "text",
                     cssClass: "e-pv-properties-formfield-exportvalue"
-                }, w), M.appendChild(h), o.appendChild(M);
+                }, L), M.appendChild(h), o.appendChild(M);
                 var c = t.createElement("div", {
                         className: "e-pv-properties-form-field-option-dropdown-list-div"
                     }),
@@ -29794,6 +30055,6 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return "FormDesigner"
             }, a
         }();
-    return ln.Inject(ft, dn, ni, si, ri, oi, Mn, un, pn, Ct, Ln, hn), e.Drawing = tt, e.findActiveElement = W, e.findObjectsUnderMouse = J, e.findObjectUnderMouse = H, e.CalculateLeaderPoints = G, e.findElementUnderMouse = Z, e.insertObject = X, e.findTargetShapeElement = K, e.findObjects = q, e.findActivePage = $, e.ActiveElements = Lt, e.getConnectorPoints = S, e.getSegmentPath = A, e.updateSegmentElement = T, e.getSegmentElement = x, e.updateDecoratorElement = N, e.getDecoratorElement = D, e.clipDecorators = b, e.clipDecorator = v, e.initDistanceLabel = I, e.updateDistanceLabel = E, e.updateRadiusLabel = V, e.initPerimeterLabel = z, e.updatePerimeterLabel = k, e.removePerimeterLabel = O, e.updateCalibrateLabel = P, e.getPolygonPath = F, e.textElement = B, e.initLeaders = Y, e.initLeader = U, e.isPointOverConnector = Q, e.findNearestPoint = _, e.getDecoratorShape = R, e.renderAdornerLayer = ee, e.createSvg = te, e.isLineShapes = h, e.setElementStype = L, e.findPointsLength = w, e.findPerimeterLength = c, e.getBaseShapeAttributes = C, e.getFunction = g, e.cloneObject = m, e.cloneArray = f, e.getInternalProperties = y, e.isLeader = j, e.PdfBounds = Re, e.PdfFont = We, e.PdfAnnotationBase = Je, e.PdfFormFieldBase = He, e.ZOrderPageTable = Ge, e.Selector = Ke, e.ToolBase = nt, e.SelectTool = ot, e.MoveTool = st, e.StampTool = at, e.InkDrawingTool = rt, e.ConnectTool = lt, e.ResizeTool = dt, e.NodeDrawingTool = ut, e.PolygonDrawingTool = pt, e.LineTool = Mt, e.RotateTool = ht, e.Annotation = Ct, e.LinkAnnotation = ft, e.TextMarkupAnnotation = yt, e.MeasureAnnotation = jt, e.ShapeAnnotation = St, e.StampAnnotation = At, e.StickyNotesAnnotation = Tt, e.FreeTextAnnotation = wt, e.InputElement = ct, e.InkAnnotation = xt, e.NavigationPane = Nt, e.PdfViewerBase = qt, e.TextLayer = $t, e.ContextMenu = ei, e.AjaxHandler = ti, e.Signature = ii, e.Spinner = ie, e.createSpinner = ne, e.showSpinner = Oe, e.hideSpinner = Fe, e.setSpinner = Be, e.BlazorUiAdaptor = Zt, e.Magnification = ni, e.Navigation = oi, e.ThumbnailView = si, e.Toolbar = ri, e.AnnotationToolbar = li, e.FormDesignerToolbar = ai, e.ToolbarSettings = hi, e.AjaxRequestSettings = Li, e.CustomStamp = wi, e.AnnotationToolbarSettings = ci, e.FormDesignerToolbarSettings = Ci, e.SignatureFieldSettings = gi, e.InitialFieldSettings = mi, e.SignatureIndicatorSettings = fi, e.SignatureDialogSettings = yi, e.ServerActionSettings = ji, e.StrikethroughSettings = Si, e.UnderlineSettings = Ai, e.HighlightSettings = Ti, e.LineSettings = xi, e.ArrowSettings = Ni, e.RectangleSettings = Di, e.CircleSettings = bi, e.ShapeLabelSettings = vi, e.PolygonSettings = Ii, e.StampSettings = Ei, e.CustomStampSettings = Vi, e.DistanceSettings = zi, e.PerimeterSettings = ki, e.AreaSettings = Oi, e.RadiusSettings = Pi, e.VolumeSettings = Fi, e.InkAnnotationSettings = Bi, e.StickyNotesSettings = Yi, e.MeasurementSettings = Ui, e.FreeTextSettings = Qi, e.AnnotationSelectorSettings = _i, e.TextSearchColorSettings = Ri, e.HandWrittenSignatureSettings = Wi, e.AnnotationSettings = Ji, e.DocumentTextCollectionSettings = Hi, e.TextDataSettings = Gi, e.RectangleBounds = Zi, e.TileRenderingSettings = Xi, e.ScrollSettings = Ki, e.FormField = qi, e.ContextMenuSettings = $i, e.TextFieldSettings = en, e.PasswordFieldSettings = tn, e.CheckBoxFieldSettings = nn, e.RadioButtonFieldSettings = on, e.DropdownFieldSettings = sn, e.ListBoxFieldSettings = an, e.Item = rn, e.PdfViewer = ln, e.BookmarkView = dn, e.TextSelection = un, e.TextSearch = pn, e.Print = Mn, e.FormFields = hn, e.FormDesigner = Ln, e
+    return Mn.Inject(jt, hn, ri, di, pi, li, cn, wn, Ln, mt, gn, Cn), e.Drawing = nt, e.findActiveElement = W, e.findObjectsUnderMouse = J, e.findObjectUnderMouse = H, e.CalculateLeaderPoints = G, e.findElementUnderMouse = Z, e.insertObject = X, e.findTargetShapeElement = K, e.findObjects = q, e.findActivePage = $, e.ActiveElements = ct, e.getConnectorPoints = S, e.getSegmentPath = A, e.updateSegmentElement = T, e.getSegmentElement = x, e.updateDecoratorElement = N, e.getDecoratorElement = D, e.clipDecorators = b, e.clipDecorator = v, e.initDistanceLabel = I, e.updateDistanceLabel = E, e.updateRadiusLabel = V, e.initPerimeterLabel = z, e.updatePerimeterLabel = k, e.removePerimeterLabel = O, e.updateCalibrateLabel = P, e.getPolygonPath = F, e.textElement = B, e.initLeaders = Y, e.initLeader = U, e.isPointOverConnector = Q, e.findNearestPoint = _, e.getDecoratorShape = R, e.renderAdornerLayer = ee, e.createSvg = te, e.isLineShapes = h, e.setElementStype = w, e.findPointsLength = L, e.findPerimeterLength = c, e.getBaseShapeAttributes = C, e.getFunction = g, e.cloneObject = m, e.cloneArray = f, e.getInternalProperties = y, e.isLeader = j, e.PdfBounds = Je, e.PdfFont = He, e.PdfAnnotationBase = Ge, e.PdfFormFieldBase = Ze, e.ZOrderPageTable = Xe, e.Selector = $e, e.ToolBase = st, e.SelectTool = at, e.MoveTool = rt, e.StampTool = lt, e.InkDrawingTool = dt, e.ConnectTool = ut, e.ResizeTool = pt, e.NodeDrawingTool = Mt, e.PolygonDrawingTool = ht, e.LineTool = wt, e.RotateTool = Lt, e.Annotation = mt, e.LinkAnnotation = jt, e.TextMarkupAnnotation = St, e.MeasureAnnotation = At, e.ShapeAnnotation = Tt, e.StampAnnotation = xt, e.StickyNotesAnnotation = Nt, e.FreeTextAnnotation = Ct, e.InputElement = gt, e.InkAnnotation = Dt, e.NavigationPane = bt, e.PdfViewerBase = ii, e.TextLayer = ni, e.ContextMenu = oi, e.AjaxHandler = si, e.Signature = ai, e.Spinner = ie, e.createSpinner = ne, e.showSpinner = Fe, e.hideSpinner = Ye, e.setSpinner = Ue, e.BlazorUiAdaptor = $t, e.Magnification = ri, e.Navigation = li, e.ThumbnailView = di, e.Toolbar = pi, e.AnnotationToolbar = Mi, e.FormDesignerToolbar = ui, e.ToolbarSettings = Ci, e.AjaxRequestSettings = gi, e.CustomStamp = mi, e.AnnotationToolbarSettings = fi, e.FormDesignerToolbarSettings = yi, e.SignatureFieldSettings = ji, e.InitialFieldSettings = Si, e.SignatureIndicatorSettings = Ai, e.SignatureDialogSettings = Ti, e.ServerActionSettings = xi, e.StrikethroughSettings = Ni, e.UnderlineSettings = Di, e.HighlightSettings = bi, e.LineSettings = vi, e.ArrowSettings = Ii, e.RectangleSettings = Ei, e.CircleSettings = Vi, e.ShapeLabelSettings = zi, e.PolygonSettings = ki, e.StampSettings = Oi, e.CustomStampSettings = Pi, e.DistanceSettings = Fi, e.PerimeterSettings = Bi, e.AreaSettings = Yi, e.RadiusSettings = Ui, e.VolumeSettings = Qi, e.InkAnnotationSettings = _i, e.StickyNotesSettings = Ri, e.MeasurementSettings = Wi, e.FreeTextSettings = Ji, e.AnnotationSelectorSettings = Hi, e.TextSearchColorSettings = Gi, e.HandWrittenSignatureSettings = Zi, e.AnnotationSettings = Xi, e.DocumentTextCollectionSettings = Ki, e.TextDataSettings = qi, e.RectangleBounds = $i, e.TileRenderingSettings = en, e.ScrollSettings = tn, e.FormField = nn, e.ContextMenuSettings = on, e.TextFieldSettings = sn, e.PasswordFieldSettings = an, e.CheckBoxFieldSettings = rn, e.RadioButtonFieldSettings = ln, e.DropdownFieldSettings = dn, e.ListBoxFieldSettings = un, e.Item = pn, e.PdfViewer = Mn, e.BookmarkView = hn, e.TextSelection = wn, e.TextSearch = Ln, e.Print = cn, e.FormFields = Cn, e.FormDesigner = gn, e
 }({}, ej.base, ej.drawings, ej.inputs, ej.popups, ej.splitbuttons, ej.inplaceeditor, ej.navigations, ej.notifications, ej.buttons, ej.dropdowns, ej.data, ej.lists), this.ejs = ej;
 //# sourceMappingURL=ej2-pdfviewer.min.js.map
