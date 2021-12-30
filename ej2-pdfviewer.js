@@ -19156,6 +19156,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 this.isToolbarHidden = !1, this.isTextboxBtnVisible = !0, this.isPasswordBtnVisible = !0, this.isCheckboxBtnVisible = !0, this.isRadiobuttonBtnVisible = !0, this.isDropdownBtnVisible = !0, this.isListboxBtnVisible = !0, this.isSignatureBtnVisible = !0, this.isDeleteBtnVisible = !0, this.toolbarBorderHeight = 1, this.pdfViewer = e, this.pdfViewerBase = t, this.primaryToolbar = i
             }
             return e.prototype.initializeFormDesignerToolbar = function() {
+                // Added comment: Initialize form designer toolbar
                 var e = this;
                 this.toolbarElement = t.createElement("div", {
                     id: this.pdfViewer.element.id + "_formdesigner_toolbar",
@@ -19303,6 +19304,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 });
                 return n && (o.className = n), o.outerHTML
             }, e.prototype.onToolbarClicked = function(e) {
+                // Added comment: Click event form designer
                 e && e.item && (-1 !== e.item.id.indexOf("textbox") ? this.pdfViewer.formDesignerModule.setFormFieldMode("Textbox") : -1 !== e.item.id.indexOf("passwordfield") ? this.pdfViewer.formDesignerModule.setFormFieldMode("Password") : -1 !== e.item.id.indexOf("checkbox") ? this.pdfViewer.formDesignerModule.setFormFieldMode("CheckBox") : -1 !== e.item.id.indexOf("radiobutton") ? this.pdfViewer.formDesignerModule.setFormFieldMode("RadioButton") : -1 !== e.item.id.indexOf("dropdown") ? this.pdfViewer.formDesignerModule.setFormFieldMode("DropDown") : -1 !== e.item.id.indexOf("listbox") ? this.pdfViewer.formDesignerModule.setFormFieldMode("ListBox") : -1 !== e.item.id.indexOf("signature") ? this.pdfViewer.formDesignerModule.setFormFieldMode("SignatureField") : -1 !== e.item.id.indexOf("close") ? this.pdfViewer.toolbarModule.formDesignerToolbarModule.showFormDesignerToolbar(this.pdfViewer.toolbarModule.formDesignerItem) : -1 !== e.item.id.indexOf("delete") && (this.pdfViewer.formDesignerModule.deleteFormField(this.pdfViewer.selectedItems.formFields[0]), this.showHideDeleteIcon(!1)), this.pdfViewer.selectedItems.formFields.length > 0 && this.pdfViewer.clearSelection(this.pdfViewer.selectedItems.formFields[0].pageIndex))
             }, e.prototype.clickSignature = function(e) {
                 this.pdfViewer.formDesignerModule.setFormFieldMode("SignatureField")
@@ -28427,7 +28429,8 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
             }, a.prototype.setFormFieldMode = function(e, t) {
                 switch (e) {
                     case "Textbox":
-                        this.activateTextboxElement(e);
+                        // Added comment: include 't' parameter
+                        this.activateTextboxElement(e, t);
                         break;
                     case "Password":
                         this.activatePasswordField("PasswordField");
@@ -28675,12 +28678,12 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return this.formFieldIndex = this.formFieldIndex + 1, this.formFieldIndex
             }, a.prototype.setFormFieldIdIndex = function() {
                 return this.formFieldIdIndex = this.formFieldIdIndex + 1, this.formFieldIdIndex
-            }, a.prototype.activateTextboxElement = function(e) {
+            }, a.prototype.activateTextboxElement = function(e, t) {
                 // Added comment: Activate textbox
                 // Defines textbox object
                 this.pdfViewer.drawingObject = {
                     formFieldAnnotationType: e,
-                    name: "Textbox" + this.setFormFieldIndex(),
+                    name: (t && t.name) ? t.name : "Textbox" + this.setFormFieldIndex(), // Added 't' parameter and 'name' key
                     value: "",
                     fontFamily: "Helvetica",
                     fontSize: 10 * this.pdfViewerBase.getZoomFactor(),
