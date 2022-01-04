@@ -29526,13 +29526,14 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var rj = this.pdfViewer.roles.findIndex(function (rol) {
                     return rol == e.tooltip;
                 });
-                this.formFieldRol = new u.DropDownList({
+                this.this.formFieldRol = new u.DropDownList({
                     dataSource: this.pdfViewer.roles,
                     floatLabelType: "Always",
                     index: rj < 0 ? 0 : rj,
                     value: e.tooltip,
                     placeholder: this.pdfViewer.localeObj.getConstant("Form Field Rol"),
-                    cssClass: "e-pv-properties-formfield-rol"
+                    cssClass: "e-pv-properties-formfield-rol",
+                    change: this.rolSelectChange.bind(this)
                 }, ry), a.appendChild(rm);
 
                 var S = t.createElement("div", {
@@ -29585,6 +29586,17 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 return s.appendChild(S), s
             }, a.prototype.checkBoxChange = function(e) {
                 this.checkboxCheckedState = e.checked
+            }, a.prototype.rolSelectChange = function(e) {
+                // Added comment: Custom event change 'name' property
+                var matches = [];
+				if((matches = this.formFieldName.value.match('{{(.*?)}}')) && matches.length >= 1){
+					this.formFieldName.value = '{{' + e.value.toLowerCase() + '.' + matches[1].split(/[.]+/).pop().toLowerCase()  + '}}';
+				}
+                // Added event fire
+                this.pdfViewer.trigger("formFieldRolSelectChange", {
+                    element: this,
+                    event: e
+                });
             }, a.prototype.multilineCheckboxChange = function(e) {
                 this.multilineCheckboxCheckedState = !0
             }, a.prototype.setToolTip = function(e, t) {
