@@ -29526,7 +29526,7 @@ this.ej = this.ej || {}, this.ej.pdfviewer = function(e, t, i, n, o, s, a, r, l,
                 var rj = this.pdfViewer.roles.findIndex(function (rol) {
                     return rol == e.tooltip;
                 });
-                this.this.formFieldRol = new u.DropDownList({
+                this.formFieldRol = new u.DropDownList({
                     dataSource: this.pdfViewer.roles,
                     floatLabelType: "Always",
                     index: rj < 0 ? 0 : rj,
